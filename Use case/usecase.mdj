@@ -7153,7 +7153,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Scrivere recensioni"
+					"name": "Scrive recensioni"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -10328,7 +10328,7 @@
 											"top": 618.5,
 											"width": 202,
 											"height": 22,
-											"text": "Scrivere recensioni"
+											"text": "Scrive recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -10361,7 +10361,7 @@
 									"font": "Arial;22;0",
 									"left": 1219.5,
 									"top": 611.5,
-									"width": 213.005859375,
+									"width": 212,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcTFfpxTvE="
@@ -11991,7 +11991,7 @@
 									"font": "Arial;22;0",
 									"left": 1080,
 									"top": 389.5,
-									"width": 157.8662109375,
+									"width": 157,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwjDT7Is="
@@ -12190,7 +12190,7 @@
 									"font": "Arial;22;0",
 									"left": 1068,
 									"top": 461.5,
-									"width": 331.5673828125,
+									"width": 330,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwjDeAh8="
@@ -12389,7 +12389,7 @@
 									"font": "Arial;22;0",
 									"left": 1074,
 									"top": 533.5,
-									"width": 400.02734375,
+									"width": 399,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwzDpXFM="
@@ -12588,7 +12588,7 @@
 									"font": "Arial;22;0",
 									"left": 1080,
 									"top": 589.5,
-									"width": 351.1181640625,
+									"width": 350,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwzD0p/0="
@@ -12787,7 +12787,7 @@
 									"font": "Arial;22;0",
 									"left": 1084,
 									"top": 661.5,
-									"width": 293.658203125,
+									"width": 293,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwzD/cOQ="
@@ -12986,7 +12986,7 @@
 									"font": "Arial;22;0",
 									"left": 1067,
 									"top": 733.5,
-									"width": 251.7099609375,
+									"width": 251,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwzEKtVU="
