@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.20)  30 NOV 2019 17:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.11.20)  30 NOV 2019 17:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -45,20 +45,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
  [1
 
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] (c:/Users/mario/Desktop/CV19_05/Riunioni/Riuonione1/Riunione1.aux) ) 
+{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] [2] (c:/Users/mario/Desktop/CV19_05/Riunioni/Riuonione1/Riunione1.aux) ) 
 Here is how much of TeX's memory you used:
- 232 strings out of 492623
- 2928 string characters out of 6133289
- 61603 words of memory out of 5000000
- 4219 multiletter control sequences out of 15000+600000
- 7588 words of font info for 27 fonts, out of 8000000 for 9000
+ 234 strings out of 492623
+ 2951 string characters out of 6133289
+ 63603 words of memory out of 5000000
+ 4221 multiletter control sequences out of 15000+600000
+ 7895 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 23i,6n,18p,219b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 23i,6n,18p,286b,187s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on c:/Users/mario/Desktop/CV19_05/Riunioni/Riuonione1/Riunione1.pdf (2 pages, 61565 bytes).
+Output written on c:/Users/mario/Desktop/CV19_05/Riunioni/Riuonione1/Riunione1.pdf (3 pages, 65247 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 34 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
