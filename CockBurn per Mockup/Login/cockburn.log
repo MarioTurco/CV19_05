@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  1 DEC 2019 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  1 DEC 2019 20:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -79,91 +79,119 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'utente in-
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 51--51
+Underfull \hbox (badness 1990) in paragraph at lines 52--52
 \T1/cmr/m/n/10 serisce i dati
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 nei rel-a-tivi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'utente in-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 via i dati
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 pre-mendo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 sul pul-sante
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'applicativo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'applicativo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 com-pleta il
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 51--51
+Underfull \hbox (badness 2088) in paragraph at lines 52--52
 \T1/cmr/m/n/10 izza la home
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'utente
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 richiede
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 l'accesso con
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+\T1/cmr/m/n/10 case ac-cesso
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+\T1/cmr/m/n/10 mostra un
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+\T1/cmr/m/n/10 mes-sag-gio di
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+\T1/cmr/m/n/10 tema mostra
+ []
+
+
+Underfull \hbox (badness 4608) in paragraph at lines 52--52
+\T1/cmr/m/n/10 la pag-ina di
  []
 
 [1
 
-{g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux) ) 
+{g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \vbox (102.79993pt too high) has occurred while \output is active []
+
+ [2] (g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux) ) 
 Here is how much of TeX's memory you used:
  669 strings out of 492164
  7596 string characters out of 6129088
- 78848 words of memory out of 5000000
+ 80848 words of memory out of 5000000
  5096 multiletter control sequences out of 15000+600000
  4403 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,9n,21p,210b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,9n,21p,234b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 {g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (1 page, 21308 bytes).
+Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 22402 bytes).
 PDF statistics:
- 13 PDF objects out of 1000 (max. 8388607)
- 8 compressed objects within 1 object stream
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
