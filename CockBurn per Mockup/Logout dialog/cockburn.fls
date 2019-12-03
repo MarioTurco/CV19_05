@@ -1,9 +1,9 @@
-PWD g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login
+PWD g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog
 INPUT g:/texlive/2019/texmf.cnf
 INPUT g:/texlive/2019/texmf-dist/web2c/texmf.cnf
 INPUT g:/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.tex
-OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.log
+INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.tex
+OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.log
 INPUT g:/texlive/2019/texmf-dist/tex/latex/base/article.cls
 INPUT g:/texlive/2019/texmf-dist/tex/latex/base/article.cls
 INPUT g:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
@@ -24,11 +24,11 @@ INPUT g:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT g:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT g:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 INPUT g:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
-INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux
-INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux
-OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux
-OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf
+INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.aux
+INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.aux
+OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.aux
+OUTPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.pdf
 INPUT g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux
+INPUT g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Logout dialog/cockburn.aux
 INPUT g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
