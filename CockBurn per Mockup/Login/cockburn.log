@@ -1,17 +1,14 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  3 DEC 2019 18:19
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  3 DEC 2019 18:29
->>>>>>> d0a63e0f6b9ccff8db2ac501ed9636f551424eff
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  3 DEC 2019 18:37
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**cockburn.tex
-(./cockburn.tex
+**"g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.tex"
+(g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.tex
 LaTeX2e <2019-10-01> patch level 3
-(c:/texlive/2019/texmf-dist/tex/latex/base/article.cls
+(g:/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-(c:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
+(g:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -25,38 +22,31 @@ File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(c:/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+) (g:/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-
-(c:/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
+ (g:/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(c:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+)) (g:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-)
-(c:/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
+) (g:/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip43
 \multirow@cntb=\count88
 \multirow@dima=\skip44
 \bigstrutjot=\dimen103
-)
-(c:/texlive/2019/texmf-dist/tex/latex/float/float.sty
+) (g:/texlive/2019/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count89
 \float@exts=\toks16
 \float@box=\box27
 \@float@everytoks=\toks17
 \@floatcapt=\box28
-)
-(c:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
+) (g:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
-
-(c:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+ (g:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \col@sep=\dimen104
 \ar@mcellbox=\box29
@@ -73,7 +63,7 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \TX@delta=\dimen110
 \TX@cols=\count90
 \TX@ftn=\toks19
-) (./cockburn.aux)
+) (g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux)
 \openout1 = `cockburn.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -165,40 +155,20 @@ Underfull \hbox (badness 4608) in paragraph at lines 51--51
 
 [1
 
-<<<<<<< HEAD
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \vbox (102.79993pt too high) has occurred while \output is active []
-=======
 {g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \vbox (12.79993pt too high) has occurred while \output is active []
->>>>>>> d0a63e0f6b9ccff8db2ac501ed9636f551424eff
 
-
-[2] (./cockburn.aux) ) 
+ [2] (g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux) ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 668 strings out of 492164
- 7087 string characters out of 6129088
- 80848 words of memory out of 5000000
- 5096 multiletter control sequences out of 15000+600000
- 4403 words of font info for 15 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 25i,9n,21p,181b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-s
-uper-t1.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
-b>
-Output written on cockburn.pdf (2 pages, 22405 bytes).
-=======
  669 strings out of 492164
  7596 string characters out of 6129088
  79848 words of memory out of 5000000
  5096 multiletter control sequences out of 15000+600000
  4403 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,9n,21p,234b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,9n,21p,240b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 {g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 21646 bytes).
->>>>>>> d0a63e0f6b9ccff8db2ac501ed9636f551424eff
+Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 21648 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
