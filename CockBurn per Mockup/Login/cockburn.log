@@ -85,105 +85,88 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'utente in-
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 51--51
+Underfull \hbox (badness 1990) in paragraph at lines 52--52
 \T1/cmr/m/n/10 serisce i dati
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 nei rel-a-tivi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'utente in-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 via i dati
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 pre-mendo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 sul pul-sante
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'applicativo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 []|\T1/cmr/m/n/10 L'applicativo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
 \T1/cmr/m/n/10 com-pleta il
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 51--51
+Underfull \hbox (badness 2088) in paragraph at lines 52--52
 \T1/cmr/m/n/10 izza la home
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/cmr/m/n/10 mostra un
+[]|\T1/cmr/m/n/10 L'utente
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/cmr/m/n/10 mes-sag-gio di
+\T1/cmr/m/n/10 richiede
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/cmr/m/n/10 tema mostra
- []
-
-
-Underfull \hbox (badness 4608) in paragraph at lines 51--51
-\T1/cmr/m/n/10 la pag-ina di
+\T1/cmr/m/n/10 l'accesso con
  []
 
 [1
 
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \vbox (12.79993pt too high) has occurred while \output is active []
-
-
-[2] (./cockburn.aux) ) 
+{g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.aux) ) 
 Here is how much of TeX's memory you used:
- 668 strings out of 492164
- 7087 string characters out of 6129088
- 79848 words of memory out of 5000000
+ 669 strings out of 492164
+ 7596 string characters out of 6129088
+ 78848 words of memory out of 5000000
  5096 multiletter control sequences out of 15000+600000
  4403 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
-<<<<<<< HEAD
- 25i,9n,21p,175b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-s
-uper-t1.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
-b>
-Output written on cockburn.pdf (2 pages, 21646 bytes).
-=======
- 25i,9n,21p,234b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,9n,21p,210b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 {g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 21646 bytes).
->>>>>>> 32a9969ea21506224079aad48eb67a4af6dabdc7
+Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (1 page, 21308 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
