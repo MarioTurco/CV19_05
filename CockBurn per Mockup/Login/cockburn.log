@@ -173,11 +173,17 @@ Here is how much of TeX's memory you used:
  5096 multiletter control sequences out of 15000+600000
  4403 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
+<<<<<<< HEAD
  25i,9n,21p,175b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-s
 uper-t1.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
 b>
 Output written on cockburn.pdf (2 pages, 21646 bytes).
+=======
+ 25i,9n,21p,234b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+{g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on "g:/Users/Pepys/Desktop/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 21646 bytes).
+>>>>>>> 32a9969ea21506224079aad48eb67a4af6dabdc7
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
