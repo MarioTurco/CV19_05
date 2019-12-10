@@ -1360,7 +1360,7 @@
 											"top": 237.5,
 											"width": 291,
 											"height": 22,
-											"text": "Visionare dati dei visitatori"
+											"text": "Visiona dati dei visitatori"
 										},
 										{
 											"_type": "LabelView",
@@ -2027,7 +2027,7 @@
 											"top": 1197.5,
 											"width": 283,
 											"height": 22,
-											"text": "Registrarsi alla piattaforma"
+											"text": "Si registra alla piattaforma"
 										},
 										{
 											"_type": "LabelView",
@@ -2060,7 +2060,7 @@
 									"font": "Arial;22;0",
 									"left": 861,
 									"top": 1190.5,
-									"width": 293.658203125,
+									"width": 293,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvV25E9l2+rM="
@@ -3414,11 +3414,11 @@
 												"$ref": "AAAAAAFuvWcwLf+opZE="
 											},
 											"font": "Arial;22;1",
-											"left": 803.5,
+											"left": 806,
 											"top": 765.5,
-											"width": 174,
+											"width": 186,
 											"height": 22,
-											"text": "Scelta Nickname"
+											"text": "Sceglie Nickname"
 										},
 										{
 											"_type": "LabelView",
@@ -3449,9 +3449,9 @@
 										}
 									],
 									"font": "Arial;22;0",
-									"left": 798.5,
+									"left": 801,
 									"top": 758.5,
-									"width": 184.8720703125,
+									"width": 197.0966796875,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcwLf+pndE="
@@ -3551,7 +3551,7 @@
 							"containerChangeable": true,
 							"left": 760,
 							"top": 752,
-							"width": 261,
+							"width": 278,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -3614,11 +3614,11 @@
 												"$ref": "AAAAAAFuvWgoqgzoKVs="
 											},
 											"font": "Arial;22;1",
-											"left": 719.5,
+											"left": 712.5,
 											"top": 405.5,
-											"width": 347,
+											"width": 313,
 											"height": 22,
-											"text": "Gestione delle proprie recensioni"
+											"text": "Gestisce le proprie recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -3649,9 +3649,9 @@
 										}
 									],
 									"font": "Arial;22;0",
-									"left": 714.5,
+									"left": 707.5,
 									"top": 398.5,
-									"width": 358.43359375,
+									"width": 324.2412109375,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWgoqgzpquc="
@@ -3751,7 +3751,7 @@
 							"containerChangeable": true,
 							"left": 640,
 							"top": 392,
-							"width": 506,
+							"width": 458,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -3922,8 +3922,8 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 637,
-									"top": 416,
+									"left": 631,
+									"top": 417,
 									"height": 22,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -3942,8 +3942,8 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 633,
-									"top": 403,
+									"left": 627,
+									"top": 404,
 									"height": 22,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3962,7 +3962,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 644,
+									"left": 638,
 									"top": 443,
 									"height": 22,
 									"alpha": 0.5235987755982988,
@@ -4012,7 +4012,7 @@
 								"$ref": "AAAAAAFuvWcwLf7lnTE="
 							},
 							"lineStyle": 1,
-							"points": "237:536;592:448;665:440",
+							"points": "237:536;592:448;659:440",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFuvWhyzg8rElU="
@@ -4087,11 +4087,11 @@
 												"$ref": "AAAAAAFuvWi3lBK8Bhg="
 											},
 											"font": "Arial;22;1",
-											"left": 769,
+											"left": 765,
 											"top": 501.5,
-											"width": 241,
+											"width": 220,
 											"height": 22,
-											"text": "Visualizzare recensioni"
+											"text": "Visualizza recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -4122,9 +4122,9 @@
 										}
 									],
 									"font": "Arial;22;0",
-									"left": 764,
+									"left": 760,
 									"top": 494.5,
-									"width": 251.7099609375,
+									"width": 230.9130859375,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWi3lBK9coA="
@@ -4224,7 +4224,7 @@
 							"containerChangeable": true,
 							"left": 712,
 							"top": 488,
-							"width": 355,
+							"width": 326,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -4269,7 +4269,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 473,
+									"left": 472,
 									"top": 512,
 									"height": 22,
 									"alpha": 1.5707963267948966,
@@ -4290,7 +4290,7 @@
 									},
 									"visible": null,
 									"font": "Arial;22;0",
-									"left": 472,
+									"left": 471,
 									"top": 497,
 									"height": 22,
 									"alpha": 1.5707963267948966,
@@ -4311,7 +4311,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 474,
+									"left": 475,
 									"top": 541,
 									"height": 22,
 									"alpha": -1.5707963267948966,
@@ -4396,7 +4396,7 @@
 									"visible": false,
 									"font": "Arial;22;0",
 									"left": 684,
-									"top": 498,
+									"top": 497,
 									"height": 22,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -4416,7 +4416,7 @@
 									"visible": false,
 									"font": "Arial;22;0",
 									"left": 680,
-									"top": 485,
+									"top": 484,
 									"height": 22,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -4436,7 +4436,7 @@
 									"visible": false,
 									"font": "Arial;22;0",
 									"left": 690,
-									"top": 525,
+									"top": 524,
 									"height": 22,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -4485,7 +4485,7 @@
 								"$ref": "AAAAAAFuvWcwLf7lnTE="
 							},
 							"lineStyle": 1,
-							"points": "237:554;711:523",
+							"points": "237:554;711:522",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFuvWjU8BS7238="
@@ -5015,7 +5015,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 525,
+									"left": 528,
 									"top": 644,
 									"height": 22,
 									"alpha": 1.5707963267948966,
@@ -5036,7 +5036,7 @@
 									},
 									"visible": null,
 									"font": "Arial;22;0",
-									"left": 529,
+									"left": 532,
 									"top": 630,
 									"height": 22,
 									"alpha": 1.5707963267948966,
@@ -5057,7 +5057,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 516,
+									"left": 519,
 									"top": 673,
 									"height": 22,
 									"alpha": -1.5707963267948966,
@@ -5141,7 +5141,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 784,
+									"left": 791,
 									"top": 718,
 									"height": 22,
 									"alpha": -0.5235987755982988,
@@ -5161,7 +5161,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 785,
+									"left": 792,
 									"top": 705,
 									"height": 22,
 									"alpha": -0.7853981633974483,
@@ -5181,7 +5181,7 @@
 									},
 									"visible": false,
 									"font": "Arial;22;0",
-									"left": 780,
+									"left": 787,
 									"top": 746,
 									"height": 22,
 									"alpha": 0.5235987755982988,
@@ -5231,7 +5231,7 @@
 								"$ref": "AAAAAAFuvWcwLf7lnTE="
 							},
 							"lineStyle": 1,
-							"points": "237:590;805:751",
+							"points": "237:590;812:751",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFuvWnPryafZNU="
@@ -5765,7 +5765,7 @@
 								"$ref": "AAAAAAFuvWuJmDgSsO0="
 							},
 							"lineStyle": 1,
-							"points": "1223:507;982:440"
+							"points": "1223:509;962:440"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -6611,7 +6611,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Visualizzare recensioni"
+					"name": "Visualizza recensioni"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6619,7 +6619,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Modificare proprie recensioni"
+					"name": "Modifica proprie recensioni"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6664,7 +6664,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Cancellare proprie recensioni"
+					"name": "Cancella proprie recensioni"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6696,7 +6696,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Scelta Nickname"
+					"name": "Sceglie Nickname"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6704,7 +6704,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Visionare dati dei visitatori"
+					"name": "Visiona dati dei visitatori"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6744,7 +6744,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Registrarsi alla piattaforma"
+					"name": "Si registra alla piattaforma"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -7221,7 +7221,7 @@
 											"top": 410.5,
 											"width": 241,
 											"height": 22,
-											"text": "Visualizzare recensioni"
+											"text": "Visualizza recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -7254,7 +7254,7 @@
 									"font": "Arial;22;0",
 									"left": 1139,
 									"top": 403.5,
-									"width": 251.7099609375,
+									"width": 251,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcTFfnyxNk="
@@ -7420,7 +7420,7 @@
 											"top": 466.5,
 											"width": 307,
 											"height": 22,
-											"text": "Modificare proprie recensioni"
+											"text": "Modifica proprie recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -7453,7 +7453,7 @@
 									"font": "Arial;22;0",
 									"left": 1121,
 									"top": 459.5,
-									"width": 318.0751953125,
+									"width": 317,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcTFfn9VHU="
@@ -7819,7 +7819,7 @@
 											"top": 538.5,
 											"width": 308,
 											"height": 22,
-											"text": "Cancellare proprie recensioni"
+											"text": "Cancella proprie recensioni"
 										},
 										{
 											"_type": "LabelView",
@@ -7852,7 +7852,7 @@
 									"font": "Arial;22;0",
 									"left": 1169.5,
 									"top": 531.5,
-									"width": 319.3427734375,
+									"width": 318,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcTFfoT6mg="
@@ -10323,11 +10323,11 @@
 												"$ref": "AAAAAAFuvWcTFfqeYRQ="
 											},
 											"font": "Arial;22;1",
-											"left": 1282.5,
+											"left": 1285,
 											"top": 866.5,
-											"width": 174,
+											"width": 186,
 											"height": 22,
-											"text": "Scelta Nickname"
+											"text": "Sceglie Nickname"
 										},
 										{
 											"_type": "LabelView",
@@ -10358,9 +10358,9 @@
 										}
 									],
 									"font": "Arial;22;0",
-									"left": 1277.5,
+									"left": 1280,
 									"top": 859.5,
-									"width": 184.8720703125,
+									"width": 197.0966796875,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWcTFfqftUk="
@@ -10460,7 +10460,7 @@
 							"containerChangeable": true,
 							"left": 1239,
 							"top": 853,
-							"width": 261,
+							"width": 278,
 							"height": 48,
 							"nameCompartment": {
 								"$ref": "AAAAAAFuvWcTFfqeYRQ="
@@ -10772,7 +10772,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuvUy4ypB4PyI="
 					},
-					"name": "Gestione delle proprie recensioni"
+					"name": "Gestisce le proprie recensioni"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -11809,7 +11809,7 @@
 											"top": 668.5,
 											"width": 283,
 											"height": 22,
-											"text": "Registrarsi alla piattaforma"
+											"text": "Si registra alla piattaforma"
 										},
 										{
 											"_type": "LabelView",
@@ -11842,7 +11842,7 @@
 									"font": "Arial;22;0",
 									"left": 1084,
 									"top": 661.5,
-									"width": 293.658203125,
+									"width": 293,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFuvWrMwzD/cOQ="

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.11.15)  10 DEC 2019 11:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.11.15)  10 DEC 2019 12:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -79,101 +79,174 @@ LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 pila tutti i
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 []|\T1/cmr/m/n/10 L'utente
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 []|\T1/cmr/m/n/10 Mostra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 l'homepage
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 dell'utente
  []
 
+/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.tex:55: Extra alignment tab has been changed to \cr.
+<template> \endtemplate 
+                        
+l.55 \end{tabularx}
+                   
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 []|\T1/cmr/m/n/10 L'utente
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 preme su
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 []|\T1/cmr/m/n/10 Mostra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 l'homepage
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 dell'utente
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 []|\T1/cmr/m/n/10 Mostra mes-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 er-rore dati
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 lo-gin er-rati
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 52--52
+Underfull \hbox (badness 1859) in paragraph at lines 55--55
 \T1/cmr/m/n/10 4a1. Il sis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
 \T1/cmr/m/n/10 tema mostra
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 52--52
+Underfull \hbox (badness 4608) in paragraph at lines 55--55
 \T1/cmr/m/n/10 la pag-ina di
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \vbox (7.19992pt too high) has occurred while \output is active []
+Overfull \vbox (43.19992pt too high) has occurred while \output is active []
 
  [2] (/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.aux) ) 
 Here is how much of TeX's memory you used:
  651 strings out of 492609
  7484 string characters out of 6131461
- 78956 words of memory out of 5000000
+ 79956 words of memory out of 5000000
  4633 multiletter control sequences out of 15000+600000
  4403 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 23i,9n,18p,199b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 23i,9n,18p,198b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 20921 bytes).
+Output written on "/home/mario/Scrivania/CV19_05/CockBurn per Mockup/Login/cockburn.pdf" (2 pages, 20992 bytes).
 PDF statistics:
  16 PDF objects out of 1000 (max. 8388607)
  10 compressed objects within 1 object stream
