@@ -14,34 +14,34 @@
 
 \begin{tabularx}{\linewidth}{|l|X|X|X|}
 
-  \hline Use Case \#N & \multicolumn{3} {l|}{Login Mockup} \\ \hline Goal in
+  \hline Use Case \#1 & \multicolumn{3} {l|}{Login Mockup} \\ \hline Goal in
   Context & \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
     L'utente effettua il login sulla piattaforma.  } \\
  \hline Preconditions &
   \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente seleziona Login dal menù laterale. } \\
+     } \\
  \hline Success End Conditions &
   \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente visualizza la home page.} \\
+    Il login ha successo e l'utente visualizza la home page.} \\
  \hline Failed End Conditions &
   \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    Viene visualizzato un messaggio di errore Login fallito che invita l'utente a riprovare o a registrarsi se non ha un account. } \\
+    Viene visualizzato un messaggio di errore che invita l'utente a riprovare o a registrarsi se non ha un account. } \\
  \hline Primary Actor &
   \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
    Utente non loggato. } \\
- \hline Trigger & \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente conferma i dati del login premendo sul tasto Login.} \\
 
   \hline \multirow{2}{*}{Description} & Step & User Action & System \\
     
-  \cline{2-4} & 1 & L'utente inserisce i dati nei relativi campi & \\
-  \cline{2-4} & 2 & L'utente invia i dati premendo sul pulsante Login & \\
-  \cline{2-4} & 3 & L'applicativo invia i dati al server e prova il login & \\
-  \cline{2-4} & 4 & L'applicativo completa il login e visualizza la home page & \\
- \hline \multirow{2}{*}{Extensions} & Step &
+  \cline{2-4} & 1 & L'utente compila tutti i campi & \\
+  \cline{2-4} & 2 & L'utente preme sul pulsante Login & \\
+  \cline{2-4} & 3 &  & Mostra l'homepage dell'utente loggato\\
+\hline \multirow{2}{*}{Extensions} & Step &
   User Action & System \\
- \cline{2-4} & 2a & L'utente annulla il login premendo su Annulla \newline \hspace*{1em} 2a1. Il sistema mostra la pagina di Login & \\ \hline
- \cline{2-4} & 4a & Il login fallisce e l'applicativo mostra un messaggio di errore \newline \hspace*{1em} 4a1. Il sistema mostra la pagina di Login & \\ \hline
+  \cline{2-4} & 2a & L'utente preme su Annulla  & \\
+  \cline{2-4} & 3a &  & Mostra l'homepage dell'utente non loggato \\ \hline
+  \cline{2-4} & 3b &  & Mostra messaggio di dati errore dati login errati  4a1. Il sistema mostra la pagina di Login \\ \hline
+  \cline{2-4} & 4b &  & Mostra la pagina di Login \\ \hline
+  
  \multirow{2}{*}{Subvariations} & Step & User Action & System \\
 
   \cline{2-4} & & & \\
