@@ -1,96 +1,156 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.12.1)  1 DEC 2019 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.2.9)  28 FEB 2020 18:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"g:/Users/Pepys/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex"
-(g:/Users/Pepys/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex
-LaTeX2e <2019-10-01> patch level 3
-(g:/texlive/2019/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-(g:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+**"c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex"
+(c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex
+LaTeX2e <2020-02-02> patch level 1
+L3 programming layer <2020-02-08> (d:/texlive/2019/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(d:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
-) (g:/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
- (g:/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)) (g:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+) (d:/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/01/25 v2.0m Standard LaTeX package
+) (d:/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-) (g:/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
+) (d:/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip43
-\multirow@cntb=\count88
-\multirow@dima=\skip44
-\bigstrutjot=\dimen103
-) (g:/texlive/2019/texmf-dist/tex/latex/float/float.sty
+\multirow@colwidth=\skip49
+\multirow@cntb=\count175
+\multirow@dima=\skip50
+\bigstrutjot=\dimen135
+) (d:/texlive/2019/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count89
+\c@float@type=\count176
 \float@exts=\toks16
-\float@box=\box27
+\float@box=\box45
 \@float@everytoks=\toks17
-\@floatcapt=\box28
-) (g:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
- (g:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+\@floatcapt=\box46
+) (d:/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+ (d:/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen104
-\ar@mcellbox=\box29
-\extrarowheight=\dimen105
+\col@sep=\dimen136
+\ar@mcellbox=\box47
+\extrarowheight=\dimen137
 \NC@list=\toks18
-\extratabsurround=\skip45
-\backup@length=\skip46
-\ar@cellbox=\box30
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box48
 )
-\TX@col@width=\dimen106
-\TX@old@table=\dimen107
-\TX@old@col=\dimen108
-\TX@target=\dimen109
-\TX@delta=\dimen110
-\TX@cols=\count90
+\TX@col@width=\dimen138
+\TX@old@table=\dimen139
+\TX@old@col=\dimen140
+\TX@target=\dimen141
+\TX@delta=\dimen142
+\TX@cols=\count177
 \TX@ftn=\toks19
-) (g:/Users/Pepys/Desktop/CV19_05/File utili/Template CockBurn/cockburn.aux)
+) (d:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count178
+\l__pdf_internal_box=\box49
+) (c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.aux)
 \openout1 = `cockburn.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
- [1
 
-{g:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (g:/Users/Pepys/Desktop/CV19_05/File utili/Template CockBurn/cockburn.aux) ) 
+c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex:46: Package array Error: Only one column-spec. allowed..
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{tabularx}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex:46: Package array Error: Only one column-spec. allowed..
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{tabularx}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex:46: Package array Error: Only one column-spec. allowed..
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{tabularx}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex:46: Package array Error: Only one column-spec. allowed..
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{tabularx}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.tex:46: Package array Error: Only one column-spec. allowed..
+
+See the array package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{tabularx}
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[1
+
+{d:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.aux) ) 
 Here is how much of TeX's memory you used:
- 669 strings out of 492164
- 7623 string characters out of 6129088
- 74848 words of memory out of 5000000
- 5096 multiletter control sequences out of 15000+600000
- 4403 words of font info for 15 fonts, out of 8000000 for 9000
+ 815 strings out of 481248
+ 11504 string characters out of 5922069
+ 247876 words of memory out of 5000000
+ 16133 multiletter control sequences out of 15000+600000
+ 533101 words of font info for 25 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,9n,21p,213b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
-{g:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<g:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on "g:/Users/Pepys/Desktop/CV19_05/File utili/Template CockBurn/cockburn.pdf" (1 page, 18618 bytes).
+ 25i,9n,21p,222b,260s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on "c:/Users/turco/OneDrive/Desktop/CV19_05/File utili/Template CockBurn/cockburn.pdf" (1 page, 18650 bytes).
 PDF statistics:
  13 PDF objects out of 1000 (max. 8388607)
  8 compressed objects within 1 object stream
