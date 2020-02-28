@@ -19,15 +19,15 @@
 
 %Intestazione tabella%
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-  \hline Use Case \#2 & \multicolumn{4} {l|}{Accetta Recensione} \\ \hline Goal in
+  \hline Use Case \#2 & \multicolumn{4} {l|}{Valuta Recensione} \\ \hline Goal in
   Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'amministratore accetta una recensione.} \\
+    L'amministratore valuta una recensione.} \\
  \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
  L'amministratore ha effettuto lo use case "Effettua Login".  } \\
  \hline Success End Conditions &
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore accetta una recensione. Il sistema tiene traccia di tale operazione.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore valuta una recensione. Il sistema tiene traccia di tale operazione.} \\
  \hline Failed End Conditions &
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministatore preme annulla. Non ci sono recensioni da valutare. L'amministrazione valuta una recensione che è già stata valutata.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministatore preme annulla. L'amministrazione valuta una recensione che è già stata valutata.} \\
  \hline Primary Actor &
   \multicolumn{4}{l|}{Amministratore} \\
  \hline Trigger & 
@@ -54,19 +54,30 @@
         6& &Mostra RecensioneApprovataDialog\\
         \hline
     \end{tabularx}
-
+    %Extension 1%
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \hline
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore rifiuta una recensione}\\\hline
+            Step\# & Amministratore & Sistema \\
+            \hline
+             5 a &Preme il pulsante "Rifiuta". & \\
+             \hline
+             6 a & & Mostra RecensioneApprovataDialog.\\
+            \hline
+        \end{tabularx}
+    
     %Extension 1%
 
 \setlength{\tabcolsep}{8pt}
 \renewcommand{\arraystretch}{1.5}
     \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore preme annulla}\\\hline
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'amministatore preme annulla}\\\hline
         Step\# & Amministratore & Sistema \\
         \hline
-         3/5 a &Preme il pulsante "Annulla". & \\
+         3/5 b &Preme il pulsante "Annulla". & \\
          \hline
-         4/6 a & & Ritorna alla schermata principale e termina il caso d'uso.\\
+         4/6 b & & Ritorna alla schermata principale e termina il caso d'uso.\\
         \hline
     \end{tabularx}
 
@@ -75,14 +86,14 @@
  \renewcommand{\arraystretch}{1.5}
      \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
-        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: la recensione è già stata valutata }\\\hline
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: la recensione è già stata valutata }\\\hline
          Step\# & Amministratore & Sistema \\
          \hline
-          6 b  & & Mostra Fallimento Dialog \\
+          6 c  & & Mostra Fallimento Dialog \\
           \hline
-          7 b & Preme Ok & \\
+          7 c & Preme Ok & \\
           \hline
-          8 b &  & Ritorna alla schermata principale e termina il caso d'uso.\\
+          8 c &  & Ritorna alla schermata principale e termina il caso d'uso.\\
          \hline
      \end{tabularx}
 \end{table}
