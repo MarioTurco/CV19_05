@@ -1,0 +1,101 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage{tabularx}
+
+
+\geometry{
+  left=30mm,
+  right=30mm
+}
+
+\begin{document}
+\begin{table}[H]    
+\def\arraystretch{1.5}
+
+
+%Intestazione tabella%
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+  \hline Use Case \#2 & \multicolumn{4} {l|}{Valuta Recensione} \\ \hline Goal in
+  Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+    L'amministratore valuta una recensione.} \\
+ \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+ L'amministratore ha effettuto lo use case "Effettua Login".  } \\
+ \hline Success End Conditions &
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore valuta una recensione. Il sistema tiene traccia di tale operazione.} \\
+ \hline Failed End Conditions &
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministatore preme annulla. L'amministrazione valuta una recensione che è già stata valutata.} \\
+ \hline Primary Actor &
+  \multicolumn{4}{l|}{Amministratore} \\
+ \hline Trigger & 
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Recensioni" nella Homepage.} \\
+\hline
+%Main Scenario%
+\multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+\end{tabularx}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        Step\# & Amministratore & Sistema \\
+        \hline
+         1 &Preme il pulsante "Recensioni" nella schermata principale & \\
+         \hline
+         2 & & Mostra GestioneRecensioni\\
+         \hline
+         3 & Clicca sul radio button accanto ad una recensione e preme il pulsante "Conferma" &\\
+         \hline
+         4 & & Mostra ValutaRecensione\\
+       \hline
+         5 & Clicca sul pulsante Approva &\\
+        \hline
+        6& &Mostra RecensioneApprovataDialog\\
+        \hline
+    \end{tabularx}
+    %Extension 1%
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \hline
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore rifiuta una recensione}\\\hline
+            Step\# & Amministratore & Sistema \\
+            \hline
+             5 a &Preme il pulsante "Rifiuta". & \\
+             \hline
+             6 a & & Mostra RecensioneEliminataDialog.\\
+            \hline
+        \end{tabularx}
+    
+    %Extension 1%
+
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'amministatore preme annulla}\\\hline
+        Step\# & Amministratore & Sistema \\
+        \hline
+         3/5 b &Preme il pulsante "Annulla". & \\
+         \hline
+         4/6 b & & Ritorna alla schermata principale e termina il caso d'uso.\\
+        \hline
+    \end{tabularx}
+
+%Extension 2%
+     \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: la recensione è già stata valutata }\\\hline
+         Step\# & Amministratore & Sistema \\
+         \hline
+          6 c  & & Mostra Fallimento Dialog \\
+          \hline
+          7 c & Preme Ok & \\
+          \hline
+          8 c &  & Ritorna alla schermata principale e termina il caso d'uso.\\
+         \hline
+     \end{tabularx}
+\end{table}
+\paragraph{Nota 1} Dato che il sistema può essere gestito da più amministratori è possibile che due di questi aprano contemporaneamente
+la schermata di valutazione della stessa Recensione. In questo caso andrà a buon fine soltato la valutazione dell'amministatore
+che per primo la rifiuterà o confermerà. L'altro amministratore vedrà la schermata di errore come descritto nella Extension 2. 
+\end{document}
