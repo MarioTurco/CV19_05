@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage{tabularx}
+
+
+\geometry{
+  left=30mm,
+  right=30mm
+}
+
+\begin{document}
+\begin{table}[H]    
+\def\arraystretch{1.5}
+
+
+%Intestazione tabella%
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+  \hline Use Case \#3 & \multicolumn{4} {l|}{Effettua Login} \\ \hline Goal in
+  Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+    L'amministratore effettua il login} \\
+ \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+ L'amministratore non ha effettuto lo use case "Effettua Login".  } \\
+ \hline Success End Conditions &
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ Il login dell'amministratore va a buon fine.} \\
+ \hline Failed End Conditions &
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{I dati di login sono errati.} \\
+ \hline Primary Actor &
+  \multicolumn{4}{l|}{Amministratore} \\
+ \hline Trigger & 
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Login" nella schermata LoginForm visibile all'avvio del software.} \\
+\hline
+%Main Scenario%
+\multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+\end{tabularx}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        Step\# & Amministratore & Sistema \\
+        \hline
+         1 &Compila correttamente i textField Username e Password  & \\
+         \hline
+         2 &Preme il pulsante "Login" dalla schermata LoginForm  & \\
+         \hline
+         3 &  &Mostra schermata HomePage\\
+        \hline
+    \end{tabularx}
+    %Extension 1%
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \hline
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore inserisce dati errati}\\\hline
+            Step\# & Amministratore & Sistema \\
+            \hline
+             1 a &  Non complia o compila erroneamente i textField Username e Password& \\
+             \hline
+             2 a & Preme il pulsante Login & \\
+             \hline
+             3 a & & Mostra CredenzialiErrateDialog \\
+             \hline
+             4 a & Preme il tasto Ok&  \\
+             \hline
+             5 a & & Mostra LoginForm e termina caso d'uso\\
+             \hline        
+        \end{tabularx} 
+    %Extension 1%
+\end{table}
+
+\end{document}
