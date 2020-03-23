@@ -23,7 +23,7 @@
 %
 \usepackage[T1]{fontenc}			% output font encoding
 \usepackage[utf8]{inputenc}			% accented letters from keyboard
-\usepackage[italian,english]{babel}		% document languages (the last is the main one)
+\usepackage[italian]{babel}		% document languages (the last is the main one)
 \usepackage{setspace}				
 \usepackage{multicol}				% multi-column layout
 \usepackage{url}					% uniform resource locator
@@ -47,7 +47,10 @@
 \usepackage[nottoc]{tocbibind}
 
 \newcommand{\FIGDIR}{./Figures}    		% directory containing figures
-
+\addto\captionsitalian{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {Indice}%
+}
 
 %%%%% ------------------------------------------------------------
 \DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=single}
@@ -87,9 +90,13 @@
 
 \pagenumbering{arabic}
 \include{Introduction}%Revisioni
-
+\part{Requisiti Software}
 \include{Chapter_01}
+\include{ModelloDiDominio}
+\include{impiegoRisorse}
+\part{Design del sistema}
 \include{Chapter_02}
+\part{Testing del sistema}
 \include{Chapter_03}
 
 
