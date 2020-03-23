@@ -1,23 +1,6 @@
-\documentclass[a4paper]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{geometry}
-\usepackage{multirow}
-\usepackage{float} 
-\usepackage{tabularx}
-
-
-\geometry{
-  left=30mm,
-  right=30mm
-}
-
-\begin{document}
-\begin{table}[H]    
-\def\arraystretch{1.5}
-
 
 %Intestazione tabella%
+\begin{table}
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
   \hline Use Case \#1 & \multicolumn{4} {l|}{Utente effettua Login} \\ \hline Goal in
   Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
@@ -99,5 +82,3 @@
    \hline        
 \end{tabularx} 
 \end{table}
-
-\end{document}

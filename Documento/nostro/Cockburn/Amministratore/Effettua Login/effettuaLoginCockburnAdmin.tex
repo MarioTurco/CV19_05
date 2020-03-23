@@ -1,18 +1,4 @@
-\documentclass[a4paper]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{geometry}
-\usepackage{multirow}
-\usepackage{float} 
-\usepackage{tabularx}
 
-
-\geometry{
-  left=30mm,
-  right=30mm
-}
-
-\begin{document}
 \begin{table}[H]    
 \def\arraystretch{1.5}
 
@@ -47,9 +33,7 @@
          \hline
          3 &  &Mostra schermata HomePage\\
         \hline
-    \end{tabularx}
     %Extension 1%
-        \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
             \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore inserisce dati errati}\\\hline
             Step\# & Amministratore & Sistema \\
@@ -67,5 +51,3 @@
         \end{tabularx} 
     %Extension 1%
 \end{table}
-
-\end{document}
