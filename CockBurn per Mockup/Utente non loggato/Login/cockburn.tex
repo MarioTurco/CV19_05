@@ -1,58 +1,104 @@
 \documentclass[a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
+\usepackage{geometry}
 \usepackage{multirow}
 \usepackage{float} 
 \usepackage{tabularx}
 
+
+\geometry{
+  left=30mm,
+  right=30mm
+}
+
 \begin{document}
 \begin{table}[H]    
-
 \def\arraystretch{1.5}
 
 
-\begin{tabularx}{\linewidth}{|l|X|X|X|}
-
-  \hline Use Case \#1 & \multicolumn{3} {l|}{Login Mockup} \\ \hline Goal in
-  Context & \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente effettua il login sulla piattaforma.  } \\
- \hline Preconditions &
-  \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-     } \\
+%Intestazione tabella%
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+  \hline Use Case \#3 & \multicolumn{4} {l|}{Utente effettua Login} \\ \hline Goal in
+  Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+    L'utente non loggato effettua il login} \\
+ \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+ L'utente non autenticato non ha effettuto lo use case "Utente effettua Login".  } \\
  \hline Success End Conditions &
-  \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    Il login ha successo e l'utente visualizza la home page.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ Il login dell'utente va a buon fine.} \\
  \hline Failed End Conditions &
-  \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    Viene visualizzato un messaggio di errore che invita l'utente a riprovare o a registrarsi se non ha un account. } \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{I dati di login sono errati oppure il server non è raggiungibile.} \\
  \hline Primary Actor &
-  \multicolumn{3}{>{\hsize=\dimexpr 3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-   Utente non loggato. } \\
-
-  \hline \multirow{2}{*}{Description} & Step & User Action & System \\
-    
-  \cline{2-4} & 1 & L'utente compila tutti i campi & \\
-  \cline{2-4} & 2 & L'utente preme sul pulsante Login & \\
-  \cline{2-4} & 3 &  & Mostra l'homepage dell'utente loggato\\
-\hline \multirow{2}{*}{Extension \#1} & Step &
-  User Action & System \\
-  \hline Preconditions &
-  \cline{2-4} & 1.2a & L'utente preme su Annulla  & \\
-  \cline{2-4} & 1.3a &  & Mostra l'homepage dell'utente non loggato \\ \hline
-\multirow{2}{*}{Extension \#2} & Step &
-  User Action & System \\  
-  \cline{2-4} & 2.3b &  & Mostra messaggio di dati errore dati login errati  4a1. Il sistema mostra la pagina di Login \\ 
-  \cline{2-4} & 2.4b &  & Mostra la pagina di Login \\ \hline
-  
- \multirow{2}{*}{Subvariations} & Step & User Action & System \\
-
-  \cline{2-4} & & & \\
- \hline Notes & \multicolumn{3}{l|}{} \\
- \hline
-
-
+  \multicolumn{4}{l|}{Utente non loggato} \\
+ \hline Trigger & 
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente preme il pulsante 'Login' nel Navigation Drawer laterale dalla schermata 'HomePage utente non loggato'.} \\
+\hline
+%Main Scenario%
+\multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
 \end{tabularx}
-
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        Step\# & Utente & Sistema \\
+        \hline
+         1 &Compila correttamente i textField Username e Password  & \\
+         \hline
+         2 &Preme il pulsante "Login" dalla schermata LoginForm  & \\
+         \hline
+         3 &  &Mostra schermata HomePage\\
+        \hline
+    \end{tabularx}
+    %Extension 1%
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \hline
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente inserisce dati errati}\\\hline
+            Step\# & Utente & Sistema \\
+            \hline
+             1 a &  Compila erroneamente i textField Username e Password& \\
+             \hline
+             2 a & Preme il pulsante Login & \\
+             \hline
+             3 a & & Mostra schermata Login Dati Errati Dialog \\
+             \hline
+             4 a & Preme il tasto 'Riprova'&  \\
+             \hline
+             5 a & & Mostra Login e termina caso d'uso\\
+             \hline        
+        \end{tabularx} 
+    %Extension 2%
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+      \hline
+      \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente inserisce dati errati}\\\hline
+      Step\# & Utente & Sistema \\
+      \hline
+       1 a &  Non compila o compila solo un tra i textField Username e Password& \\
+       \hline
+       2 a & Preme il pulsante Login & \\
+       \hline
+       3 a & & Mostra schermata Login campi vuoti Dialog \\
+       \hline
+       4 a & Preme il tasto 'Riprova'&  \\
+       \hline
+       5 a & & Mostra Login e termina caso d'uso\\
+       \hline        
+  \end{tabularx} 
+%Extension 1%
+\begin{tabularx}{\textwidth}{|c|X|X|}
+  \hline
+  \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente inserisce dati errati}\\\hline
+  Step\# & Utente & Sistema \\
+  \hline
+   1 a &  Non compila o compila solo un tra i textField Username e Password& \\
+   \hline
+   2 a & Preme il pulsante Login & \\
+   \hline
+   3 a & & Mostra schermata Login campi vuoti Dialog \\
+   \hline
+   4 a & Preme il tasto 'Riprova'&  \\
+   \hline
+   5 a & & Mostra Login e termina caso d'uso\\
+   \hline        
+\end{tabularx} 
 \end{table}
+
 \end{document}
