@@ -1,7 +1,7 @@
 
 \begin{table}[H]    
 \def\arraystretch{1.5}
-
+\caption{L'amministratore valuta una recensione}
 
 %Intestazione tabella%
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
@@ -37,10 +37,13 @@
        \hline
          5 & Clicca sul pulsante Approva &\\
         \hline
-        6& &Mostra RecensioneApprovataDialog\\
+        6& &Mostra RecensioneApprovataDialog e termina lo use case\\
         \hline
     \end{tabularx}
     %Extension 1%
+\end{table}
+\begin{table}[h!]
+    \caption{Valuta una recensione - Estensione 1}
         \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
             \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore rifiuta una recensione}\\\hline
@@ -51,11 +54,13 @@
              6 a & & Mostra RecensioneEliminataDialog.\\
             \hline
         \end{tabularx}
-    
-    %Extension 1%
-
 \setlength{\tabcolsep}{8pt}
 \renewcommand{\arraystretch}{1.5}
+\end{table}
+
+ %Extension 2%
+\begin{table}[h!]
+    \caption{Valuta una recensione - Estensione 2}
     \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
         \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'amministatore preme annulla}\\\hline
@@ -66,8 +71,10 @@
          4/6 b & & Ritorna alla schermata principale e termina il caso d'uso.\\
         \hline
     \end{tabularx}
-
-%Extension 2%
+\end{table}
+%Estensione 3
+\begin{table}[h!]
+    \caption{Valuta una recensione - Estensione 3}
      \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
         \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: la recensione è già stata valutata }\\\hline
