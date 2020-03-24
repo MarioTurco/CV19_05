@@ -1,0 +1,68 @@
+
+%Intestazione tabella%
+\begin{table}[H]
+    \caption{L'utente loggato aggiunge una recensione}
+    \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+      \hline Use Case \#3 & \multicolumn{4} {l|}{L'utente loggato aggiunge una recensione} \\ \hline Goal in
+      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+        L'utente loggato aggiunge con successo una recensione} \\
+     \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+     L'Utente si trova nella schermata "Pagina Struttura" dopo aver effettuato il caso d'uso "Visualizza una struttura" } \\
+     \hline Success End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente aggiunge con successo una recensione} \\
+     \hline Failed End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile, l'utente non compila tutti i campi} \\
+     \hline Primary Actor &
+      \multicolumn{4}{l|}{Utente loggato} \\
+     \hline Trigger & 
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente clicca sul Floating Action Button e preme su "Aggiungi recensione"} \\
+    \hline
+    %Main Scenario%
+    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+    \end{tabularx}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            Step\# & Utente & Sistema \\
+            \hline
+             1 &  & Mostra schermata Aggiungi Recensione\\
+             \hline
+             2 &Compila correttamente tutti i campi della schermata& \\
+             \hline          
+             3 &Preme il tasto "Aggiungi"& \\
+             \hline
+             4 && Mostra la schermata "Aggiungi recensione success Dialog" e termina il caso d'uso\\
+             \hline      
+        \end{tabularx}
+    \end{table}
+    
+    %Extension 1%
+    \begin{table}[H]
+    \caption{Aggiungi recensione- Estensione 1}
+         \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
+                Step\# & Utente & Sistema \\
+                \hline
+                 4 a &  & Mostra schermata "Aggiungi recensione Dialog errore" e termina caso d'uso\\
+                 \hline 
+        \end{tabularx} 
+    \end{table}
+    %Extension 2%
+    \begin{table}[H]
+        \caption{Aggiungi recensione- Estensione 2}
+             \begin{tabularx}{\textwidth}{|c|X|X|}
+                    \hline
+                    \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente non compila uno o più campi}\\\hline
+                    Step\# & Utente & Sistema \\
+                    \hline
+                     1 b & Compila il form tralasciando uno o più campi & \\
+                     \hline 
+                     2 b & Preme il tasto "Aggiungi" & \\
+                     \hline 
+                     3 b &  & Mostra schermata "Aggiungi recensione empty Error" e termina caso d'uso \\
+                     \hline 
+            \end{tabularx} 
+        \end{table}
+    
+       
