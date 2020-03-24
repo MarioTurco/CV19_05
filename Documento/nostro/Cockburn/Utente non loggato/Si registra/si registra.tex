@@ -1,21 +1,21 @@
 
 %Intestazione tabella%
-\begin{table}[H]
-\caption{Effettua Login - Main Scenario}
+\begin{table}[h!]
+\caption{L'utente non loggato effettua la registazione}
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-  \hline Use Case \#1 & \multicolumn{4} {l|}{Utente effettua Login} \\ \hline Goal in
+  \hline Use Case \#2 & \multicolumn{4} {l|}{L'utente non loggato si registra alla piattaforma} \\ \hline Goal in
   Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente non loggato effettua il login} \\
+    L'utente non loggato effettua la registrazione} \\
  \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
  -  } \\
  \hline Success End Conditions &
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ Il login dell'utente va a buon fine.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ La registrazione dell'utente va a buon fine.} \\
  \hline Failed End Conditions &
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{I dati di login sono errati oppure il server non è raggiungibile.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile o l'utente immette dati non validi.} \\
  \hline Primary Actor &
   \multicolumn{4}{l|}{Utente non loggato} \\
  \hline Trigger & 
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente preme il pulsante 'Login' nel Navigation Drawer laterale dalla schermata 'HomePage utente non loggato'.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente preme il pulsante 'Registrati' nel Navigation Drawer laterale dalla schermata 'HomePage utente non loggato'.} \\
 \hline
 %Main Scenario%
 \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
@@ -25,17 +25,16 @@
     \begin{tabularx}{\textwidth}{|c|X|X|}
         Step\# & Utente & Sistema \\
         \hline
-         1 &Compila correttamente i textField Username e Password  & \\
+         1 &Compila correttamente tutti i textField ed il date picker  & \\
          \hline
-         2 &Preme il pulsante "Login" dalla schermata LoginForm  & \\
+         2 &Preme il pulsante "Fine" dalla schermata Registrazione  & \\
          \hline
-         3 &  &Mostra schermata HomePage\\
+         3 &  &Mostra schermata "Registrazione success dialog" e termina il caso d'uso\\
         \hline
     \end{tabularx}
   \end{table}
-  %Extension 1%
-  \begin{table}[h!]
-    \caption{Effettua Login - Estensione 1}
+  \begin{table}
+    %Extension 1%
         \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
             \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente inserisce dati errati}\\\hline
@@ -51,11 +50,8 @@
              \hline
              5 a & & Mostra Login e termina caso d'uso\\
              \hline        
-        \end{tabularx}
-      \end{table}
-      %Extension 2%
-      \begin{table} [h!]
-      \caption{Effettua Login - Estensione 1}
+        \end{tabularx} 
+    %Extension 2%
     \begin{tabularx}{\textwidth}{|c|X|X|}
       \hline
       \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'utente non compila tutti i campi}\\\hline
@@ -75,9 +71,8 @@
 \end{table}
 \pagebreak
 %Extension 3%
-\begin{table}[h!]
-  \caption{Effettua Login - Estensione 3}
-  \begin{tabularx}{\textwidth}{|c|X|X|}
+\begin{table}
+\begin{tabularx}{\textwidth}{|c|X|X|}
   \hline
   \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: il server risulta non raggiungibile}\\\hline
   Step\# & Utente & Sistema \\
