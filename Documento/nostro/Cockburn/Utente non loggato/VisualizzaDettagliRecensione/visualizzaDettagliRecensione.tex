@@ -1,15 +1,16 @@
 
 %Intestazione tabella%
 \begin{table}[H]
-    \caption{L'utente non loggato visulizza una struttura}
+    \caption{L'utente non loggato visulizza i dettagli di una recensione}
     \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-      \hline Use Case \#3 & \multicolumn{4} {l|}{L'utente non loggato visulizza una struttura} \\ \hline Goal in
-      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-        L'utente non loggato visulizza una struttura} \\
+      \hline 
+      Use Case \#3 & \multicolumn{4} {l|}{L'utente non loggato visulizza i dettagli di una recensione} \\ \hline Goal in
+      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}
+      {L'utente non loggato visulizza i dettagli di una recensione} \\
      \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-     L'Utente si trova nella schermata "Lista Strutture" dopo aver effettuato una ricerca } \\
+     L'Utente si trova nella schermata "Pagina Struttura" avendo effettuato il caso d'uso "Visualizza una struttura } \\
      \hline Success End Conditions &
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente visualizza i dettagli di una struttura} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente visualizza i dettagli di una recensione} \\
      \hline Failed End Conditions &
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile } \\
      \hline Primary Actor &
@@ -18,19 +19,20 @@
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{} \\
     \hline
     %Main Scenario%
-    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
-    \end{tabularx}
+    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\
+    \hline
+\end{tabularx}
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{1.5}
         \begin{tabularx}{\textwidth}{|c|X|X|}
             Step\# & Utente & Sistema \\
             \hline
-             1 & Clicca la Card di una struttura dalla schermata "Lista Strutture"'. & \\
+             1 & Clicca la Card di una recensione dalla schermata "Pagina struttura"'. & \\
              \hline
-             2 && Mostra la schermata "Pagina Struttura utente non loggato" e termina caso d'uso\\
-             \hline          
+             2 & & Mostra la schermata "Pagina Recensione" e termina caso d'uso\\
+             \hline
         \end{tabularx}
-    \end{table}
+   \end{table}
     \begin{table}[H]
     \caption{Visualizza struttura - Estensione 1}
     %Extension 1%
