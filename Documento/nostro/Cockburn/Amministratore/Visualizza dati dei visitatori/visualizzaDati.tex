@@ -1,0 +1,53 @@
+
+\begin{table}[H]    
+    \def\arraystretch{1.5}
+    \caption{L'amministratore visualizza dati di un visitatore}
+    
+    %Intestazione tabella%
+    \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+      \hline Use Case \#3 & \multicolumn{4} {l|}{Visualizza dati visitatore} \\ \hline Goal in
+      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+        L'amministratore visualizza i dati di un visitatore.} \\
+     \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+     L'amministratore ha effettuto lo use case "Effettua Login".  } \\
+     \hline Success End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore visualizza con successo i dati di un visitatore} \\
+     \hline Failed End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile} \\
+     \hline Primary Actor &
+      \multicolumn{4}{l|}{Amministratore} \\
+     \hline Trigger & 
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Visitatori" a partire dalla Schermata "Recensioni" .} \\
+    \hline
+    %Main Scenario%
+    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+    \end{tabularx}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            Step\# & Amministratore & Sistema \\
+            \hline
+             1 &Preme sul rigo corrispondente all'utente da visualizzare & \\
+             \hline
+             2 & & Mostra schermata "Visualizza Visitatore" e termina caso d'uso\\
+             \hline
+        \end{tabularx}
+        %Extension 1%
+    \end{table}
+    \begin{table}[h!]
+        \caption{Visualizza dati visitatore - Estensione 1}
+            \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
+                Step\# & Amministratore & Sistema \\
+                \hline
+             1 &Preme sul rigo corrispondente all'utente da visualizzare & \\
+             \hline
+             2 & & Mostra schermata "Connessione assente" e termina caso d'uso\\
+             \hline
+            \end{tabularx}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+    \end{table}
+    
+    
