@@ -7,7 +7,31 @@
 %		LAST UPDATED:	2017/06/20
 %
 % ===========================================================================
-
+\chapter{Introduzione}
+Lo scopo di questo documento è quello di specificare i requisiti del sistema software "Cerca Viaggi" per facilitarne la realizzazione e la validazione ed, in particolare,
+si vogliono formalizzare i requisiti funzionali e non funzionali del sistema. \\Il documento prevede vari livelli di raffinamento partendo dal linguaggio naturale
+ed arrivando ad un linguaggio strutturato ed a modelli UML.
+\section{Requisiti Funzionali}
+\begin{enumerate}
+    \item  \textbf{Accesso amministratore al sistema}: un amministratore dovrà poter accedere al sistema tramite email e password (usando l'applicativo dekstop).
+    \item  \textbf{Amministratore valuta una recensione}: un amministatore dovrà poter accettare o rifiutare una recensione scritta da un utente decidendo quindi se questa verrà pubblicata o eliminata.
+    \item \textbf{Accesso utente al sistema}: un utente, dopo aver effettuato la registrazione, dovrà poter accedere al suo account tramite email e password (usando l'applicativo mobile). 
+    \item  \textbf{Registrazione di un nuovo utente}: l'applicativo mobile dovrà permettere ad un utente, non precedentemente registrato, di creare un account specificando 
+    i propri dati anagrafici (nome, cognome e data di nascita), i dati per effettuare l'accesso (email e passowrd) ed un nickname da utilizzare, secondo volonta dell'utente, per firmare  
+    le proprie recensioni
+    \item \textbf{Amministratore modifica dati dei visitatori}: un amministratore dovrà poter modificare i dati di un utente in particolare, email e password
+    \item \textbf{Amministratore elimina account utente}: un amministratore dovrà poter eliminare l'account di un utente
+    \item \textbf{Amministratore visualizza dati di un visitatore}: un amministratore dovrà poter visualizzare i dati anagrafici di un visitatore (nome, cognome e data di nascita), 
+    il nickname ed il numero di recensioni approvate e rifiutate.
+    \item \textbf{Utente visualizza struttra}: un utente dovrà poter visualizzare i dettagli di una struttura
+    \item \textbf{Utente aggiunge una recensione}: un utente, una volta aver effettuato l'accesso, dovrà poter aggiungere una recensione ad una struttura
+    \item \textbf{Utente visualizaza dettagli recensione}: un utente dovrà poter leggere i dettagli di una recensione, in particolare leggendone l'autore, la data di inserimento, la valutazione
+    ed il testo integrale.
+\end{enumerate}
+\section{Requisiti non funzionali}
+\begin{enumerate}
+    \item Il sistema deve garantire una buona usabilità per tutti coloro che ne usufruiscono.
+\end{enumerate}
 \chapter{Modello funzionale}
 
 This chapter contains useful information for the preparation and the presentation of the master degree thesis for students of Electronic Engineering (M61), at the University of Study of Naples Federico II.
