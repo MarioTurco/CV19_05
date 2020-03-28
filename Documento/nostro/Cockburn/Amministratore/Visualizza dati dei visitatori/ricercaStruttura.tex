@@ -6,19 +6,19 @@
     %Intestazione tabella%
     \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
         \rowcolor{Gray}
-      \hline Use Case \#7 & \multicolumn{4} {l|}{Visualizza dati visitatore} \\ \hline Goal in
+      \hline Use Case \#7 & \multicolumn{4} {l|}{Utente cerca una struttura} \\ \hline Goal in
       Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-        L'amministratore visualizza i dati di un visitatore.} \\
+        L'utente vuole cercare una struttura.} \\
      \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-     L'amministratore ha effettuto lo use case "Effettua Login".  } \\
+     -  } \\
      \hline Success End Conditions &
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore visualizza con successo i dati di un visitatore} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente effettua con successo la ricerca} \\
      \hline Failed End Conditions &
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile} \\
      \hline Primary Actor &
       \multicolumn{4}{l|}{Amministratore} \\
      \hline Trigger & 
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Visitatori" a partire dalla Schermata "Recensioni" .} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{} \\
     \hline
     %Main Scenario%
     \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
@@ -29,26 +29,65 @@
     \renewcommand{\arraystretch}{1.5}
         \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
-            Step\# & Amministratore & Sistema \\
+            Step\# & Utente & Sistema \\
             \hline
-             1 &Preme sul rigo corrispondente all'utente da visualizzare & \\
+             1 &Scorre sulla mappa presente nella schermata "Homepage" cercando la struttura desiderata & \\
              \hline
-             2 & & Mostra schermata "Visualizza Visitatore" e termina caso d'uso\\
+             2 & Clicca sulla struttura desiderata& \\
+             \hline
+             3 & & Mostra la schermata "Pagina Struttura" e termina caso d'uso\\
              \hline
         \end{tabularx}
-        %Extension 1%
+        %Subvariation 1%
 \end{table}
+\begin{table}[h!]
+    \caption{Ricerca Struttura - Subvariation 1}
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \hline
+            \rowcolor{LightGray}
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Subvariation 1: l'utente cerca una struttura tramite filtri}\\\hline
+            Step\# & Utente & Sistema \\
+            \hline
+         1 i & Clicca sull'iconda dei filtri sulla schermata "Homepage" & \\
+         \hline
+         2 i &  & Mostra schermata "Ricerca Filtri" \\
+         \hline
+         3 i & Compila i textfield ed i comboBox in base alle necessità della sua ricerca & \\
+         \hline
+         4 i & Preme il pulsante "Cerca" & \\
+         \hline
+         5 i &  & Mostra schermata "Lista Strutture" e termina caso d'uso \\
+         \hline
+        \end{tabularx}
+\end{table}
+    %Subvariation 2%
     \begin{table}[h!]
-        \caption{Visualizza dati visitatore - Estensione 1}
+        \caption{Ricerca Struttura - Subvariation 2}
+            \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \rowcolor{LightGray}
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Subvariation 2: l'utente cerca una struttura per prossimità}\\\hline
+                Step\# & Utente & Sistema \\
+                \hline
+             4 ii & Clicca sullo switch "prossimità", abilitando la ricerca per prossimità & \\
+             \hline
+             5 ii & Preme il pulsante "Cerca" & \\
+             \hline
+             6 ii &  & Mostra schermata "Ricerca Filtri" \\
+             \hline
+    
+            \end{tabularx}
+    \end{table}
+%Extension 1%
+\begin{table}[h!]
+        \caption{Ricerca Struttura - Estensione 1}
             \begin{tabularx}{\textwidth}{|c|X|X|}
                 \hline
                 \rowcolor{LightGray}
                 \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
-                Step\# & Amministratore & Sistema \\
+                Step\# & Utente & Sistema \\
                 \hline
-             1 &Preme sul rigo corrispondente all'utente da visualizzare & \\
-             \hline
-             2 & & Mostra schermata "Connessione assente" e termina caso d'uso\\
+             3a & & Mostra schermata "Connessione assente" e termina caso d'uso\\
              \hline
             \end{tabularx}
     \end{table}
