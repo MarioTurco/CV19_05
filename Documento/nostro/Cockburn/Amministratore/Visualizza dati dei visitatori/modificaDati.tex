@@ -1,0 +1,78 @@
+\pagebreak
+\begin{table}[H]    
+    \def\arraystretch{1.5}
+    \caption{L'amministratore modifica i dati di un visitatore}
+    
+    %Intestazione tabella%
+    \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+        \rowcolor{Gray}
+      \hline Use Case \#4 & \multicolumn{4} {l|}{Modifica i dati visitatore} \\ \hline Goal in
+      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+        L'amministratore vuole modificare lo username e la password di un visitatore} \\
+     \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+     L'amministratore ha effettuto lo use case "Effettua Login".  } \\
+     \hline Success End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore modifica con successo i dati di un visitatore} \\
+     \hline Failed End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile o l'amministratore non compila correttamente tutti i campi} \\
+     \hline Primary Actor &
+      \multicolumn{4}{l|}{Amministratore} \\
+     \hline Trigger & 
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Modifica" dalla Schermata "Visualizza Visitatore" .} \\
+    \hline
+    %Main Scenario%
+    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+    \end{tabularx}
+\end{table}
+\begin{table}[h!]
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \rowcolor{Gray}
+            \hline
+            Step\# & Amministratore & Sistema \\
+            \hline
+             1 &Preme sul tasto "Modifica" dalla schermata "Visualizza Visitatore" & \\
+             \hline
+             2 & & Mostra schermata "Modifica Visitatore" \\
+             \hline
+             3 & Compila correttamente tutti i campi di testo&  \\
+             \hline
+             4 & Preme il tasto "Conferma" & \\
+             \hline
+             5 & & Mostra schermata "Modifica Success Dialog" e termina caso d'uso \\
+             \hline
+        \end{tabularx}
+    \end{table}
+    %Extension 1%
+    \begin{table}[h!]
+        \caption{Modifica dati visitatore - Estensione 1}
+            \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \rowcolor{LightGray}
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
+                Step\# & Amministratore & Sistema \\
+                \hline
+                1a &Preme sul tasto "Modifica" dalla schermata "Visualizza Visitatore" & \\
+                \hline
+                2a & & Mostra schermata "Connessione Assente Dialog" \\
+             \hline
+            \end{tabularx}
+    \end{table}
+    %Extension 2%
+    \begin{table}[h!]
+        \caption{Modifica dati visitatore - Estensione 2}
+            \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \rowcolor{LightGray}
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'amministratore compila erroneamente i campi di testo}\\\hline
+                Step\# & Amministratore & Sistema \\
+                \hline
+                3b &Non compila, compila parzialmente o compila in modo errato i campi di testo & \\
+                \hline
+                2a & & Mostra schermata "Password o username invalidi dialog" \\
+             \hline
+            \end{tabularx}
+    \end{table}
+    
+    

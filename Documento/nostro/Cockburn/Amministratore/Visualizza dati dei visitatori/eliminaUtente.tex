@@ -1,0 +1,57 @@
+
+\begin{table}[H]    
+    \def\arraystretch{1.5}
+    \caption{L'amministratore elimina un visitatore}
+    
+    %Intestazione tabella%
+    \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+        \rowcolor{Gray}
+      \hline Use Case \#5 & \multicolumn{4} {l|}{Elimina un visitatore} \\ \hline Goal in
+      Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+        L'amministratore vuole eliminare un visitatore} \\
+     \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
+     L'amministratore ha effettuto lo use case "Effettua Login".  } \\
+     \hline Success End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'amministratore elimina un visitatore ed il sistema tiene traccia di questa azione} \\
+     \hline Failed End Conditions &
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile } \\
+     \hline Primary Actor &
+      \multicolumn{4}{l|}{Amministratore} \\
+     \hline Trigger & 
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'amministratore preme il pulsante "Elimina" dalla Schermata "Visualizza Visitatore" .} \\
+    \hline
+    %Main Scenario%
+    \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
+    \end{tabularx}
+\end{table}
+\begin{table}[h!]
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{|c|X|X|}
+            \rowcolor{Gray}
+            \hline
+            Step\# & Amministratore & Sistema \\
+            \hline
+             1 &Preme sul tasto "Elimna" dalla schermata "Visualizza Visitatore" & \\
+             \hline
+             2 & & Mostra schermata "Utente Eliminato Dialog" e termina caso d'uso \\
+             \hline
+        \end{tabularx}
+    \end{table}
+    %Extension 1%
+    \begin{table}[h!]
+        \caption{Elimina visitatore - Estensione 1}
+            \begin{tabularx}{\textwidth}{|c|X|X|}
+                \hline
+                \rowcolor{LightGray}
+                \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
+                Step\# & Amministratore & Sistema \\
+                \hline
+                1a &Preme sul tasto "Elimina" dalla schermata "Visualizza Visitatore" & \\
+                \hline
+                2a & & Mostra schermata "Connessione Assente Dialog" \\
+             \hline
+            \end{tabularx}
+    \end{table}
+    
+    
