@@ -3,11 +3,12 @@
 \begin{table}[H]
 \caption{Effettua Login - Main Scenario}
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+  \rowcolor{Gray}
   \hline Use Case \#1 & \multicolumn{4} {l|}{Utente effettua Login} \\ \hline Goal in
   Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-    L'utente non loggato effettua il login} \\
+    L'utente vuole effettuare l'accesso al suo account} \\
  \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
- -  } \\
+ L'utente non ha effettuato lo use case Effettua Login  } \\
  \hline Success End Conditions &
  \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ Il login dell'utente va a buon fine.} \\
  \hline Failed End Conditions &
@@ -38,6 +39,7 @@
     \caption{Effettua Login - Estensione 1}
         \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
+            \rowcolor{LightGray}
             \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'utente inserisce dati errati}\\\hline
             Step\# & Utente & Sistema \\
             \hline
@@ -54,6 +56,7 @@
       \caption{Effettua Login - Estensione 2}
     \begin{tabularx}{\textwidth}{|c|X|X|}
       \hline
+      \rowcolor{LightGray}
       \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'utente non compila tutti i campi}\\\hline
       Step\# & Utente & Sistema \\
       \hline
@@ -71,6 +74,7 @@
   \caption{Effettua Login - Estensione 3}
   \begin{tabularx}{\textwidth}{|c|X|X|}
   \hline
+  \rowcolor{LightGray}
   \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: il server risulta non raggiungibile}\\\hline
   Step\# & Utente & Sistema \\
   \hline

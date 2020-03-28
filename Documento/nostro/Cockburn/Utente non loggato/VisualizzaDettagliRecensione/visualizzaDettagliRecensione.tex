@@ -1,22 +1,23 @@
 
 %Intestazione tabella%
 \begin{table}[H]
-    \caption{L'utente non loggato visulizza i dettagli di una recensione}
+    \caption{L'utente  visulizza i dettagli di una recensione}
     \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
       \hline 
-      Use Case \#3 & \multicolumn{4} {l|}{L'utente non loggato visulizza i dettagli di una recensione} \\ \hline Goal in
+      \rowcolor{Gray}
+      Use Case \#3 & \multicolumn{4} {l|}{L'utente  visulizza i dettagli di una recensione} \\ \hline Goal in
       Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}
-      {L'utente non loggato visulizza i dettagli di una recensione} \\
+      {L'utente vuole visualizzare il testo completo di una recensione} \\
      \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-     L'Utente si trova nella schermata "Pagina Struttura" } \\
+      } \\
      \hline Success End Conditions &
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente visualizza i dettagli di una recensione} \\
      \hline Failed End Conditions &
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile } \\
      \hline Primary Actor &
-      \multicolumn{4}{X|}{Utente non loggato} \\
+      \multicolumn{4}{X|}{Utente} \\
      \hline Trigger & 
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente clicca sulla card di una recensione dalla schermata "Pagina Struttura"} \\
     \hline
     %Main Scenario%
     \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\
@@ -25,6 +26,7 @@
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{1.5}
         \begin{tabularx}{\textwidth}{|c|X|X|}
+            
             Step\# & Utente & Sistema \\
             \hline
              1 & Clicca la Card di una recensione dalla schermata "Pagina struttura"'. & \\
@@ -36,8 +38,10 @@
     \begin{table}[H]
     \caption{Visualizza struttura - Estensione 1}
     %Extension 1%
+    
          \begin{tabularx}{\textwidth}{|c|X|X|}
                 \hline
+                \rowcolor{LightGray}
                 \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
                 Step\# & Utente & Sistema \\
                 \hline

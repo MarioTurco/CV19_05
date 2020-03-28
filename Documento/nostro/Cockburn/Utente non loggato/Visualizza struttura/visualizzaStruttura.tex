@@ -1,21 +1,22 @@
 
 %Intestazione tabella%
 \begin{table}[H]
-    \caption{L'utente non loggato visulizza una struttura}
+    \caption{L'utente visulizza una struttura}
     \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-      \hline Use Case \#3 & \multicolumn{4} {l|}{L'utente non loggato visulizza una struttura} \\ \hline Goal in
+     \rowcolor{Gray}
+      \hline Use Case \#3 & \multicolumn{4} {l|}{L'utente  visulizza una struttura} \\ \hline Goal in
       Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-        L'utente non loggato visulizza una struttura} \\
+        L'utente  vuole visualizzare i dettagli  di  una struttura} \\
      \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
-     L'Utente si trova nella schermata "Lista Strutture" dopo aver effettuato una ricerca } \\
+    - } \\
      \hline Success End Conditions &
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente visualizza i dettagli di una struttura} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ L'utente visualizza con successo i dettagli di una struttura} \\
      \hline Failed End Conditions &
      \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{Il server non è raggiungibile } \\
      \hline Primary Actor &
-      \multicolumn{4}{l|}{Utente non loggato} \\
+      \multicolumn{4}{l|}{Utente } \\
      \hline Trigger & 
-     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{} \\
+     \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{L'utente clicca sulla card di una struttura dalla schermata "Lista Strutture"} \\
     \hline
     %Main Scenario%
     \multicolumn{5}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Main Scenario}\\\hline
@@ -27,7 +28,7 @@
             \hline
              1 & Clicca la Card di una struttura dalla schermata "Lista Strutture"'. & \\
              \hline
-             2 && Mostra la schermata "Pagina Struttura utente non loggato" e termina caso d'uso\\
+             2 && Mostra la schermata "Pagina Struttura" e termina caso d'uso\\
              \hline          
         \end{tabularx}
     \end{table}
@@ -36,6 +37,7 @@
     %Extension 1%
          \begin{tabularx}{\textwidth}{|c|X|X|}
                 \hline
+                \rowcolor{LightGray}
                 \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: il server non è raggiungibile}\\\hline
                 Step\# & Utente & Sistema \\
                 \hline

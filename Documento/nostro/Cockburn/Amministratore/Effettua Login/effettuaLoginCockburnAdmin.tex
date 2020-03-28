@@ -1,11 +1,12 @@
 
 \begin{table}[h!]    
 \def\arraystretch{1.5}
-\caption{L'amministratore effettua il login alla software di gestione della piattaforma}
+\caption{L'amministratore effettua il login tramite l'applicativo di Back-End}
 
 %Intestazione tabella%
 \begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-  \hline Use Case \#3 & \multicolumn{4} {l|}{Effettua Login} \\ \hline Goal in
+ \rowcolor{Gray}
+  \hline Use Case \#1 & \multicolumn{4} {l|}{Effettua Login} \\ \hline Goal in
   Context & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
     L'amministratore effettua il login} \\
  \hline Preconditions & \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{%
@@ -13,7 +14,7 @@
  \hline Success End Conditions &
  \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{ Il login dell'amministratore va a buon fine.} \\
  \hline Failed End Conditions &
- \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{I dati di login sono errati.} \\
+ \multicolumn{4}{>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{I dati di login sono errati o il server non è raggiungibile.} \\
  \hline Primary Actor &
   \multicolumn{4}{l|}{Amministratore} \\
  \hline Trigger & 
@@ -35,11 +36,12 @@
         \hline
     \end{tabularx} 
     \end{table}
-    \begin{table}[h!]
+    \begin{table}[H]
         \caption{Effettua Login - Estensione 1}
     %Extension 1%
     \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
+            \rowcolor{LightGray}
             \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore inserisce dati errati}\\\hline
             Step\# & Amministratore & Sistema \\
             \hline
@@ -54,5 +56,22 @@
              5 a & & Mostra LoginForm e termina caso d'uso\\
              \hline        
         \end{tabularx} 
-    %Extension 1%
+    \end{table}
+    \begin{table}[h!]
+        \caption{Effettua Login - Estensione 2}
+    %Extension 2%
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \rowcolor{LightGray}
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: il server non è raggiungibile}\\\hline
+        Step\# & Amministratore & Sistema \\
+        \hline
+         1 b &  Compila i campi username e password& \\
+         \hline
+         2 b & Preme il pulsante Login & \\
+         \hline
+         3 a & & Mostra 'Connessione assente dialog' e termina caso d'uso \\
+         \hline
+       
+    \end{tabularx} 
 \end{table}
