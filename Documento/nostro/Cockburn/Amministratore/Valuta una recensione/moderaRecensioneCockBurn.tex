@@ -41,56 +41,56 @@
         6& &Mostra Recensione ApprovataDialog e termina lo use case\\
         \hline
     \end{tabularx}
-    %Extension 1%
+    %Subvariation 1%
 \end{table}
 \begin{table}[h!]
-    \caption{Valuta una recensione - Estensione 1}
+    \caption{Valuta una recensione - Subvariation 1}
         \begin{tabularx}{\textwidth}{|c|X|X|}
             \hline
             \rowcolor{LightGray}
-            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore rifiuta una recensione}\\\hline
+            \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Subvariation 1: l'amministatore rifiuta una recensione}\\\hline
             Step\# & Amministratore & Sistema \\
             \hline
-             5 a &Preme il pulsante "Rifiuta". & \\
+             5 i &Preme il pulsante "Rifiuta". & \\
              \hline
-             6 a & & Mostra RecensioneEliminataDialog.\\
+             6 i & & Mostra RecensioneEliminataDialog.\\
             \hline
         \end{tabularx}
 \setlength{\tabcolsep}{8pt}
 \renewcommand{\arraystretch}{1.5}
 \end{table}
 
- %Extension 2%
+ %Extension 1%
 \begin{table}[h!]
-    \caption{Valuta una recensione - Estensione 2}
+    \caption{Valuta una recensione - Estensione 1}
     \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
         \rowcolor{LightGray}
-        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: l'amministatore preme annulla}\\\hline
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 1: l'amministatore preme annulla}\\\hline
         Step\# & Amministratore & Sistema \\
         \hline
-         3/5 b &Preme il pulsante "Recensioni" dal menu laterale sinistro & \\
+         3/5 a &Preme il pulsante "Recensioni" dal menu laterale sinistro & \\
          \hline
-         4/6 b & & Ritorna alla schermata principale e termina il caso d'uso.\\
+         4/6 a & & Ritorna alla schermata principale e termina il caso d'uso.\\
         \hline
     \end{tabularx}
+\end{table}
+%Estensione 2
+\begin{table}[h!]
+    \caption{Valuta una recensione - Estensione 2}
+     \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \rowcolor{LightGray}
+        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 2: la recensione è già stata valutata }\\\hline
+         Step\# & Amministratore & Sistema \\
+         \hline
+          4 b  & & Mostra Fallimento Dialog e termina caso d'uso \\
+          \hline
+     \end{tabularx}
 \end{table}
 %Estensione 3
 \begin{table}[h!]
     \caption{Valuta una recensione - Estensione 3}
-     \begin{tabularx}{\textwidth}{|c|X|X|}
-        \hline
-        \rowcolor{LightGray}
-        \multicolumn{3}{|>{\hsize=\dimexpr 4\hsize+4\tabcolsep+2\arrayrulewidth\relax}c|}{Extension 3: la recensione è già stata valutata }\\\hline
-         Step\# & Amministratore & Sistema \\
-         \hline
-          4 c  & & Mostra Fallimento Dialog e termina caso d'uso \\
-          \hline
-     \end{tabularx}
-\end{table}
-%Estensione 4
-\begin{table}[h!]
-    \caption{Valuta una recensione - Estensione 4}
      \begin{tabularx}{\textwidth}{|c|X|X|}
         \hline
         \rowcolor{LightGray}

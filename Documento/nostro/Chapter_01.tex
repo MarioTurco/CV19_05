@@ -23,7 +23,7 @@ ed arrivando ad un linguaggio strutturato ed a modelli UML.
     \item \textbf{Amministratore elimina account utente}: un amministratore dovrà poter eliminare l'account di un utente
     \item \textbf{Amministratore visualizza dati di un visitatore}: un amministratore dovrà poter visualizzare i dati anagrafici di un visitatore (nome, cognome e data di nascita), 
     il nickname ed il numero di recensioni approvate e rifiutate.
-    \item \textbf{Utente visualizza struttra}: un utente dovrà poter visualizzare i dettagli di una struttura dopo averla selezionata.
+    \item \textbf{Utente visualizza struttra}: un utente dovrà poter visualizzare i dettagli di una struttura dopo averla selezionata con la possibiltà di vederla sulla mappa.
     \item \textbf{Utente scrive una recensione}: un utente, una volta aver effettuato l'accesso, dovrà poter scrivere una recensione ad una struttura.
     \item \textbf{Utente visualizaza dettagli recensione}: un utente dovrà poter leggere i dettagli di una recensione, in particolare leggendone l'autore, la data di inserimento, la valutazione
     ed il testo integrale.
@@ -44,7 +44,7 @@ ed arrivando ad un linguaggio strutturato ed a modelli UML.
 
 %%%%% ===============================================================================
 \section{Tabelle di Cockburn}
-
+\subsection{Amministratore}
 \input{Cockburn/Amministratore/Effettua Login/effettuaLoginCockburnAdmin.tex}
 \input{Cockburn/Amministratore/Valuta una recensione/moderaRecensioneCockBurn.tex}
 \pagebreak
@@ -54,11 +54,14 @@ ed arrivando ad un linguaggio strutturato ed a modelli UML.
 \pagebreak
 
 %finito
+\subsection{Utente}
 \input{Cockburn/Utente non loggato/Login/cockburn.tex}
 \input{Cockburn/Utente non loggato/Si registra/si registra.tex}
 \input{Cockburn/Utente non loggato/Visualizza struttura/visualizzaStruttura.tex}
 \input{Cockburn/Utente non loggato/VisualizzaDettagliRecensione/visualizzaDettagliRecensione.tex}
 \input{Cockburn/Utente loggato/AggiungeRecensione/aggungeRecensione.tex}
+\input{Cockburn/visualizzaSuMappa.tex}
+\input{Cockburn/Amministratore/Visualizza dati dei visitatori/ricercaStruttura.tex}
 \pagebreak
 %%%%% ===============================================================================
 \section{Mockup}
