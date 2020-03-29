@@ -28,15 +28,16 @@ Il sistema infatti è composto da diversi client che tramite internet interagisc
     \end{figure}
 \end{center}
 Per quanto riguarda l'architettura interna dei client si è deciso di utilizzare il modello MVC
-facorendo la separazione dei componenti software del sistema, separandone le responsabilità.
-In questo modo si riesce ad ottenere un'alta coesione e basso accoppiamento, favorendo notevolemente
+favorendo la separazione dei componenti software del sistema ed in particolare separandone le responsabilità.
+In questo modo si riesce ad ottenere alta coesione e basso accoppiamento, favorendo notevolemente
 la manutenibilità.\\
 In particolare:\\
- la componente \textbf{Model} ha la responsabilità di fornire i metodi per accedere
-ai dati necessari all'applicazione.\\
-la componente \textbf{View} è responsabile della visualizzazione dei dati conenuti nel Model\\
-la componente \textbf{Controller} ha la responsabilità di gestire l'input dell'utente ed aggiornare 
-la View ed il Model
+la componente \textbf{Model} ha la responsabilità di fornire i metodi per accedere
+ai dati utili all'applicazione, ha conoscenza del dominio applicativo ed è indipendente
+dagli altri sottosistemi.\\
+la componente \textbf{View} è responsabili della visualizzazione dei dati conenuti nel Model.\\
+la componente \textbf{Controller} ha la responsabilità di gestire l'input dell'utente aggiornando di conseguenza
+la View ed il Model.
 \begin{center}
     \begin{figure}[H]
         \includegraphics[width=\textwidth]{Figures/MVC client.png}
