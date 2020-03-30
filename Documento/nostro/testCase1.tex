@@ -1,0 +1,51 @@
+
+%Intestazione tabella%
+\setcounter{table}{0}
+\begin{table}[H]
+    \footnotesize
+    \caption{Test Case \#1}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Applicativo & Desktop\\
+        \hline
+        Nome & Amministratore effettua login  \\
+        \hline
+        Descrizione & Testo che assicura il corretto funzionamento del login dell'amministratore\\
+        \hline
+        Note & Esiste un amministratore con le seguenti credenziali: "admin", "admin" \\
+        \hline
+        Stato & Passato/Fallito\\
+        \hline
+
+    \end{tabularx}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+
+\begin{table}[H]
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|X|X|}
+        \hline
+        Step\# & Input & Risultato Atteso & Risultato Ottenuto \\
+        \hline
+         1 & Viene aperto l'applicativo Desktop  
+         & Viene visualizzata la schermata "Login" contententue due Textbox (Username e Password) 
+         ed un tasto
+         &DA INSERIRE (Come ci si aspettava)\\
+          \hline
+        2 & Vengono inserite delle credenziali \textbf{errate} "0000", "0000" e viene cliccato 
+        il tasto "Login" 
+        & Il login fallisce e viene visualizzata la schermata "Credeziali errate Dialog" 
+        & DA INSERIRE\\
+         \hline
+        3 & Vengono inserite le credenziali "admin", "admin" e viene cliccato 
+        il tasto "Login" 
+        & Il login ha successo e viene visualizzata la schermata "
+        Revisioni" 
+        & DA INSERIRE\\
+         \hline
+                 
+    \end{tabularx}
+\end{table}
+    
+       
