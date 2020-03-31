@@ -1,0 +1,41 @@
+
+%Intestazione tabella%
+\begin{table}[H]
+    \footnotesize
+    \caption{Test Case \#2}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Applicativo & Desktop\\
+        \hline
+        Nome & Amministratore visualizza dati di un utente  \\
+        \hline
+        Descrizione & Test che assicura il corretto funzionamento della visualizzazione dei dati dell'utente\\
+        \hline
+        Note & L'amministratore deve essere loggato, deve esistere l'utente con nickname "utente" \\
+        \hline
+        Stato & Passato/Fallito\\
+        \hline
+
+    \end{tabularx}
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+
+\begin{table}[H]
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|X|X|}
+        \hline
+        Step\# & Input & Risultato Atteso & Risultato Ottenuto \\
+        \hline
+         1 & Viene premuto il tasto "Visitatori" dalla schermata "Recensioni" 
+         & Viene visualizzata la schermata "Visitatori" contententue una lista di visitatori
+         &DA INSERIRE (Come ci si aspettava)\\
+          \hline
+        2 & Viene cliccata la riga contenente l'utente con nickname "utente"
+        & Viene visualizzata la schermata utente contenete i tasti "Modifica", "Elimina" ed i textfild nome, nickname, data di nascita, email, recensioni rifiutate ed approvate contenenti i relativi dati.
+        & DA INSERIRE\\
+         \hline  
+    \end{tabularx}
+\end{table}
+    
+       

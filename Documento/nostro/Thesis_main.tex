@@ -49,7 +49,6 @@
 \usepackage{paralist}       
 \usepackage{indentfirst}    
 \usepackage[nottoc]{tocbibind}
-
 \newcommand{\FIGDIR}{./Figures}    		% directory containing figures
 \addto\captionsitalian{% Replace "english" with the language you use
   \renewcommand{\contentsname}%
@@ -72,12 +71,12 @@
 
 \newcommand{\T}[1]{#1^\top}        
 
-\newcommand{\goto}{\rightarrow}
-\newcommand{\gotop}{\stackrel{P}{\longrightarrow}}
-\newcommand{\maon}[1]{o(n^{#1})}
-\newcommand{\abs}[1]{\left|{#1}\right|}
-\newcommand{\dint}{\int_0^\tau\!\!\int_0^\tau}
-\newcommand{\isqr}[1]{\frac{1}{\sqrt{#1}}}
+%\newcommand{\goto}{\rightarrow}
+%\newcommand{\gotop}{\stackrel{P}{\longrightarrow}}
+%\newcommand{\maon}[1]{o(n^{#1})}
+%\newcommand{\abs}[1]{\left|{#1}\right|}
+%\newcommand{\dint}{\int_0^\tau\!\!\int_0^\tau}
+%\newcommand{\isqr}[1]{\frac{1}{\sqrt{#1}}}
 
 \newcommand{\pulrad}[1]{\raisebox{1.5ex}[0pt]{#1}}
 \newcommand{\mc}[1]{\multicolumn{1}{c}{#1}}
@@ -100,10 +99,11 @@
 \include{Chapter_01}
 \include{ModelloDiDominio}
 \include{impiegoRisorse.tex}
+
 \part{Documento di Design del sistema}
 \include{Chapter_02}
-\part{Documento di Testing del sistema}
 
+\part{Documento di Testing del sistema}
 \include{Chapter_03}
 
 
