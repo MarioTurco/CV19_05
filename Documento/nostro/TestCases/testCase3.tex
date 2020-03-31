@@ -1,6 +1,7 @@
 \pagebreak
 %Intestazione tabella%
 \begin{table}[H]
+    \centering
     \footnotesize
     \caption{Test Case \#3}
     \begin{tabularx}{\textwidth}{|c|X|}
@@ -11,12 +12,13 @@
         \hline
         Descrizione & Test che assicura il corretto funzionamento della valutazione delle recensioni\\
         \hline
-        Note & L'amministatore deve essere autenticato e deve esistere una recensione scritta da "utente"  \\
+        Note & L'amministatore deve essere autenticato e deve esistere una recensione scritta da "utente" per la struttura "Struttura" in data "GEN 1 2020" \\
         \hline
         Stato & Passato/Fallito\\
         \hline
 
     \end{tabularx}
+    Continua alla pagina seguente
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{1.5}
 \end{table}
@@ -31,7 +33,7 @@
          & Viene visualizzata la schermata "Recensioni" contententue una lista di recensioni
          &DA INSERIRE (Come ci si aspettava)\\
           \hline
-        2 & Viene cliccata la riga contenente la recensione scritta dall'utente "utente"
+        2 & Viene cliccata la riga contenente la recensione scritta in data "GEN 1 2020" dall'utente "utente" sulla struttura "Struttura"
         & Viene visualizzata la schermata della recensione contenete i tasti "Acceta" e  "Rifiuta", i textFiel contenenti il titolo, il testo e l'autore della descrizione.
         Viene visualizzato, in oltre, il numero di stelline della recensione.
         & DA INSERIRE\\
@@ -41,7 +43,8 @@
          & DA INSERIRE\\
           \hline
           4 & Viene premuto il tasto "Ok"
-         & Viene visualizzata la schermata Recensioni
+         & Viene visualizzata la schermata Recensioni e nella lista delle recensioni non compare più 
+         la recensione scritta dall'utente "Utente" sulla struttura "Struttura" in data "GEN 1 2020"
          & DA INSERIRE\\
           \hline      
     \end{tabularx}

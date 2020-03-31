@@ -1,30 +1,52 @@
 
-\begin{longtable}[H]{|c|c|c|c|}
-    %%Prima parte della tabella%%
-    \hline
-    \multicolumn{2}{|l|}{\textbf{Applicativo}} & 
-    \multicolumn{2}{l|}{Desktop}\\
-    \hline
-    
-    \multicolumn{2}{|l|}{\textbf{Nome}} & 
-    \multicolumn{2}{l|}{Desktop}\\
-    \hline
-    
-    \multicolumn{2}{|l|}{\textbf{Descrizione}} & 
-    \multicolumn{2}{l|}{Test che assicura il corretto funzionamento della valutazione dellerecension}\\
-    \hline
-    
-    \multicolumn{2}{|l|}{\textbf{Note}} & 
-    \multicolumn{2}{l|}{Desktop}\\
-    \hline
+%Intestazione tabella%
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Test Case \#3}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Applicativo & Desktop\\
+        \hline
+        Nome & Amministratore elimina visitatore  \\
+        \hline
+        Descrizione & Test che assicura il corretto funzionamento dell'eliminazione di un visitatore'\\
+        \hline
+        Note & L'amministatore deve essere autenticato e deve esistere l'utente "utente"  \\
+        \hline
+        Stato & Passato/Fallito\\
+        \hline
 
-    \multicolumn{2}{|l|}{\textbf{Stato}} & 
-    \multicolumn{2}{l|}{Fallito/Passato}\\
-    \hline
-    %Seconda Parte della tabella
-    \multicolumn{4}{|c|}{ - }\\
-    \hline
-    \multicolumn{4}{|l|c|c|c|}
-    Step \# & Input & Risultato Atteso & Risultato Ottenuto\\
-    \hline
-\end{longtable}    
+    \end{tabularx}
+    Continua alla pagina seguente
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+%Step%
+\begin{table}[H]
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|X|X|}
+        \hline
+        Step\# & Input & Risultato Atteso & Risultato Ottenuto \\
+        \hline
+         1 & Viene premuto il tasto "Visitatori" dalla schermata "Recensioni" 
+         & Viene visualizzata la schermata "Visitatori" contententue una lista di visitatori
+         &DA INSERIRE (Come ci si aspettava)\\
+          \hline
+        2 & Viene cliccata la riga contenente l'utente "utente"
+        & Viene visualizzata la schermata di visualizzazione dell'utente contenente i bottoni "Elimina" e "Modifica"
+          Sulla schermata sono presenti anche i seguenti textfield: nome, email, nickname, data di nascita, recensioni approvate e rifiutate .
+        & DA INSERIRE\\
+         \hline 
+        3 & Viene cliccato il bottone "Elimina"
+         & Viene visualizzato il dialog che ci informa che l'utente è stato eliminato con successo
+         & DA INSERIRE\\
+          \hline
+          4 & Viene premuto il tasto "Ok"
+         & Viene visualizzata visualizzata nuovamente la schermata con la lista dei visitatori
+         & DA INSERIRE\\
+          \hline      
+    \end{tabularx}
+\end{table}
+    
+       
