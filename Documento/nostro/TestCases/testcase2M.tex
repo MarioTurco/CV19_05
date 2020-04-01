@@ -1,0 +1,55 @@
+
+%Intestazione tabella%
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Test Case \#2}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Applicativo & Mobile\\
+        \hline
+        Nome & Utente accede alla piattaforma  \\
+        \hline
+        Descrizione & Test che assicura il corretto funzionamento della funzione di Login\\
+        \hline
+        Note &  L'utente non deve aver effettuato il login e deve esistere l'utente
+        con nickname="nickname" e password "password"\\
+        \hline
+        Stato & Passato/Fallito\\
+        \hline
+
+    \end{tabularx}
+    Continua alla pagina seguente
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+%Step%
+\begin{table}[H]
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|c|X|X|X|}
+        \hline
+        Step\# & Input & Risultato Atteso & Risultato Ottenuto \\
+        \hline
+         1 & Dall'homepage viene cliccata l'iconda del menù in alto a sinistra 
+         & Viene visualizzato il menù laterale sinsitra
+         &DA INSERIRE (Come ci si aspettava)\\
+          \hline
+        2 & Viene cliccata la riga contenente "Login"
+        & Viene visualizzata la schermata di Login con il bottone "Login" 2 TextField
+        & DA INSERIRE\\
+         \hline 
+        3 & Non viene compilato nessun campo e viene premuto il tasto "Fine"
+         & Viene mostrato un dialog di errore & DA INSERIRE\\
+          \hline
+        4 & Viene premuto il tasto "Ok"
+         & Viene visualizzata nuovamente la schermata di Login
+         & DA INSERIRE\\
+          \hline 
+          5 & Vengono inseriti i campi: "nickname" e "password" e viene premuto il tasto "Login"
+         & Viene visualizzata mostrata la homepage dell'applicativo
+         & DA INSERIRE\\
+          \hline           
+    \end{tabularx}
+\end{table}
+    
+       
