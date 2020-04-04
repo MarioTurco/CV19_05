@@ -8,11 +8,11 @@
         \hline
         Applicativo & Mobile\\
         \hline
-        Nome & Utente ricerca una recensione  \\
+        Nome & Utente ricerca una struttura  \\
         \hline
         Descrizione & Test che assicura il corretto funzionamento della ricerca di una struttura\\
         \hline
-        Note &  L'utente deve aver effettuato il login\\
+        Note &  \\
         \hline
         Stato & Passato/Fallito\\
         \hline
@@ -29,29 +29,39 @@
         \hline
         Step\# & Input & Risultato Atteso & Risultato Ottenuto \\
         \hline
-         1 & Viene aperta la schermata di visualizzazione di una struttura
-         & Viene visualizzato una schermata contenente tutti i dettagli della struttura
+         1 & Viene aperta l'homepage dell'applicazione '
+         & Viene visualizzato una schermata contenente una mappa con tutte le strutture esistenti in database
          &DA INSERIRE (Come ci si aspettava)\\
           \hline
-        2 & Viene cliccato il pulsante "Aggiungi Recensione"
-        & Viene visualizzata la schermata di aggiunta recensione
+        2 & Ci si sposta sulla mappa fino a visualizzare la struttura desiderata e ci si clicca sopra
+        & Viene visualizzata la schermata della struttura
         & DA INSERIRE\\
          \hline 
-        3 & Non viene compilato nessun campo e viene premuto il tasto "Fine"
-         & Viene mostrato un dialog di errore & DA INSERIRE\\
+        3 & Viene cliccato il tasto back in alto a sinistra
+         & Viene mostrata l'homepage & DA INSERIRE\\
           \hline
-        4 & Viene premuto il tasto "Ok"
-         & Viene visualizzata nuovamente la schermata di Login
+        4 & Viene cliccato il tasto filtri in alto a destra
+         & Viene visualizzata la schermata filtri
          & DA INSERIRE\\
           \hline 
-          5 & Vengono inseriti i campi: "titolo", "testo", viene cliccata la prima stellina a sinistra e viene premuto il tasto "Aggiungi"
-         & Viene visualizzato dialog che notifica l'avvenuta operazione.
+        5 & Vengono inseriti i filtri: "Struttura", "Pompei", "Pub" e viene premuto il tasto "Cerca"
+         & Viene visualizzata la lista delle strutture corrispondenti ai criteri di ricerca
          & DA INSERIRE\\
           \hline 
-          6 & Preme "Ok"
-          & Viene visualizzato nuovamente la schermata della struttura
+        6 & Viene cliccato il tasto back in alto a sinistra
+          & Viene mostrata l'homepage
           & DA INSERIRE\\
-           \hline                     
+           \hline      
+        7 & Viene cliccato il tasto filtri in alto a destra
+        & Viene visualizzata la schermata filtri
+        & DA INSERIRE\\
+        \hline       
+        
+        8 & Viene cliccato il tasto prossimità, viene inserito "100" nel textfield "Distanza massima" viene cliccato il tasto "Cerca"
+        & Viene visualizzata la schermata contenete la lista delle strutture entro 100km di prossimità
+        & DA INSERIRE\\
+        \hline 
+        
     \end{tabularx}
 \end{table}
     
