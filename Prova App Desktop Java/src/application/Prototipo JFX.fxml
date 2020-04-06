@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,7 +48,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutY="364.0" onAction="#writeAction" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="  Logout" textAlignment="RIGHT">
+            <JFXButton layoutY="399.0" onAction="#writeAction" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="  Logout" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
@@ -59,7 +60,11 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <Line endX="100.0" layoutX="127.0" layoutY="387.0" startX="-100.0" style="-fx-stroke-width: 0.5;" />
          </children>
+         <effect>
+            <DropShadow color="#07589e" />
+         </effect>
       </AnchorPane>
    </children>
 </AnchorPane>

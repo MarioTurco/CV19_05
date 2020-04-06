@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
 <fullyQualifiedTypeName name="javafx.stage.Stage"/>
@@ -9,3 +10,6 @@
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.BorderPane"/>
 </qualifiedTypeNameHistroy>
+=======
+<qualifiedTypeNameHistroy/>
+>>>>>>> 4add1750f5dfd21449493bcdbf6e75462a450b86

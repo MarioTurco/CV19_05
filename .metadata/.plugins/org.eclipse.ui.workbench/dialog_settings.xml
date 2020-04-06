@@ -4,11 +4,14 @@
 		<item value="651" key="DIALOG_X_ORIGIN"/>
 		<item value="158" key="DIALOG_Y_ORIGIN"/>
 	</section>
+<<<<<<< HEAD
 	<section name="EditorSelectionDialog">
 		<item value="true" key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL"/>
 		<item value="" key="EditorSelectionDialog.STORE_ID_FILE_EXTENSION"/>
 		<item value="C:\Users\gpepp\AppData\Local\SceneBuilder\SceneBuilder.exe" key="EditorSelectionDialog.STORE_ID_DESCR"/>
 	</section>
+=======
+>>>>>>> 4add1750f5dfd21449493bcdbf6e75462a450b86
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="-1" key="dialogHeight"/>
 		<item value="-1" key="dialogWidth"/>
