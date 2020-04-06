@@ -31,6 +31,17 @@ public class Controller {
     public void recensioniClick(MouseEvent e) {
         loadUI("Recensioni");
     }
+    
+    @FXML
+    public void visitatoriClick(MouseEvent e) {
+        loadUI("Visitatori");
+    }
+
+    @FXML
+    public void logoutClick(MouseEvent e) {
+        loadUI("Logout");
+    }
+
 
     @FXML
     public void close(MouseEvent event) {

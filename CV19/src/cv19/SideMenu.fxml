@@ -37,7 +37,7 @@
                   <Image url="@../icons/logo4.png" />
                </image>
             </ImageView>
-            <JFXButton layoutY="295.0" onAction="#writeAction" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="    Visitatori" textAlignment="RIGHT">
+            <JFXButton layoutY="295.0" onMouseClicked="#visitatoriClick" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="    Visitatori" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutY="399.0" onAction="#writeAction" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="  Logout" textAlignment="RIGHT">
+            <JFXButton layoutY="399.0" onAction="#writeAction" onMouseClicked="#logoutClick" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="  Logout" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
