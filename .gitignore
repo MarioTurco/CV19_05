@@ -1,6 +1,11 @@
 #workspace metadata
 /.metadata
 
+# eclipse project file
+.settings/
+.classpath
+.project
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
