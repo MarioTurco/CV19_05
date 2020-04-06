@@ -6,16 +6,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 
 public class Controller {
 
