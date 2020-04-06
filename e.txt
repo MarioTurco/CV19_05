@@ -1,9 +1,0 @@
-1) In uno use case è consentito inserire un attore astratto (un po' come una classe astratta) usandolo solo
-come base per far ereditare dei casi d'uso ad altri attori? si se è più leggibile
-
-2) Se ho un caso d'uso, ad esempio "Legge il contenuto di un file" e questo caso d'uso può essere fatto in più modi, ad esempio:
-legge un file da schermo, legge un file tramite sintetizzatore vocale, legge un file tramite stampante
-Visto che ognuno di questi rappresenza sempre la stessa funzionalità li scrivo con un unico use case e poi magari lo differenzio tramite 
-le sub variation oppure devo creare degli extends? va bene se le variazioni sono minime
-
-3) Quanto deve essere preciso il documento del test case? Al massimo
