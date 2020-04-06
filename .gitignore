@@ -1,4 +1,5 @@
-
+#workspace metadata
+/.metadata
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
