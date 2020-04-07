@@ -37,7 +37,7 @@
                   <Insets top="50.0" />
                </VBox.margin>
             </PasswordField>
-            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickLogin" opacity="0.9" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 50px; -fx-background-color: #7289a3;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
+            <JFXButton fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 50px; -fx-background-color: #7289a3;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
