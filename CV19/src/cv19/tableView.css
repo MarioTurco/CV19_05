@@ -1,5 +1,5 @@
 .table-view{
-    -fx-table-color: #F9FCFB;/*rgba(0, 150, 0, 0.8);*/
+    -fx-table-color: #F9FCFB;
     -fx-table-rippler-color: rgba(255, 0, 0, 0.9);
     -fx-border-color: #F9FCFB;
 }
@@ -9,8 +9,8 @@
 }
 
 .table-row-cell{
-  -fx-background-radius: 50 50 50 50;
-  -fx-border-radius: 50 50 50 50;
+  -fx-background-radius: 50;
+  -fx-border-radius: 50;
 }
 
 .table-column{

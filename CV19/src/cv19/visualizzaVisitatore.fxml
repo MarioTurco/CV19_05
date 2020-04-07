@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cv19.RecensioniView">
+   <children>
+      <Label id="usernameLabel" layoutX="-238.0" layoutY="-29.0" text="Username" textFill="#000000d2" translateX="335.0" translateY="82.0">
+         <font>
+            <Font name="Century Gothic Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-281.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" translateX="335.0" translateY="82.0">
+         <image>
+            <Image url="@../icons/Icon%20material-person-black.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="49.0" layoutY="156.0" prefHeight="498.0" prefWidth="793.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Nome" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label id="nomeUtente" text="nome cognome" textFill="#707070">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Email" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label id="emailUtente" text="email@email.com">
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-50.0" left="70.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Nickaname" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label id="nicknameUtente" text="nickname" textFill="#707070">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" right="150.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Recensioni rifiutate" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="35.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label id="recensioniRifiutateUtente" text=" 2">
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-50.0" left="70.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Data di nascita" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label id="dataDiNascitaUtente" text="gg-mm-aaaa" textFill="#707070">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" right="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Recensioni approvate" textFill="#1b262c">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label id="recensioniApprovateUtente" text="0">
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="70.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Elimina" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="180.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Modifica" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="130.0" top="160.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</Pane>

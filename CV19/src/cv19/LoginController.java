@@ -71,8 +71,9 @@ public class LoginController extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("SideMenu.fxml"));
             BorderPane mainMenuPane = loader.load();
-            mainMenuScene = new Scene(mainMenuPane, 1160, 638);
-            this.stage.setScene(mainMenuScene);
+//          stage.setWidth(1160);
+//          stage.setHeight(638);
+            loginPane.setCenter(mainMenuPane);
             //this.stage.setScene(new Scene(mainMenuPane));
         }
         catch(IOException e){
