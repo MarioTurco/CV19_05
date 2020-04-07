@@ -9,8 +9,8 @@
 }
 
 .table-row-cell{
-  -fx-background-radius: 50 50 50 50;
-  -fx-border-radius: 50 50 50 50;
+  -fx-background-radius: 50;
+  -fx-border-radius: 50;
 }
 
 .table-column{
