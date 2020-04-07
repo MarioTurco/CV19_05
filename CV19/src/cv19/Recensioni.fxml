@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cv19.RecensioniView">
    <children>
-      <TableView layoutX="261.0" layoutY="198.0" prefHeight="242.0" prefWidth="337.0" stylesheets="@tableView.css">
+      <TableView fx:id="RecensioniTableView" layoutX="54.0" layoutY="155.0" prefHeight="461.0" prefWidth="750.0" stylesheets="@tableView.css">
         <columns>
-          <TableColumn prefWidth="110.0" text="C1" />
-          <TableColumn prefWidth="102.0" text="C2" />
-            <TableColumn prefWidth="124.0" text="Column X" />
+          <TableColumn fx:id="nomeTable" prefWidth="223.0" resizable="false" text="Nome" />
+          <TableColumn fx:id="strutturaTable" prefWidth="264.0" resizable="false" text="Struttura" />
+            <TableColumn fx:id="dataTable" prefWidth="262.0" resizable="false" text="Data" />
         </columns>
       </TableView>
+      <Label layoutX="-238.0" layoutY="-29.0" text="Recensioni" textFill="#000000d2" translateX="335.0" translateY="82.0">
+         <font>
+            <Font name="Century Gothic Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-281.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" translateX="335.0" translateY="82.0">
+         <image>
+            <Image url="@../icons/Icon%20material-rate-review.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
