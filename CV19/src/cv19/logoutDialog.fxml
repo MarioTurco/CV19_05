@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane maxHeight="200.0" maxWidth="500.0" minHeight="200.0" minWidth="500.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="24.0" prefWidth="340.0" text="Logout">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Si è certi di voler eseguire il Logout?">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #6C757D;" text="Annulla" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton prefHeight="39.0" prefWidth="75.0" style="-fx-background-color: #5EACE2;" text="OK" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets left="300.0" top="50.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</DialogPane>
