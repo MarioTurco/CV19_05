@@ -54,7 +54,6 @@ public class Controller {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
-            System.out.println("fxml caricato");
         } catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
