@@ -55,10 +55,6 @@
     -fx-border-color:#F9FCFB;
 }
 
-.nomeCol{
-    -fx-font-weight: bold;
-}
-
 .table-view .table-cell{
     -fx-border-width:0 0 0 0;
     -fx-padding : 19 0 19 0 ;
