@@ -1,5 +1,5 @@
 .table-view{
-    -fx-table-color: transparent;/*rgba(0, 150, 0, 0.8);*/
+    -fx-table-color: #F9FCFB;/*rgba(0, 150, 0, 0.8);*/
     -fx-table-rippler-color: rgba(255, 0, 0, 0.9);
     -fx-border-color: #F9FCFB;
 }
@@ -7,6 +7,16 @@
     -fx-background-color: #bed5e3  ;
     -fx-table-cell-border-color: -fx-table-color;
 }
+
+.table-row-cell{
+  -fx-background-radius: 50 50 50 50;
+  -fx-border-radius: 50 50 50 50;
+}
+
+.table-column{
+    -fx-alignment: TOP_CENTER;
+}
+
 
 .table-view:focused .table-row-cell:selected .table-cell{
     -fx-text-fill: white;
@@ -45,9 +55,14 @@
     -fx-border-color:#F9FCFB;
 }
 
+.nomeCol{
+    -fx-font-weight: bold;
+}
+
 .table-view .table-cell{
     -fx-border-width:0 0 0 0;
-    -fx-padding : 16 0 16 0 ;
+    -fx-padding : 19 0 19 0 ;
+    -fx-font-size: 17px;
 }
 
 .table-view .column-overlay{
@@ -72,6 +87,7 @@
     -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; /* 4 */
     -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
 }
+
 
 .table-row-cell .jfx-text-field{
     -fx-focus-color: rgba(240,40,40);

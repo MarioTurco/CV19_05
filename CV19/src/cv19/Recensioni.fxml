@@ -10,11 +10,11 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cv19.RecensioniView">
    <children>
-      <TableView fx:id="RecensioniTableView" layoutX="54.0" layoutY="155.0" prefHeight="461.0" prefWidth="750.0" style="-fx-selection-bar: red;" stylesheets="@tableView.css">
+      <TableView fx:id="RecensioniTableView" layoutX="24.0" layoutY="155.0" prefHeight="461.0" prefWidth="811.0" style="-fx-selection-bar: red; -fx-background-color: #F9FCFB;" stylesheets="@tableView.css">
         <columns>
-          <TableColumn fx:id="nomeTable" prefWidth="223.0" resizable="false" text="Nome" />
-          <TableColumn fx:id="strutturaTable" prefWidth="264.0" resizable="false" text="Struttura" />
-            <TableColumn fx:id="dataTable" prefWidth="262.0" resizable="false" text="Data" />
+          <TableColumn fx:id="nomeTable" editable="false" prefWidth="210.0" resizable="false" style="-fx-font-weight:bold" text="Nome" />
+          <TableColumn fx:id="strutturaTable" editable="false" prefWidth="371.0" resizable="false" text="Struttura" />
+            <TableColumn fx:id="dataTable" editable="false" prefWidth="228.0" resizable="false" text="Data" />
         </columns>
       </TableView>
       <Label layoutX="-238.0" layoutY="-29.0" text="Recensioni" textFill="#000000d2" translateX="335.0" translateY="82.0">
