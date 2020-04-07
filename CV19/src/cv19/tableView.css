@@ -4,7 +4,7 @@
     -fx-border-color: #F9FCFB;
 }
 .table-view:focused .table-row-cell:selected {
-    -fx-background-color: -fx-table-color  ;
+    -fx-background-color: #bed5e3  ;
     -fx-table-cell-border-color: -fx-table-color;
 }
 
@@ -66,11 +66,14 @@
     -fx-padding: 1; /* 0.083333em; */
 }
 
+
 .table-row-cell > .disclosure-node > .arrow {
     -fx-background-color: -fx-text-fill;
     -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; /* 4 */
     -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
 }
+
 .table-row-cell .jfx-text-field{
     -fx-focus-color: rgba(240,40,40);
 }
+
