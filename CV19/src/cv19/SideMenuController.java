@@ -13,7 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
-public class Controller {
+public class SideMenuController {
 
     @FXML
     private BorderPane borderpane;
@@ -55,7 +55,7 @@ public class Controller {
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }
