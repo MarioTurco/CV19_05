@@ -20,12 +20,12 @@
                </font>
             </Label>
             <Line endX="100.0" layoutX="121.0" layoutY="176.0" startX="-100.0" style="-fx-stroke-width: 0.5;" />
-            <JFXButton layoutY="226.0" onMouseClicked="#recensioniClick" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" text="     Recensioni" textAlignment="RIGHT">
+            <JFXButton fx:id="recensioniButton" layoutY="226.0" onMouseClicked="#recensioniClick" prefHeight="44.0" prefWidth="255.0" ripplerFill="#a4a4a438" style="-fx-background-color: #bed5e3;" stylesheets="@recensioniButton.css" text="     Recensioni" textAlignment="RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
                <graphic>
-                  <ImageView>
+                  <ImageView translateY="3.0">
                      <image>
                         <Image url="@../icons/Icon%20material-rate-review.png" />
                      </image>
