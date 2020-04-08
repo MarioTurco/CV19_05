@@ -6,12 +6,15 @@
 package cv19;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -22,11 +25,23 @@ public class LoginController {
     
     @FXML
     public void clickLogin(ActionEvent event) throws IOException{
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("SideMenu.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.hide(); //optional
-        app_stage.setScene(home_page_scene);
-        app_stage.show();
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("SideMenu.fxml"));
+        Scene homePageScene = new Scene(homePageParent);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.hide(); //optional
+        appStage.setScene(homePageScene);
+        appStage.show();
+        loadRecensioniView(homePageScene);
+    }
+    
+    private void loadRecensioniView(Scene homePageScene){
+        Parent root = null;
+        BorderPane borderpane = (BorderPane)homePageScene.lookup("#borderpane");
+        try {
+           root = FXMLLoader.load(getClass().getResource("Recensioni.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        borderpane.setCenter(root);
     }
 }
