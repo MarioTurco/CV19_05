@@ -1,5 +1,6 @@
 package cv19;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -12,19 +13,21 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class SideMenuController {
 
     @FXML
+    private JFXButton recensioniButton;
+    
+    @FXML
     private BorderPane borderpane;
 
-    @FXML
-    public void writeAction(ActionEvent e) {
-
-    }
 
     @FXML
     public void recensioniClick(MouseEvent e) {
+        setButtonBlueColor(recensioniButton);
         loadUI("Recensioni");
     }
     
@@ -59,4 +62,11 @@ public class SideMenuController {
         }
         borderpane.setCenter(root);
     }
+    
+    private void setButtonBlueColor(JFXButton button){
+        Image image = new Image(getClass().getResourceAsStream("/icons/Icon material-rate-review-blue.png"));
+        button.setGraphic(new ImageView(image));
+    }
 }
+
+
