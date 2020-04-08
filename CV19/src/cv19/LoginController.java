@@ -5,6 +5,7 @@
  */
 package cv19;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -32,6 +35,7 @@ public class LoginController {
         appStage.setScene(homePageScene);
         appStage.show();
         loadRecensioniView(homePageScene);
+        initRecensioniButton(homePageScene);
     }
     
     private void loadRecensioniView(Scene homePageScene){
@@ -43,5 +47,24 @@ public class LoginController {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
+    }
+    
+    private void initRecensioniButton(Scene homePageScene){
+        JFXButton recensioniButton = (JFXButton)homePageScene.lookup("#recensioniButton");
+        ImageView recensioniImageView = (ImageView)homePageScene.lookup("#recensioniImageView");
+        
+        setBlueIcon(recensioniImageView);
+        
+        changeRecensioniButtonTextColourToBlue(recensioniButton);
+        
+    }
+    
+    private void setBlueIcon(ImageView recensioniImageView){
+        Image image = new Image(getClass().getResourceAsStream("/icons/recensioni-blue.png"));
+        recensioniImageView.setImage(image);
+    }
+    
+    private void changeRecensioniButtonTextColourToBlue(JFXButton recensioniButton){
+        recensioniButton.setStyle("-fx-text-fill: #3282B8");
     }
 }

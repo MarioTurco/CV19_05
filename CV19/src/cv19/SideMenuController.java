@@ -45,6 +45,8 @@ public class SideMenuController {
         setButtonColor(visitatoriButton, "visitatori", "gray");
         setButtonColor(logoutButton, "logout", "gray");
         recensioniButton.setStyle("-fx-text-fill: #3282B8");
+        visitatoriButton.setStyle("-fx-text-fill: black");
+        logoutButton.setStyle("-fx-text-fill: black");
         loadUI("Recensioni");
     }
     
@@ -53,6 +55,9 @@ public class SideMenuController {
         setButtonColor(recensioniButton, "recensioni", "gray");
         setButtonColor(visitatoriButton, "visitatori", "blue");
         setButtonColor(logoutButton, "logout", "gray");
+        recensioniButton.setStyle("-fx-text-fill: black");
+        visitatoriButton.setStyle("-fx-text-fill: #3282B8");
+        logoutButton.setStyle("-fx-text-fill: black");
         loadUI("Visitatori");
     }
 
@@ -61,6 +66,9 @@ public class SideMenuController {
         setButtonColor(recensioniButton, "recensioni", "gray");
         setButtonColor(visitatoriButton, "visitatori", "gray");
         setButtonColor(logoutButton, "logout", "blue");
+        recensioniButton.setStyle("-fx-text-fill: black");
+        visitatoriButton.setStyle("-fx-text-fill: black");
+        logoutButton.setStyle("-fx-text-fill: #3282B8");
         loadUI("logoutDialog");
     }
 
