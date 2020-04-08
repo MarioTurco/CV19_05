@@ -24,8 +24,7 @@ public class SideMenuController {
     @FXML
     private BorderPane borderpane;
 
-    @FXML
-    private BorderPane borderpane;
+
 
 
     @FXML
