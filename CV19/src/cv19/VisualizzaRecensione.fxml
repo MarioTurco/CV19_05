@@ -25,7 +25,7 @@
                         <Insets right="9.0" top="7.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label id="nomeLabl" text="Nome e Cognome" textFill="#1b262c">
+                  <Label id="nicknameLabel" text="Nickname" textFill="#1b262c">
                      <font>
                         <Font name="Segoe UI Bold" size="35.0" />
                      </font>

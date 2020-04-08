@@ -12,9 +12,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cv19.RecensioniView">
    <children>
-      <Label id="nomeLabel" layoutX="-238.0" layoutY="-29.0" text="Nome e cognome" textFill="#000000d2" translateX="335.0" translateY="82.0">
+      <Label id="nicknameLabel" layoutX="-238.0" layoutY="-29.0" text="Nickname" textFill="#000000d2" translateX="335.0" translateY="82.0">
          <font>
-            <Font name="Century Gothic Bold" size="35.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-281.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" translateX="335.0" translateY="82.0">
