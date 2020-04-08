@@ -24,23 +24,43 @@ public class SideMenuController {
     @FXML
     private BorderPane borderpane;
 
+    @FXML
+    private JFXButton visitatoriButton;
+    
+    @FXML
+    private JFXButton logoutButton;
 
-
+    @FXML
+    private ImageView recensioniImageView;
+    
+    @FXML
+    private ImageView visitatoriImageView;
+    
+    @FXML
+    private ImageView logoutImageView;
 
     @FXML
     public void recensioniClick(MouseEvent e) {
-        setButtonBlueColor(recensioniButton);
+        setButtonColor(recensioniButton, "recensioni", "blue");
+        setButtonColor(visitatoriButton, "visitatori", "gray");
+        setButtonColor(logoutButton, "logout", "gray");
         recensioniButton.setStyle("-fx-text-fill: #3282B8");
         loadUI("Recensioni");
     }
     
     @FXML
     public void visitatoriClick(MouseEvent e) {
+        setButtonColor(recensioniButton, "recensioni", "gray");
+        setButtonColor(visitatoriButton, "visitatori", "blue");
+        setButtonColor(logoutButton, "logout", "gray");
         loadUI("Visitatori");
     }
 
     @FXML
     public void logoutClick(MouseEvent e) {
+        setButtonColor(recensioniButton, "recensioni", "gray");
+        setButtonColor(visitatoriButton, "visitatori", "gray");
+        setButtonColor(logoutButton, "logout", "blue");
         loadUI("logoutDialog");
     }
 
@@ -67,10 +87,23 @@ public class SideMenuController {
         borderpane.setCenter(root);
     }
     
-    private void setButtonBlueColor(JFXButton button){
-        Image image = new Image(getClass().getResourceAsStream("/icons/Icon material-rate-review-blue.png"));
-        button.setGraphic(new ImageView(image));
+    private void setButtonColor(JFXButton button, String nomeIcona, String colore){
+        Image image = new Image(getClass().getResourceAsStream("/icons/" + nomeIcona + "-" + colore + ".png"));
+        //button.setGraphic(new ImageView(image));
+        switch(nomeIcona){
+            case "recensioni":
+                recensioniImageView.setImage(image);
+                break;
+            case "visitatori":
+                visitatoriImageView.setImage(image);
+                break;
+            case "logout":
+                logoutImageView.setImage(image);
+                break;
+        }
     }
+    
+    
 }
 
 
