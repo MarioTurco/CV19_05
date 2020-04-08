@@ -1,84 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package cv19;
 
-import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class LoginController extends Application {
-
-    
-    private Stage stage;
-    private Scene mainMenuScene;
+/**
+ *
+ * @author gpepp
+ */
+public class LoginController {
     
     @FXML
-    private JFXButton loginButton;
-    
-    @FXML
-    private BorderPane loginPane;
-    
-    @Override
-    public void start(Stage primaryStage) {
-        try {
-            this.stage = primaryStage;
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("SideMenu.fxml"));
-            loginPane = loader.load();
-            
-            Scene scene = new Scene(loginPane);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            
-            /*
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            */
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void clickLogin(ActionEvent event) throws IOException{
+        Parent home_page_parent = FXMLLoader.load(getClass().getResource("SideMenu.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.hide(); //optional
+        app_stage.setScene(home_page_scene);
+        app_stage.show();
     }
-    
-    public void launchSideMenu(){
-        try{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SideMenu.fxml"));
-        BorderPane mainMenuPane = loader.load();
-        mainMenuScene = new Scene(mainMenuPane, 1160, 638);
-        stage.setScene(mainMenuScene);
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    /*
-    @FXML
-    private void clickLogin(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("SideMenu.fxml"));
-            BorderPane mainMenuPane = loader.load();
-//          stage.setWidth(1160);
-//          stage.setHeight(638);
-            loginPane.setCenter(mainMenuPane);
-            //this.stage.setScene(new Scene(mainMenuPane));
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-*/
 }
