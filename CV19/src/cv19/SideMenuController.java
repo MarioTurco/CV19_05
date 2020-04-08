@@ -59,7 +59,7 @@ public class SideMenuController {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
-            recensioniButton.setStyle("-fx-text-fill: #3282B8");
+            
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,6 +69,7 @@ public class SideMenuController {
     private void setButtonBlueColor(JFXButton button){
         Image image = new Image(getClass().getResourceAsStream("/icons/Icon material-rate-review-blue.png"));
         button.setGraphic(new ImageView(image));
+        recensioniButton.setStyle("-fx-text-fill: #3282B8;");
     }
 }
 
