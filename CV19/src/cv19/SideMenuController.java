@@ -1,5 +1,6 @@
 package cv19;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -15,6 +16,9 @@ import javafx.scene.Parent;
 
 public class SideMenuController {
 
+    @FXML
+    private JFXButton recensioniButton;
+    
     @FXML
     private BorderPane borderpane;
 
@@ -54,6 +58,7 @@ public class SideMenuController {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
+            recensioniButton.setStyle("-fx-text-fill: #3282B8");
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
