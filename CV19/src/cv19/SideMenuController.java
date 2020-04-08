@@ -39,7 +39,7 @@ public class SideMenuController {
 
     @FXML
     public void logoutClick(MouseEvent e) {
-        loadUI("Logout");
+        loadUI("logoutDialog");
     }
 
 
