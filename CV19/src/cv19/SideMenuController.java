@@ -30,6 +30,7 @@ public class SideMenuController {
     @FXML
     public void recensioniClick(MouseEvent e) {
         setButtonBlueColor(recensioniButton);
+        recensioniButton.setStyle("-fx-text-fill: #3282B8");
         loadUI("Recensioni");
     }
     
