@@ -13,7 +13,7 @@
       <TableView fx:id="VisitatoriTableView" layoutX="-1.0" layoutY="155.0" prefHeight="511.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" stylesheets="@tableView.css">
         <columns>
           <TableColumn fx:id="nomeCol" editable="false" prefWidth="417.0" resizable="false" style="-fx-font-weight:bold" text="Nome" />
-          <TableColumn fx:id="nicknameCol" editable="false" prefWidth="439.0" resizable="false" text="NickName" />
+          <TableColumn fx:id="nicknameCol" editable="false" prefWidth="437.0" resizable="false" text="NickName" />
         </columns>
       </TableView>
       <Label layoutX="-238.0" layoutY="-29.0" text="Visitatori" textFill="#000000d0" translateX="335.0" translateY="82.0">

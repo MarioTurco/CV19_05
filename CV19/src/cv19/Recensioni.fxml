@@ -14,7 +14,7 @@
         <columns>
           <TableColumn fx:id="nomeTable" editable="false" prefWidth="210.0" resizable="false" style="-fx-font-weight:bold" text="Nome" />
           <TableColumn fx:id="strutturaTable" editable="false" prefWidth="371.0" resizable="false" text="Struttura" />
-            <TableColumn fx:id="dataTable" editable="false" prefWidth="275.0" resizable="false" text="Data" />
+            <TableColumn fx:id="dataTable" editable="false" prefWidth="273.0" resizable="false" text="Data" />
         </columns>
       </TableView>
       <Label layoutX="-238.0" layoutY="-29.0" text="Recensioni" textFill="#000000d2" translateX="335.0" translateY="82.0">
