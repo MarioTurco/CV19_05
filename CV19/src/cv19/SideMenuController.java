@@ -4,38 +4,45 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputEvent;
+import javafx.stage.Modality;
 
 public class SideMenuController {
 
     @FXML
     private JFXButton recensioniButton;
-    
+
     @FXML
     private BorderPane borderpane;
 
     @FXML
     private JFXButton visitatoriButton;
-    
+
     @FXML
     private JFXButton logoutButton;
 
     @FXML
     private ImageView recensioniImageView;
-    
+
     @FXML
     private ImageView visitatoriImageView;
-    
+
     @FXML
     private ImageView logoutImageView;
 
@@ -49,7 +56,7 @@ public class SideMenuController {
         logoutButton.setStyle("-fx-text-fill: black");
         loadUI("Recensioni");
     }
-    
+
     @FXML
     public void visitatoriClick(MouseEvent e) {
         setButtonColor(recensioniButton, "recensioni", "gray");
@@ -69,9 +76,10 @@ public class SideMenuController {
         recensioniButton.setStyle("-fx-text-fill: black");
         visitatoriButton.setStyle("-fx-text-fill: black");
         logoutButton.setStyle("-fx-text-fill: #3282B8");
-        loadUI("logoutDialog");
-    }
+        //loadUI("logoutDialog");
+        showLogoutDialog2();
 
+    }
 
     @FXML
     public void close(MouseEvent event) {
@@ -79,26 +87,26 @@ public class SideMenuController {
         stage.close();
     }
 
-    @FXML
-    public void clear(MouseEvent event) {
-        borderpane.setCenter(null);
-    }
-
     public void loadUI(String ui) {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
-            
+
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }
+<<<<<<< HEAD
        
     private void setButtonColor(JFXButton button, String nomeIcona, String colore){
+=======
+
+    private void setButtonColor(JFXButton button, String nomeIcona, String colore) {
+>>>>>>> be61f25796d3a252a6ee6a48bcd37597d9483524
         Image image = new Image(getClass().getResourceAsStream("/icons/" + nomeIcona + "-" + colore + ".png"));
         //button.setGraphic(new ImageView(image));
-        switch(nomeIcona){
+        switch (nomeIcona) {
             case "recensioni":
                 recensioniImageView.setImage(image);
                 break;
@@ -111,8 +119,52 @@ public class SideMenuController {
         }
 
     }
+
     
     
+    private void showLogoutDialog2(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("logoutDialog.fxml"));
+        Parent parent;
+        try {
+            parent = fxmlLoader.load();
+
+        Scene scene = new Scene(parent, 500, 200);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+         } catch (IOException ex) {
+            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    ///////////////////////////////////////////////////////////////////////////////////
+    private void showLogoutDialog(InputEvent event) {
+        Alert dg = new Alert(Alert.AlertType.INFORMATION);
+        dg.setTitle("Logout");
+        dg.setHeaderText("Logout effettuato.");
+
+        Optional<ButtonType> result = dg.showAndWait();
+        ButtonType button = result.orElse(ButtonType.CANCEL);
+
+        if (button == ButtonType.OK) {
+            loadLoginView(event);
+        } else {
+            System.out.println("canceled");
+        }
+    }
+
+    private void loadLoginView(InputEvent event) {
+        try {
+            Parent homePageParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Scene scene = new Scene(homePageParent);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.hide(); //optional
+            appStage.setScene(scene);
+            appStage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
-
-
