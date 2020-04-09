@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -18,10 +19,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
-import javafx.stage.Modality;
+import javafx.stage.Screen;
+import javafx.stage.StageStyle;
 
 public class SideMenuController {
 
@@ -77,7 +80,7 @@ public class SideMenuController {
         visitatoriButton.setStyle("-fx-text-fill: black");
         logoutButton.setStyle("-fx-text-fill: #3282B8");
         //loadUI("logoutDialog");
-        showLogoutDialog2();
+        showLogoutDialog(e);
 
     }
 
@@ -97,13 +100,8 @@ public class SideMenuController {
         }
         borderpane.setCenter(root);
     }
-<<<<<<< HEAD
-       
-    private void setButtonColor(JFXButton button, String nomeIcona, String colore){
-=======
 
     private void setButtonColor(JFXButton button, String nomeIcona, String colore) {
->>>>>>> be61f25796d3a252a6ee6a48bcd37597d9483524
         Image image = new Image(getClass().getResourceAsStream("/icons/" + nomeIcona + "-" + colore + ".png"));
         //button.setGraphic(new ImageView(image));
         switch (nomeIcona) {
@@ -120,34 +118,30 @@ public class SideMenuController {
 
     }
 
-    
-    
-    private void showLogoutDialog2(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("logoutDialog.fxml"));
-        Parent parent;
-        try {
-            parent = fxmlLoader.load();
-
-        Scene scene = new Scene(parent, 500, 200);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    
+       
     ///////////////////////////////////////////////////////////////////////////////////
     private void showLogoutDialog(InputEvent event) {
         Alert dg = new Alert(Alert.AlertType.INFORMATION);
         dg.setTitle("Logout");
-        dg.setHeaderText("Logout effettuato.");
-
+        dg.setHeaderText(null);
+        dg.setContentText("Logout effettuato.");
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        dg.setX((bounds.getMaxX()/2)-150);
+        dg.setY((bounds.getMaxY()/2)-100);
+        
+        DialogPane dialogPane = dg.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("dialogStyle.css").toExternalForm());
+        dg.initStyle(StageStyle.UNDECORATED);
+        ImageView icon = new ImageView("icons/alertIcon.png");
+        icon.setFitHeight(1);
+        icon.setFitWidth(1);
+        dg.getDialogPane().setGraphic(icon);
+        
+        
         Optional<ButtonType> result = dg.showAndWait();
         ButtonType button = result.orElse(ButtonType.CANCEL);
-
+        
         if (button == ButtonType.OK) {
             loadLoginView(event);
         } else {
