@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cv19;
+package cv19.controller;
 
+import cv19.model.Recensione;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author checc
  */
-public class RecensioniView implements Initializable{
+public class RecensioniController implements Initializable{
     
     @FXML
     private TableView RecensioniTableView;

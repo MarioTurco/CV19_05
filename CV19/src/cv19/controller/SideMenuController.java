@@ -1,4 +1,4 @@
-package cv19;
+package cv19.controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -93,7 +93,7 @@ public class SideMenuController {
     public void loadUI(String ui) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/"+ ui + ".fxml"));
 
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,7 +130,7 @@ public class SideMenuController {
         
         DialogPane dialogPane = dg.getDialogPane();
         dialogPane.getStylesheets().add(
-        getClass().getResource("dialogStyle.css").toExternalForm());
+        getClass().getResource("/css/dialogStyle.css").toExternalForm());
         dg.initStyle(StageStyle.UNDECORATED);
         Image icon=new Image("/icons/infoIcon.png");
         ImageView iv= new ImageView(icon);
@@ -149,7 +149,7 @@ public class SideMenuController {
 
     private void loadLoginView(InputEvent event) {
         try {
-            Parent homePageParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent homePageParent = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
             Scene scene = new Scene(homePageParent);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.hide(); //optional
