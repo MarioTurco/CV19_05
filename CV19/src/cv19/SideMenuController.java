@@ -132,7 +132,9 @@ public class SideMenuController {
         dialogPane.getStylesheets().add(
         getClass().getResource("dialogStyle.css").toExternalForm());
         dg.initStyle(StageStyle.UNDECORATED);
-        dg.getDialogPane().setGraphic(null);
+        Image icon=new Image("/icons/infoIcon.png");
+        ImageView iv= new ImageView(icon);
+        dg.getDialogPane().setGraphic(iv);
         
         
         Optional<ButtonType> result = dg.showAndWait();
