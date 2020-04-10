@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cv19;
+package cv19.controller;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class LoginController {
     
     @FXML
     public void clickLogin(ActionEvent event) throws IOException{
-        Parent homePageParent = FXMLLoader.load(getClass().getResource("SideMenu.fxml"));
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("/fxml/SideMenu.fxml"));
         Scene homePageScene = new Scene(homePageParent);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.hide(); //optional
@@ -42,7 +42,7 @@ public class LoginController {
         Parent root = null;
         BorderPane borderpane = (BorderPane)homePageScene.lookup("#borderpane");
         try {
-           root = FXMLLoader.load(getClass().getResource("Recensioni.fxml"));
+           root = FXMLLoader.load(getClass().getResource("/fxml/Recensioni.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
