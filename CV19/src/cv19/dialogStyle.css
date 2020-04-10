@@ -16,28 +16,21 @@
 
 
 .dialog-pane > .content.label {
-   -fx-background-color: white;
-  -fx-background-radius:10px;
+  -fx-background-color: white;
   -fx-text-fill:black;
-  -fx-font-size:15.0px;
+  -fx-font-size:13.0px;
   -fx-alignment: center;
   -fx-font-family: Segoe UI;
-  -fx-translate-x: -10;
 }
 
 .dialog-pane > .button-bar > .container {
   -fx-background-color:white;
 }
 
-
-
 .dialog-pane:header .header-panel {
   -fx-background-color: white;
 }
 
-.dialog-pane:header .header-panel .icon{
-  -fx-alignment:center;
-}
 
 .dialog-pane .button:hover{     
   -fx-background-color:#90C4E8;
@@ -45,5 +38,5 @@
  }
  
  .root{
-     -fx-background-color: #FFFFFF;     
+  -fx-background-color: #FFFFFF;     
  }

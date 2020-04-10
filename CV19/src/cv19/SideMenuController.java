@@ -122,8 +122,7 @@ public class SideMenuController {
     ///////////////////////////////////////////////////////////////////////////////////
     private void showLogoutDialog(InputEvent event) {
         Alert dg = new Alert(Alert.AlertType.INFORMATION);
-        dg.setTitle("Logout");
-        dg.setHeaderText(null);
+        dg.setHeaderText("Azione Eseguita");
         dg.setContentText("Logout effettuato.");
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         dg.setX((bounds.getMaxX()/2)-150);
@@ -133,10 +132,7 @@ public class SideMenuController {
         dialogPane.getStylesheets().add(
         getClass().getResource("dialogStyle.css").toExternalForm());
         dg.initStyle(StageStyle.UNDECORATED);
-        ImageView icon = new ImageView("icons/alertIcon.png");
-        icon.setFitHeight(1);
-        icon.setFitWidth(1);
-        dg.getDialogPane().setGraphic(icon);
+        dg.getDialogPane().setGraphic(null);
         
         
         Optional<ButtonType> result = dg.showAndWait();

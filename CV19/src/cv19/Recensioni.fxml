@@ -22,9 +22,9 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-281.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" translateX="335.0" translateY="82.0">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-281.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true" translateX="335.0" translateY="82.0">
          <image>
-            <Image url="@../icons/Icon%20material-rate-review-black.png" />
+            <Image url="@../icons/recensioni-black.png" />
          </image>
       </ImageView>
    </children>
