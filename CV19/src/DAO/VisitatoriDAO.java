@@ -22,14 +22,16 @@ public class VisitatoriDAO {
     private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
     private final String user = "cercaviaggi";
     private final String password = "cercaviaggi";
+    private static Connection conn = null;
 
     private Connection getConnection() {
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connesso");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        if (conn == null) {
+            try {
+                conn = DriverManager.getConnection(url, user, password);
+                System.out.println("Connesso");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
         return conn;
     }
@@ -38,20 +40,21 @@ public class VisitatoriDAO {
         PreparedStatement statement = prepareQuery();
         ResultSet resultSet = executeStatement(statement);
         ArrayList<Visitatore> visitatori = getVisitatoriFromResultSet(resultSet);
+         closeConnection();
         return visitatori;
     }
 
     public void deleteVisitatoreByNickname(String nickname) {
         PreparedStatement statement = prepareDeleteQueryWithNickname(nickname);
         ResultSet resultSet = executeStatement(statement);
-
+        closeConnection();
     }
 
     public Visitatore getVisitatoreByNickname(String nickname) {
         PreparedStatement statement = prepareSelectQueryWithNickname(nickname);
         ResultSet resultSet = executeStatement(statement);
         ArrayList<Visitatore> visitatori = getVisitatoriFromResultSet(resultSet);
-
+         closeConnection();
         return visitatori.get(0);
     }
 
@@ -64,7 +67,7 @@ public class VisitatoriDAO {
             statement = con.prepareStatement(query);
         } catch (SQLException sqlException) {
         }
-       
+
         return statement;
     }
 
@@ -79,7 +82,7 @@ public class VisitatoriDAO {
         } catch (SQLException sqlException) {
             //TODO implementare qualcosa qui
         }
-       
+
         return statement;
     }
 
@@ -94,7 +97,7 @@ public class VisitatoriDAO {
         } catch (SQLException sqlException) {
             //TODO implementare qualcosa qui
         }
-       
+
         return statement;
     }
 
@@ -128,5 +131,13 @@ public class VisitatoriDAO {
         return resultSet;
     }
 
-    
+    private void closeConnection() {
+        if (this.conn != null) {
+            try {
+                this.conn.close();
+            } catch (SQLException sqle) {
+            }
+        }
+    }
+
 }
