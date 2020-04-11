@@ -1,4 +1,4 @@
-package cv19.controller;
+package presenter;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -93,7 +93,7 @@ public class SideMenuController {
     public void loadUI(String ui) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/"+ ui + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource("/view/"+ ui + ".fxml"));
 
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +149,7 @@ public class SideMenuController {
 
     private void loadLoginView(InputEvent event) {
         try {
-            Parent homePageParent = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+            Parent homePageParent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             Scene scene = new Scene(homePageParent);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             appStage.hide(); //optional

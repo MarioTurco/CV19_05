@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="loginPane" maxHeight="680.0" maxWidth="1026.0" minHeight="100.0" minWidth="1026.0" prefHeight="680.0" prefWidth="388.0" stylesheets="@/css/sfondoStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cv19.controller.LoginController">
+<BorderPane fx:id="loginPane" maxHeight="680.0" maxWidth="1026.0" minHeight="100.0" minWidth="1026.0" prefHeight="680.0" prefWidth="388.0" stylesheets="@/css/sfondoStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presenter.LoginController">
    <center>
       <VBox alignment="CENTER" prefHeight="454.0" prefWidth="858.0" styleClass="VBox" stylesheets="@/css/sfondoStyle.css" BorderPane.alignment="CENTER">
          <children>

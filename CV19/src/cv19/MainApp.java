@@ -29,7 +29,7 @@ public class MainApp extends Application {
         try {
             this.stage = primaryStage;
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/Login.fxml"));
+            loader.setLocation(getClass().getResource("/view/Login.fxml"));
             loginPane = loader.load();
             
             Scene scene = new Scene(loginPane);

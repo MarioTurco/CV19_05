@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cv19.controller;
+package presenter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +39,7 @@ public class LogoutDialogController implements Initializable {
     @FXML
     public void clickOk(ActionEvent event) throws IOException{
        
-        Parent homePageParent = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
         Scene scene = new Scene(homePageParent);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.hide(); //optional
@@ -52,7 +52,7 @@ public class LogoutDialogController implements Initializable {
         Parent root = null;
         BorderPane borderpane = (BorderPane)scene.lookup("#borderpane");
         try {
-           root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+           root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
         } catch (IOException ex) {
         }
     }
