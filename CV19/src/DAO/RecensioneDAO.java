@@ -27,7 +27,6 @@ public class RecensioneDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return conn;
     }
     
