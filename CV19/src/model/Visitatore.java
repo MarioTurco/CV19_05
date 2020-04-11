@@ -12,6 +12,10 @@ package model;
 public class Visitatore {
     private String nome;
     private String nickname;
+    private String email;
+    private String dataDiNascita;
+    private int recensioniApprovate;
+    private int recensioniRifiutate;
 
     public Visitatore(String nome, String nickname) {
         this.nome = nome;
