@@ -47,7 +47,7 @@ public class MainApp extends Application {
 
         new RecensioneDAO().getAllRecensioni();
         VisitatoriDAO visitatoreDao = new VisitatoriDAO();
-
+        //visitatoreDao.deleteVisitatoreByNickname("mario");
         ArrayList<Visitatore> visitatori = visitatoreDao.getAllVisitatori();      
         System.out.println(visitatori);
 
