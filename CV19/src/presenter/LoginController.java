@@ -104,9 +104,7 @@ public class LoginController {
         Image icon = new Image("/icons/infoIcon.png");
         ImageView iv = new ImageView(icon);
         dg.getDialogPane().setGraphic(iv);
-
-        Optional<ButtonType> result = dg.showAndWait();
-        //ButtonType button = result.orElse(ButtonType.CANCEL);
+        dg.showAndWait();
     }
 
     @FXML

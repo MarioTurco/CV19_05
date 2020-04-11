@@ -44,9 +44,7 @@ public class RecensioniController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final ObservableList<Recensione> data = FXCollections.observableArrayList(
-                new Recensione("Giuseppe", "Struttura1", "tanto tempo fa"),
-                new Recensione("Francesco", "Struttura1", "tanto tempo fa"),
-                new Recensione("Mario", "Struttura2", "tanto tempo fa")
+                
         );
         
         nomeTable.setCellValueFactory(new PropertyValueFactory<Recensione,String>("nome"));

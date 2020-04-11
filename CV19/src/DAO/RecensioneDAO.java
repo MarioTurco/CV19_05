@@ -20,8 +20,8 @@ import model.Recensione;
 public final class RecensioneDAO {
 
     private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
-    private final String user = "admin_cv19";
-    private final String password = "cvuser";
+    private final String user = "cercaviaggi";
+    private final String password = "cercaviaggi";
     
     public Connection getConnection() {
             Connection conn = null;
@@ -36,7 +36,7 @@ public final class RecensioneDAO {
 
     public ArrayList<Recensione> getAllRecensioni() {
         ArrayList<Recensione> allRecensioni = new ArrayList<Recensione>();
-        String query = "SELECT * FROM RECENSIONE";
+        String query = "SELECT * FROM RECENSIONE WHERE STATO='In Approvazione'";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -44,7 +44,8 @@ public final class RecensioneDAO {
             statement = conn.prepareStatement(query);
             rs = statement.executeQuery();
             while (rs.next()) {
-                //todo codice che inserisce le recensioni nell'arrayList
+                Recensione recensioneDaAggiungere=new Recensione(rs.getString(1),rs.getString(4),rs.getString(2),rs.getInt(5));
+                allRecensioni.add(recensioneDaAggiungere);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -57,6 +58,7 @@ public final class RecensioneDAO {
         catch(SQLException | NullPointerException e){
             
         }
+        System.out.println(allRecensioni);
         return allRecensioni;
     }
 

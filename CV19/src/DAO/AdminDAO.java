@@ -63,7 +63,7 @@ public class AdminDAO {
             rs = loginPreparedStatement.executeQuery();
             
             result = !emptyResultSet(rs);
-            System.out.println(!result);
+
             
             loginPreparedStatement.close();
             rs.close();
@@ -71,10 +71,10 @@ public class AdminDAO {
            
         }
         catch(NullPointerException np){
-            np.printStackTrace();
+            //todo: dialog connessione non avvenente
         }
         catch(SQLException e){
-            e.printStackTrace();
+
         } 
         return result;
     }

@@ -41,8 +41,7 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        RecensioneDAO recDao= new RecensioneDAO();
-        recDao.getConnection();
+        new RecensioneDAO().getAllRecensioni();
     }
     
     /*

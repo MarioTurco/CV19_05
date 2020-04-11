@@ -9,23 +9,29 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Recensione {
 
-    private SimpleStringProperty nome;
-    private SimpleStringProperty struttura;
+    private SimpleStringProperty testo;
+    private SimpleStringProperty titolo;
     private SimpleStringProperty data;
-
+    private int valutazione;
     
-    public Recensione(String nome, String struttura, String data) {
-        this.nome = new SimpleStringProperty(nome);
-        this.struttura = new SimpleStringProperty(struttura);
+    public Recensione(String testo, String titolo, String data, int valutazione) {
+        this.testo = new SimpleStringProperty(testo);
+        this.titolo = new SimpleStringProperty(titolo);
         this.data = new SimpleStringProperty(data);
+        this.valutazione = valutazione;
+    }
+
+    @Override
+    public String toString() {
+        return "Recensione{" + "testo=" + testo.get() + ", titolo=" + titolo.get() + ", data=" + data.get() + ", valutazione=" + valutazione + '}';
     }
     
     public String getNome() {
-        return nome.get();
+        return testo.get();
     }
     
     public String getStruttura() {
-        return struttura.get();
+        return titolo.get();
     }
     
     public String getData() {
@@ -33,11 +39,11 @@ public class Recensione {
     }
     
     public void setNome(String nome) {
-        this.nome.set(nome);
+        this.testo.set(nome);
     }
     
     public void setStruttura(String struttura) {
-        this.struttura.set(struttura);
+        this.titolo.set(struttura);
     }
     
     public void setData(String data) {
