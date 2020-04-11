@@ -22,12 +22,9 @@ public class VisitatoriDAO {
     private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
     private final String user = "cercaviaggi";
     private final String password = "cercaviaggi";
-    
-    public VisitatoriDAO(){
-        
-    }
+    private Connection conn = null;
+   
     private Connection getConnection() {
-        Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
             System.out.println("Connesso");
@@ -40,6 +37,7 @@ public class VisitatoriDAO {
         PreparedStatement statement = prepareQuery();
         ResultSet resultSet = executeStatement(statement);
         ArrayList<Visitatore> visitatori =  getVisitatoriFromResultSet(resultSet);
+        chiudiConnessione();
         return visitatori;
     }
     
@@ -47,6 +45,7 @@ public class VisitatoriDAO {
         PreparedStatement statement = prepareQuerySelectByNickname(nickname);
         ResultSet resultSet = executeStatement(statement);
         ArrayList<Visitatore> visitatori = getVisitatoriFromResultSet(resultSet);
+        chiudiConnessione();
         return visitatori.get(0);
     }
     private PreparedStatement prepareQuery(){
@@ -54,11 +53,11 @@ public class VisitatoriDAO {
         String query = "SELECT * FROM public.visitatori ";
         try {
             statement = getConnection().prepareStatement(query);
-        } catch (SQLException sqlException) {
-            //TODO implementare qualcosa qui
+        } catch (SQLException sqlException) {        
         }
         return statement;
     }
+    
     private PreparedStatement prepareQuerySelectByNickname(String nickname) {
         PreparedStatement statement = null;
         String query = "SELECT * FROM public.visitatori WHERE nickname = ?";
@@ -70,6 +69,7 @@ public class VisitatoriDAO {
         }
         return statement;
     }
+    
     private ArrayList<Visitatore> getVisitatoriFromResultSet(ResultSet resultSet) {
         ArrayList<Visitatore> visitatori = new <Visitatore>ArrayList();
         String nome = null, email = null, nickname = null, dataDiNascita = null;
@@ -98,5 +98,13 @@ public class VisitatoriDAO {
             //TODO implementare exception
         }
         return resultSet;
+    }
+
+    private void chiudiConnessione() {
+        try{
+            conn.close();
+        }catch(SQLException sql){
+             
+        }
     }
 }
