@@ -1,15 +1,12 @@
 package cv19;
 
+import DAO.RecensioneDAO;
 import com.jfoenix.controls.JFXButton;
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class MainApp extends Application {
@@ -44,6 +41,8 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        RecensioneDAO recDao= new RecensioneDAO();
+        recDao.getConnection();
     }
     
     /*

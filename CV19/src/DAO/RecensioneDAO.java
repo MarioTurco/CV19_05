@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class RecensioneDAO {
     
-    private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/database-1";
+    private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
     private final String user = "cercaviaggi";
     private final String password = "cercaviaggi";
     
