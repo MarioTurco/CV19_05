@@ -2,6 +2,7 @@ package cv19;
 
 import DAO.VisitatoriDAO;
 import com.jfoenix.controls.JFXButton;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,8 +44,9 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
         VisitatoriDAO visitatoreDao = new VisitatoriDAO();
-        Visitatore v = visitatoreDao.getVisitatoreByNickname("mario");
-        System.out.println(v);
+        ArrayList<Visitatore> visitatori = visitatoreDao.getAllVisitatori();
+        
+        System.out.println(visitatori);
     }
     
     /*
