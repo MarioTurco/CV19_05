@@ -1,6 +1,6 @@
 package cv19;
 
-import DAO.RecensioneDAO;
+import DAO.VisitatoriDAO;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import model.Visitatore;
 
 public class MainApp extends Application {
 
@@ -41,7 +42,13 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+<<<<<<< HEAD
         new RecensioneDAO().getAllRecensioni();
+=======
+        VisitatoriDAO visitatoreDao = new VisitatoriDAO();
+        Visitatore v = visitatoreDao.getVisitatoreByNickname("mario");
+        System.out.println(v);
+>>>>>>> 5480a5ebc448eae5017a8cc897f89e8986773b55
     }
     
     /*

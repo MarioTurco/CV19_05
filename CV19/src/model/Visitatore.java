@@ -48,6 +48,16 @@ public class Visitatore {
     public int getRecensioniRifiutate() {
         return recensioniRifiutate;
     }
+
+    public Visitatore(String nome, String nickname, String email, String dataDiNascita, int recensioniApprovate, int recensioniRifiutate) {
+        this.nome = nome;
+        this.nickname = nickname;
+        this.email = email;
+        this.dataDiNascita = dataDiNascita;
+        this.recensioniApprovate = recensioniApprovate;
+        this.recensioniRifiutate = recensioniRifiutate;
+    }
+    
     public Visitatore(){
         
     }
@@ -70,6 +80,11 @@ public class Visitatore {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    @Override
+    public String toString() {
+        return "Visitatore{" + "nome=" + nome + ", nickname=" + nickname + ", email=" + email + ", dataDiNascita=" + dataDiNascita + ", recensioniApprovate=" + recensioniApprovate + ", recensioniRifiutate=" + recensioniRifiutate + '}';
     }
     
 }
