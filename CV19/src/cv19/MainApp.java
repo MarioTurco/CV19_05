@@ -44,13 +44,14 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
+        
+        /*
         new RecensioneDAO().getAllRecensioni();
         VisitatoriDAO visitatoreDao = new VisitatoriDAO();
         //visitatoreDao.deleteVisitatoreByNickname("mario");
         ArrayList<Visitatore> visitatori = visitatoreDao.getAllVisitatori();      
         System.out.println(visitatori);
-
+        */
     }
     
     /*
