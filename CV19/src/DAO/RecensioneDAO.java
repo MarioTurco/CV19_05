@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Recensione;
 
 /**
@@ -34,8 +36,8 @@ public final class RecensioneDAO {
             return conn;
     }
 
-    public ArrayList<Recensione> getAllRecensioni() {
-        ArrayList<Recensione> allRecensioni = new ArrayList<Recensione>();
+    public ObservableList<Recensione> getAllRecensioni() {
+        ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
         String query = "SELECT * FROM RECENSIONE WHERE STATO='In Approvazione'";
         Connection conn=getConnection();
         PreparedStatement statement=null;

@@ -5,6 +5,7 @@
  */
 package presenter;
 
+import DAO.RecensioneDAO;
 import java.io.IOException;
 import model.Recensione;
 import java.net.URL;
@@ -18,15 +19,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.beans.value.ChangeListener;
 /**
  *
  * @author checc
  */
-public class RecensioniController implements Initializable{
+public class RecensioniController{
     
     @FXML
     private TableView RecensioniTableView;
@@ -40,19 +39,12 @@ public class RecensioniController implements Initializable{
     @FXML
     private TableColumn dataTable;
     
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        final ObservableList<Recensione> data = FXCollections.observableArrayList(
-                
-        );
-        
-        nomeTable.setCellValueFactory(new PropertyValueFactory<Recensione,String>("nome"));
-        strutturaTable.setCellValueFactory(new PropertyValueFactory<Recensione,String>("struttura"));
-        dataTable.setCellValueFactory(new PropertyValueFactory<Recensione,String>("data"));
-        
-        RecensioniTableView.setItems(data);
-}
+    private final RecensioneDAO recensioneDAO;
+    
+    public RecensioniController(){
+        this.recensioneDAO=new RecensioneDAO();
+        riempiTableViewConRecensioni();
+    }
     
     private void viewRecensione(){
        Parent root = null;
@@ -63,5 +55,9 @@ public class RecensioniController implements Initializable{
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
        // borderpane.setCenter(root);
+    }
+    
+    public void riempiTableViewConRecensioni(){
+        RecensioniTableView.setItems(recensioneDAO.getAllRecensioni());
     }
 }
