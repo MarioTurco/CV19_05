@@ -17,7 +17,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -56,6 +58,9 @@ public class RecensioniController implements Initializable {
 
     @FXML
     public void recensioneClick(MouseEvent e) {
+        Scene scene = ((Node) e.getSource()).getScene();
+        borderPanePadre = (BorderPane)scene.lookup("#borderpane");
+        
         if (e.getClickCount() == 2) {
             Recensione recensione = (Recensione) RecensioniTableView.getSelectionModel().getSelectedItem();
             viewRecensione(recensione);
@@ -73,7 +78,7 @@ public class RecensioniController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
-       if(borderPanePadre==null) System.out.println("volevo fare il meme");//borderPanePadre.setCenter(root);
+       borderPanePadre.setCenter(root);
     }
 
     public void riempiTableViewConRecensioni() {
