@@ -22,10 +22,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import DAO.AdminDAO;
-import java.util.Optional;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Screen;
 import javafx.stage.StageStyle;

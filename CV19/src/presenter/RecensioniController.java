@@ -73,8 +73,9 @@ public class RecensioniController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/VisualizzaRecensione.fxml"));
             root = loader.load();
             VisualizzaRecensioneController recensioneController=loader.getController();
-            recensioneController.setRecensioneDaMostrare(recensione);        
-            
+            recensioneController.setIdRecensioneDaMostrare(recensione.getIdRecensione());
+            recensioneController.riempiCampiDettagliRecensione();
+                    
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }

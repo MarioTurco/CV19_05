@@ -5,6 +5,9 @@
  */
 package presenter;
 
+import DAO.RecensioneDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import model.Recensione;
 
 /**
@@ -13,12 +16,36 @@ import model.Recensione;
  */
 public class VisualizzaRecensioneController {
     
-    private Recensione recensioneDaMostrare;
+    @FXML
+    private Label nickNameLabel;
+    
+    @FXML
+    private Label strutturaLabel;
+    
+    @FXML
+    private Label dataLabel;
+    
+    @FXML
+    private Label testoLabel;
+    
+    
+    private int IdrecensioneDaMostrare;
+    private final RecensioneDAO recensioneDAO;
 
-    public void setRecensioneDaMostrare(Recensione recensioneDaMostrare) {
-        this.recensioneDaMostrare = recensioneDaMostrare;
+    public VisualizzaRecensioneController(){
+        this.recensioneDAO = new RecensioneDAO();
     }
     
+    public void setIdRecensioneDaMostrare(int recensioneDaMostrare) {
+        this.IdrecensioneDaMostrare = recensioneDaMostrare;
+    }
     
+    public void riempiCampiDettagliRecensione(){
+        Recensione recensioneDaMostrare=recensioneDAO.getRecensioneById(IdrecensioneDaMostrare);
+        nickNameLabel.setText(recensioneDaMostrare.getAutore());
+        strutturaLabel.setText(recensioneDaMostrare.getStruttura());
+        dataLabel.setText(recensioneDaMostrare.getData());
+        testoLabel.setText(recensioneDaMostrare.getTitolo()+ "\n\n" + recensioneDaMostrare.getTesto());              
+    }
     
 }
