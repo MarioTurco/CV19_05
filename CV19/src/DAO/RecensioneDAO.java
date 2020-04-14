@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Recensione;
@@ -38,7 +37,7 @@ public final class RecensioneDAO {
 
     public ObservableList<Recensione> getAllRecensioni() {
         ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
-        String query = "SELECT * FROM RECENSIONE WHERE STATO='In Approvazione'";
+        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO='in attesa'";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -46,7 +45,10 @@ public final class RecensioneDAO {
             statement = conn.prepareStatement(query);
             rs = statement.executeQuery();
             while (rs.next()) {
-                Recensione recensioneDaAggiungere=new Recensione(rs.getString(1),rs.getString(4),rs.getString(2),rs.getInt(5));
+                Recensione recensioneDaAggiungere = new Recensione();
+                recensioneDaAggiungere.setAutore(rs.getString(1));
+                recensioneDaAggiungere.setStruttura(rs.getString(2));
+                recensioneDaAggiungere.setData(rs.getString(3));
                 allRecensioni.add(recensioneDaAggiungere);
             }
         } catch (SQLException e) {
@@ -60,7 +62,6 @@ public final class RecensioneDAO {
         catch(SQLException | NullPointerException e){
             
         }
-        System.out.println(allRecensioni);
         return allRecensioni;
     }
 

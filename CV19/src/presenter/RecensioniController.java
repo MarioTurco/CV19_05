@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author checc
  */
-public class RecensioniController{
+public class RecensioniController implements Initializable{
     
     @FXML
     private TableView RecensioniTableView;
@@ -42,8 +41,7 @@ public class RecensioniController{
     private final RecensioneDAO recensioneDAO;
     
     public RecensioniController(){
-        this.recensioneDAO=new RecensioneDAO();
-        riempiTableViewConRecensioni();
+        this.recensioneDAO=new RecensioneDAO();       
     }
     
     private void viewRecensione(){
@@ -58,6 +56,20 @@ public class RecensioniController{
     }
     
     public void riempiTableViewConRecensioni(){
-        RecensioniTableView.setItems(recensioneDAO.getAllRecensioni());
+        ObservableList<Recensione> allRecensioni=recensioneDAO.getAllRecensioni();
+        System.out.println(allRecensioni);
+        RecensioniTableView.setItems(allRecensioni);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    nomeTable.setCellValueFactory(
+        new PropertyValueFactory<Recensione,String>("autore"));        
+    strutturaTable.setCellValueFactory(                
+        new PropertyValueFactory<Recensione,String>("struttura"));
+    dataTable.setCellValueFactory(
+        new PropertyValueFactory<Recensione,String>("data")); 
+    
+    riempiTableViewConRecensioni();
     }
 }

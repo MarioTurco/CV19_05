@@ -5,6 +5,7 @@
  */
 package model;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Recensione {
@@ -12,42 +13,74 @@ public class Recensione {
     private SimpleStringProperty testo;
     private SimpleStringProperty titolo;
     private SimpleStringProperty data;
-    private int valutazione;
+    private SimpleIntegerProperty valutazione;
+    private SimpleStringProperty struttura; //TODO DA CAMBIARE 
+    private SimpleStringProperty autore; //TODO DA CAMBIARE
     
-    public Recensione(String testo, String titolo, String data, int valutazione) {
-        this.testo = new SimpleStringProperty(testo);
-        this.titolo = new SimpleStringProperty(titolo);
-        this.data = new SimpleStringProperty(data);
-        this.valutazione = valutazione;
+    public Recensione(){
+        this.testo=new SimpleStringProperty();
+        this.autore=new SimpleStringProperty();
+        this.struttura=new SimpleStringProperty();
+        this.valutazione=new SimpleIntegerProperty();
+        this.data=new SimpleStringProperty();
+        this.titolo=new SimpleStringProperty();
     }
-
+    
+    
     @Override
     public String toString() {
-        return "Recensione{" + "testo=" + testo.get() + ", titolo=" + titolo.get() + ", data=" + data.get() + ", valutazione=" + valutazione + '}';
+        return "Recensione{" + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + autore + '}';
     }
-    
-    public String getNome() {
+
+
+    public String getTesto() {
         return testo.get();
     }
-    
-    public String getStruttura() {
+
+    public void setTesto(String testo) {
+        this.testo.set(testo);
+    }
+
+    public String getTitolo() {
         return titolo.get();
     }
-    
+
+    public void setTitolo(String titolo) {
+        this.titolo.set(titolo);
+    }
+
     public String getData() {
         return data.get();
     }
-    
-    public void setNome(String nome) {
-        this.testo.set(nome);
-    }
-    
-    public void setStruttura(String struttura) {
-        this.titolo.set(struttura);
-    }
-    
+
     public void setData(String data) {
         this.data.set(data);
     }
+
+    public int getValutazione() {
+        return valutazione.get();
+    }
+
+    public void setValutazione(int valutazione) {
+        this.valutazione.set(valutazione);
+    }
+
+    public String getStruttura() {
+        return struttura.get();
+    }
+
+    public void setStruttura(String struttura) {
+        this.struttura.set(struttura);
+    }
+
+    public String getAutore() {
+        return autore.get();
+    }
+
+    public void setAutore(String autore) {
+        this.autore.set(autore);
+    }
+    
+
 
 }
