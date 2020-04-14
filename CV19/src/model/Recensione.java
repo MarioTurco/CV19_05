@@ -9,7 +9,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Recensione {
-
+    
+    private SimpleIntegerProperty idRecensione;
     private SimpleStringProperty testo;
     private SimpleStringProperty titolo;
     private SimpleStringProperty data;
@@ -24,12 +25,21 @@ public class Recensione {
         this.valutazione=new SimpleIntegerProperty();
         this.data=new SimpleStringProperty();
         this.titolo=new SimpleStringProperty();
+        this.idRecensione=new SimpleIntegerProperty();
+    }
+
+    public int getIdRecensione() {
+        return idRecensione.get();
+    }
+
+    public void setIdRecensione(int idRecensione) {
+        this.idRecensione.set(idRecensione);
     }
     
     
     @Override
     public String toString() {
-        return "Recensione{" + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + autore + '}';
+        return "Recensione{id="+ idRecensione + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + autore + '}';
     }
 
 

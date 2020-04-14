@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,56 +21,75 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+
 /**
  *
  * @author checc
  */
-public class RecensioniController implements Initializable{
-    
+public class RecensioniController implements Initializable {
+
     @FXML
     private TableView RecensioniTableView;
-    
+
     @FXML
     private TableColumn nomeTable;
-    
+
     @FXML
     private TableColumn strutturaTable;
-    
+
     @FXML
     private TableColumn dataTable;
-    
+
     private final RecensioneDAO recensioneDAO;
     
-    public RecensioniController(){
-        this.recensioneDAO=new RecensioneDAO();       
-    }
-    
-    private void viewRecensione(){
-       Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/view/VisualizzaRecensione.fxml"));
+    private BorderPane borderPanePadre;
 
+    public void setBorderPanePadre(BorderPane borderPanePadre) {
+        this.borderPanePadre = borderPanePadre;
+    }
+
+    public RecensioniController() {
+        this.recensioneDAO = new RecensioneDAO();
+    }
+
+    @FXML
+    public void recensioneClick(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            Recensione recensione = (Recensione) RecensioniTableView.getSelectionModel().getSelectedItem();
+            viewRecensione(recensione);
+        }
+    }
+
+    private void viewRecensione(Recensione recensione) {
+        Parent root = null;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/VisualizzaRecensione.fxml"));
+            root = loader.load();
+            VisualizzaRecensioneController recensioneController=loader.getController();
+            recensioneController.setRecensioneDaMostrare(recensione);        
+            
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
-       // borderpane.setCenter(root);
+       if(borderPanePadre==null) System.out.println("volevo fare il meme");//borderPanePadre.setCenter(root);
     }
-    
-    public void riempiTableViewConRecensioni(){
-        ObservableList<Recensione> allRecensioni=recensioneDAO.getAllRecensioni();
-        System.out.println(allRecensioni);
-        RecensioniTableView.setItems(allRecensioni);
+
+    public void riempiTableViewConRecensioni() {
+        RecensioniTableView.setItems(recensioneDAO.getAllRecensioni());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    nomeTable.setCellValueFactory(
-        new PropertyValueFactory<Recensione,String>("autore"));        
-    strutturaTable.setCellValueFactory(                
-        new PropertyValueFactory<Recensione,String>("struttura"));
-    dataTable.setCellValueFactory(
-        new PropertyValueFactory<Recensione,String>("data")); 
-    
-    riempiTableViewConRecensioni();
+        nomeTable.setCellValueFactory(
+                new PropertyValueFactory<Recensione, String>("autore"));
+        strutturaTable.setCellValueFactory(
+                new PropertyValueFactory<Recensione, String>("struttura"));
+        dataTable.setCellValueFactory(
+                new PropertyValueFactory<Recensione, String>("data"));
+
+        riempiTableViewConRecensioni();
     }
+
 }

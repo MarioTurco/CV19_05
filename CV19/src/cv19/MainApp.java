@@ -1,16 +1,12 @@
 package cv19;
 
-import DAO.RecensioneDAO;
-import DAO.VisitatoriDAO;
 import com.jfoenix.controls.JFXButton;
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import model.Visitatore;
 
 public class MainApp extends Application {
 

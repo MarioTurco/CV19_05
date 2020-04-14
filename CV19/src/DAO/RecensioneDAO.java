@@ -37,7 +37,7 @@ public final class RecensioneDAO {
 
     public ObservableList<Recensione> getAllRecensioni() {
         ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
-        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO='in attesa'";
+        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO='in attesa'";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -49,6 +49,7 @@ public final class RecensioneDAO {
                 recensioneDaAggiungere.setAutore(rs.getString(1));
                 recensioneDaAggiungere.setStruttura(rs.getString(2));
                 recensioneDaAggiungere.setData(rs.getString(3));
+                recensioneDaAggiungere.setIdRecensione(rs.getInt(4));
                 allRecensioni.add(recensioneDaAggiungere);
             }
         } catch (SQLException e) {
@@ -64,5 +65,6 @@ public final class RecensioneDAO {
         }
         return allRecensioni;
     }
-
 }
+
+   

@@ -92,8 +92,14 @@ public class SideMenuController {
 
     public void loadUI(String ui) {
         Parent root = null;
+        FXMLLoader loader = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/view/"+ ui + ".fxml"));
+            loader = new FXMLLoader(getClass().getResource("/view/"+ ui + ".fxml"));
+            root = loader.load();
+            if(ui.equals("Recensioni")){
+                RecensioniController recensioniController = (RecensioniController) loader.getController();
+                recensioniController.setBorderPanePadre(borderpane);
+            }
 
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
