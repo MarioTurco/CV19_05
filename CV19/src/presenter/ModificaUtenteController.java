@@ -80,7 +80,6 @@ public class ModificaUtenteController {
             mostraDialog("Azione eseguita", "Utente modificato", 0);
             utentiView();
         } catch (SQLException ex) {
-            ex.printStackTrace();
             mostraDialog("Errore", "Qualcosa è andato storto", 1);
         }
 

@@ -64,12 +64,12 @@
                   <Insets left="50.0" right="65.0" top="150.0" />
                </VBox.margin>
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#annullaClick" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 30; -fx-background-color: #5EACE2;" text="Annulla" textFill="WHITE">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#annullaClick" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 30; -fx-background-color: #6C757D;" text="Annulla" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="25.0" />
                      </font>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#confermaClick" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 30; -fx-background-color: #5EACE2;" text="Conferma" textFill="WHITE">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#confermaClick" prefHeight="48.0" prefWidth="171.0" style="-fx-background-radius: 30; -fx-background-color: #5EACE2;" text="Conferma" textFill="WHITE" translateX="-20.0">
                      <font>
                         <Font name="Segoe UI" size="25.0" />
                      </font>
