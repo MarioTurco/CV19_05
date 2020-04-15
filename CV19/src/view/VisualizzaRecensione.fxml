@@ -9,11 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presenter.VisualizzaRecensioneController">
    <children>
       <VBox prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;">
          <children>
+            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="4.0" stylesheets="@../css/ratingBar.css" translateX="607.0" translateY="96.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView>

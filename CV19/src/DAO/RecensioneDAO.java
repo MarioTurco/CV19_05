@@ -36,7 +36,7 @@ public final class RecensioneDAO {
 
     public ObservableList<Recensione> getAllRecensioni() {
         ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
-        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO_RECENSIONE='in attesa'";
+        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO_RECENSIONE='In attesa'";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -99,8 +99,8 @@ public final class RecensioneDAO {
     }
     
     private String getStatoByBoolean(boolean accettata){
-        if(accettata) return "accettata";
-        else return "rifiutata";
+        if(accettata) return "Accettata";
+        else return "Rifiutata";
     }
     
     public void chiudiRecensioneById(int idRecensione, boolean accettata){

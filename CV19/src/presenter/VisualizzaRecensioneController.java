@@ -25,6 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 import model.Recensione;
+import org.controlsfx.control.Rating;
 
 /**
  *
@@ -37,6 +38,9 @@ public class VisualizzaRecensioneController {
     
     @FXML
     private Label strutturaLabel;
+    
+    @FXML
+    private Rating ratingStars;
     
     @FXML
     private Label dataLabel;
@@ -66,6 +70,7 @@ public class VisualizzaRecensioneController {
         dataLabel.setText(recensioneDaMostrare.getData());
         testoLabel.setText(recensioneDaMostrare.getTesto()); 
         titoloRecensione.setText(recensioneDaMostrare.getTitolo());
+        ratingStars.setRating(3);
     }
     
     @FXML
