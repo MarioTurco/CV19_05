@@ -22,7 +22,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import DAO.AdminDAO;
+import javafx.concurrent.Task;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Screen;
@@ -107,7 +109,7 @@ public class LoginController {
 
     @FXML
     public void clickLogin(ActionEvent event) {
-
+        setLoadingCursor(event);
         try {
             if (tryLogin()) {
                 loadSideMenuPanelAfterLogin(event);
@@ -118,9 +120,21 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        ((Node) event.getSource()).getScene().setCursor(Cursor.DEFAULT);
     }
 
+    
+    private void setLoadingCursor(ActionEvent event){
+        Scene scena = ((Node) event.getSource()).getScene();
+        Thread th = new Thread(() -> {
+           scena.setCursor(Cursor.WAIT);
+        }); 
+        
+        th.setDaemon(true);
+        th.start();
+         
+    }
+    
     private void loadRecensioniView(Scene homePageScene) {
         Parent root = null;
         BorderPane borderpane = (BorderPane) homePageScene.lookup("#borderpane");
