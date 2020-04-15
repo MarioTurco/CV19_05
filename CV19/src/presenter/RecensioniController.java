@@ -58,7 +58,7 @@ public class RecensioniController implements Initializable {
         
         if (e.getClickCount() == 2) {
             Recensione recensione = (Recensione) RecensioniTableView.getSelectionModel().getSelectedItem();
-            viewRecensione(recensione);
+            if(recensione!=null) viewRecensione(recensione);
         }
     }
 
@@ -68,7 +68,7 @@ public class RecensioniController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/VisualizzaRecensione.fxml"));
             root = loader.load();
             VisualizzaRecensioneController recensioneController=loader.getController();
-            recensioneController.setIdRecensioneDaMostrare(recensione.getIdRecensione());
+            recensioneController.setRecensioneDaMostrare(recensione);
             recensioneController.riempiCampiDettagliRecensione();
                     
         } catch (IOException ex) {
@@ -84,7 +84,7 @@ public class RecensioniController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nomeTable.setCellValueFactory(
-                new PropertyValueFactory<Recensione, String>("autore"));
+                new PropertyValueFactory<Recensione, String>("nickNameAutore"));
         strutturaTable.setCellValueFactory(
                 new PropertyValueFactory<Recensione, String>("struttura"));
         dataTable.setCellValueFactory(
