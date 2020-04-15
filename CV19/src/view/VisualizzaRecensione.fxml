@@ -15,7 +15,7 @@
    <children>
       <VBox prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;">
          <children>
-            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="4.0" stylesheets="@../css/ratingBar.css" translateX="607.0" translateY="96.0" />
+            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="3.0" translateX="607.0" translateY="96.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView>

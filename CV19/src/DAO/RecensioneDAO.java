@@ -67,7 +67,7 @@ public final class RecensioneDAO {
 
     public Recensione getRecensioneById(int id){
         Recensione recensioneDaRitornare=null;
-        String query = "SELECT R.AUTORE,U.NOME,S.NOME,R.DATARECENSIONE,R.TESTO,R.TITOLO FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE R.ID_RECENSIONE=?";
+        String query = "SELECT R.AUTORE,U.NOME,S.NOME,R.DATARECENSIONE,R.TESTO,R.TITOLO,R.VALUTAZIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE R.ID_RECENSIONE=?";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -83,6 +83,7 @@ public final class RecensioneDAO {
                 recensioneDaRitornare.setTesto(rs.getString(5));
                 recensioneDaRitornare.setTitolo(rs.getString(6));
                 recensioneDaRitornare.setIdRecensione(id);
+                recensioneDaRitornare.setValutazione(rs.getInt(7));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
