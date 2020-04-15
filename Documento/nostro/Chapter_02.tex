@@ -27,20 +27,23 @@ Il sistema infatti è composto da diversi client che tramite internet interagisc
         \caption{Architettura client server}
     \end{figure}
 \end{center}
-Per quanto riguarda l'architettura interna dei client si è deciso di utilizzare il modello MVC
+\subsection{Model-View-Presenter}
+Per quanto riguarda l'architettura interna dei client si è deciso di utilizzare il modello Model-View-Presenter
 favorendo la separazione dei componenti software del sistema ed in particolare separandone le responsabilità.
-In questo modo si riesce ad ottenere alta coesione e basso accoppiamento, favorendo notevolemente
-la manutenibilità.\\
-In particolare:\\
+In questo modo si riesce ad ottenere alta coesione e basso accoppiamento, ottenendo una buona manutenibilà.\\
+A favore di ciò il progetto è diviso in tre sottocartelle principali: Model, View e Presenter.\\
+\\
+Il modello mvp è un'evoluzione del modello Model View Controller ed è usato principalmente per creare user interfaces 
+ed in particolare:
+la componente \textbf{View} è una componente passiva deputata soltanto alla visualizzazione dei dati.\\
 la componente \textbf{Model} ha la responsabilità di fornire i metodi per accedere
 ai dati utili all'applicazione, ha conoscenza del dominio applicativo ed è indipendente
 dagli altri sottosistemi.\\
-la componente \textbf{View} è responsabili della visualizzazione dei dati conenuti nel Model.\\
-la componente \textbf{Controller} ha la responsabilità di gestire l'input dell'utente aggiornando di conseguenza
-la View ed il Model.
+la componente \textbf{Presenter} fa da "middle man" tra la View ed il Model e si occupa di prendere i dati dal model, 
+fornirli alla view e gestire gli input dell'utente
 \begin{center}
     \begin{figure}[H]
-        \includegraphics[width=\textwidth]{Figures/MVC client.png}
+        \includegraphics[width=\textwidth]{Figures/MVP client.png}
         \caption{Architettura Model-View-Controller}
     \end{figure}
 \end{center}
