@@ -59,9 +59,9 @@
             </HBox>
             <HBox prefHeight="50.0" prefWidth="872.0">
                <children>
-                  <Label id="nomeStrutturaLabel" fx:id="strutturaLabel1" text="Testo Recensione" textFill="#707070" translateX="49.0">
+                  <Label id="nomeStrutturaLabel" fx:id="titoloRecensione" text="Titolo Recensione" textFill="#2c2c2c" translateX="49.0">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="2.0" />

@@ -44,6 +44,9 @@ public class VisualizzaRecensioneController {
     @FXML
     private Label testoLabel;
     
+    @FXML
+    private Label titoloRecensione;
+    
     private BorderPane borderPanePadre;
     private int IdrecensioneDaMostrare;
     private final RecensioneDAO recensioneDAO;
@@ -61,7 +64,8 @@ public class VisualizzaRecensioneController {
         nickNameLabel.setText(recensioneDaMostrare.getAutore());
         strutturaLabel.setText(recensioneDaMostrare.getStruttura());
         dataLabel.setText(recensioneDaMostrare.getData());
-        testoLabel.setText(recensioneDaMostrare.getTitolo()+ "\n\n" + recensioneDaMostrare.getTesto());              
+        testoLabel.setText(recensioneDaMostrare.getTesto()); 
+        titoloRecensione.setText(recensioneDaMostrare.getTitolo());
     }
     
     @FXML
