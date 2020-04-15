@@ -16,16 +16,26 @@ public class Recensione {
     private SimpleStringProperty data;
     private SimpleIntegerProperty valutazione;
     private SimpleStringProperty struttura; //TODO DA CAMBIARE 
-    private SimpleStringProperty autore; //TODO DA CAMBIARE
+    private SimpleStringProperty nomeAutore; //TODO DA CAMBIARE
+    private SimpleStringProperty nickNameAutore;
+
+    public String getNickNameAutore() {
+        return nickNameAutore.get();
+    }
+
+    public void setNickNameAutore(String nickNameAutore) {
+        this.nickNameAutore.set(nickNameAutore);
+    }
     
     public Recensione(){
         this.testo=new SimpleStringProperty();
-        this.autore=new SimpleStringProperty();
+        this.nomeAutore=new SimpleStringProperty();
         this.struttura=new SimpleStringProperty();
         this.valutazione=new SimpleIntegerProperty();
         this.data=new SimpleStringProperty();
         this.titolo=new SimpleStringProperty();
         this.idRecensione=new SimpleIntegerProperty();
+        this.nickNameAutore= new SimpleStringProperty();
     }
 
     public int getIdRecensione() {
@@ -39,7 +49,7 @@ public class Recensione {
     
     @Override
     public String toString() {
-        return "Recensione{id="+ idRecensione + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + autore + '}';
+        return "Recensione{id="+ idRecensione + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + nomeAutore + '}';
     }
 
 
@@ -83,12 +93,12 @@ public class Recensione {
         this.struttura.set(struttura);
     }
 
-    public String getAutore() {
-        return autore.get();
+    public String getNomeAutore() {
+        return nomeAutore.get();
     }
 
-    public void setAutore(String autore) {
-        this.autore.set(autore);
+    public void setNomeAutore(String autore) {
+        this.nomeAutore.set(autore);
     }
     
 

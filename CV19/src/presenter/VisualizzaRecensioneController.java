@@ -52,20 +52,19 @@ public class VisualizzaRecensioneController {
     private Label titoloRecensione;
     
     private BorderPane borderPanePadre;
-    private int IdrecensioneDaMostrare;
+    private Recensione recensioneDaMostrare;
     private final RecensioneDAO recensioneDAO;
 
     public VisualizzaRecensioneController(){
         this.recensioneDAO = new RecensioneDAO();
     }
     
-    public void setIdRecensioneDaMostrare(int IdrecensioneDaMostrare) {
-        this.IdrecensioneDaMostrare = IdrecensioneDaMostrare;
+    public void setRecensioneDaMostrare(Recensione recensioneDaMostrare) {
+        this.recensioneDaMostrare = recensioneDaMostrare;
     }
     
     public void riempiCampiDettagliRecensione(){
-        Recensione recensioneDaMostrare=recensioneDAO.getRecensioneById(IdrecensioneDaMostrare);
-        nickNameLabel.setText(recensioneDaMostrare.getAutore());
+        nickNameLabel.setText(recensioneDaMostrare.getNomeAutore()+" - "+recensioneDaMostrare.getNickNameAutore());
         strutturaLabel.setText(recensioneDaMostrare.getStruttura());
         dataLabel.setText(recensioneDaMostrare.getData());
         testoLabel.setText(recensioneDaMostrare.getTesto()); 
@@ -75,14 +74,14 @@ public class VisualizzaRecensioneController {
     
     @FXML
     public void accettaRecensione(ActionEvent e){
-        recensioneDAO.chiudiRecensioneById(this.IdrecensioneDaMostrare,true);
+        recensioneDAO.chiudiRecensioneById(this.recensioneDaMostrare.getIdRecensione(),true);
         mostraDialogAzioneEseguita("accettata");
         loadListaRecensioni(e);
     }
     
     @FXML
     public void rifiutaRecensione(ActionEvent e){
-        recensioneDAO.chiudiRecensioneById(this.IdrecensioneDaMostrare,false);
+        recensioneDAO.chiudiRecensioneById(this.recensioneDaMostrare.getIdRecensione(),false);
         mostraDialogAzioneEseguita("rifiutata");
         loadListaRecensioni(e);
     }
