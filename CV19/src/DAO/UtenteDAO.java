@@ -63,11 +63,24 @@ public class UtenteDAO {
         }
         return allUtenti;
     }
-
+    public void modifyUtente(String vecchioNickname, String nuovoNickname){
+        Connection conn = null;
+        PreparedStatement statement = null;
+        String query = "UPDATE utente SET nickname=? WHERE nickname=?";
+        try{
+            conn = getConnection();
+            statement = conn.prepareStatement(query);
+            statement.setString(1, nuovoNickname);
+            statement.setString(2, vecchioNickname);
+            statement.executeQuery();
+        }
+        catch(SQLException sqlExceptio){
+            
+        }
+    }
     public void deleteVisitatoreByNickname(String nickname) {
         PreparedStatement statement = prepareDeleteQueryWithNickname(nickname);
         executeStatement(statement);
-
     }
 
     public Utente getVisitatoreByNickname(String nickname) {
@@ -80,7 +93,7 @@ public class UtenteDAO {
             statement = conn.prepareStatement(query);
             statement.setString(1, nickname);
             resultSet = statement.executeQuery();
-            if (resultSet.next()) {           
+            if (resultSet.next()) {
                 utente.setNome(resultSet.getString("nome"));
                 utente.setEmail(resultSet.getString("email"));
                 utente.setNickname(resultSet.getString("nickname"));
@@ -93,7 +106,7 @@ public class UtenteDAO {
             System.out.println(e.toString());
         }
         return utente;
-    }   
+    }
 
     private PreparedStatement prepareDeleteQueryWithNickname(String nickname) {
         PreparedStatement statement = null;
