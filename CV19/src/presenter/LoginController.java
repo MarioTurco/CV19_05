@@ -22,6 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import DAO.AdminDAO;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
@@ -44,8 +45,6 @@ public class LoginController {
 
     private AdminDAO administratorDao;
 
-    
-    
     public LoginController() {
         initAdminDAO();
     }
@@ -54,9 +53,6 @@ public class LoginController {
         administratorDao = new AdminDAO();
     }
 
-    
-    
-    
     private Parent getParent() throws IOException {
         return FXMLLoader.load(getClass().getResource("/view/SideMenu.fxml"));
     }
@@ -107,34 +103,65 @@ public class LoginController {
         dg.showAndWait();
     }
 
+    private void checkLoginWithThread(ActionEvent event, Scene scena) throws InterruptedException {
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        boolean[] loginSuccess = new boolean[1];
+
+        Thread th = new Thread(() -> {
+
+            if (administratorDao.tryLogin(username, password)) {
+
+                Platform.runLater(() -> {
+                    try {
+                        System.out.println("Ok");
+                        loadSideMenuPanelAfterLogin(event);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+            } else {
+                Platform.runLater(() -> {
+                    System.out.println("No");
+                    showLoginErrorDialog();
+                    
+                });
+            }
+            scena.setCursor(Cursor.DEFAULT);
+
+        });
+
+        th.start();
+    }
+
     @FXML
-    public void clickLogin(ActionEvent event) {
-        setLoadingCursor(event);
+
+    public void clickLogin(ActionEvent event){
+        Scene scena = ((Node) event.getSource()).getScene();
+        scena.setCursor(Cursor.WAIT);
+        try{
+            checkLoginWithThread(event, scena);
+        }
+        catch(InterruptedException e){
+           
+        }
+        /*
         try {
-            if (tryLogin()) {
+            if (checkLoginWithThread()) {
+                System.out.println("Ok");
                 loadSideMenuPanelAfterLogin(event);
             } else {
+                System.out.println("No");
                 showLoginErrorDialog();
             }
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        ((Node) event.getSource()).getScene().setCursor(Cursor.DEFAULT);
+        */
+        
     }
 
-    
-    private void setLoadingCursor(ActionEvent event){
-        Scene scena = ((Node) event.getSource()).getScene();
-        Thread th = new Thread(() -> {
-           scena.setCursor(Cursor.WAIT);
-        }); 
-        
-        th.setDaemon(true);
-        th.start();
-         
-    }
-    
     private void loadRecensioniView(Scene homePageScene) {
         Parent root = null;
         BorderPane borderpane = (BorderPane) homePageScene.lookup("#borderpane");
