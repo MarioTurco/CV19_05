@@ -100,7 +100,7 @@ public final class RecensioneDAO {
     }
     
     private String getStatoByBoolean(boolean accettata){
-        if(accettata) return "Accettata";
+        if(accettata) return "Approvata";
         else return "Rifiutata";
     }
     
