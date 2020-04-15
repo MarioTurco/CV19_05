@@ -28,7 +28,6 @@ public final class RecensioneDAO {
             Connection conn = null;
             try {
                 conn = DriverManager.getConnection(url, user, password);
-                System.out.println("Connected to the PostgreSQL server successfully.");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -97,6 +96,35 @@ public final class RecensioneDAO {
             
         }
         return recensioneDaRitornare;
+    }
+    
+    private String getStatoByBoolean(boolean accettata){
+        if(accettata) return "accettato";
+        else return "rifiutato";
+    }
+    
+    public void chiudiRecensioneById(int idRecensione, boolean accettata){
+        String query="update recensione set stato=? where id_recensione=?";
+        Connection conn=getConnection();
+        PreparedStatement statement=null;
+        String stato=getStatoByBoolean(accettata);
+        try{
+            statement=conn.prepareStatement(query);
+            statement.setString(1,stato);
+            statement.setInt(2,idRecensione);
+            statement.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        try{
+            statement.close();
+            conn.close();
+        }
+        catch(SQLException | NullPointerException e){
+            
+        }
+        
     }
 }
 

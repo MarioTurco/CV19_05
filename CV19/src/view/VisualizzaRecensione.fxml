@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -68,19 +68,19 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 35;" text="Rifiuta" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
+                  <JFXButton buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#rifiutaRecensione" prefHeight="48.0" prefWidth="171.0" ripplerFill="#92c8d7" style="-fx-background-color: #5EACE2; -fx-background-radius: 35;" text="Rifiuta" textAlignment="JUSTIFY" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="230.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 35;" text="Accetta" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
-                  </Button>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#accettaRecensione" prefHeight="48.0" prefWidth="171.0" ripplerFill="#92c8d7" style="-fx-background-color: #5EACE2; -fx-background-radius: 35;" text="Accetta" textAlignment="JUSTIFY" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </JFXButton>
                </children>
                <VBox.margin>
                   <Insets left="150.0" right="150.0" />

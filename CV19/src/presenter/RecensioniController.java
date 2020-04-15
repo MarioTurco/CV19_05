@@ -12,8 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,9 +46,6 @@ public class RecensioniController implements Initializable {
     
     private BorderPane borderPanePadre;
 
-    public void setBorderPanePadre(BorderPane borderPanePadre) {
-        this.borderPanePadre = borderPanePadre;
-    }
 
     public RecensioniController() {
         this.recensioneDAO = new RecensioneDAO();
@@ -79,7 +74,7 @@ public class RecensioniController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
-       borderPanePadre.setCenter(root);
+        borderPanePadre.setCenter(root);
     }
 
     public void riempiTableViewConRecensioni() {
