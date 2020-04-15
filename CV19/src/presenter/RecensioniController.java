@@ -52,7 +52,7 @@ public class RecensioniController implements Initializable {
     }
 
     @FXML
-    public void recensioneClick(MouseEvent e) {
+    private void recensioneClick(MouseEvent e) {
         Scene scene = ((Node) e.getSource()).getScene();
         borderPanePadre = (BorderPane)scene.lookup("#borderpane");
         
@@ -77,7 +77,7 @@ public class RecensioniController implements Initializable {
         borderPanePadre.setCenter(root);
     }
 
-    public void riempiTableViewConRecensioni() {
+    private void riempiTableViewConRecensioni() {
         RecensioniTableView.setItems(recensioneDAO.getAllRecensioni());
     }
 
