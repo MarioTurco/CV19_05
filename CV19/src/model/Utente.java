@@ -9,7 +9,7 @@ package model;
  *
  * @author checc
  */
-public class Visitatore {
+public class Utente {
     private String nome;
     private String nickname;
     private String email;
@@ -49,7 +49,7 @@ public class Visitatore {
         return recensioniRifiutate;
     }
 
-    public Visitatore(String nome, String nickname, String email, String dataDiNascita, int recensioniApprovate, int recensioniRifiutate) {
+    public Utente(String nome, String nickname, String email, String dataDiNascita, int recensioniApprovate, int recensioniRifiutate) {
         this.nome = nome;
         this.nickname = nickname;
         this.email = email;
@@ -58,10 +58,10 @@ public class Visitatore {
         this.recensioniRifiutate = recensioniRifiutate;
     }
     
-    public Visitatore(){
+    public Utente(){
         
     }
-    public Visitatore(String nome, String nickname) {
+    public Utente(String nome, String nickname) {
         this.nome = nome;
         this.nickname = nickname;
     }

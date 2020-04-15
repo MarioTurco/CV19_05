@@ -5,7 +5,8 @@
  */
 package presenter;
 
-import model.Visitatore;
+import DAO.UtenteDAO;
+import model.Utente;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -31,29 +32,36 @@ public class VisitatoriController implements Initializable {
     @FXML
     private TableColumn nicknameCol;
     
+    private UtenteDAO utenteDAO;
     
+    public VisitatoriController(){
+        this.utenteDAO = new UtenteDAO();
+    }
+    
+    private void riempiTabellaUtenti(){
+        VisitatoriTableView.setItems(utenteDAO.gettAllUtente());
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final ObservableList<Visitatore> data = FXCollections.observableArrayList(
-                new Visitatore("Giuseppe", "peppOPazz"),
-                new Visitatore("Francesco", "pizzeriamemeriello"),
-                new Visitatore("Mario", "marioTurbo"),
-                new Visitatore("Giuseppe", "peppOPazz"),
-                new Visitatore("Francesco", "pizzeriamemeriello"),
-                new Visitatore("Mario", "marioTurbo"),
-                new Visitatore("Giuseppe", "peppOPazz"),
-                new Visitatore("Francesco", "pizzeriamemeriello"),
-                new Visitatore("Mario", "marioTurbo"),
-                new Visitatore("Giuseppe", "peppOPazz"),
-                new Visitatore("Francesco", "pizzeriamemeriello"),
-                new Visitatore("Mario", "marioTurbo")
+        final ObservableList<Utente> data = FXCollections.observableArrayList(new Utente("Giuseppe", "peppOPazz"),
+                new Utente("Francesco", "pizzeriamemeriello"),
+                new Utente("Mario", "marioTurbo"),
+                new Utente("Giuseppe", "peppOPazz"),
+                new Utente("Francesco", "pizzeriamemeriello"),
+                new Utente("Mario", "marioTurbo"),
+                new Utente("Giuseppe", "peppOPazz"),
+                new Utente("Francesco", "pizzeriamemeriello"),
+                new Utente("Mario", "marioTurbo"),
+                new Utente("Giuseppe", "peppOPazz"),
+                new Utente("Francesco", "pizzeriamemeriello"),
+                new Utente("Mario", "marioTurbo")
         );
         
-        nomeCol.setCellValueFactory(new PropertyValueFactory<Visitatore,String>("nome"));
-        nicknameCol.setCellValueFactory(new PropertyValueFactory<Visitatore,String>("nickname"));
-        
-        VisitatoriTableView.setItems(data);
+        nomeCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nome"));
+        nicknameCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nickname"));
+        riempiTabellaUtenti();
+        //VisitatoriTableView.setItems(data);
     }
     
 }
