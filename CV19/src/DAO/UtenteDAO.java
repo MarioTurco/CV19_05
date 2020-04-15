@@ -66,11 +66,12 @@ public class UtenteDAO {
     }
     public void modifyUtente(String vecchioNickname, String nuovoNickname, String nuovaPassword){
         if(nuovaPassword != null)
-           modifyPasswordUtente(vecchioNickname, nuovaPassword);
+           modifyPassword(vecchioNickname, nuovaPassword);
         if(nuovoNickname != null)
-             modifyNicknameUtente(vecchioNickname,nuovoNickname );
+             modifyNickname(vecchioNickname,nuovoNickname );
     }
-    private void modifyPasswordUtente(String vecchioNickname, String nuovaPassword){
+    
+    private void modifyPassword(String vecchioNickname, String nuovaPassword){
         Connection conn = null;
         PreparedStatement statement = null;
         String salt = PasswordUtils.getSalt(30);
@@ -88,7 +89,7 @@ public class UtenteDAO {
             
         }
     }
-    private void modifyNicknameUtente(String vecchioNickname, String nuovoNickname){
+    private void modifyNickname(String vecchioNickname, String nuovoNickname){
         Connection conn = null;
         PreparedStatement statement = null;
         String query = "UPDATE utente SET nickname=? WHERE nickname=?";
