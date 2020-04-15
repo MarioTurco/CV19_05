@@ -23,13 +23,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import model.Recensione;
 
 /**
  *
  * @author checc
  */
-public class VisitatoriController implements Initializable {
+public class UtentiController implements Initializable {
     
     @FXML
     private TableView VisitatoriTableView;
@@ -44,7 +43,7 @@ public class VisitatoriController implements Initializable {
     
     private BorderPane borderPanePadre;
     
-    public VisitatoriController(){
+    public UtentiController(){
         this.utenteDAO = new UtenteDAO();
     }
     

@@ -64,52 +64,52 @@ public class UtenteDAO {
         }
         return allUtenti;
     }
-    public void modifyUtente(String vecchioNickname, String nuovoNickname, String nuovaPassword){
-        if(nuovaPassword != null)
-           modifyPassword(vecchioNickname, nuovaPassword);
-        if(nuovoNickname != null)
-             modifyNickname(vecchioNickname,nuovoNickname );
+
+    public void modifyUtente(String vecchioNickname, String nuovoNickname, String nuovaPassword) throws SQLException {
+        System.out.println(nuovaPassword);
+        System.out.println(nuovoNickname);
+        System.out.println(vecchioNickname);
+        if (!nuovaPassword.equals("")) {
+            modifyPassword(vecchioNickname, nuovaPassword);
+        }
+        if (!nuovoNickname.equals("")) {
+            modifyNickname(vecchioNickname, nuovoNickname);
+        }
     }
-    
-    private void modifyPassword(String vecchioNickname, String nuovaPassword){
+
+    private void modifyPassword(String vecchioNickname, String nuovaPassword) throws SQLException {
         Connection conn = null;
         PreparedStatement statement = null;
         String salt = PasswordUtils.getSalt(30);
         String passwordCriptata = PasswordUtils.generateSecurePassword(nuovaPassword, salt);
         String query = "UPDATE utente SET password=?, salt=? WHERE nickname=?";
-        try{
-            conn = getConnection();
-            statement = conn.prepareStatement(query);
-            statement.setString(1, passwordCriptata);
-            statement.setString(2, salt);
-            statement.setString(3, vecchioNickname);
-            statement.executeQuery();
-        }
-        catch(SQLException sqlExceptio){
-            
-        }
+
+        conn = getConnection();
+        statement = conn.prepareStatement(query);
+        statement.setString(1, passwordCriptata);
+        statement.setString(2, salt);
+        statement.setString(3, vecchioNickname);
+        statement.executeUpdate();
+
     }
-    private void modifyNickname(String vecchioNickname, String nuovoNickname){
+
+    private void modifyNickname(String vecchioNickname, String nuovoNickname) throws SQLException {
         Connection conn = null;
         PreparedStatement statement = null;
         String query = "UPDATE utente SET nickname=? WHERE nickname=?";
-        try{
-            conn = getConnection();
-            statement = conn.prepareStatement(query);
-            statement.setString(1, nuovoNickname);
-            statement.setString(2, vecchioNickname);
-            statement.executeQuery();
-        }
-        catch(SQLException sqlExceptio){
-            
-        }
+        conn = getConnection();
+        statement = conn.prepareStatement(query);
+        statement.setString(1, nuovoNickname);
+        statement.setString(2, vecchioNickname);
+        statement.executeUpdate();
     }
-    public void deleteVisitatoreByNickname(String nickname) {
+
+    public void deleteUtenteByNickname(String nickname) {
         PreparedStatement statement = prepareDeleteQueryWithNickname(nickname);
         executeStatement(statement);
     }
 
-    public Utente getVisitatoreByNickname(String nickname) {
+    public Utente getUtenteByNickname(String nickname) {
         Utente utente = new Utente();
         String query = "SELECT * FROM utente WHERE nickname=?";
         Connection conn = getConnection();

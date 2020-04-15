@@ -128,7 +128,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Elimina" textFill="WHITE">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#eliminaUtente" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Elimina" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="25.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Insets right="180.0" />
                      </HBox.margin>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Modifica" textFill="WHITE">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#modificaUtente" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #5EACE2; -fx-background-radius: 30;" text="Modifica" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="25.0" />
                      </font>
