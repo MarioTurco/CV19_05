@@ -58,7 +58,7 @@ public class RecensioniController implements Initializable {
         
         if (e.getClickCount() == 2) {
             Recensione recensione = (Recensione) RecensioniTableView.getSelectionModel().getSelectedItem();
-            viewRecensione(recensione);
+            if(recensione!=null) viewRecensione(recensione);
         }
     }
 

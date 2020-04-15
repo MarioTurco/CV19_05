@@ -9,7 +9,6 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,11 +22,11 @@ import javafx.stage.Stage;
 
 import DAO.AdminDAO;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 
@@ -43,6 +42,9 @@ public class LoginController {
     @FXML
     private TextField passwordTextField;
 
+    @FXML
+    private JFXButton loginButton;
+    
     private AdminDAO administratorDao;
 
     public LoginController() {
@@ -62,12 +64,12 @@ public class LoginController {
     }
 
     private void showStage(Stage appStage, Scene sceneToSet) {
-        appStage.hide(); //optional
+        appStage.hide();
         appStage.setScene(sceneToSet);
         appStage.show();
     }
 
-    private void loadSideMenuPanelAfterLogin(ActionEvent event) throws IOException {
+    private void loadSideMenuPanelAfterLogin(MouseEvent event) throws IOException {
         Parent homePageParent = getParent();
         Scene homePageScene = getScene(homePageParent);
 
@@ -103,29 +105,27 @@ public class LoginController {
         dg.showAndWait();
     }
 
-    private void checkLoginWithThread(ActionEvent event, Scene scena) throws InterruptedException {
+    private void checkLoginWithThread(MouseEvent event, Scene scena) throws InterruptedException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         boolean[] loginSuccess = new boolean[1];
-
+        
         Thread th = new Thread(() -> {
 
             if (administratorDao.tryLogin(username, password)) {
-
+            
                 Platform.runLater(() -> {
                     try {
-                        System.out.println("Ok");
                         loadSideMenuPanelAfterLogin(event);
                     } catch (IOException e) {
-                        e.printStackTrace();
                     }
                 });
 
             } else {
                 Platform.runLater(() -> {
-                    System.out.println("No");
+                    loginButton.setDisable(false);
                     showLoginErrorDialog();
-                    
+
                 });
             }
             scena.setCursor(Cursor.DEFAULT);
@@ -137,14 +137,18 @@ public class LoginController {
 
     @FXML
 
-    public void clickLogin(ActionEvent event){
-        Scene scena = ((Node) event.getSource()).getScene();
-        scena.setCursor(Cursor.WAIT);
-        try{
-            checkLoginWithThread(event, scena);
-        }
-        catch(InterruptedException e){
-           
+    public void clickLogin(MouseEvent event) {
+        if (event.getClickCount() == 1) {
+            Scene scena = ((Node) event.getSource()).getScene();
+            scena.setCursor(Cursor.WAIT);
+            loginButton.setDisable(true);
+            
+            try {
+                checkLoginWithThread(event, scena);
+                
+            } catch (InterruptedException e) {
+
+            }
         }
         /*
         try {
@@ -158,8 +162,8 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        */
-        
+         */
+
     }
 
     private void loadRecensioniView(Scene homePageScene) {

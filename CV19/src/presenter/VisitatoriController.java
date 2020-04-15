@@ -43,21 +43,7 @@ public class VisitatoriController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        final ObservableList<Utente> data = FXCollections.observableArrayList(new Utente("Giuseppe", "peppOPazz"),
-                new Utente("Francesco", "pizzeriamemeriello"),
-                new Utente("Mario", "marioTurbo"),
-                new Utente("Giuseppe", "peppOPazz"),
-                new Utente("Francesco", "pizzeriamemeriello"),
-                new Utente("Mario", "marioTurbo"),
-                new Utente("Giuseppe", "peppOPazz"),
-                new Utente("Francesco", "pizzeriamemeriello"),
-                new Utente("Mario", "marioTurbo"),
-                new Utente("Giuseppe", "peppOPazz"),
-                new Utente("Francesco", "pizzeriamemeriello"),
-                new Utente("Mario", "marioTurbo")
-        );
-        
+    public void initialize(URL location, ResourceBundle resources) {     
         nomeCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nome"));
         nicknameCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nickname"));
         riempiTabellaUtenti();
