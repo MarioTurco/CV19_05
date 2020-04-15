@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import cv19.PasswordUtils;
 import model.Utente;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -63,7 +64,31 @@ public class UtenteDAO {
         }
         return allUtenti;
     }
-    public void modifyUtente(String vecchioNickname, String nuovoNickname){
+    public void modifyUtente(String vecchioNickname, String nuovoNickname, String nuovaPassword){
+        if(nuovaPassword != null)
+           modifyPasswordUtente(vecchioNickname, nuovaPassword);
+        if(nuovoNickname != null)
+             modifyNicknameUtente(vecchioNickname,nuovoNickname );
+    }
+    private void modifyPasswordUtente(String vecchioNickname, String nuovaPassword){
+        Connection conn = null;
+        PreparedStatement statement = null;
+        String salt = PasswordUtils.getSalt(30);
+        String passwordCriptata = PasswordUtils.generateSecurePassword(nuovaPassword, salt);
+        String query = "UPDATE utente SET password=?, salt=? WHERE nickname=?";
+        try{
+            conn = getConnection();
+            statement = conn.prepareStatement(query);
+            statement.setString(1, passwordCriptata);
+            statement.setString(2, salt);
+            statement.setString(3, vecchioNickname);
+            statement.executeQuery();
+        }
+        catch(SQLException sqlExceptio){
+            
+        }
+    }
+    private void modifyNicknameUtente(String vecchioNickname, String nuovoNickname){
         Connection conn = null;
         PreparedStatement statement = null;
         String query = "UPDATE utente SET nickname=? WHERE nickname=?";
