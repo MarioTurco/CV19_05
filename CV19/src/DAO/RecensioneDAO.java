@@ -36,7 +36,7 @@ public final class RecensioneDAO {
 
     public ObservableList<Recensione> getAllRecensioni() {
         ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
-        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO='in attesa'";
+        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO_RECENSIONE='in attesa'";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         ResultSet rs=null;
@@ -104,7 +104,7 @@ public final class RecensioneDAO {
     }
     
     public void chiudiRecensioneById(int idRecensione, boolean accettata){
-        String query="update recensione set stato=? where id_recensione=?";
+        String query="update recensione set stato_recensione=? where id_recensione=?";
         Connection conn=getConnection();
         PreparedStatement statement=null;
         String stato=getStatoByBoolean(accettata);
