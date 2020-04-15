@@ -39,7 +39,7 @@ public class UtenteDAO {
         return conn;
     }
 
-    public ObservableList<Utente> gettAllUtente() {
+    public ObservableList<Utente> getAllUtente() {
         ObservableList<Utente> allUtenti = FXCollections.observableArrayList();
         String query = "SELECT * FROM utente";
         Connection conn = getConnection();

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presenter.VisualizzaUtenteController">
    <children>
-      <Label id="nicknameLabel" layoutX="-238.0" layoutY="-29.0" text="Nickname" textFill="#000000d2" translateX="335.0" translateY="82.0">
+      <Label id="nicknameLabel" layoutX="-238.0" layoutY="-29.0" text="Dati Utente" textFill="#000000d2" translateX="335.0" translateY="82.0">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -31,7 +31,7 @@
                         <Font name="Segoe UI Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label id="nomeUtente" text="nome cognome" textFill="#707070">
+                  <Label id="nomeUtente" fx:id="nomeLabel" text="nome cognome" textFill="#707070">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -44,7 +44,7 @@
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label id="emailUtente" text="email@email.com">
+                  <Label id="emailUtente" fx:id="emailLabel" text="email@email.com">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
@@ -59,12 +59,12 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Nickaname" textFill="#1b262c">
+                  <Label text="Nickname" textFill="#1b262c">
                      <font>
                         <Font name="Segoe UI Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label id="nicknameUtente" text="nickname" textFill="#707070">
+                  <Label id="nicknameUtente" fx:id="nickNameLabel" text="nickname" textFill="#707070">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -72,7 +72,7 @@
                         <Insets left="20.0" right="150.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Recensioni rifiutate" textFill="#1b262c">
+                  <Label text="Recensioni rifiutate" textFill="#1b262c" translateX="14.0">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
@@ -80,7 +80,7 @@
                         <Insets right="35.0" />
                      </HBox.margin>
                   </Label>
-                  <Label id="recensioniRifiutateUtente" text=" 2">
+                  <Label id="recensioniRifiutateUtente" fx:id="recensioniRifiutateLabel" text=" 2" translateX="13.0">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
@@ -97,7 +97,7 @@
                         <Font name="Segoe UI Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label id="dataDiNascitaUtente" text="gg-mm-aaaa" textFill="#707070">
+                  <Label id="dataDiNascitaUtente" fx:id="dataLabel" text="gg-mm-aaaa" textFill="#707070">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -113,7 +113,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <Label id="recensioniApprovateUtente" text="0">
+                  <Label id="recensioniApprovateUtente" fx:id="recensioniApprovateLabel" text="0">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>

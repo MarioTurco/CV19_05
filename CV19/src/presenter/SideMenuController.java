@@ -68,7 +68,7 @@ public class SideMenuController {
         recensioniButton.setStyle("-fx-text-fill: black");
         visitatoriButton.setStyle("-fx-text-fill: #3282B8");
         logoutButton.setStyle("-fx-text-fill: black");
-        loadUI("Visitatori");
+        loadUI("Utenti");
     }
 
     @FXML
