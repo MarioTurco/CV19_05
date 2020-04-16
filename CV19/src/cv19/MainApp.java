@@ -44,22 +44,4 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    /*
-    @FXML
-    private void clickLogin(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("SideMenu.fxml"));
-            BorderPane mainMenuPane = loader.load();
-//          stage.setWidth(1160);
-//          stage.setHeight(638);
-            loginPane.setCenter(mainMenuPane);
-            //this.stage.setScene(new Scene(mainMenuPane));
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-*/
 }
