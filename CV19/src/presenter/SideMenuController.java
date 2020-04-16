@@ -1,7 +1,7 @@
 package presenter;
 
+import DAO.AdminDAO;
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -25,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 import javafx.stage.Screen;
 import javafx.stage.StageStyle;
+import model.Admin;
 
 public class SideMenuController {
 
@@ -49,6 +50,14 @@ public class SideMenuController {
     @FXML
     private ImageView logoutImageView;
 
+    private final AdminDAO adminDAO;
+    private final Admin adminLoggato;
+    
+    public SideMenuController(Admin admin){
+        adminDAO=new AdminDAO();
+        this.adminLoggato = admin;
+    }
+    
     @FXML
     public void recensioniClick(MouseEvent e) {
         setButtonColor(recensioniButton, "recensioni", "blue");
@@ -79,6 +88,7 @@ public class SideMenuController {
         recensioniButton.setStyle("-fx-text-fill: black");
         visitatoriButton.setStyle("-fx-text-fill: black");
         logoutButton.setStyle("-fx-text-fill: #3282B8");
+        adminDAO.setLoggato(this.adminLoggato.getUsername(), 0);
         //loadUI("logoutDialog");
         showLogoutDialog(e);
 

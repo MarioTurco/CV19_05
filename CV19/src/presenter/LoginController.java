@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import DAO.AdminDAO;
+import cv19.AmministratoreLoggatoException;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
@@ -29,6 +30,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.StageStyle;
+import model.Admin;
 
 /**
  *
@@ -44,9 +46,11 @@ public class LoginController {
 
     @FXML
     private JFXButton loginButton;
-    
+
     private AdminDAO administratorDao;
 
+    private Admin admin;
+    
     public LoginController() {
         initAdminDAO();
     }
@@ -56,7 +60,9 @@ public class LoginController {
     }
 
     private Parent getParent() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/view/SideMenu.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/SideMenu.fxml")); 
+        loader.setController(new SideMenuController(this.admin));
+        return loader.load();
     }
 
     private Scene getScene(Parent root) {
@@ -80,17 +86,10 @@ public class LoginController {
         initRecensioniButton(homePageScene);
     }
 
-    private boolean tryLogin() {
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-
-        return administratorDao.tryLogin(username, password);
-    }
-
-    private void showLoginErrorDialog() {
+    private void showLoginErrorDialog(String messaggio) {
         Alert dg = new Alert(Alert.AlertType.INFORMATION);
         dg.setHeaderText("Errore Login");
-        dg.setContentText("Credenziali errate.");
+        dg.setContentText(messaggio);
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         dg.setX((bounds.getMaxX() / 2) - 150);
         dg.setY((bounds.getMaxY() / 2) - 100);
@@ -108,28 +107,35 @@ public class LoginController {
     private void checkLoginWithThread(MouseEvent event, Scene scena) throws InterruptedException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        boolean[] loginSuccess = new boolean[1];
-        
+
         Thread th = new Thread(() -> {
+            try {
+                if (administratorDao.tryLogin(username, password)) {
+                    administratorDao.isNotLoggato(username);
+                    this.admin=new Admin(username);
+                    administratorDao.setLoggato(username, 1);
+                    Platform.runLater(() -> {
+                        try {
+                            loadSideMenuPanelAfterLogin(event);
+                        } catch (IOException e) {
+                        }
+                    });
 
-            if (administratorDao.tryLogin(username, password)) {
-            
-                Platform.runLater(() -> {
-                    try {
-                        loadSideMenuPanelAfterLogin(event);
-                    } catch (IOException e) {
-                    }
-                });
+                } else {
+                    Platform.runLater(() -> {
+                        loginButton.setDisable(false);
+                        showLoginErrorDialog("Credenziali errate.");
+                    });
+                }
 
-            } else {
+            } catch (AmministratoreLoggatoException ex) {
                 Platform.runLater(() -> {
                     loginButton.setDisable(false);
-                    showLoginErrorDialog();
+                    showLoginErrorDialog(ex.getMessage());
 
                 });
             }
             scena.setCursor(Cursor.DEFAULT);
-
         });
 
         th.start();
@@ -142,10 +148,10 @@ public class LoginController {
             Scene scena = ((Node) event.getSource()).getScene();
             scena.setCursor(Cursor.WAIT);
             loginButton.setDisable(true);
-            
+
             try {
                 checkLoginWithThread(event, scena);
-                
+
             } catch (InterruptedException e) {
 
             }

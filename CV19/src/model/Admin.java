@@ -10,8 +10,15 @@ package model;
  * @author gpepp
  */
 public class Admin {
-    private String username;
-    private String password;
+    private final String username;
+
+    public Admin(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
     
     
     
