@@ -93,8 +93,12 @@ public final class RecensioneDAO {
             System.out.println(e.getMessage());
         }
         try {
-            statement.close();
-            rs.close();
+            if (statement != null) {
+                statement.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
             conn.close();
         } catch (SQLException | NullPointerException e) {
 

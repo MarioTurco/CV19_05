@@ -104,10 +104,10 @@ public class AdminDAO {
         return result;
     }
 
-    public void setLoggato(String username,int stato) {
+    public void setLoggato(String username, int stato) {
         Connection dbConnection = getConnection();
         String query = "UPDATE ADMINISTRATOR SET LOGGATO=? WHERE USERNAME =?";
-        
+
         try {
             PreparedStatement loginPreparedStatement = dbConnection.prepareStatement(query);
             loginPreparedStatement.setInt(1, stato);
