@@ -77,18 +77,18 @@ public class UtenteDAO {
         }
     }
 
-    private void modifyPassword(String vecchioNickname, String nuovaPassword) throws SQLException {
+    private void modifyPassword(String nickname, String password) throws SQLException {
         Connection conn = null;
         PreparedStatement statement = null;
         String salt = PasswordUtils.getSalt(30);
-        String passwordCriptata = PasswordUtils.generateSecurePassword(nuovaPassword, salt);
+        String passwordCriptata = PasswordUtils.generateSecurePassword(password, salt);
         String query = "UPDATE utente SET password=?, salt=? WHERE nickname=?";
 
         conn = getConnection();
         statement = conn.prepareStatement(query);
         statement.setString(1, passwordCriptata);
         statement.setString(2, salt);
-        statement.setString(3, vecchioNickname);
+        statement.setString(3, nickname);
         statement.executeUpdate();
 
     }
@@ -153,8 +153,6 @@ public class UtenteDAO {
 
         return statement;
     }
-
-
 
     private void close(PreparedStatement statement, ResultSet resultSet, Connection conn) {
 
