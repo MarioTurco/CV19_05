@@ -24,7 +24,7 @@ public final class RecensioneDAO {
     private final String user = "cercaviaggi";
     private final String password = "cercaviaggi";
 
-    public Connection getConnection() {
+    private Connection getConnection() {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
