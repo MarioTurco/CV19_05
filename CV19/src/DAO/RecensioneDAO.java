@@ -21,8 +21,8 @@ import model.Recensione;
 public final class RecensioneDAO {
 
     private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
-    private final String user = "admin_cv19";
-    private final String password = "cvuser";
+    private final String user = "cercaviaggi";
+    private final String password = "cercaviaggi";
 
     public Connection getConnection() {
         Connection conn = null;

@@ -20,8 +20,8 @@ import cv19.PasswordUtils;
 public class AdminDAO {
 
     private final String url = "jdbc:postgresql://database-1.cn8hhgibnvsj.eu-central-1.rds.amazonaws.com:5432/postgres";
-    private final String user = "admin_cv19";
-    private final String password = "cvuser";
+    private final String user = "cercaviaggi";
+    private final String password = "cercaviaggi";
 
     public Connection getConnection() {
         Connection dbConnection = null;
@@ -106,7 +106,7 @@ public class AdminDAO {
 
     public void setLoggato(String username,int stato) {
         Connection dbConnection = getConnection();
-        String query = "UPDATE ADMINISTRATOR SET LOGGATO=? WHERE USERNAME = ?";
+        String query = "UPDATE ADMINISTRATOR SET LOGGATO=? WHERE USERNAME =?";
         
         try {
             PreparedStatement loginPreparedStatement = dbConnection.prepareStatement(query);
