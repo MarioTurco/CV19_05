@@ -78,7 +78,7 @@ public class UtenteDAO {
     }
 
     private void modifyPassword(String nickname, String password) throws SQLException {
-        Connection conn =  getConnection();
+        Connection conn = getConnection();
         PreparedStatement statement = null;
         String salt = PasswordUtils.getSalt(30);
         String passwordCriptata = PasswordUtils.generateSecurePassword(password, salt);
@@ -102,12 +102,15 @@ public class UtenteDAO {
     }
 
     public void deleteUtenteByNickname(String nickname) {
-        PreparedStatement statement = prepareDeleteQueryWithNickname(nickname);
-        try{
-             statement.executeUpdate();
-        }
-        catch(SQLException sql){
-            
+        String query = "DELETE FROM utente WHERE nickname = ?";
+        PreparedStatement statement = null;
+        try {
+            Connection con = getConnection();
+            statement = con.prepareStatement(query);
+            statement.setString(1, nickname);
+            statement.executeUpdate();
+        } catch (SQLException sql) {
+
         }
     }
 
@@ -134,21 +137,6 @@ public class UtenteDAO {
             System.out.println(e.toString());
         }
         return utente;
-    }
-
-    private PreparedStatement prepareDeleteQueryWithNickname(String nickname) {
-        PreparedStatement statement = null;
-        Connection con = null;
-        String query = "DELETE FROM utente WHERE nickname = ?";
-        try {
-            con = getConnection();
-            statement = con.prepareStatement(query);
-            statement.setString(1, nickname);
-        } catch (SQLException sqlException) {
-            //TODO implementare qualcosa qui
-        }
-
-        return statement;
     }
 
     private void close(PreparedStatement statement, ResultSet resultSet, Connection conn) {
