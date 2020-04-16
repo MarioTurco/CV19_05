@@ -31,7 +31,6 @@ public class UtenteDAO {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connesso");
         } catch (SQLException e) {
             System.out.println(e.toString());
         }

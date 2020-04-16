@@ -74,15 +74,34 @@ public class ModificaUtenteController {
 
     @FXML
     public void confermaClick(MouseEvent e) {
+        if (nickNameDiversi(this.utenteDaModificare.getNickname(), nickNameTextField.getText())) {
+            modificaUtente(e);
+        } else {
+            mostraDialog("Attenzione", "Il nickname scelto corrisponde a quello vecchio", 0);
+        }
+    }
+
+    private void modificaUtente(MouseEvent e) {
         try {
             setBorderPanePadre(e);
             this.utenteDAO.modifyUtente(this.utenteDaModificare.getNickname(), nickNameTextField.getText(), passwordTextField.getText());
             mostraDialog("Azione eseguita", "Utente modificato", 0);
-            utentiView();
+            mostraUtentiView();
         } catch (SQLException ex) {
-            mostraDialog("Errore", ex.getMessage(), 1);
+            mostraMessaggioDiErrore(ex.getMessage());
         }
+    }
 
+    private void mostraMessaggioDiErrore(String messaggio) {
+        if (messaggio.contains("duplicate key")) {
+            mostraDialog("Errore", "Nickname già in uso", 1);
+        } else {
+            mostraDialog("Errore", messaggio, 1);
+        }
+    }
+
+    private boolean nickNameDiversi(String vecchio, String nuovo) {
+        return !vecchio.equals(nuovo);
     }
 
     private void mostraDialog(String titolo, String testo, int tipo) {
@@ -118,18 +137,21 @@ public class ModificaUtenteController {
             utenteController.riempiCampiDettagliUtente();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }
 
-    private void utentiView() {
+    private void mostraUtentiView() {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Utenti.fxml"));
             root = loader.load();
+
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }
