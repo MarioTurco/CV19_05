@@ -78,13 +78,11 @@ public class UtenteDAO {
     }
 
     private void modifyPassword(String nickname, String password) throws SQLException {
-        Connection conn = null;
+        Connection conn =  getConnection();
         PreparedStatement statement = null;
         String salt = PasswordUtils.getSalt(30);
         String passwordCriptata = PasswordUtils.generateSecurePassword(password, salt);
         String query = "UPDATE utente SET password=?, salt=? WHERE nickname=?";
-
-        conn = getConnection();
         statement = conn.prepareStatement(query);
         statement.setString(1, passwordCriptata);
         statement.setString(2, salt);
@@ -94,10 +92,9 @@ public class UtenteDAO {
     }
 
     private void modifyNickname(String vecchioNickname, String nuovoNickname) throws SQLException {
-        Connection conn = null;
+        Connection conn = getConnection();
         PreparedStatement statement = null;
         String query = "UPDATE utente SET nickname=? WHERE nickname=?";
-        conn = getConnection();
         statement = conn.prepareStatement(query);
         statement.setString(1, nuovoNickname);
         statement.setString(2, vecchioNickname);
