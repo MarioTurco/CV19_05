@@ -59,12 +59,6 @@ public class LoginController {
         administratorDao = new AdminDAO();
     }
 
-    private Parent getParent() throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/SideMenu.fxml")); 
-        loader.setController(new SideMenuController(this.admin));
-        return loader.load();
-    }
-
     private Scene getScene(Parent root) {
         return new Scene(root);
     }
@@ -76,11 +70,18 @@ public class LoginController {
     }
 
     private void loadSideMenuPanelAfterLogin(MouseEvent event) throws IOException {
-        Parent homePageParent = getParent();
-        Scene homePageScene = getScene(homePageParent);
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/SideMenu.fxml")); 
+        SideMenuController sideMenuController=new SideMenuController(this.admin);
+        loader.setController(sideMenuController);       
+        Parent parent=loader.load();
+        
+
+        Scene homePageScene = getScene(parent);
 
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         showStage(appStage, homePageScene);
+        sideMenuController.setWindowStage();
+        
 
         loadRecensioniView(homePageScene);
         initRecensioniButton(homePageScene);

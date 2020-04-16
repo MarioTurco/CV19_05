@@ -50,14 +50,21 @@ public class SideMenuController {
     @FXML
     private ImageView logoutImageView;
 
+    private Stage window;
+
     private final AdminDAO adminDAO;
-    private final Admin adminLoggato;
-    
-    public SideMenuController(Admin admin){
-        adminDAO=new AdminDAO();
+    private Admin adminLoggato;
+
+    public SideMenuController(Admin admin) {
+        adminDAO = new AdminDAO();
         this.adminLoggato = admin;
     }
-    
+
+    public void setWindowStage() {
+        window = (Stage) borderpane.getScene().getWindow();
+        window.setOnCloseRequest(e -> adminDAO.setLoggato(this.adminLoggato.getUsername(), 0));
+    }
+
     @FXML
     public void recensioniClick(MouseEvent e) {
         setButtonColor(recensioniButton, "recensioni", "blue");
@@ -104,7 +111,7 @@ public class SideMenuController {
         Parent root = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("/view/"+ ui + ".fxml"));
+            loader = new FXMLLoader(getClass().getResource("/view/" + ui + ".fxml"));
             root = loader.load();
 
         } catch (IOException ex) {
@@ -130,28 +137,26 @@ public class SideMenuController {
 
     }
 
-       
     ///////////////////////////////////////////////////////////////////////////////////
     private void showLogoutDialog(InputEvent event) {
         Alert dg = new Alert(Alert.AlertType.INFORMATION);
         dg.setHeaderText("Azione Eseguita");
         dg.setContentText("Logout effettuato.");
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        dg.setX((bounds.getMaxX()/2)-150);
-        dg.setY((bounds.getMaxY()/2)-100);
-        
+        dg.setX((bounds.getMaxX() / 2) - 150);
+        dg.setY((bounds.getMaxY() / 2) - 100);
+
         DialogPane dialogPane = dg.getDialogPane();
         dialogPane.getStylesheets().add(
-        getClass().getResource("/css/dialogStyle.css").toExternalForm());
+                getClass().getResource("/css/dialogStyle.css").toExternalForm());
         dg.initStyle(StageStyle.UNDECORATED);
-        Image icon=new Image("/icons/infoIcon.png");
-        ImageView iv= new ImageView(icon);
+        Image icon = new Image("/icons/infoIcon.png");
+        ImageView iv = new ImageView(icon);
         dg.getDialogPane().setGraphic(iv);
-        
-        
+
         Optional<ButtonType> result = dg.showAndWait();
         ButtonType button = result.orElse(ButtonType.CANCEL);
-        
+
         if (button == ButtonType.OK) {
             loadLoginView(event);
         } else {
