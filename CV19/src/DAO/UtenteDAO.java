@@ -106,7 +106,12 @@ public class UtenteDAO {
 
     public void deleteUtenteByNickname(String nickname) {
         PreparedStatement statement = prepareDeleteQueryWithNickname(nickname);
-        executeStatement(statement);
+        try{
+             statement.executeUpdate();
+        }
+        catch(SQLException sql){
+            
+        }
     }
 
     public Utente getUtenteByNickname(String nickname) {
@@ -149,15 +154,7 @@ public class UtenteDAO {
         return statement;
     }
 
-    private ResultSet executeStatement(PreparedStatement statement) {
-        ResultSet resultSet = null;
-        try {
-            resultSet = statement.executeQuery();
-        } catch (SQLException sqlException) {
-            //TODO implementare exception
-        }
-        return resultSet;
-    }
+
 
     private void close(PreparedStatement statement, ResultSet resultSet, Connection conn) {
 
