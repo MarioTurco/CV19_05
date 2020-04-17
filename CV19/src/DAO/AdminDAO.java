@@ -45,7 +45,7 @@ public class AdminDAO {
         return PasswordUtils.verifyUserPassword(passwordEntered, password, salt);
     }
 
-    public boolean tryLogin(String username, String password) {
+    public boolean tryLogin(String username, String password) throws AmministratoreLoggatoException {
         Connection dbConnection = getConnection();
         String loginQuery = "SELECT * FROM ADMINISTRATOR WHERE USERNAME = ?";
         ResultSet rs = null;
@@ -57,6 +57,7 @@ public class AdminDAO {
             rs = loginPreparedStatement.executeQuery();
 
             if (!emptyResultSet(rs)) {
+                isLoggato(rs.getInt("LOGGATO"));
                 result = checkAdminPassword(rs, password);
             } else {
                 result = false;
@@ -74,6 +75,12 @@ public class AdminDAO {
         return result;
     }
 
+    private void isLoggato(int loggato) throws AmministratoreLoggatoException {
+        if(loggato == 1)
+            throw new AmministratoreLoggatoException();
+    }
+
+    /*
     public boolean isNotLoggato(String username) throws AmministratoreLoggatoException {
         Connection dbConnection = getConnection();
         String loginQuery = "SELECT LOGGATO FROM ADMINISTRATOR WHERE USERNAME = ? AND LOGGATO=?";
@@ -103,7 +110,7 @@ public class AdminDAO {
         }
         return result;
     }
-
+     */
     public void setLoggato(String username, int stato) {
         Connection dbConnection = getConnection();
         String query = "UPDATE ADMINISTRATOR SET LOGGATO=? WHERE USERNAME =?";
