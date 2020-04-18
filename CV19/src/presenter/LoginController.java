@@ -112,7 +112,7 @@ public class LoginController {
         Thread th = new Thread(() -> {
             try {
                 if (administratorDao.tryLogin(username, password)) {
-                    administratorDao.isNotLoggato(username);
+                    //administratorDao.isNotLoggato(username);
                     this.admin=new Admin(username);
                     administratorDao.setLoggato(username, 1);
                     Platform.runLater(() -> {
