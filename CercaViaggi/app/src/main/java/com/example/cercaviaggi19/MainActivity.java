@@ -1,6 +1,7 @@
 package com.example.cercaviaggi19;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private Toolbar toolbar;
     private AppBarConfiguration appBarConfiguration;
     private ImageButton filtri;
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
         setUpNavigationDrawer();
         filtri = findViewById(R.id.filtriButton);
-
     }
 
     private void setUpNavigationDrawer() {
@@ -46,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 if (destination.getId() == R.id.nav_home) {
-
+                    if (filtri != null)
+                        filtri.setVisibility(View.VISIBLE);
                 } else {
+                    if (filtri != null)
+                        filtri.setVisibility(View.GONE);
                 }
             }
         });
