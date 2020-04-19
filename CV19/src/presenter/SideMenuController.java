@@ -96,7 +96,6 @@ public class SideMenuController {
         visitatoriButton.setStyle("-fx-text-fill: black");
         logoutButton.setStyle("-fx-text-fill: #3282B8");
         adminDAO.setLoggato(this.adminLoggato.getUsername(), 0);
-        //loadUI("logoutDialog");
         showLogoutDialog(e);
 
     }

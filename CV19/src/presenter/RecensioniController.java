@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,7 +46,8 @@ public class RecensioniController implements Initializable {
     private final RecensioneDAO recensioneDAO;
     
     private BorderPane borderPanePadre;
-
+       
+    private ObservableList<Recensione> recensioni;
 
     public RecensioniController() {
         this.recensioneDAO = new RecensioneDAO();
@@ -77,8 +79,8 @@ public class RecensioniController implements Initializable {
         borderPanePadre.setCenter(root);
     }
 
-    private void riempiTableViewConRecensioni() {
-        RecensioniTableView.setItems(recensioneDAO.getAllRecensioni());
+    private void riempiTableViewConRecensioni(ObservableList<Recensione> recensioni) {
+        RecensioniTableView.setItems(recensioni);
     }
 
     @Override
@@ -90,7 +92,8 @@ public class RecensioniController implements Initializable {
         dataTable.setCellValueFactory(
                 new PropertyValueFactory<Recensione, String>("data"));
 
-        riempiTableViewConRecensioni();
+        recensioni=recensioneDAO.getAllRecensioni();
+        riempiTableViewConRecensioni(recensioni);
     }
 
 }
