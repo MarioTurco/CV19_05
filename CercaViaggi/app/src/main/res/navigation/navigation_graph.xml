@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.example.cercaviaggi19.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_filtriFragment"
+            app:destination="@id/filtriFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_registrati"
         android:name="com.example.cercaviaggi19.ui.registrazione.RegistrazioneFragment"
@@ -20,4 +24,9 @@
         android:name="com.example.cercaviaggi19.ui.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/filtriFragment"
+        android:name="com.example.cercaviaggi19.FiltriFragment"
+        android:label="Ricerca per filtri"
+        tools:layout="@layout/fragment_filtri" />
 </navigation>
