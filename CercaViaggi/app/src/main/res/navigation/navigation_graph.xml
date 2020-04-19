@@ -23,7 +23,11 @@
         android:id="@+id/nav_login"
         android:name="com.example.cercaviaggi19.ui.login.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_nav_login_to_nav_registrati"
+            app:destination="@id/nav_registrati" />
+    </fragment>
     <fragment
         android:id="@+id/filtriFragment"
         android:name="com.example.cercaviaggi19.FiltriFragment"
