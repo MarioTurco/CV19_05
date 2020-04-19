@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
         setUpNavigationDrawer();
         filtri = findViewById(R.id.filtriButton);
+        manageFiltriButton();
     }
 
     private void setUpNavigationDrawer() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavController navController = Navigation.findNavController(this, R.id.nav_controller_fragment);
-
         appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).setDrawerLayout(drawer).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -67,5 +67,15 @@ public class MainActivity extends AppCompatActivity {
     private void setUpToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    private void manageFiltriButton(){
+        filtri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v.getRootView());
+                navController.navigate(R.id.action_nav_home_to_filtriFragment);
+            }
+        });
     }
 }
