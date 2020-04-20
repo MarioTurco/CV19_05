@@ -1,0 +1,2 @@
+rootProject.name='provaMapBox'
+include ':app'

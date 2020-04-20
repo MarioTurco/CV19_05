@@ -15,10 +15,12 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.maps.UiSettings;
 
 
 public class HomeFragment extends Fragment {
     private MapView mapView;
+    private MapboxMap mapboxMap;
     private String TOKEN = "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA";
 
     @Override
@@ -56,7 +58,12 @@ public class HomeFragment extends Fragment {
         super.onStop();
         mapView.onStop();
     }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
 
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -64,12 +71,17 @@ public class HomeFragment extends Fragment {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(@NonNull MapboxMap mapboxMap) {
+            public void onMapReady(@NonNull MapboxMap mb) {
+                mapboxMap = mb;
+                UiSettings uiSettings = mapboxMap.getUiSettings();
+                uiSettings.setAllGesturesEnabled(true);
+                uiSettings.setCompassEnabled(true);
+                uiSettings.setAttributionEnabled(true);
+                uiSettings.setLogoEnabled(true);
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-// Map is set up and the style has loaded. Now you can add data or make other map adjustments.
-
+                    // Map is set up and the style has loaded. Now you can add data or make other map adjustments.
                     }
                 });
             }
@@ -81,7 +93,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         Mapbox.getInstance(getContext(), TOKEN);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         return view;
     }
 
