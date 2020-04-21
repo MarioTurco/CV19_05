@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void loadSignupFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, SignupFragment.newInstance() , "filtriFragment" );
+        transaction.commit();
+        toolbar.setVisibility(View.GONE);
     }
 
     private void loadLoginFragment() {
