@@ -11,41 +11,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
-
-public class FiltriFragment extends Fragment {
-    private ImageButton backButton;
-    private ViewGroup container;
-    private SupportMapFragment mapFragment;
-
-    public FiltriFragment(SupportMapFragment mapFragment) {
-        this.mapFragment = mapFragment;
-    }
-
-
-    public static FiltriFragment newInstance(SupportMapFragment mapFragment) {
-        FiltriFragment fragment = new FiltriFragment(mapFragment);
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link SignupFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class SignupFragment extends Fragment {
+    ImageButton backButtonSignup;
+    public static SignupFragment newInstance() {
+        SignupFragment fragment = new SignupFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        this.container = container;
-        return inflater.inflate(R.layout.fragment_filtri, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backButton = view.findViewById(R.id.backButtonSignup);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButtonSignup = view.findViewById(R.id.backButtonSignup);
+        backButtonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
