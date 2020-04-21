@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 loadSignupFragment();
                 Toast.makeText(MainActivity.this, "Registrati selezionato", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.homepage:
+                Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
