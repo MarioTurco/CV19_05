@@ -8,16 +8,38 @@
     tools:openDrawer="end"
     android:id="@+id/drawer">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar"
-            android:background="@color/cardview_dark_background"/>
-    </RelativeLayout>
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="410dp"
+            android:layout_height="562dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="411dp"
+                android:layout_height="675dp" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"
@@ -28,27 +50,5 @@
         android:layout_gravity="start"
 
         />
-    <TextView
-        android:id="@+id/fragment_below_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="@string/fragment_in_card_below"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/fragment_below_textview"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="@dimen/cardview_default_elevation">
-
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </androidx.cardview.widget.CardView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
