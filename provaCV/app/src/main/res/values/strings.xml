@@ -6,4 +6,28 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello moto</string>
+
+    <string-array name="categoria_array">
+        <item>Nessuno</item>
+        <item>Pub</item>
+        <item>Ristorante</item>
+        <item>Bar</item>
+        <item>Hotel</item>
+    </string-array>
+
+    <string-array name="prezzo_array">
+        <item>Nessuno</item>
+        <item>Economico</item>
+        <item>Medio</item>
+        <item>Alto</item>
+    </string-array>
+
+    <string-array name="valutazione_array">
+        <item>Nessuno</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

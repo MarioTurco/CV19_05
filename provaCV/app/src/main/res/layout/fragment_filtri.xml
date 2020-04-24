@@ -68,7 +68,7 @@
                 android:inputType="textPersonName"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintHorizontal_bias="0.517"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nomeText" />
 
@@ -76,13 +76,12 @@
                 android:id="@+id/spinnerCategoria"
                 android:layout_width="315dp"
                 android:layout_height="26dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="36dp"
                 android:autofillHints="Categoria"
                 android:dropDownWidth="wrap_content"
-                android:spinnerMode="dialog"
                 android:tooltipText="Categoria"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cittaText" />
 
@@ -90,11 +89,11 @@
                 android:id="@+id/spinnerPrezzo"
                 android:layout_width="315dp"
                 android:layout_height="26dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="40dp"
                 android:dropDownWidth="wrap_content"
                 android:tooltipText="Prezzo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
@@ -102,12 +101,12 @@
                 android:id="@+id/spinnerValutazione"
                 android:layout_width="315dp"
                 android:layout_height="26dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="40dp"
                 android:dropDownWidth="wrap_content"
                 android:entries="@array/Valutazione"
                 android:tooltipText="Prezzo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerPrezzo" />
 
@@ -115,8 +114,8 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="36dp"
                 android:text="Prossimità"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,9 +126,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="180dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.26"
+                app:layout_constraintHorizontal_bias="0.222"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione" />
 
@@ -137,12 +136,12 @@
                 android:id="@+id/cercaButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="84dp"
 
+                android:background="@android:color/transparent"
                 android:backgroundTint="@android:color/transparent"
                 android:text="Cerca"
                 android:textStyle="bold"
-                android:background="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
