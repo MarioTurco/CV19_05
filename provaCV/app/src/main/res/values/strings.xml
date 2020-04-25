@@ -4,9 +4,6 @@
     <string name="drawerClose">drawerClose</string>
     <string name="fragment_in_card_below">Map fragment container in card below</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello moto</string>
-
     <string-array name="categoria_array">
         <item>Nessuno</item>
         <item>Pub</item>

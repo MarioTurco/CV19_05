@@ -1,16 +1,19 @@
 package com.example.provacv;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -19,11 +22,8 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.navigation.NavigationView;
-
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ImageButton filtriButton;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
@@ -35,18 +35,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        drawerLayout = findViewById(R.id.drawer);
-        toolbar = findViewById(R.id.toolbar);
-        navigationView = findViewById(R.id.navigationView);
-        navigationView.getBackground().setAlpha(122);
-        setSupportActionBar(toolbar);
-        //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawerOpen, R.string.drawerClose);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+
+        setupDrawer();
+        setupFiltriButton();
         setMap(savedInstanceState);
+
+    }
+
+    private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void loadFiltriFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, FiltriFragment.newInstance(mapFragment) , "filtriFragment" );
+        transaction.replace(R.id.container, FiltriFragment.newInstance(mapFragment), "filtriFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawers();
-        switch(menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.login:
                 loadLoginFragment();
                 Toast.makeText(MainActivity.this, "Login selezionato", Toast.LENGTH_SHORT).show();
@@ -81,20 +77,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    private void setupDrawer() {
+        drawerLayout = findViewById(R.id.drawer);
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.navigationView);
+        navigationView.getBackground().setAlpha(122);
+        setSupportActionBar(toolbar);
+        //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawerOpen, R.string.drawerClose);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
     private void loadSignupFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, SignupFragment.newInstance() , "filtriFragment" );
+        transaction.replace(R.id.container, SignupFragment.newInstance(), "signupFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }
 
     private void loadLoginFragment() {
-       
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, LoginFragment.newInstance(), "loginFragment");
+        transaction.commit();
+        toolbar.setVisibility(View.GONE);
     }
 
 
-    protected void setMap(Bundle savedInstanceState){
-        Mapbox.getInstance(this,"pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
+    protected void setMap(Bundle savedInstanceState) {
+        Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
         if (savedInstanceState == null) {
             // Create fragment
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -121,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
 
-                        // Map is set up and the style has loaded. Now you can add data or make other map adjustments
+                            // Map is set up and the style has loaded. Now you can add data or make other map adjustments
 
 
                         }
@@ -158,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     // Shows the system bars by removing all the flags
-// except for the ones that make the content appear under the system bars.
+    // except for the ones that make the content appear under the system bars.
     private void showSystemUI() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
