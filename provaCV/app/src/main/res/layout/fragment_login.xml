@@ -9,7 +9,7 @@
     tools:context=".LoginFragment">
 
     <ImageButton
-        android:id="@+id/backButtonSignup2"
+        android:id="@+id/backButtonLogin"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="24dp"
@@ -74,7 +74,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButtonSignup2" />
+        app:layout_constraintTop_toBottomOf="@+id/backButtonLogin" />
 
     <EditText
         android:id="@+id/passwordLoginText"
