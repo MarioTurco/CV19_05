@@ -45,7 +45,7 @@
         android:layout_marginTop="92dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="#FFFFFF"
-        android:drawableRight="@drawable/ic_person_white"
+        android:drawableEnd="@drawable/ic_person_white"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backButtonSignup" />
 
     <EditText
-        android:id="@+id/emailEditText2"
+        android:id="@+id/PasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -76,14 +76,14 @@
         app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
     <EditText
-        android:id="@+id/emailEditText3"
+        android:id="@+id/nomeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="#FFFFFF"
-        android:drawableRight="@drawable/ic_card"
+        android:drawableEnd="@drawable/ic_card"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"
@@ -91,10 +91,10 @@
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordEditText" />
 
     <EditText
-        android:id="@+id/emailEditText4"
+        android:id="@+id/congomeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -109,10 +109,10 @@
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText3" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeEditText" />
 
     <EditText
-        android:id="@+id/emailEditText6"
+        android:id="@+id/nicknameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -128,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/dateEditText" />
 
     <TextView
         android:id="@+id/textView3"
@@ -143,7 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText6" />
+        app:layout_constraintTop_toBottomOf="@+id/nicknameEditText" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -157,7 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText6" />
+        app:layout_constraintTop_toBottomOf="@+id/nicknameEditText" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -166,7 +166,7 @@
         app:barrierDirection="top" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/dateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -182,7 +182,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText4" />
+        app:layout_constraintTop_toBottomOf="@+id/congomeEditText" />
 
     <TextView
         android:id="@+id/textView"
