@@ -1,11 +1,11 @@
 package com.example.provacv;
 
 import android.os.Bundle;
-<<<<<<< HEAD
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-=======
+
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,12 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
->>>>>>> 53f31fe3fd0ead80ab95255cb70541e62e2abf84
+
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import DAO.UtenteDAO;
+import DAO.VolleyCallback;
 
 import androidx.fragment.app.Fragment;
 
@@ -86,9 +87,17 @@ public class LoginFragment extends Fragment {
     private void checkCredenziali(){
         String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
-        if(this.utenteDAO.tryLogin(username, password)){
-            System.out.println("HAFUNZIONATO");
-        }
-        else System.out.println("NON HAFUNZIONATO");
+        utenteDAO.tryLogin(username, password,
+                new VolleyCallback(){
+                    @Override
+                    public void onSuccess(boolean result){
+                        if(result)
+                            System.out.println("HAFUNZIONATO");
+                        else
+                            System.out.println("NON HAFUNZIONATO");
+                    }
+                });
+
+
     }
 }
