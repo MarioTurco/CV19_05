@@ -9,8 +9,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cardView"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         >
+=======
+        android:layout_height="match_parent">
+>>>>>>> 53f31fe3fd0ead80ab95255cb70541e62e2abf84
 
         <TextView
             android:id="@+id/nomeStrutturaText"
