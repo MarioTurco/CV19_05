@@ -80,7 +80,7 @@ public class ModificaUtenteController {
             mostraDialog("Attenzione", "Il nickname scelto corrisponde a quello vecchio", 0);
         }
     }
-
+  
     private void modificaUtente(MouseEvent e) {
         try {
             setBorderPanePadre(e);

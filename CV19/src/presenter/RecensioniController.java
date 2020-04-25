@@ -79,8 +79,8 @@ public class RecensioniController implements Initializable {
         borderPanePadre.setCenter(root);
     }
 
-    private void riempiTableViewConRecensioni(ObservableList<Recensione> recensioni) {
-        RecensioniTableView.setItems(recensioni);
+    private void riempiTableViewConRecensioni() {
+        RecensioniTableView.setItems(this.recensioni);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class RecensioniController implements Initializable {
         dataTable.setCellValueFactory(
                 new PropertyValueFactory<Recensione, String>("data"));
 
-        recensioni=recensioneDAO.getAllRecensioni();
-        riempiTableViewConRecensioni(recensioni);
+        this.recensioni=recensioneDAO.getAllRecensioni();
+        riempiTableViewConRecensioni();
     }
 
 }
