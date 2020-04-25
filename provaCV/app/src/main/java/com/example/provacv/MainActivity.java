@@ -25,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ImageButton filtriButton;
+
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
@@ -83,13 +84,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void loadSignupFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, SignupFragment.newInstance() , "filtriFragment" );
+        transaction.replace(R.id.container, SignupFragment.newInstance() , "signupFragment" );
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }
 
     private void loadLoginFragment() {
-       
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, LoginFragment.newInstance() , "loginFragment" );
+        transaction.commit();
+        toolbar.setVisibility(View.GONE);
     }
 
 
