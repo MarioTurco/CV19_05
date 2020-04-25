@@ -3,6 +3,8 @@
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
     <string name="fragment_in_card_below">Map fragment container in card below</string>
+    <string name="descrizione_struttura">Descrizione.
+        Lorem ipsum dolor sit amet, soluta regione urbanitas vis</string>
 
     <string-array name="categoria_array">
         <item>Nessuno</item>
