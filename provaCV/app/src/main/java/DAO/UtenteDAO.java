@@ -35,11 +35,10 @@ public class UtenteDAO {
 
     public boolean tryLogin(String username, final String givenPassword){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/test3/table?table=struttura";
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/test3/table?table=utente";
         queryRequestString +=appendRequestForLogin(username);
         System.out.println(queryRequestString);
         final boolean [] loginResult = new boolean[1];
-        loginResult[0]=false;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -47,6 +46,7 @@ public class UtenteDAO {
                     public void onResponse(JSONArray response) {
                         try {
                             loginResult[0] = checkPassword(response.getJSONObject(0), givenPassword);
+                            System.out.println(loginResult[0]);
                         } catch (JSONException e) {}
                     }
                 }, new Response.ErrorListener() {
@@ -58,6 +58,7 @@ public class UtenteDAO {
                     }
                 });
         queue.add(jsonArrayRequest);
+        System.out.println("valora di ritorno"+ loginResult[0]);
         return loginResult[0];
     }
 }
