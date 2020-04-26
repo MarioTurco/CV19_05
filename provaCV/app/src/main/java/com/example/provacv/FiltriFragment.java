@@ -122,7 +122,7 @@ public class FiltriFragment extends Fragment {
         cercaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //cercaStrutture();
+                cercaStrutture();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, ListaStruttureActivity.newInstance(), "loginFragment");
                 transaction.commit();
