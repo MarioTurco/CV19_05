@@ -1,5 +1,6 @@
 package com.example.provacv;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -116,10 +118,14 @@ public class FiltriFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_filtri, container, false);
         initGUIElements(view);
+
         cercaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cercaStrutture();
+                //cercaStrutture();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, ListaStruttureActivity.newInstance(), "loginFragment");
+                transaction.commit();
             }
         });
         this.container = container;
