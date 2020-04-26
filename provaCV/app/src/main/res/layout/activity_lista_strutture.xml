@@ -7,7 +7,7 @@
     tools:context=".ListaStruttureActivity">
 
     <ImageButton
-        android:id="@+id/backButtonSignup2"
+        android:id="@+id/backButtonLista"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="24dp"
@@ -27,7 +27,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toEndOf="@+id/backButtonSignup2"
+        app:layout_constraintStart_toEndOf="@+id/backButtonLista"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView

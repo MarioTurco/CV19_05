@@ -11,11 +11,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
 public class ListaStruttureActivity extends Fragment {
-
+    private ImageButton backButton;
     //qui vanno le cose da passare all'adapter
     private ArrayList<String> listaNomi = new ArrayList<>();
     private ArrayList<String> listaCittà = new ArrayList<>();
@@ -31,14 +32,21 @@ public class ListaStruttureActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_lista_strutture, container, false);
         popolaListeManualmente();
-
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView(view);
+        backButton = view.findViewById(R.id.backButtonLista);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                ((MainActivity)getActivity()).setMap(savedInstanceState);
+            }
+        });
     }
 
     private void popolaListeManualmente() {
