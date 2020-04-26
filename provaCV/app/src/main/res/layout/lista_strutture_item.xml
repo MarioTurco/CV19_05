@@ -5,10 +5,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="2.5dp"
-    android:layout_marginBottom="2.5dp"
+    android:layout_marginBottom="4dp"
+    android:backgroundTint="#FFFFFF"
+    android:elevation="5dp"
     android:paddingTop="5dp"
     android:paddingBottom="2dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="5dp">
 
 
     <RelativeLayout
