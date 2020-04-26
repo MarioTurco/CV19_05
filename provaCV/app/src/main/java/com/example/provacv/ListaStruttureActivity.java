@@ -56,7 +56,7 @@ public class ListaStruttureActivity extends Fragment {
         listaDescrizioni.add("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
         listaNomi.add("Old wild west");
-        listaCittà.add("Pompei");
+        listaCittà.add("Ma tipo vicino la cartiera, boh, da quelle parti la");
         listaCategorie.add("Ristorante");
         listaDescrizioni.add("YI-YA!");
 
@@ -71,7 +71,7 @@ public class ListaStruttureActivity extends Fragment {
         listaDescrizioni.add("Come il pub 27 però un poco meglio");
 
         listaNomi.add("Pub 27");
-        listaCittà.add("Pompei");
+        listaCittà.add("Parigi");
         listaCategorie.add("Pub");
         listaDescrizioni.add("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 

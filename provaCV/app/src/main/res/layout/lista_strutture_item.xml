@@ -4,7 +4,8 @@
     android:id="@+id/listItem_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginBottom="2.5dp"
     android:paddingTop="5dp"
     android:paddingBottom="2dp"
     app:cardCornerRadius="10dp">
@@ -21,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/divider2"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="9dp"
-            android:layout_toEndOf="@+id/textView16" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="34dp" />
 
         <TextView
             android:id="@+id/listItem_categoriaStruttura"
@@ -31,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/divider2"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
             android:layout_toEndOf="@+id/textView14"
             android:ellipsize="end"
             android:lines="1"
@@ -97,17 +99,18 @@
             android:layout_below="@+id/divider2"
             android:layout_alignParentStart="true"
             android:layout_marginStart="26dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
             android:text="Categoria:" />
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/divider2"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="7dp"
-            android:layout_toEndOf="@+id/listItem_categoriaStruttura"
+            android:layout_below="@+id/listItem_immagineStruttura"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="33dp"
             android:text="Valutazione:" />
 
         <TextView
