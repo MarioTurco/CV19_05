@@ -1,110 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/listItem_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
+    android:layout_marginBottom="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="2dp"
     app:cardCornerRadius="10dp">
 
 
-    <ImageView
-        android:id="@+id/listItem_immagineStruttura"
-        android:layout_width="104dp"
-        android:layout_height="109dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <TextView
-        android:id="@+id/listItem_NomeStruttura"
-        android:layout_width="wrap_content"
-        android:layout_height="62dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="33dp"
-        android:layout_toStartOf="@+id/listItem_immagineStruttura"
-        android:text="Nome Struttura"
-        android:textColor="#000000"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView7"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listItem_NomeStruttura"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="7dp"
-        android:text="Città:" />
+        android:paddingBottom="5dp">
 
-    <TextView
-        android:id="@+id/listItem_cittàStruttura"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listItem_NomeStruttura"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_toStartOf="@+id/listItem_immagineStruttura"
-        android:layout_toEndOf="@+id/textView7"
-        android:text="Napoli, Italia" />
+        <RatingBar
+            android:id="@+id/listItem_ratingStruttura"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="9dp"
+            android:layout_toEndOf="@+id/textView16" />
 
-    <TextView
-        android:id="@+id/listItem_descrizioneStruttura"
-        android:layout_width="238dp"
-        android:layout_height="72dp"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="9dp"
-        android:text="Descrizione"
-        android:textColor="#000000" />
+        <TextView
+            android:id="@+id/listItem_categoriaStruttura"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/textView14"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Ristorante" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listItem_descrizioneStruttura"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Categoria:" />
+        <TextView
+            android:id="@+id/listItem_NomeStruttura"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Nome Struttura"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/listItem_categoriaStruttura"
-        android:layout_width="87dp"
-        android:layout_height="42dp"
-        android:layout_below="@+id/listItem_descrizioneStruttura"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="21dp"
-        android:layout_toEndOf="@+id/textView14"
-        android:text="Ristorante" />
+        <ImageView
+            android:id="@+id/listItem_immagineStruttura"
+            android:layout_width="93dp"
+            android:layout_height="106dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="30dp"
+            app:srcCompat="@mipmap/ic_launcher_round" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listItem_descrizioneStruttura"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="23dp"
-        android:layout_toEndOf="@+id/listItem_categoriaStruttura"
-        android:text="Valutazione:" />
+        <TextView
+            android:id="@+id/listItem_descrizioneStruttura"
+            android:layout_width="230dp"
+            android:layout_height="52dp"
+            android:layout_below="@+id/listItem_cittàStruttura"
+            android:layout_alignBottom="@+id/divider2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="7dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="Descrizione"
+            android:textColor="#000000" />
 
-    <RatingBar
-        android:id="@+id/listItem_ratingStruttura"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="89dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listItem_descrizioneStruttura"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="18dp"
-        android:layout_toEndOf="@+id/textView16" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listItem_NomeStruttura"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="3dp"
+            android:text="Città:" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="6dp"
+            android:text="Categoria:" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/listItem_categoriaStruttura"
+            android:text="Valutazione:" />
+
+        <TextView
+            android:id="@+id/listItem_cittàStruttura"
+            android:layout_width="187dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listItem_NomeStruttura"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:layout_toEndOf="@+id/textView7"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Napoli, Italia" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/listItem_immagineStruttura"
+            android:layout_marginTop="14dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#00FFFFFF" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

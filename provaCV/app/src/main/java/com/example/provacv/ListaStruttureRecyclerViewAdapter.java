@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
 
 public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<ListaStruttureRecyclerViewAdapter.ViewHolder> {
@@ -57,7 +59,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.descrizione.setText(listaDescrizioni.get(position));
 
         //listener che ci fa aprire la pagina della struttura
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "Cliccato", Toast.LENGTH_SHORT).show();
@@ -74,7 +76,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         ImageView immagine;
         TextView nome, città, descrizione, categoria;
         //RatingBar ratingBar;
-        RelativeLayout relativeLayout;
+        MaterialCardView ViewLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             attachItemsByID(itemView);
@@ -87,7 +89,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
             descrizione = itemView.findViewById(R.id.listItem_descrizioneStruttura);
             categoria = itemView.findViewById(R.id.listItem_categoriaStruttura);
            // ratingBar = itemView.findViewById(R.id.listItem_ratingStruttura);
-            relativeLayout = itemView.findViewById(R.id.listItem_layout);
+            ViewLayout = itemView.findViewById(R.id.listItem_layout);
         }
     }
 }
