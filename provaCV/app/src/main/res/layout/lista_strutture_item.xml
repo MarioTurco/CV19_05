@@ -4,6 +4,8 @@
     android:id="@+id/listItem_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
     app:cardCornerRadius="10dp">
 
 
@@ -76,8 +78,8 @@
 
     <TextView
         android:id="@+id/listItem_categoriaStruttura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="87dp"
+        android:layout_height="42dp"
         android:layout_below="@+id/listItem_descrizioneStruttura"
         android:layout_marginStart="9dp"
         android:layout_marginTop="21dp"
@@ -89,20 +91,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/listItem_descrizioneStruttura"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="23dp"
         android:layout_toEndOf="@+id/listItem_categoriaStruttura"
         android:text="Valutazione:" />
 
     <RatingBar
         android:id="@+id/listItem_ratingStruttura"
         style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
+        android:layout_width="89dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/listItem_descrizioneStruttura"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="18dp"
         android:layout_toEndOf="@+id/textView16" />
 </RelativeLayout>
