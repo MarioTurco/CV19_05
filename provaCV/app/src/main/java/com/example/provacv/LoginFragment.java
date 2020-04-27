@@ -1,28 +1,22 @@
 package com.example.provacv;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import DAO.UtenteDAO;
 import DAO.VolleyCallback;
-
-import androidx.fragment.app.Fragment;
 
 
 public class LoginFragment extends Fragment {
@@ -44,7 +38,7 @@ public class LoginFragment extends Fragment {
         this.utenteDAO = new UtenteDAO(this.getActivity());
     }
 
-    private void initViewElements(View view){
+    private void initViewElements(View view) {
         backButtonLogin = view.findViewById(R.id.backButtonLogin);
         loginButton = view.findViewById(R.id.loginButton);
         usernameLoginText = view.findViewById(R.id.usernameLoginText);
@@ -61,8 +55,8 @@ public class LoginFragment extends Fragment {
         backButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
+                ((MainActivity) getActivity()).setMap(savedInstanceState);
             }
         });
 
@@ -84,20 +78,29 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    private void checkCredenziali(){
+    private void checkCredenziali() {
         String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
         utenteDAO.tryLogin(username, password,
-                new VolleyCallback<Boolean>(){
+                new VolleyCallback<Boolean>() {
                     @Override
-                    public void onSuccess(Boolean result){
-                        if(result)
+                    public void onSuccess(Boolean result) {
+                        if (result){
                             System.out.println("HAFUNZIONATO");
+                            changeUserStatus(true);
+                        }
+
                         else
                             System.out.println("NON HAFUNZIONATO");
                     }
                 });
 
 
+    }
+
+    private void changeUserStatus(boolean newStatus) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.edit().putBoolean("isLogged", newStatus);
+        Log.d("LOGINFRAG", "changeUserStatus: cambiato ");
     }
 }
