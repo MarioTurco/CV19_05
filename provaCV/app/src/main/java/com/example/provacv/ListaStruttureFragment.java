@@ -14,13 +14,12 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
+import model.Struttura;
+
 public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
     //qui vanno le cose da passare all'adapter
-    private ArrayList<String> listaNomi = new ArrayList<>();
-    private ArrayList<String> listaCittà = new ArrayList<>();
-    private ArrayList<String> listaDescrizioni = new ArrayList<>();
-    private ArrayList<String> listaCategorie = new ArrayList<>();
+    private ArrayList<Struttura> listaStrutture = new ArrayList<>();
 
     public static Fragment newInstance() {
         return new ListaStruttureFragment();
@@ -30,7 +29,7 @@ public class ListaStruttureFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_lista_strutture, container, false);
-        popolaListeManualmente();
+        //popolaListeManualmente(); TODO Eliminare
         return view;
     }
 
@@ -48,7 +47,7 @@ public class ListaStruttureFragment extends Fragment {
         });
     }
 
-    private void popolaListeManualmente() {
+/*    private void popolaListeManualmente() { TODO Eliminami
         listaNomi.add("Pub 27");
         listaCittà.add("Pompei");
         listaCategorie.add("Pub");
@@ -73,14 +72,11 @@ public class ListaStruttureFragment extends Fragment {
         listaCittà.add("Parigi");
         listaCategorie.add("Pub");
         listaDescrizioni.add("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
-
-
-    }
+    }*/
 
     private void initRecyclerView(View view){
         RecyclerView recyclerView = view.findViewById(R.id.listaStruttureRecyclerView);
-        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaNomi, listaCittà, listaDescrizioni, listaCategorie);
+        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaStrutture);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
