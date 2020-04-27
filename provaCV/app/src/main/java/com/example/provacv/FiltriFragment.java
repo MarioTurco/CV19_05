@@ -257,6 +257,9 @@ public class FiltriFragment extends Fragment {
                         }
                         catch(JSONException e){}
                     }
+                    //TODO  fare l'override di
+
+
                     private void mostraListaStrutture(ArrayList<Struttura> strutture){
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.container, ListaStruttureFragment.newInstance(strutture), "ListStruttureFragment");
