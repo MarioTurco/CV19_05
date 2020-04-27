@@ -6,6 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/AggiungiRecensioneCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="200dp"
+        android:backgroundTint="#C19586"
+        android:foregroundGravity="center"
+        app:cardCornerRadius="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recensioniRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/fabAggiungiRecensione">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:text="Aggiungi recensione"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/categoriaStruttura"
         android:layout_width="wrap_content"
@@ -194,4 +227,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriaStruttura"
         app:layout_constraintVertical_bias="0.79" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonStruttra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
+        app:backgroundTint="#C19586"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabVisualizzaSuMappa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:backgroundTint="#C19586"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButtonStruttra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_map_point" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAggiungiRecensione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:backgroundTint="#C19586"
+        app:layout_constraintBottom_toTopOf="@+id/fabVisualizzaSuMappa"
+        app:layout_constraintEnd_toEndOf="@+id/recensioniRecyclerView"
+        app:srcCompat="@drawable/ic_pen" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/visualizzaSuMappaCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="126dp"
+        android:backgroundTint="#C19586"
+        android:foregroundGravity="center"
+        app:cardCornerRadius="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recensioniRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/fabVisualizzaSuMappa">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:text="Visualizza su mappa"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
