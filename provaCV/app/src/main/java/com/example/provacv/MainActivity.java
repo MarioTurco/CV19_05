@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -99,22 +100,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-      /*  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
+      //  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 if (key.equals("isLogged")){
+                    Menu m = findViewById(R.id.drawerMenuGroup);
                     //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
-                    if(sharedPreferences.getBoolean("isLogged", false) == true){
-                        //mostra logout
+                    if(sharedPreferences.getBoolean("isLogged", false)){
+                        m.findItem(R.id.login).setVisible(false);
+                        m.findItem(R.id.signup).setVisible(false);
+                        m.findItem(R.id.logout).setVisible(true);
                     }else{
-                        //mostra login e registrati
+                        m.findItem(R.id.login).setVisible(false);
+                        m.findItem(R.id.logout).setVisible(true);
+                        m.findItem(R.id.signup).setVisible(true);
                     }
 
                 }
             }
-        };*/
+        };
     }
 
     private void loadSignupFragment() {
