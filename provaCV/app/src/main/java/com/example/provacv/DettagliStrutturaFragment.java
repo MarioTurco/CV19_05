@@ -44,11 +44,12 @@ public class DettagliStrutturaFragment extends Fragment {
     private ArrayList<Recensione> listaRecensioni;
     private Struttura struttura;
     private RecensioneDAO recensioneDAO;
+    private RecyclerView recyclerView;
 
     public DettagliStrutturaFragment(Struttura struttura){
         this.struttura = struttura;
         listaRecensioni = new ArrayList<Recensione>();
-        caricaRecensioniStruttura();
+
     }
 
     private void caricaRecensioniStruttura(){
@@ -56,8 +57,10 @@ public class DettagliStrutturaFragment extends Fragment {
                 new VolleyCallback<JSONArray>(){
                     @Override
                     public void onSuccess(JSONArray result) {
+                        System.out.println(result.length());
                         try {
                             for (int i = 0; i < result.length(); i++) {
+
                                 JSONObject recensioneJSON = result.getJSONObject(i);
                                 Recensione recensione = new Recensione();
                                 recensione.setTesto(recensioneJSON.getString("testo"));
@@ -67,10 +70,29 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setStruttura(struttura.getIdStruttura());
                                 recensione.setIdRecensione(recensioneJSON.getInt("id_recensione"));
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));
+
                                 listaRecensioni.add(recensione);
+
+
                             }
+                            initRecyclerView();
+                            System.out.println(listaRecensioni);
                         }
-                        catch(JSONException e){}
+                        catch(JSONException e){
+                            System.out.print("NONHAFUNZIONATO");
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFail(){
+
+                    }
+
+                    private void initRecyclerView(){
+                        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(getContext(), listaRecensioni);
+                        recyclerView.setAdapter(recyclerViewAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     }
                 });
     }
@@ -80,6 +102,7 @@ public class DettagliStrutturaFragment extends Fragment {
     }
 
     private void initGUIElements(View view){
+        recyclerView = view.findViewById(R.id.recensioniRecyclerView);
         nomeStruttura =  view.findViewById(R.id.nomeStruttura);
         ratingBarStruttura =  view.findViewById(R.id.ratingBarStruttura);
         descrizioneStruttura =  view.findViewById(R.id.descrizioneStruttura);
@@ -93,7 +116,7 @@ public class DettagliStrutturaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.recensioneDAO = new RecensioneDAO(this.getActivity());
+        recensioneDAO = new RecensioneDAO(this.getActivity());
     }
 
     @Nullable
@@ -106,14 +129,14 @@ public class DettagliStrutturaFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initRecyclerView(view);
         initGUIElements(view);
+        caricaRecensioniStruttura();
         mostraDettagliStruttura();
-        backButton = view.findViewById(R.id.backButtonLista);
+        backButton = view.findViewById(R.id.backButtonStruttura);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //TODO da fare
+                //TODO da fare
             }
         });
     }
@@ -128,10 +151,5 @@ public class DettagliStrutturaFragment extends Fragment {
         categoriaStruttura.setText(struttura.getCategoria());
     }
 
-    private void initRecyclerView(View view){
-        RecyclerView recyclerView = view.findViewById(R.id.recensioniRecyclerView);
-        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(getContext(), listaRecensioni);
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
+
 }

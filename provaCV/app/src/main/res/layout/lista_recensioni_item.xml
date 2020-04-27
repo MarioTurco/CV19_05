@@ -54,6 +54,7 @@
             android:layout_below="@+id/titoloRecensione"
             android:layout_marginStart="10dp"
             android:layout_marginTop="12dp"
+            android:progressTint="@android:color/black"
             android:layout_toEndOf="@+id/textView11" />
 
         <TextView

@@ -20,7 +20,7 @@ public class RecensioneDAO {
 
     public void getRecensioniByIdStruttura(int idStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=recensioni&struttura="+idStruttura;
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=recensione&struttura=" + idStruttura + "&stato_recensione=Approvata";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
