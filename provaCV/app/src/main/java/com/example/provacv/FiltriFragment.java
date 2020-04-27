@@ -1,6 +1,5 @@
 package com.example.provacv;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -124,7 +123,7 @@ public class FiltriFragment extends Fragment {
             public void onClick(View v) {
                 cercaStrutture();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, ListaStruttureActivity.newInstance(), "loginFragment");
+                transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "loginFragment");
                 transaction.commit();
             }
         });

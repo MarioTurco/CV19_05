@@ -2,7 +2,6 @@ package com.example.provacv;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +14,7 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-public class ListaStruttureActivity extends Fragment {
+public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
     //qui vanno le cose da passare all'adapter
     private ArrayList<String> listaNomi = new ArrayList<>();
@@ -24,7 +23,7 @@ public class ListaStruttureActivity extends Fragment {
     private ArrayList<String> listaCategorie = new ArrayList<>();
 
     public static Fragment newInstance() {
-        return new ListaStruttureActivity();
+        return new ListaStruttureFragment();
     }
 
     @Nullable
