@@ -56,6 +56,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.categoria.setText(struttura.getCategoria());
         holder.città.setText(struttura.getCittà());
         holder.descrizione.setText(struttura.getDescrizione());
+        holder.ratingBar.setRating(new Float(struttura.getValutazioneMedia()));
 
         //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView immagine;
         TextView nome, città, descrizione, categoria;
-        //RatingBar ratingBar;
+        RatingBar ratingBar;
         MaterialCardView ViewLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +88,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
             città = itemView.findViewById(R.id.listItem_cittàStruttura);
             descrizione = itemView.findViewById(R.id.listItem_descrizioneStruttura);
             categoria = itemView.findViewById(R.id.listItem_categoriaStruttura);
-           // ratingBar = itemView.findViewById(R.id.listItem_ratingStruttura);
+            ratingBar = itemView.findViewById(R.id.listItem_ratingStruttura);
             ViewLayout = itemView.findViewById(R.id.listItem_layout);
         }
     }
