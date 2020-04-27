@@ -110,7 +110,6 @@ public class FiltriFragment extends Fragment {
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
         prossimitàSwitch = view.findViewById(R.id.prossimitàSwitch);
         backButton = view.findViewById(R.id.backButtonSignup);
-
         initSpinners(view, adapter);
 
         setupProssimitàSwitch();
@@ -141,13 +140,14 @@ public class FiltriFragment extends Fragment {
                 }
                 else{
                     disabilitaProssimità();
+                    prossimitàSwitch.setChecked(false);
                 }
             }
         });
     }
 
     private void askForGPSPermissions() {
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
     }
 
     @Override
@@ -155,10 +155,12 @@ public class FiltriFragment extends Fragment {
         switch (requestCode){
             case MY_PERMISSIOS_REQUEST_LOCATION:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
                     abilitaProssimità();
                 }
                 else{
-                    disabilitaProssimità();
+                    Log.d(TAG, "onRequestPermissionsResult: disbilitato");
+                    disabilitaProssimità();//TODO non funziona
                 }
             }
         }
@@ -167,6 +169,7 @@ public class FiltriFragment extends Fragment {
     private void disabilitaProssimità() {
         distanzaText.setVisibility(View.INVISIBLE);
         cittaText.setVisibility(View.VISIBLE);
+        prossimitàSwitch.setChecked(false);
     }
 
 
