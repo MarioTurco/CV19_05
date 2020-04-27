@@ -46,6 +46,8 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: ");
         Struttura struttura = listaStruttura.get(position);
+
+        //TODO scarica immagne dal db
         //qui dobbiamo caricare l'immagine
         //...
 
@@ -55,7 +57,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.città.setText(struttura.getCittà());
         holder.descrizione.setText(struttura.getDescrizione());
 
-        //listener che ci fa aprire la pagina della struttura
+        //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

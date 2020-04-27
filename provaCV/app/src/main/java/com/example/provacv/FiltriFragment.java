@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -42,9 +43,7 @@ public class FiltriFragment extends Fragment {
     private Switch prossimitàSwitch;
 
     public FiltriFragment(SupportMapFragment mapFragment) {
-
         this.mapFragment = mapFragment;
-
     }
 
 
@@ -53,23 +52,9 @@ public class FiltriFragment extends Fragment {
         return fragment;
     }
 
-    private void setHomepageActionInDrawer(){
-        Menu drawerMenu = ((MainActivity)getActivity()).navigationView.getMenu();
-        drawerMenu.findItem(R.id.login).setVisible(false);
-        drawerMenu.findItem(R.id.homepage).setVisible(true);
-    }
-
-    private void setLoginActionInDrawer(){
-        Menu drawerMenu = ((MainActivity)getActivity()).navigationView.getMenu();
-        drawerMenu.findItem(R.id.login).setVisible(true);
-        drawerMenu.findItem(R.id.homepage).setVisible(false);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //setHomepageActionInDrawer();
         super.onCreate(savedInstanceState);
-
     }
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
@@ -102,14 +87,37 @@ public class FiltriFragment extends Fragment {
         initSpinnerValutazione(view, adapter);
     }
 
+
+
     private void initGUIElements(View view){
         ArrayAdapter<CharSequence> adapter = null;
+
         cercaButton = (Button) view.findViewById(R.id.cercaButton);
         nomeText = (EditText) view.findViewById(R.id.nomeText);
         cittaText = (EditText) view.findViewById(R.id.cittaText);
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
+        prossimitàSwitch = view.findViewById(R.id.prossimitàSwitch);
+        backButton = view.findViewById(R.id.backButtonSignup);
+
         initSpinners(view, adapter);
 
+        setupProssimitàSwitch();
+    }
+
+    private void setupProssimitàSwitch() {
+        prossimitàSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    distanzaText.setVisibility(View.VISIBLE);
+                    cittaText.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    distanzaText.setVisibility(View.INVISIBLE);
+                    cittaText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     @Override
@@ -142,7 +150,7 @@ public class FiltriFragment extends Fragment {
         if(!citta.equals(""))
             result += "&citta=" + citta;
 
-        //da aggiungere: distanza massima, prossimità
+        //TODO: da aggiungere distanza massima, prossimità
 
         String categoria = spinnerCategoria.getSelectedItem().toString();
         if(!categoria.equals("Nessuno"))
@@ -185,7 +193,7 @@ public class FiltriFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backButton = view.findViewById(R.id.backButtonSignup);
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
