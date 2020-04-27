@@ -26,7 +26,7 @@ public class StrutturaDAO {
 
     public void strutturaQuery(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura";
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/struttura?";
         queryRequestString += filtriStruttura.getNonNullStrings(2.000, 2.000);
         System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest

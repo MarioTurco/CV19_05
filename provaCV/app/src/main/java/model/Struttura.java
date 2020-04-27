@@ -8,11 +8,12 @@ public class Struttura {
     private String descrizione;
     private String città;
     private int idStruttura;
-    private float valutazioneMedia;
+    private double valutazioneMedia;
     private String fasciaDiPrezzo;
     private String categoria;
 
-    public Struttura(String indirizzo, double longitudine, double latitudine, String nome, String descrizione, String città, int idStruttura, float valutazioneMedia, String fasciaDiPrezzo, String categoria) {
+
+    /*public Struttura(String indirizzo, double longitudine, double latitudine, String nome, String descrizione, String città, int idStruttura, float valutazioneMedia, String fasciaDiPrezzo, String categoria) {
         this.indirizzo = indirizzo;
         this.longitudine = longitudine;
         this.latitudine = latitudine;
@@ -24,7 +25,7 @@ public class Struttura {
         this.fasciaDiPrezzo = fasciaDiPrezzo;
         this.categoria = categoria;
     }
-
+    */
     public String getIndirizzo() {
         return indirizzo;
     }
@@ -81,11 +82,11 @@ public class Struttura {
         this.idStruttura = idStruttura;
     }
 
-    public float getValutazioneMedia() {
+    public double getValutazioneMedia() {
         return valutazioneMedia;
     }
 
-    public void setValutazioneMedia(float valutazioneMedia) {
+    public void setValutazioneMedia(double valutazioneMedia) {
         this.valutazioneMedia = valutazioneMedia;
     }
 

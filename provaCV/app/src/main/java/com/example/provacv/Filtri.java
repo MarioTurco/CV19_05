@@ -90,11 +90,11 @@ public class Filtri {
             returnString += "&nome=" + nome;
         if (!citta.equals(""))
             returnString += "&citta=" + citta;
-        if (!categoria.equals(""))
+        if (!categoria.equals("Nessuno"))
             returnString += "&categoria=" + categoria;
-        if (!prezzo.equals(""))
+        if (!prezzo.equals("Nessuno"))
             returnString += "&prezzo=" + prezzo;
-        if (!valutazione.equals(""))
+        if (!valutazione.equals("Nessuno"))
             returnString += "&valutazione_media=" + nome;
         if (prossimita) {
             if (!distanzaMassima.equals(""))

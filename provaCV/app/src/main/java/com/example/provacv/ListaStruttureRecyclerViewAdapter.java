@@ -25,8 +25,8 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     private static final String TAG = "ListaStruttureRecyclerV";
 
     private Context mContext;
-    //qui vanno le robe prese dall'activity che a scua volta dovrebbe prenderle dal dao/locale
-    private ArrayList<Struttura> listaStruttura = new ArrayList<>();
+    //qui vanno le robe prese dall'activity che a sua volta dovrebbe prenderle dal dao/locale
+    private ArrayList<Struttura> listaStruttura;
 
     public ListaStruttureRecyclerViewAdapter(Context mContext, ArrayList<Struttura> listaStrutture) {
         this.mContext = mContext;
@@ -43,7 +43,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: ");
         Struttura struttura = listaStruttura.get(position);
 
@@ -61,7 +61,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Cliccato", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Cliccato" + position, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -35,6 +35,14 @@ import com.android.volley.toolbox.Volley;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import DAO.StrutturaDAO;
+import DAO.VolleyCallback;
+import model.Struttura;
 
 import static com.android.volley.VolleyLog.TAG;
 
@@ -54,8 +62,11 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerValutazione;
     private Switch prossimitàSwitch;
 
+    private StrutturaDAO strutturaDAO;
+
     public FiltriFragment(SupportMapFragment mapFragment) {
         this.mapFragment = mapFragment;
+
     }
 
 
@@ -67,6 +78,7 @@ public class FiltriFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.strutturaDAO = new StrutturaDAO(this.getActivity());
     }
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
@@ -188,65 +200,75 @@ public class FiltriFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cercaStrutture();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "loginFragment");
-                transaction.commit();
+
             }
         });
         this.container = container;
         return view;
     }
 
-    private String addRequestParams(){
-        String result = "";
-        String nome = nomeText.getText().toString();
-
-        if(!nome.equals(""))
-            result += "&nome=" + nome;
-
-        String citta = cittaText.getText().toString();
-        if(!citta.equals(""))
-            result += "&citta=" + citta;
-
-        //TODO: da aggiungere distanza massima, prossimità
-
-        String categoria = spinnerCategoria.getSelectedItem().toString();
-        if(!categoria.equals("Nessuno"))
-            result += "&categoria=" + categoria;
-
-        String prezzo = spinnerPrezzo.getSelectedItem().toString();
-        if(!prezzo.equals("Nessuno"))
-            result += "&fascia_di_prezzo=" + prezzo;
-
-        String valutazione = spinnerValutazione.getSelectedItem().toString();
-
-        //Aggiungere criterio per valutazione media
-
-        return result;
-    }
 
     private void cercaStrutture(){
-        RequestQueue queue = Volley.newRequestQueue(this.getActivity());
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/test3/table?table=struttura";
-        queryRequestString += addRequestParams();
-        System.out.println(queryRequestString);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
+        String distanzaMassima;
+        String citta;
 
+
+        if(prossimitàSwitch.isChecked()) {
+            citta = "";
+            distanzaMassima = distanzaText.getText().toString();
+        }
+        else{
+            distanzaMassima = "";
+            citta = cittaText.getText().toString();
+        }
+
+        Filtri filtriStruttura = new Filtri(nomeText.getText().toString(),
+                                            citta,
+                                            spinnerCategoria.getSelectedItem().toString(),
+                                            spinnerPrezzo.getSelectedItem().toString(),
+                                            spinnerValutazione.getSelectedItem().toString(),
+                                            distanzaMassima,
+                                            prossimitàSwitch.isChecked()
+                                            );
+
+        strutturaDAO.strutturaQuery(filtriStruttura,
+                new VolleyCallback<JSONArray>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-                        System.out.println(response);
+                    public void onSuccess(JSONArray result) {
+                        ArrayList<Struttura> listaStrutture = new ArrayList<>();
+                        try {
+                            for (int i = 0; i < result.length(); i++) {
+                                JSONObject strutturaJSON = result.getJSONObject(i);
+                                Struttura strutturaObject = new Struttura();
+                                strutturaObject.setNome(strutturaJSON.getString("nome"));
+                                strutturaObject.setIndirizzo(strutturaJSON.getString("indirizzo"));
+                                strutturaObject.setLatitudine(strutturaJSON.getDouble("latitudine"));
+                                strutturaObject.setLongitudine(strutturaJSON.getDouble("longitudine"));
+                                strutturaObject.setDescrizione(strutturaJSON.getString("descrizione"));
+                                strutturaObject.setCittà(strutturaJSON.getString("citta"));
+                                strutturaObject.setIdStruttura(strutturaJSON.getInt("id_struttura"));
+                                strutturaObject.setValutazioneMedia(strutturaJSON.getDouble("valutazione_media"));
+                                strutturaObject.setFasciaDiPrezzo(strutturaJSON.getString("fascia_di_prezzo"));
+                                strutturaObject.setCategoria(strutturaJSON.getString("categoria"));
+                                listaStrutture.add(strutturaObject);
+                            }
+                            mostraListaStrutture(listaStrutture);
+                        }
+                        catch(JSONException e){}
                     }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("Errore");
-
+                    private void mostraListaStrutture(ArrayList<Struttura> strutture){
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, ListaStruttureFragment.newInstance(strutture), "ListStruttureFragment");
+                        transaction.commit();
                     }
-                });
-        queue.add(jsonArrayRequest);
+
+                }
+        );
+
+
+
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
