@@ -262,7 +262,9 @@ public class FiltriFragment extends Fragment {
                                 strutturaObject.setCategoria(strutturaJSON.getString("categoria"));
                                 listaStrutture.add(strutturaObject);
                             }
-                            mostraListaStrutture(listaStrutture);
+                            if(listaStrutture.isEmpty())
+                                nessunaStrutturaTrovata();
+                            else mostraListaStrutture(listaStrutture);
                         }
                         catch(JSONException e){
                             Log.d(TAG, "onSuccess: FALLITO");
@@ -282,6 +284,12 @@ public class FiltriFragment extends Fragment {
 
 
 
+    }
+
+    private void nessunaStrutturaTrovata() {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.container, NessunaStrrutturaTrovataFragment.newInstance(), "Nessuna struttura trovata");
+        transaction.commit();
     }
 
 

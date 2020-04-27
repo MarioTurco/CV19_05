@@ -8,12 +8,13 @@
     android:backgroundTint="#FFFFFF">
 
     <ImageButton
-        android:id="@+id/backButtonConnessione"
+        android:id="@+id/backButtonNessunaStruttura"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
+        android:backgroundTint="#FFFFFF"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.402"
-        app:layout_constraintStart_toEndOf="@+id/backButtonConnessione"
+        app:layout_constraintStart_toEndOf="@+id/backButtonNessunaStruttura"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

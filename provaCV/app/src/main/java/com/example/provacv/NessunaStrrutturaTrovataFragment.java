@@ -11,44 +11,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-
-public class ConnessioneAssenteFragment extends Fragment {
-    ImageButton backbutton;
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link NessunaStrrutturaTrovataFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class NessunaStrrutturaTrovataFragment extends Fragment {
+    ImageButton backButton;
 
 
     // TODO: Rename and change types and number of parameters
-    public static ConnessioneAssenteFragment newInstance() {
-        ConnessioneAssenteFragment fragment = new ConnessioneAssenteFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
+    public static NessunaStrrutturaTrovataFragment newInstance() {
+        NessunaStrrutturaTrovataFragment fragment = new NessunaStrrutturaTrovataFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_connessione_assente, container, false);
+        View view = inflater.inflate(R.layout.fragment_nessuna_struttura, container, false);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backbutton = view.findViewById(R.id.backButtonNessunaStruttura);
+        backButton = view.findViewById(R.id.backButtonNessunaStruttura);
 
-        backbutton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.remove(ConnessioneAssenteFragment.this);
+                transaction.remove(NessunaStrrutturaTrovataFragment.this);
                 transaction.commit();
             }
         });
