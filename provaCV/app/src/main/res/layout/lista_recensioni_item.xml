@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/listItem_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginBottom="4dp"
+    android:backgroundTint="#FFFFFF"
+    android:elevation="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="2dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
+
+
+        <TextView
+            android:id="@+id/titoloRecensione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text='"Titolo recensione"'
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titoloRecensione"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Valutazione:" />
+
+        <RatingBar
+            android:id="@+id/ratingBarRecensione"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titoloRecensione"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/testoRecensione"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView11"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="9dp"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="Testo recensione (3 righe)"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titoloRecensione"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/ratingBarRecensione"
+            android:text="Data:" />
+
+        <TextView
+            android:id="@+id/dataRecensione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titoloRecensione"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/textView15"
+            android:text="20/05/2020" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testoRecensione"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:text="Da:" />
+
+        <TextView
+            android:id="@+id/autoreRecensione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testoRecensione"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView20"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="nomeAutore" />
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

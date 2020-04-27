@@ -5,10 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,7 +82,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
 
         private void attachItemsByID(View itemView) {
             immagine = itemView.findViewById(R.id.listItem_immagineStruttura);
-            nome = itemView.findViewById(R.id.listItem_NomeStruttura);
+            nome = itemView.findViewById(R.id.recensione_TitoloRecensione);
             città = itemView.findViewById(R.id.listItem_cittàStruttura);
             descrizione = itemView.findViewById(R.id.listItem_descrizioneStruttura);
             categoria = itemView.findViewById(R.id.listItem_categoriaStruttura);
