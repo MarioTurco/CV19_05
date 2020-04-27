@@ -74,15 +74,13 @@ public class LoginController {
         SideMenuController sideMenuController=new SideMenuController(this.admin);
         loader.setController(sideMenuController);       
         Parent parent=loader.load();
-        
-
+       
         Scene homePageScene = getScene(parent);
 
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         showStage(appStage, homePageScene);
         sideMenuController.setWindowStage();
         
-
         loadRecensioniView(homePageScene);
         initRecensioniButton(homePageScene);
     }
@@ -149,28 +147,10 @@ public class LoginController {
             Scene scena = ((Node) event.getSource()).getScene();
             scena.setCursor(Cursor.WAIT);
             loginButton.setDisable(true);
-
             try {
                 checkLoginWithThread(event, scena);
-
-            } catch (InterruptedException e) {
-
-            }
+            } catch (InterruptedException e) {}
         }
-        /*
-        try {
-            if (checkLoginWithThread()) {
-                System.out.println("Ok");
-                loadSideMenuPanelAfterLogin(event);
-            } else {
-                System.out.println("No");
-                showLoginErrorDialog();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         */
-
     }
 
     private void loadRecensioniView(Scene homePageScene) {
@@ -187,11 +167,8 @@ public class LoginController {
     private void initRecensioniButton(Scene homePageScene) {
         JFXButton recensioniButton = (JFXButton) homePageScene.lookup("#recensioniButton");
         ImageView recensioniImageView = (ImageView) homePageScene.lookup("#recensioniImageView");
-
         setBlueIcon(recensioniImageView);
-
         changeRecensioniButtonTextColourToBlue(recensioniButton);
-
     }
 
     private void setBlueIcon(ImageView recensioniImageView) {
