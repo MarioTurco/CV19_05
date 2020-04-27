@@ -1,5 +1,6 @@
 package com.example.provacv;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -22,14 +24,15 @@ import model.Struttura;
 public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<ListaStruttureRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "ListaStruttureRecyclerV";
 
+    private MainActivity mainActivity;
     private Context mContext;
     //qui vanno le robe prese dall'activity che a sua volta dovrebbe prenderle dal dao/locale
     private ArrayList<Struttura> listaStruttura;
 
-    public ListaStruttureRecyclerViewAdapter(Context mContext, ArrayList<Struttura> listaStrutture) {
+    public ListaStruttureRecyclerViewAdapter(Context mContext, ArrayList<Struttura> listaStrutture, MainActivity activity ) {
         this.mContext = mContext;
         this.listaStruttura = listaStrutture;
-
+        this.mainActivity = activity;
     }
 
     @NonNull
@@ -43,7 +46,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: ");
-        Struttura struttura = listaStruttura.get(position);
+        final Struttura struttura = listaStruttura.get(position);
 
         //TODO scarica immagne dal db
         //qui dobbiamo caricare l'immagine
@@ -54,13 +57,15 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.categoria.setText(struttura.getCategoria());
         holder.città.setText(struttura.getCittà());
         holder.descrizione.setText(struttura.getDescrizione());
-        holder.ratingBar.setRating(new Float(struttura.getValutazioneMedia()));
+        holder.ratingBar.setRating((float)struttura.getValutazioneMedia());
 
         //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Cliccato" + position, Toast.LENGTH_SHORT).show();
+                FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, DettagliStrutturaFragment.newInstance(struttura), "DettagliStrutturaFragment");
+                transaction.commit();
             }
         });
     }

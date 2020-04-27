@@ -55,7 +55,7 @@ public class ListaStruttureFragment extends Fragment {
 
     private void initRecyclerView(View view){
         RecyclerView recyclerView = view.findViewById(R.id.listaStruttureRecyclerView);
-        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaStrutture);
+        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaStrutture, (MainActivity) this.getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
