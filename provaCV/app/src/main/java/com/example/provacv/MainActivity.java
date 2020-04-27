@@ -99,12 +99,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-       /* SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+      /*  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 if (key.equals("isLogged")){
                     //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
+                    if(sharedPreferences.getBoolean("isLogged", false) == true){
+                        //mostra logout
+                    }else{
+                        //mostra login e registrati
+                    }
+
                 }
             }
         };*/
