@@ -1,6 +1,10 @@
 package com.example.provacv;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -12,9 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -28,8 +36,12 @@ import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import org.json.JSONArray;
 
+import static com.android.volley.VolleyLog.TAG;
+
 
 public class FiltriFragment extends Fragment {
+    private static final String TAG = "FiltriFragment";
+    private static final int MY_PERMISSIOS_REQUEST_LOCATION = 1;
     private ImageButton backButton;
     private ViewGroup container;
     private SupportMapFragment mapFragment;
@@ -104,20 +116,63 @@ public class FiltriFragment extends Fragment {
         setupProssimitàSwitch();
     }
 
+    private boolean hasFineLocationAccess(){
+        return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+    private boolean hasCoarseLocationAccess(){
+        return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+    private boolean hasGPSPermissions(){
+        return hasFineLocationAccess() && hasCoarseLocationAccess();
+    }
     private void setupProssimitàSwitch() {
         prossimitàSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    distanzaText.setVisibility(View.VISIBLE);
-                    cittaText.setVisibility(View.INVISIBLE);
+                    if (hasGPSPermissions()) {
+                        abilitaProssimità();
+                    }
+                    else{
+                        askForGPSPermissions();
+                    }
                 }
                 else{
-                    distanzaText.setVisibility(View.INVISIBLE);
-                    cittaText.setVisibility(View.VISIBLE);
+                    disabilitaProssimità();
                 }
             }
         });
+    }
+
+    private void askForGPSPermissions() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case MY_PERMISSIOS_REQUEST_LOCATION:{
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                    abilitaProssimità();
+                }
+                else{
+                    disabilitaProssimità();
+                }
+            }
+        }
+    }
+
+    private void disabilitaProssimità() {
+        distanzaText.setVisibility(View.INVISIBLE);
+        cittaText.setVisibility(View.VISIBLE);
+    }
+
+
+    private void abilitaProssimità() {
+        distanzaText.setVisibility(View.VISIBLE);
+        cittaText.setVisibility(View.INVISIBLE);
     }
 
     @Override
