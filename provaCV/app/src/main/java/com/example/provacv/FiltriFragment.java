@@ -122,6 +122,7 @@ public class FiltriFragment extends Fragment {
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
         prossimitàSwitch = view.findViewById(R.id.prossimitàSwitch);
         backButton = view.findViewById(R.id.backButtonSignup);
+
         initSpinners(view, adapter);
 
         setupProssimitàSwitch();
@@ -152,7 +153,6 @@ public class FiltriFragment extends Fragment {
                 }
                 else{
                     disabilitaProssimità();
-                    prossimitàSwitch.setChecked(false);
                 }
             }
         });
@@ -172,7 +172,7 @@ public class FiltriFragment extends Fragment {
                 }
                 else{
                     Log.d(TAG, "onRequestPermissionsResult: disbilitato");
-                    disabilitaProssimità();//TODO non funziona
+                    disabilitaProssimità();
                 }
             }
         }
@@ -188,6 +188,7 @@ public class FiltriFragment extends Fragment {
     private void abilitaProssimità() {
         distanzaText.setVisibility(View.VISIBLE);
         cittaText.setVisibility(View.INVISIBLE);
+        prossimitàSwitch.setChecked(true);
     }
 
     @Override

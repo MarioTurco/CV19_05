@@ -1,6 +1,9 @@
 package com.example.provacv;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -23,6 +26,8 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
+import java.util.prefs.Preferences;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ImageButton filtriButton;
     DrawerLayout drawerLayout;
@@ -39,7 +44,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         setupFiltriButton();
         setMap(savedInstanceState);
+        setPreferences();
+    }
 
+    private void setPreferences() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     private void setupFiltriButton() {
@@ -89,6 +98,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+      /*  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                if (key.equals("isLogged")){
+                    //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
+                    if(sharedPreferences.getBoolean("isLogged", false) == true){
+                        //mostra logout
+                    }else{
+                        //mostra login e registrati
+                    }
+
+                }
+            }
+        };*/
     }
 
     private void loadSignupFragment() {
