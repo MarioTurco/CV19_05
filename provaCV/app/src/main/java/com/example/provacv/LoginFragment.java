@@ -94,6 +94,13 @@ public class LoginFragment extends Fragment {
                         else
                             System.out.println("NON HAFUNZIONATO");
                     }
+
+                    @Override
+                    public void onFail() {
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
+                        transaction.commit();
+                    }
                 });
 
 

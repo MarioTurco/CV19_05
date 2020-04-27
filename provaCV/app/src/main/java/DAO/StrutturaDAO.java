@@ -11,11 +11,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.provacv.Filtri;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class StrutturaDAO {
-
+    private String TAG ="StrutturaDAO";
     private Context context;
 
     public StrutturaDAO(Context context){
@@ -40,7 +38,7 @@ public class StrutturaDAO {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Errore");
+                       callback.onFail();
 
                     }
                 });
