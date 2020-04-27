@@ -94,6 +94,11 @@ public class LoginFragment extends Fragment {
                         else
                             System.out.println("NON HAFUNZIONATO");
                     }
+
+                    @Override
+                    public void onFail() {
+                        //TODO implementare sostituzione del fragment con connessione assente
+                    }
                 });
 
 

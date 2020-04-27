@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -234,6 +235,14 @@ public class FiltriFragment extends Fragment {
 
         strutturaDAO.strutturaQuery(filtriStruttura,
                 new VolleyCallback<JSONArray>() {
+
+                    @Override
+                    public void onFail() {
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
+                        transaction.commit();
+                    }
+
                     @Override
                     public void onSuccess(JSONArray result) {
                         ArrayList<Struttura> listaStrutture = new ArrayList<>();
@@ -255,9 +264,11 @@ public class FiltriFragment extends Fragment {
                             }
                             mostraListaStrutture(listaStrutture);
                         }
-                        catch(JSONException e){}
+                        catch(JSONException e){
+                            Log.d(TAG, "onSuccess: FALLITO");
+                        }
                     }
-                    //TODO  fare l'override di
+
 
 
                     private void mostraListaStrutture(ArrayList<Struttura> strutture){
