@@ -142,13 +142,13 @@
 
     <TextView
         android:id="@+id/descrizioneStruttura"
-        android:layout_width="266dp"
-        android:layout_height="87dp"
+        android:layout_width="285dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:lines="5"
         android:singleLine="false"
-        android:text="Descrizione"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
         android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -219,15 +219,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recensioniRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="401dp"
+        android:layout_height="385dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriaStruttura"
-        app:layout_constraintVertical_bias="0.79" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonStruttra"
