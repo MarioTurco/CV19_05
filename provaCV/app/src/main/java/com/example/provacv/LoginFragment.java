@@ -88,9 +88,9 @@ public class LoginFragment extends Fragment {
         String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
         utenteDAO.tryLogin(username, password,
-                new VolleyCallback(){
+                new VolleyCallback<Boolean>(){
                     @Override
-                    public void onSuccess(boolean result){
+                    public void onSuccess(Boolean result){
                         if(result)
                             System.out.println("HAFUNZIONATO");
                         else

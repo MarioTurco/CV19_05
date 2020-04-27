@@ -33,7 +33,7 @@ public class UtenteDAO {
         return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
     }
 
-    public void tryLogin(String username, final String givenPassword, final VolleyCallback callback){
+    public void tryLogin(String username, final String givenPassword, final VolleyCallback<Boolean> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
         queryRequestString +=appendRequestForLogin(username);

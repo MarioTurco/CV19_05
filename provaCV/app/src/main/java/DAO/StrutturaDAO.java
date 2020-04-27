@@ -24,21 +24,17 @@ public class StrutturaDAO {
 
 
 
-    public JSONArray strutturaQuery(Filtri filtriStruttura){
+    public void strutturaQuery(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura";
         queryRequestString += filtriStruttura.getNonNullStrings(2.000, 2.000);
         System.out.println(queryRequestString);
-        final UtenteDAO.BooleanContainer booleanContainer = new UtenteDAO.BooleanContainer(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        try {
-                            boolean loginSuccess = checkPassword(response.getJSONObject(0), givenPassword);
-                            callback.onSuccess(loginSuccess);
-                        } catch (JSONException e) {}
+                            callback.onSuccess(response);
                     }
                 }, new Response.ErrorListener() {
 

@@ -1,5 +1,5 @@
 package DAO;
 
-public interface VolleyCallback{
-    void onSuccess(boolean result);
+public interface VolleyCallback<T>{
+    void onSuccess(T result);
 }
