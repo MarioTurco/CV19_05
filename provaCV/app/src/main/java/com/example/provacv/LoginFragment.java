@@ -97,7 +97,9 @@ public class LoginFragment extends Fragment {
 
                     @Override
                     public void onFail() {
-                        //TODO implementare sostituzione del fragment con connessione assente
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
+                        transaction.commit();
                     }
                 });
 
