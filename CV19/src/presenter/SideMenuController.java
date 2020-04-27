@@ -2,12 +2,10 @@ package presenter;
 
 import DAO.AdminDAO;
 import com.jfoenix.controls.JFXButton;
-
 import java.io.IOException;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;

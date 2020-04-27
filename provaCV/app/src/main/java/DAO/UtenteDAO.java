@@ -16,21 +16,6 @@ import org.json.JSONObject;
 
 public class UtenteDAO {
 
-    private class BooleanContainer{
-        private boolean val;
-        protected BooleanContainer(boolean val){
-            this.val=val;
-        }
-
-        protected boolean getVal(){
-            return val;
-        }
-
-        protected void setVal(boolean val){
-            this.val=val;
-        }
-    }
-
     private Context context;
 
     public UtenteDAO(Context context){
@@ -53,7 +38,6 @@ public class UtenteDAO {
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
         queryRequestString +=appendRequestForLogin(username);
         System.out.println(queryRequestString);
-        final BooleanContainer booleanContainer = new BooleanContainer(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -73,6 +57,5 @@ public class UtenteDAO {
                     }
                 });
         queue.add(jsonArrayRequest);
-
     }
 }

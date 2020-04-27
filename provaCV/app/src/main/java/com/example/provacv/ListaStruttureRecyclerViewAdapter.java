@@ -19,22 +19,19 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
+import model.Struttura;
+
 public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<ListaStruttureRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "ListaStruttureRecyclerV";
 
     private Context mContext;
     //qui vanno le robe prese dall'activity che a scua volta dovrebbe prenderle dal dao/locale
-    private ArrayList<String> listaNomi = new ArrayList<>();
-    private ArrayList<String> listaCittà = new ArrayList<>();
-    private ArrayList<String> listaDescrizioni = new ArrayList<>();
-    private ArrayList<String> listaCategorie = new ArrayList<>();
+    private ArrayList<Struttura> listaStruttura = new ArrayList<>();
 
-    public ListaStruttureRecyclerViewAdapter(Context mContext, ArrayList<String> nomi, ArrayList<String> città, ArrayList<String> descrizioni, ArrayList<String> categoria) {
+    public ListaStruttureRecyclerViewAdapter(Context mContext, ArrayList<Struttura> listaStrutture) {
         this.mContext = mContext;
-        this.listaNomi = nomi;
-        this.listaCittà = città;
-        this.listaDescrizioni = descrizioni;
-        this.listaCategorie = categoria;
+        this.listaStruttura = listaStrutture;
+
     }
 
     @NonNull
@@ -48,17 +45,19 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: ");
+        Struttura struttura = listaStruttura.get(position);
 
+        //TODO scarica immagne dal db
         //qui dobbiamo caricare l'immagine
         //...
 
         //qui settiamo i vari campi di testo
-        holder.nome.setText(listaNomi.get(position));
-        holder.categoria.setText(listaCategorie.get(position));
-        holder.città.setText(listaCittà.get(position));
-        holder.descrizione.setText(listaDescrizioni.get(position));
+        holder.nome.setText(struttura.getNome());
+        holder.categoria.setText(struttura.getCategoria());
+        holder.città.setText(struttura.getCittà());
+        holder.descrizione.setText(struttura.getDescrizione());
 
-        //listener che ci fa aprire la pagina della struttura
+        //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +68,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
 
     @Override
     public int getItemCount() {
-        return listaNomi.size();
+        return listaStruttura.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

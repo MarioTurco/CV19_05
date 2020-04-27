@@ -1,20 +1,28 @@
 package com.example.provacv;
 
-import android.content.Intent;
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -28,8 +36,12 @@ import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 
 import org.json.JSONArray;
 
+import static com.android.volley.VolleyLog.TAG;
+
 
 public class FiltriFragment extends Fragment {
+    private static final String TAG = "FiltriFragment";
+    private static final int MY_PERMISSIOS_REQUEST_LOCATION = 1;
     private ImageButton backButton;
     private ViewGroup container;
     private SupportMapFragment mapFragment;
@@ -43,9 +55,7 @@ public class FiltriFragment extends Fragment {
     private Switch prossimitàSwitch;
 
     public FiltriFragment(SupportMapFragment mapFragment) {
-
         this.mapFragment = mapFragment;
-
     }
 
 
@@ -54,23 +64,9 @@ public class FiltriFragment extends Fragment {
         return fragment;
     }
 
-    private void setHomepageActionInDrawer(){
-        Menu drawerMenu = ((MainActivity)getActivity()).navigationView.getMenu();
-        drawerMenu.findItem(R.id.login).setVisible(false);
-        drawerMenu.findItem(R.id.homepage).setVisible(true);
-    }
-
-    private void setLoginActionInDrawer(){
-        Menu drawerMenu = ((MainActivity)getActivity()).navigationView.getMenu();
-        drawerMenu.findItem(R.id.login).setVisible(true);
-        drawerMenu.findItem(R.id.homepage).setVisible(false);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //setHomepageActionInDrawer();
         super.onCreate(savedInstanceState);
-
     }
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
@@ -103,14 +99,80 @@ public class FiltriFragment extends Fragment {
         initSpinnerValutazione(view, adapter);
     }
 
+
+
     private void initGUIElements(View view){
         ArrayAdapter<CharSequence> adapter = null;
+
         cercaButton = (Button) view.findViewById(R.id.cercaButton);
         nomeText = (EditText) view.findViewById(R.id.nomeText);
         cittaText = (EditText) view.findViewById(R.id.cittaText);
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
+        prossimitàSwitch = view.findViewById(R.id.prossimitàSwitch);
+        backButton = view.findViewById(R.id.backButtonSignup);
+
         initSpinners(view, adapter);
 
+        setupProssimitàSwitch();
+    }
+
+    private boolean hasFineLocationAccess(){
+        return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+    private boolean hasCoarseLocationAccess(){
+        return ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+    private boolean hasGPSPermissions(){
+        return hasFineLocationAccess() && hasCoarseLocationAccess();
+    }
+    private void setupProssimitàSwitch() {
+        prossimitàSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    if (hasGPSPermissions()) {
+                        abilitaProssimità();
+                    }
+                    else{
+                        askForGPSPermissions();
+                    }
+                }
+                else{
+                    disabilitaProssimità();
+                }
+            }
+        });
+    }
+
+    private void askForGPSPermissions() {
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case MY_PERMISSIOS_REQUEST_LOCATION:{
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                    abilitaProssimità();
+                }
+                else{
+                    disabilitaProssimità();
+                }
+            }
+        }
+    }
+
+    private void disabilitaProssimità() {
+        distanzaText.setVisibility(View.INVISIBLE);
+        cittaText.setVisibility(View.VISIBLE);
+    }
+
+
+    private void abilitaProssimità() {
+        distanzaText.setVisibility(View.VISIBLE);
+        cittaText.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -124,7 +186,7 @@ public class FiltriFragment extends Fragment {
             public void onClick(View v) {
                 cercaStrutture();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, ListaStruttureActivity.newInstance(), "loginFragment");
+                transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "loginFragment");
                 transaction.commit();
             }
         });
@@ -143,7 +205,7 @@ public class FiltriFragment extends Fragment {
         if(!citta.equals(""))
             result += "&citta=" + citta;
 
-        //da aggiungere: distanza massima, prossimità
+        //TODO: da aggiungere distanza massima, prossimità
 
         String categoria = spinnerCategoria.getSelectedItem().toString();
         if(!categoria.equals("Nessuno"))
@@ -186,7 +248,7 @@ public class FiltriFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backButton = view.findViewById(R.id.backButtonSignup);
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
