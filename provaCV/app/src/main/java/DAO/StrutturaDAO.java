@@ -8,36 +8,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.provacv.PasswordUtils;
+import com.example.provacv.Filtri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UtenteDAO {
+public class StrutturaDAO {
 
     private Context context;
 
-    public UtenteDAO(Context context){
-        this.context=context;
+    public StrutturaDAO(Context context){
+        this.context = context;
     }
 
-    private String appendRequestForLogin(String username){
-        return "&nickname="+username;
-    }
 
-    private boolean checkPassword(JSONObject jsonObject, String givenPassword) throws JSONException{
-        String correctPassword=null,salt=null;
-        correctPassword = jsonObject.getString("password");
-        salt = jsonObject.getString("salt");
-        return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
-    }
 
-    public void tryLogin(String username, final String givenPassword, final VolleyCallback callback){
+    public JSONArray strutturaQuery(Filtri filtriStruttura){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
-        queryRequestString +=appendRequestForLogin(username);
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura";
+        queryRequestString += filtriStruttura.getNonNullStrings(2.000, 2.000);
         System.out.println(queryRequestString);
+        final UtenteDAO.BooleanContainer booleanContainer = new UtenteDAO.BooleanContainer(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
