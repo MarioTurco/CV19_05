@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void loadFiltriFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
@@ -124,14 +125,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void loadSignupFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, SignupFragment.newInstance(), "signupFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }
 
     private void loadLoginFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, LoginFragment.newInstance(), "loginFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
@@ -142,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
         if (savedInstanceState == null) {
             // Create fragment
-            final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
             // Build mapboxMap
             MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
             options.camera(new CameraPosition.Builder()

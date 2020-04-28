@@ -59,7 +59,8 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = mainActivity.getSupportFragmentManager()
+                        .beginTransaction().setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                 transaction.replace(R.id.container, VisualizzaRecensioneFragment.newInstance(recensione), "VisualizzaRecensioneFragment");
                 transaction.commit();
             }

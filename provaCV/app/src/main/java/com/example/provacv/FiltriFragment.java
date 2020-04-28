@@ -239,7 +239,8 @@ public class FiltriFragment extends Fragment {
 
                     @Override
                     public void onFail() {
-                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                         transaction.replace(R.id.container, ConnessioneAssenteFragment.newInstance(), "ConnessioneAssenteFragment");
                         transaction.commit();
                     }
@@ -275,7 +276,8 @@ public class FiltriFragment extends Fragment {
 
 
                     private void mostraListaStrutture(ArrayList<Struttura> strutture){
-                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                         transaction.replace(R.id.container, ListaStruttureFragment.newInstance(strutture), "ListStruttureFragment");
                         transaction.commit();
                     }
@@ -288,7 +290,8 @@ public class FiltriFragment extends Fragment {
     }
 
     private void nessunaStrutturaTrovata() {
-        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, NessunaStrrutturaTrovataFragment.newInstance(), "NessunaStrutturaTrovataFragment");
         transaction.commit();
     }
