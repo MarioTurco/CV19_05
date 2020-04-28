@@ -40,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import DAO.StrutturaDAO;
 import DAO.VolleyCallback;
@@ -62,17 +63,17 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerPrezzo;
     private Spinner spinnerValutazione;
     private Switch prossimitàSwitch;
-
+    private MainActivity activity;
     private StrutturaDAO strutturaDAO;
 
-    public FiltriFragment(SupportMapFragment mapFragment) {
-        this.mapFragment = mapFragment;
+    public FiltriFragment() {
+        this.mapFragment = MainActivity.mapFragment;
 
     }
 
 
-    public static FiltriFragment newInstance(SupportMapFragment mapFragment) {
-        FiltriFragment fragment = new FiltriFragment(mapFragment);
+    public static FiltriFragment newInstance() {
+        FiltriFragment fragment = new FiltriFragment();
         return fragment;
     }
 
@@ -197,7 +198,7 @@ public class FiltriFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_filtri, container, false);
         initGUIElements(view);
-
+        activity = (MainActivity)getActivity();
         cercaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -238,8 +239,8 @@ public class FiltriFragment extends Fragment {
 
                     @Override
                     public void onFail() {
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
+                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, ConnessioneAssenteFragment.newInstance(), "ConnessioneAssenteFragment");
                         transaction.commit();
                     }
 
@@ -274,7 +275,7 @@ public class FiltriFragment extends Fragment {
 
 
                     private void mostraListaStrutture(ArrayList<Struttura> strutture){
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.container, ListaStruttureFragment.newInstance(strutture), "ListStruttureFragment");
                         transaction.commit();
                     }
@@ -287,8 +288,8 @@ public class FiltriFragment extends Fragment {
     }
 
     private void nessunaStrutturaTrovata() {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.container, NessunaStrrutturaTrovataFragment.newInstance(), "Nessuna struttura trovata");
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, NessunaStrrutturaTrovataFragment.newInstance(), "NessunaStrutturaTrovataFragment");
         transaction.commit();
     }
 

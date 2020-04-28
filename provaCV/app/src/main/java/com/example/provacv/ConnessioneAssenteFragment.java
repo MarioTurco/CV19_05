@@ -48,7 +48,7 @@ public class ConnessioneAssenteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.remove(ConnessioneAssenteFragment.this);
+                transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
                 transaction.commit();
             }
         });

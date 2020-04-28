@@ -91,7 +91,7 @@ public class DettagliStrutturaFragment extends Fragment {
                     }
 
                     private void initRecyclerView(){
-                        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(getContext(), listaRecensioni);
+                        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(getContext(), listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     }

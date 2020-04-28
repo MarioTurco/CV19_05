@@ -5,11 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,15 +19,15 @@ import model.Recensione;
 
 public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<ListaRecensioniRecycleViewAdapter.ViewHolder> {
     private static final String TAG = "ListaRecensioniRecyclerV";
-
+    private MainActivity mainActivity;
     private Context mContext;
     //qui vanno le robe prese dall'activity che a sua volta dovrebbe prenderle dal dao/locale
     private ArrayList<Recensione> listaRecensioni;
 
-    public ListaRecensioniRecycleViewAdapter(Context mContext, ArrayList<Recensione> listaRecensioni) {
+    public ListaRecensioniRecycleViewAdapter(Context mContext, ArrayList<Recensione> listaRecensioni,MainActivity activity) {
         this.mContext = mContext;
         this.listaRecensioni = listaRecensioni;
-
+        this.mainActivity = activity;
     }
 
     @NonNull
@@ -44,7 +41,7 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
     @Override
     public void onBindViewHolder(@NonNull ListaRecensioniRecycleViewAdapter.ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: ");
-        Recensione recensione = listaRecensioni.get(position);
+        final Recensione recensione = listaRecensioni.get(position);
 
         //TODO scarica immagne dal db
         //qui dobbiamo caricare l'immagine
@@ -61,7 +58,9 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Cliccato" + position, Toast.LENGTH_SHORT).show();
+                FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, VisualizzaRecensioneFragment.newInstance(recensione), "VisualizzaRecensioneFragment");
+                transaction.commit();
             }
         });
     }
@@ -84,10 +83,10 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         private void attachItemsByID(View itemView) {
             autore = itemView.findViewById(R.id.autoreRecensione);
             ratingBar = itemView.findViewById(R.id.ratingBarRecensione);
-            ViewLayout = itemView.findViewById(R.id.listItem_layout);
             data = itemView.findViewById(R.id.dataRecensione);
             titolo = itemView.findViewById(R.id.titoloRecensione);
             testo = itemView.findViewById(R.id.testoRecensione);
+            ViewLayout = itemView.findViewById(R.id.listItem_layout);
         }
     }
 }
