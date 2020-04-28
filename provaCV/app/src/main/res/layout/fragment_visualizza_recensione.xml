@@ -8,7 +8,7 @@
     android:backgroundTint="#FFFFFF">
 
     <ImageButton
-        android:id="@+id/backButtonLogin2"
+        android:id="@+id/backButtonRecensione"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="24dp"
