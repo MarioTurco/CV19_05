@@ -13,16 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NessunaStrrutturaTrovataFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class NessunaStrrutturaTrovataFragment extends Fragment {
     ImageButton backButton;
 
 
-    // TODO: Rename and change types and number of parameters
     public static NessunaStrrutturaTrovataFragment newInstance() {
         NessunaStrrutturaTrovataFragment fragment = new NessunaStrrutturaTrovataFragment();
         return fragment;

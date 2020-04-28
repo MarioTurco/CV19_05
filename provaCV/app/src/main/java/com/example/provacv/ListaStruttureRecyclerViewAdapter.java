@@ -59,7 +59,6 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.descrizione.setText(struttura.getDescrizione());
         holder.ratingBar.setRating((float)struttura.getValutazioneMedia());
 
-        //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

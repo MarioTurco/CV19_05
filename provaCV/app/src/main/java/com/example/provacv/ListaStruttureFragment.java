@@ -19,13 +19,19 @@ import model.Struttura;
 public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
     //qui vanno le cose da passare all'adapter
-    private ArrayList<Struttura> listaStrutture;
+    private static ArrayList<Struttura> listaStrutture;
+
+    public  ListaStruttureFragment(){
+
+    }
 
     public ListaStruttureFragment(ArrayList<Struttura> strutture){
         this.listaStrutture = strutture;
-        System.out.println(listaStrutture);
     }
 
+    public static Fragment newInstance() {
+        return new ListaStruttureFragment();
+    }
     public static Fragment newInstance(ArrayList<Struttura> strutture) {
         return new ListaStruttureFragment(strutture);
     }
@@ -58,6 +64,5 @@ public class ListaStruttureFragment extends Fragment {
         ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaStrutture, (MainActivity) this.getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
     }
 }
