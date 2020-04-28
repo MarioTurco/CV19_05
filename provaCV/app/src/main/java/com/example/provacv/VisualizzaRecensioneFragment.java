@@ -27,6 +27,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
     }
 
     public VisualizzaRecensioneFragment(Recensione recensione){
+
         this.recensione=recensione;
     }
 
