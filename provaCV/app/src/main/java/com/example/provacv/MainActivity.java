@@ -30,12 +30,12 @@ import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 import java.util.prefs.Preferences;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ImageButton filtriButton;
-    DrawerLayout drawerLayout;
+    private ImageButton filtriButton;
+    private DrawerLayout drawerLayout;
     Toolbar toolbar;
-    NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
-    SupportMapFragment mapFragment;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
+    public static SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void loadFiltriFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, FiltriFragment.newInstance(mapFragment), "filtriFragment");
+        transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }

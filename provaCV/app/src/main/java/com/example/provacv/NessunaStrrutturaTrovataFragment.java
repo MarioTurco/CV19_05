@@ -45,7 +45,7 @@ public class NessunaStrrutturaTrovataFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.remove(NessunaStrrutturaTrovataFragment.this);
+                transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
                 transaction.commit();
             }
         });
