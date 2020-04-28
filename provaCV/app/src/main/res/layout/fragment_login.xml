@@ -39,7 +39,6 @@
         android:layout_marginBottom="52dp"
         android:background="@drawable/button_background"
         android:backgroundTint="#C28A8A8E"
-        android:enabled="false"
         android:text="Login"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/registratiTextLink"
@@ -106,5 +105,18 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameLoginText" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.8"
+        android:indeterminate="true"
+        android:indeterminateTint="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
