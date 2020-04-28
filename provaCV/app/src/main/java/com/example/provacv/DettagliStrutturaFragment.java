@@ -35,6 +35,7 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView prezzoStruttura;
     private TextView categoriaStruttura;
     private TextView valutazioneRecensione;
+    private TextView numeroRecensioni;
     //qui vanno le cose da passare all'adapter
     private static ArrayList<Recensione> listaRecensioni;
     private static Struttura struttura;
@@ -56,10 +57,8 @@ public class DettagliStrutturaFragment extends Fragment {
                 new VolleyCallback<JSONArray>(){
                     @Override
                     public void onSuccess(JSONArray result) {
-                        System.out.println(result.length());
                         try {
                             for (int i = 0; i < result.length(); i++) {
-
                                 JSONObject recensioneJSON = result.getJSONObject(i);
                                 Recensione recensione = new Recensione();
                                 recensione.setTesto(recensioneJSON.getString("testo"));
@@ -69,16 +68,12 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setStruttura(struttura.getIdStruttura());
                                 recensione.setIdRecensione(recensioneJSON.getInt("id_recensione"));
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));
-
                                 listaRecensioni.add(recensione);
-
-
                             }
                             initRecyclerView();
-                            System.out.println(listaRecensioni);
+                            numeroRecensioni.setText("("+ listaRecensioni.size() +")");
                         }
                         catch(JSONException e){
-                            System.out.print("NONHAFUNZIONATO");
                             e.printStackTrace();
                         }
                     }
@@ -111,6 +106,7 @@ public class DettagliStrutturaFragment extends Fragment {
         prezzoStruttura = view.findViewById(R.id.prezzoStruttura);
         categoriaStruttura = view.findViewById(R.id.categoriaStruttura);
         valutazioneRecensione = view.findViewById(R.id.valutazioneRecensione);
+        numeroRecensioni = view.findViewById(R.id.numeroRecensioni);
     }
 
     @Override
@@ -154,6 +150,4 @@ public class DettagliStrutturaFragment extends Fragment {
         categoriaStruttura.setText(struttura.getCategoria());
         valutazioneRecensione.setText(String.valueOf(struttura.getValutazioneMedia()));
     }
-
-
 }

@@ -7,10 +7,20 @@
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/valutazioneRecensione"
-        android:layout_width="80dp"
-        android:layout_height="21dp"
+        android:id="@+id/numeroRecensioni"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="num"
+        app:layout_constraintStart_toEndOf="@+id/valutazioneRecensione"
+        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
+
+    <TextView
+        android:id="@+id/valutazioneRecensione"
+        android:layout_width="21dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:text="val"
         app:layout_constraintStart_toEndOf="@+id/ratingBarStruttura"
@@ -142,8 +152,8 @@
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:progressTint="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
