@@ -42,10 +42,14 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView prezzoStruttura;
     private TextView categoriaStruttura;
     //qui vanno le cose da passare all'adapter
-    private ArrayList<Recensione> listaRecensioni;
-    private Struttura struttura;
+    private static ArrayList<Recensione> listaRecensioni;
+    private static Struttura struttura;
     private RecensioneDAO recensioneDAO;
     private RecyclerView recyclerView;
+
+    public DettagliStrutturaFragment(){
+
+    }
 
     public DettagliStrutturaFragment(Struttura struttura){
         this.struttura = struttura;
