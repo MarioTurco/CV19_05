@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,7 +29,9 @@ public class LoginFragment extends Fragment {
     EditText usernameLoginText;
     EditText passwordLoginText;
     TextView registratiTextLink;
+    ProgressBar progressBar;
 
+    private String TAG ="LoginFragment";
     public static LoginFragment newInstance() {
         LoginFragment fragment = new LoginFragment();
         return fragment;
@@ -45,6 +49,7 @@ public class LoginFragment extends Fragment {
         usernameLoginText = view.findViewById(R.id.usernameLoginText);
         passwordLoginText = view.findViewById(R.id.passwordLoginText);
         registratiTextLink = view.findViewById(R.id.registratiTextLink);
+        progressBar = view.findViewById(R.id.progressBar);
     }
 
     @Override
@@ -53,6 +58,8 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         initViewElements(view);
+
+
         backButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +80,10 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: cliccato");
+                progressBar.setVisibility(View.VISIBLE);
                 checkCredenziali();
+                progressBar.setVisibility(View.GONE);
             }
         });
         return view;
