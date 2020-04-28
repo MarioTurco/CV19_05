@@ -1,5 +1,7 @@
 package com.example.provacv;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -40,6 +42,8 @@ public class ListaStruttureFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_lista_strutture, container, false);
+
+
         return view;
     }
 
@@ -57,6 +61,15 @@ public class ListaStruttureFragment extends Fragment {
                 ((MainActivity)getActivity()).setMap(savedInstanceState);
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                ((MainActivity)getActivity()).setMap(savedInstanceState);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+
     }
 
     private void initRecyclerView(View view){
