@@ -54,6 +54,7 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         holder.testo.setText(recensione.getTesto());
         holder.titolo.setText(recensione.getTitolo());
 
+
         //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
