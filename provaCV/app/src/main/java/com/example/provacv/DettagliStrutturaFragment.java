@@ -4,27 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
@@ -41,11 +34,16 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView indirizzoStruttura;
     private TextView prezzoStruttura;
     private TextView categoriaStruttura;
+    private TextView valutazioneRecensione;
     //qui vanno le cose da passare all'adapter
-    private ArrayList<Recensione> listaRecensioni;
-    private Struttura struttura;
+    private static ArrayList<Recensione> listaRecensioni;
+    private static Struttura struttura;
     private RecensioneDAO recensioneDAO;
     private RecyclerView recyclerView;
+
+    public DettagliStrutturaFragment(){
+
+    }
 
     public DettagliStrutturaFragment(Struttura struttura){
         this.struttura = struttura;
@@ -112,6 +110,7 @@ public class DettagliStrutturaFragment extends Fragment {
         backButton = view.findViewById(R.id.backButtonSignup);
         prezzoStruttura = view.findViewById(R.id.prezzoStruttura);
         categoriaStruttura = view.findViewById(R.id.categoriaStruttura);
+        valutazioneRecensione = view.findViewById(R.id.valutazioneRecensione);
     }
 
     @Override
@@ -152,6 +151,7 @@ public class DettagliStrutturaFragment extends Fragment {
         indirizzoStruttura.setText(struttura.getIndirizzo());
         prezzoStruttura.setText(struttura.getFasciaDiPrezzo());
         categoriaStruttura.setText(struttura.getCategoria());
+        valutazioneRecensione.setText(String.valueOf(struttura.getValutazioneMedia()));
     }
 
 
