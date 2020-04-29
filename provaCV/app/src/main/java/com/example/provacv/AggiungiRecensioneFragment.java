@@ -66,8 +66,8 @@ public class AggiungiRecensioneFragment extends Fragment {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
                 recensioneDaAggiungere.setDataRecensione(dtf.format(now));
-                recensioneDaAggiungere.setTesto((String) testoRecensione.getText());
-                recensioneDaAggiungere.setTitolo((String) titoloRecensione.getText());
+                recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
+                recensioneDaAggiungere.setTitolo( titoloRecensione.getText().toString());
             }
         });
     }
