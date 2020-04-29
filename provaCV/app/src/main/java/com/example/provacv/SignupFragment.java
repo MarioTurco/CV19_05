@@ -47,8 +47,8 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupBackButton(savedInstanceState);
         backButtonSignup = view.findViewById(R.id.backButtonSignup);
+        setupBackButton(savedInstanceState);
         dataDiNascita = view.findViewById(R.id.dateEditText);
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class SignupFragment extends Fragment {
         backButtonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 ((MainActivity)getActivity()).setMap(savedInstanceState);
             }
         });
