@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -16,6 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,9 +33,12 @@ import model.Struttura;
 
 public class DettagliStrutturaFragment extends Fragment {
     private ImageButton backButton;
-    private TextView nomeStruttura;
+
     private ImageView immagineStruttura;
+
     private RatingBar ratingBarStruttura;
+
+    private TextView nomeStruttura;
     private TextView descrizioneStruttura;
     private TextView cittàStruttura;
     private TextView indirizzoStruttura;
@@ -38,11 +46,16 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView categoriaStruttura;
     private TextView valutazioneRecensione;
     private TextView numeroRecensioni;
+
+    private FloatingActionButton fabButton, fabVisualizzaMappa, fabAggiungiRecensione;
+
     //qui vanno le cose da passare all'adapter
     private ArrayList<Recensione> listaRecensioni;
     private static Struttura struttura;
     private RecensioneDAO recensioneDAO;
     private RecyclerView recyclerView;
+
+    private boolean isFabOpen = false;
 
     //costruttore chiamato da un VisualizzaRecensioneFragment
     public DettagliStrutturaFragment(){
@@ -110,6 +123,10 @@ public class DettagliStrutturaFragment extends Fragment {
         categoriaStruttura = view.findViewById(R.id.categoriaStruttura);
         valutazioneRecensione = view.findViewById(R.id.valutazioneRecensione);
         numeroRecensioni = view.findViewById(R.id.numeroRecensioni);
+        fabButton = view.findViewById(R.id.floatingActionButtonStruttra);
+        fabAggiungiRecensione= view.findViewById(R.id.fabAggiungiRecensione);
+        fabVisualizzaMappa = view.findViewById(R.id.fabVisualizzaSuMappa);
+        backButton = view.findViewById(R.id.backButtonStruttura);
     }
 
     @Override
@@ -132,7 +149,43 @@ public class DettagliStrutturaFragment extends Fragment {
         initGUIElements(view);
         caricaRecensioniStruttura();
         mostraDettagliStruttura();
-        backButton = view.findViewById(R.id.backButtonStruttura);
+        setUpBackButton();
+
+        setupFAB();
+
+    }
+
+    private void setupFAB() {
+        final Animation fabOpen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
+        final Animation fabClose = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
+        final Animation rotateBackward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
+        final Animation rotateForward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_forward);
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isFabOpen) {
+                    fabButton.startAnimation(rotateBackward);
+                    fabVisualizzaMappa.startAnimation(fabClose);
+                    fabAggiungiRecensione.startAnimation(fabClose);
+                    fabAggiungiRecensione.setClickable(false);
+                    fabVisualizzaMappa.setClickable(false);
+                    isFabOpen = false;
+                } else {
+                    fabButton.startAnimation(rotateForward);
+                    fabVisualizzaMappa.startAnimation(fabOpen);
+                    fabAggiungiRecensione.startAnimation(fabOpen);
+                    fabAggiungiRecensione.setClickable(true);
+                    fabVisualizzaMappa.setClickable(true);
+                    isFabOpen = true;
+                }
+            }
+        });
+    }
+
+
+
+    private void setUpBackButton() {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
