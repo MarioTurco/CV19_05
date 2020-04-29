@@ -11,4 +11,10 @@
         android:src="@drawable/logo"
         android:layout_gravity="left"/>
 
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="     CercaViaggi 19" />
+
 </LinearLayout>
