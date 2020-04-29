@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
-    private static Bundle savedInstanceState;
+    private static Bundle instanceState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupFiltriButton();
         setMap();
         updateDrawer();
-        savedInstanceState = savedInstanceState;
+        instanceState = savedInstanceState;
 
     }
-
-
+    
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     protected void setMap() {
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
-        if (savedInstanceState == null) {
+        if (instanceState == null) {
             // Create fragment
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
@@ -191,8 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         public void onStyleLoaded(@NonNull Style style) {
 
                             // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
-
                         }
                     });
                 }
