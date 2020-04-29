@@ -1,5 +1,6 @@
 package com.example.provacv;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -164,6 +165,7 @@ public class DettagliStrutturaFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 if (isFabOpen) {
                     fabButton.startAnimation(rotateBackward);
                     fabVisualizzaMappa.startAnimation(fabClose);
