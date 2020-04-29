@@ -42,21 +42,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         setupFiltriButton();
         setMap(savedInstanceState);
-        setPreferences();
+        updateDrawer();
+
 
     }
 
-    private void setPreferences() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.OnSharedPreferenceChangeListener preferenze = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                Log.d(TAG, "onSharedPreferenceChanged: Cambiate preferenzeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-                updateDrawer();
-            }
-        };
-        prefs.registerOnSharedPreferenceChangeListener(preferenze);
-    }
 
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);

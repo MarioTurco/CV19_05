@@ -2,6 +2,7 @@ package com.example.provacv;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -116,8 +117,8 @@ public class LoginFragment extends Fragment {
                             backButtonLogin.performClick();
                         } else
                             Log.d(TAG, "onSuccess: Login fallito");
-                            usernameLoginText.setBackgroundColor(Color.parseColor("#DD2020"));
-                            passwordLoginText.setBackgroundColor(Color.parseColor("#DD2020"));
+                            usernameLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
+                            passwordLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
                         Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
                     }
 
