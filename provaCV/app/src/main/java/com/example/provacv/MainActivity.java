@@ -40,16 +40,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupDrawer();
+        updateDrawer();
         setupFiltriButton();
         setMap(savedInstanceState);
-        //setPreferences();
-
+        updateDrawer();
     }
     
-    private void setPreferences() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    }
-
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void updateDrawer() {
         menu = navigationView.getMenu();
-        Log.d(TAG, "changeDrawerOnLogin: " + menu.equals(null));
         if (userIsLogged()) {
             Log.d(TAG, "onSharedPreferenceChanged: Mostra logout");
             menu.findItem(R.id.logout).setVisible(true);
@@ -187,8 +182,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         public void onStyleLoaded(@NonNull Style style) {
 
                             // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
-
                         }
                     });
                 }
@@ -231,5 +224,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
+
 
 }

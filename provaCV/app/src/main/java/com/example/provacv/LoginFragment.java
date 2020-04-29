@@ -1,10 +1,13 @@
 package com.example.provacv;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
@@ -29,6 +33,7 @@ public class LoginFragment extends Fragment {
     EditText passwordLoginText;
     TextView registratiTextLink;
     ProgressBar progressBar;
+    View view;
 
     private String TAG = "LoginFragment";
 
@@ -56,7 +61,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        view = inflater.inflate(R.layout.fragment_login, container, false);
         initViewElements(view);
 
         setupBackButton(savedInstanceState);
@@ -109,11 +114,15 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(Boolean result) {
                         if (result) {
-                            System.out.println("HAFUNZIONATO");
+                            Log.d(TAG, "onSuccess: Login effettuato");
                             changeUserStatus(true);
                             backButtonLogin.performClick();
-                        } else
-                            System.out.println("NON HAFUNZIONATO");
+                        } else {
+                            Log.d(TAG, "onSuccess: Login fallito");
+                            usernameLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
+                            passwordLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
+                            Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
