@@ -42,12 +42,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         setupFiltriButton();
         setMap(savedInstanceState);
-        //setPreferences();
+        setPreferences();
 
     }
-    
+
     private void setPreferences() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.OnSharedPreferenceChangeListener preferenze = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.d(TAG, "onSharedPreferenceChanged: Cambiate preferenzeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                updateDrawer();
+            }
+        };
+        prefs.registerOnSharedPreferenceChangeListener(preferenze);
     }
 
     private void setupFiltriButton() {
@@ -113,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void updateDrawer() {
         menu = navigationView.getMenu();
-        Log.d(TAG, "changeDrawerOnLogin: " + menu.equals(null));
         if (userIsLogged()) {
             Log.d(TAG, "onSharedPreferenceChanged: Mostra logout");
             menu.findItem(R.id.logout).setVisible(true);
