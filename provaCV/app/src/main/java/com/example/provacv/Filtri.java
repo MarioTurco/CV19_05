@@ -87,9 +87,9 @@ public class Filtri {
         String returnString = "";
 
         if (!nome.equals(""))
-            returnString += "&nome=" + nome;
+            returnString += "&nome=%25" + nome + "%25";
         if (!citta.equals(""))
-            returnString += "&citta=" + citta;
+            returnString += "&citta=%25" + citta + "%25";
         if (!categoria.equals("Nessuno"))
             returnString += "&categoria=" + categoria;
         if (!prezzo.equals("Nessuno"))
