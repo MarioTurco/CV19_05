@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -32,6 +33,7 @@ public class LoginFragment extends Fragment {
     EditText passwordLoginText;
     TextView registratiTextLink;
     ProgressBar progressBar;
+    View view;
 
     private String TAG = "LoginFragment";
 
@@ -59,7 +61,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        view = inflater.inflate(R.layout.fragment_login, container, false);
         initViewElements(view);
 
         setupBackButton(savedInstanceState);
