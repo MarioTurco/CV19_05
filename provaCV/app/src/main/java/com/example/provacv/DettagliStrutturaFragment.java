@@ -2,6 +2,7 @@ package com.example.provacv;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
+
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
@@ -59,19 +62,19 @@ public class DettagliStrutturaFragment extends Fragment {
     private boolean isFabOpen = false;
 
     //costruttore chiamato da un VisualizzaRecensioneFragment
-    public DettagliStrutturaFragment(){
+    public DettagliStrutturaFragment() {
         listaRecensioni = new ArrayList<Recensione>();
     }
 
-    public DettagliStrutturaFragment(Struttura struttura){
+    public DettagliStrutturaFragment(Struttura struttura) {
         this.struttura = struttura;
         listaRecensioni = new ArrayList<Recensione>();
 
     }
 
-    private void caricaRecensioniStruttura(){
+    private void caricaRecensioniStruttura() {
         recensioneDAO.getRecensioniByIdStruttura(struttura.getIdStruttura(),
-                new VolleyCallback<JSONArray>(){
+                new VolleyCallback<JSONArray>() {
                     @Override
                     public void onSuccess(JSONArray result) {
                         try {
@@ -88,19 +91,18 @@ public class DettagliStrutturaFragment extends Fragment {
                                 listaRecensioni.add(recensione);
                             }
                             initRecyclerView();
-                            numeroRecensioni.setText("("+ listaRecensioni.size() +")");
-                        }
-                        catch(JSONException e){
+                            numeroRecensioni.setText("(" + listaRecensioni.size() + ")");
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
 
                     @Override
-                    public void onFail(){
+                    public void onFail() {
 
                     }
 
-                    private void initRecyclerView(){
+                    private void initRecyclerView() {
                         ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(getContext(), listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -112,12 +114,12 @@ public class DettagliStrutturaFragment extends Fragment {
         return new DettagliStrutturaFragment(struttura);
     }
 
-    private void initGUIElements(View view){
+    private void initGUIElements(View view) {
         recyclerView = view.findViewById(R.id.recensioniRecyclerView);
-        nomeStruttura =  view.findViewById(R.id.nomeStruttura);
-        ratingBarStruttura =  view.findViewById(R.id.ratingBarStruttura);
-        descrizioneStruttura =  view.findViewById(R.id.descrizioneStruttura);
-        cittàStruttura =  view.findViewById(R.id.cittàStruttura);
+        nomeStruttura = view.findViewById(R.id.nomeStruttura);
+        ratingBarStruttura = view.findViewById(R.id.ratingBarStruttura);
+        descrizioneStruttura = view.findViewById(R.id.descrizioneStruttura);
+        cittàStruttura = view.findViewById(R.id.cittàStruttura);
         indirizzoStruttura = view.findViewById(R.id.indirizzoStruttura);
         backButton = view.findViewById(R.id.backButtonSignup);
         prezzoStruttura = view.findViewById(R.id.prezzoStruttura);
@@ -125,7 +127,7 @@ public class DettagliStrutturaFragment extends Fragment {
         valutazioneRecensione = view.findViewById(R.id.valutazioneRecensione);
         numeroRecensioni = view.findViewById(R.id.numeroRecensioni);
         fabButton = view.findViewById(R.id.floatingActionButtonStruttra);
-        fabAggiungiRecensione= view.findViewById(R.id.fabAggiungiRecensione);
+        fabAggiungiRecensione = view.findViewById(R.id.fabAggiungiRecensione);
         fabVisualizzaMappa = view.findViewById(R.id.fabVisualizzaSuMappa);
         backButton = view.findViewById(R.id.backButtonStruttura);
     }
@@ -151,7 +153,6 @@ public class DettagliStrutturaFragment extends Fragment {
         caricaRecensioniStruttura();
         mostraDettagliStruttura();
         setUpBackButton();
-
         setupFAB();
 
     }
@@ -165,26 +166,34 @@ public class DettagliStrutturaFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                boolean UserLogged = isUserLogged();
                 if (isFabOpen) {
                     fabButton.startAnimation(rotateBackward);
                     fabVisualizzaMappa.startAnimation(fabClose);
-                    fabAggiungiRecensione.startAnimation(fabClose);
+                    if (UserLogged)
+                        fabAggiungiRecensione.startAnimation(fabClose);
                     fabAggiungiRecensione.setClickable(false);
                     fabVisualizzaMappa.setClickable(false);
                     isFabOpen = false;
                 } else {
                     fabButton.startAnimation(rotateForward);
                     fabVisualizzaMappa.startAnimation(fabOpen);
-                    fabAggiungiRecensione.startAnimation(fabOpen);
-                    fabAggiungiRecensione.setClickable(true);
+                    if (UserLogged) {
+                        fabAggiungiRecensione.startAnimation(fabOpen);
+                        fabAggiungiRecensione.setClickable(true);
+                    }
                     fabVisualizzaMappa.setClickable(true);
                     isFabOpen = true;
                 }
             }
         });
+
     }
 
+    private boolean isUserLogged() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPreferences.getBoolean("isLogged", false);
+    }
 
 
     private void setUpBackButton() {
@@ -209,9 +218,9 @@ public class DettagliStrutturaFragment extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
-    private void mostraDettagliStruttura(){
+    private void mostraDettagliStruttura() {
         nomeStruttura.setText(struttura.getNome());
-        ratingBarStruttura.setRating((float)struttura.getValutazioneMedia());
+        ratingBarStruttura.setRating((float) struttura.getValutazioneMedia());
         descrizioneStruttura.setText(struttura.getDescrizione());
         cittàStruttura.setText(struttura.getCittà());
         indirizzoStruttura.setText(struttura.getIndirizzo());

@@ -111,6 +111,7 @@ public class LoginFragment extends Fragment {
                         if (result) {
                             System.out.println("HAFUNZIONATO");
                             changeUserStatus(true);
+                            backButtonLogin.performClick();
                         } else
                             System.out.println("NON HAFUNZIONATO");
                     }
