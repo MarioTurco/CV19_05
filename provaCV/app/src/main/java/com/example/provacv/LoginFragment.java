@@ -1,6 +1,7 @@
 package com.example.provacv;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
@@ -111,11 +113,14 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(Boolean result) {
                         if (result) {
-                            System.out.println("HAFUNZIONATO");
+                            Log.d(TAG, "onSuccess: Login effettuato");
                             changeUserStatus(true);
                             backButtonLogin.performClick();
                         } else
-                            System.out.println("NON HAFUNZIONATO");
+                            Log.d(TAG, "onSuccess: Login fallito");
+                            usernameLoginText.setBackgroundColor(Color.parseColor("#DD2020"));
+                            passwordLoginText.setBackgroundColor(Color.parseColor("#DD2020"));
+                        Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -133,7 +138,7 @@ public class LoginFragment extends Fragment {
     private void
     changeUserStatus(boolean newStatus) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        sharedPreferences.edit().putBoolean("isLogged", newStatus);
+        sharedPreferences.edit().putBoolean("isLogged", newStatus).apply();
         Log.d("LOGINFRAG", "changeUserStatus: cambiato ");
     }
 }

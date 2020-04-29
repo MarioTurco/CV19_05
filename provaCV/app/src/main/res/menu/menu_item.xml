@@ -6,7 +6,7 @@
             android:title="Login"/>
         <item
             android:id="@+id/signup"
-            android:title="Registrati"/>
+            android:title="Registrati" />
         <item
             android:id="@+id/homepage"
             android:title="Homepage"

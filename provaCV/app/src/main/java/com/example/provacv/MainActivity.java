@@ -2,12 +2,11 @@ package com.example.provacv;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -26,18 +25,16 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.maps.SupportMapFragment;
-
-import java.util.prefs.Preferences;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton filtriButton;
+    private final String TAG = "MainActivity";
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
-
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +43,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupFiltriButton();
         setMap(savedInstanceState);
         setPreferences();
+
     }
 
     private void setPreferences() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.OnSharedPreferenceChangeListener preferenze = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.d(TAG, "onSharedPreferenceChanged: Cambiate preferenzeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                updateDrawer();
+            }
+        };
+        prefs.registerOnSharedPreferenceChangeListener(preferenze);
     }
 
     private void setupFiltriButton() {
@@ -76,21 +82,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.login:
                 loadLoginFragment();
-                Toast.makeText(MainActivity.this, "Login selezionato", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.signup:
                 loadSignupFragment();
-                Toast.makeText(MainActivity.this, "Registrati selezionato", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.homepage:
                 Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(MainActivity.this, "Logout effettuato", Toast.LENGTH_SHORT).show();
+                logout();
+                updateDrawer();
         }
         return false;
+    }
+
+    private void logout() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().putBoolean("isLogged", false).apply();
     }
 
     private void setupDrawer() {
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
+        menu = findViewById(R.id.drawerMenuGroup);
         navigationView = findViewById(R.id.navigationView);
         navigationView.getBackground().setAlpha(122);
         setSupportActionBar(toolbar);
@@ -101,28 +116,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-      //  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                if (key.equals("isLogged")){
-                    Menu m = findViewById(R.id.drawerMenuGroup);
-                    //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
-                    if(sharedPreferences.getBoolean("isLogged", false)){
-                        m.findItem(R.id.login).setVisible(false);
-                        m.findItem(R.id.signup).setVisible(false);
-                        m.findItem(R.id.logout).setVisible(true);
-                    }else{
-                        m.findItem(R.id.login).setVisible(false);
-                        m.findItem(R.id.logout).setVisible(true);
-                        m.findItem(R.id.signup).setVisible(true);
-                    }
-
-                }
-            }
-        };
+        updateDrawer();
     }
+
+    private void updateDrawer() {
+        menu = navigationView.getMenu();
+        if (userIsLogged()) {
+            Log.d(TAG, "onSharedPreferenceChanged: Mostra logout");
+            menu.findItem(R.id.logout).setVisible(true);
+
+            menu.findItem(R.id.login).setVisible(false);
+            menu.findItem(R.id.signup).setVisible(false);
+
+        } else {
+            Log.d(TAG, "onSharedPreferenceChanged: Mostra login");
+            menu.findItem(R.id.login).setVisible(true);
+            menu.findItem(R.id.signup).setVisible(true);
+
+            menu.findItem(R.id.logout).setVisible(false);
+        }
+    }
+
+
+    private boolean userIsLogged() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (sharedPreferences.contains("isLogged"))
+            return sharedPreferences.getBoolean("isLogged", false);
+        return false;
+    }
+
 
     private void loadSignupFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
