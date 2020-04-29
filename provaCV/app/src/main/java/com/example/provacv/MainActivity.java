@@ -217,4 +217,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
+
 }
