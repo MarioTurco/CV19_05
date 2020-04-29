@@ -34,8 +34,12 @@ public class LoginFragment extends Fragment {
     TextView registratiTextLink;
     ProgressBar progressBar;
     View view;
-
+    MainActivity mainActivity;
     private String TAG = "LoginFragment";
+
+    public LoginFragment(){
+
+    }
 
     public static LoginFragment newInstance() {
         LoginFragment fragment = new LoginFragment();
@@ -46,6 +50,9 @@ public class LoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.utenteDAO = new UtenteDAO(this.getActivity());
+        mainActivity = (MainActivity)getActivity();
+        if(mainActivity == null)
+            System.out.println("è null");
     }
 
     private void initViewElements(View view) {
@@ -94,13 +101,15 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity) getActivity()).setMap(savedInstanceState);
+
+                mainActivity.backToMainActivity();
             }
         });
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+
             @Override
             public void handleOnBackPressed() {
-                ((MainActivity) getActivity()).setMap(savedInstanceState);
+                mainActivity.backToMainActivity();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

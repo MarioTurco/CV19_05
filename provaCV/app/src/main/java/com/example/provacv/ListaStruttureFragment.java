@@ -57,14 +57,14 @@ public class ListaStruttureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity)getActivity()).setMap();
             }
         });
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
                 ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity)getActivity()).setMap();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

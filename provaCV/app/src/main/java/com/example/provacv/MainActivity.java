@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
+    private static Bundle instanceState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +43,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         updateDrawer();
         setupFiltriButton();
-        setMap(savedInstanceState);
+        setMap();
         updateDrawer();
+        instanceState = savedInstanceState;
+
     }
     
     private void setupFiltriButton() {
@@ -107,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         updateDrawer();
     }
 
+    public void backToMainActivity(){
+        setMap();
+        updateDrawer();
+    }
+
     private void updateDrawer() {
         menu = navigationView.getMenu();
         if (userIsLogged()) {
@@ -152,9 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    protected void setMap(Bundle savedInstanceState) {
+    protected void setMap() {
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
-        if (savedInstanceState == null) {
+        if (instanceState == null) {
             // Create fragment
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
