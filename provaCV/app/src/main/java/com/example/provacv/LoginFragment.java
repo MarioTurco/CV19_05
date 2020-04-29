@@ -130,7 +130,7 @@ public class LoginFragment extends Fragment {
 
     private void changeUserStatus(boolean newStatus) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        sharedPreferences.edit().putBoolean("isLogged", newStatus);
+        sharedPreferences.edit().putBoolean("isLogged", newStatus).apply();
         Log.d("LOGINFRAG", "changeUserStatus: cambiato ");
     }
 }

@@ -2,12 +2,10 @@ package com.example.provacv;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -26,9 +24,6 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.maps.SupportMapFragment;
-
-import java.util.prefs.Preferences;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton filtriButton;
@@ -100,20 +95,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        changeDrawerOnLogin();
+    }
 
-      //  TODO mettere tutto sto papocchio in una funzione apposita tipo "setUpLoginqualcosa"
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    private void changeDrawerOnLogin() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                if (key.equals("isLogged")){
+                if (key.equals("isLogged")) {
                     Menu m = findViewById(R.id.drawerMenuGroup);
                     //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
-                    if(sharedPreferences.getBoolean("isLogged", false)){
+                    if (userIsLogged()) {
                         m.findItem(R.id.login).setVisible(false);
                         m.findItem(R.id.signup).setVisible(false);
                         m.findItem(R.id.logout).setVisible(true);
-                    }else{
+                    } else {
                         m.findItem(R.id.login).setVisible(false);
                         m.findItem(R.id.logout).setVisible(true);
                         m.findItem(R.id.signup).setVisible(true);
@@ -122,7 +119,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         };
+
     }
+
+    private boolean userIsLogged() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getBoolean("isLogged", false);
+    }
+
 
     private void loadSignupFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
