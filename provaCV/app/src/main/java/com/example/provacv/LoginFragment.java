@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,8 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -31,7 +30,8 @@ public class LoginFragment extends Fragment {
     TextView registratiTextLink;
     ProgressBar progressBar;
 
-    private String TAG ="LoginFragment";
+    private String TAG = "LoginFragment";
+
     public static LoginFragment newInstance() {
         LoginFragment fragment = new LoginFragment();
         return fragment;
@@ -59,14 +59,8 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         initViewElements(view);
 
+        setupBackButton(savedInstanceState);
 
-        backButtonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity) getActivity()).setMap(savedInstanceState);
-            }
-        });
 
         registratiTextLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +84,23 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    private void setupBackButton(final Bundle savedInstanceState) {
+        backButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
+                ((MainActivity) getActivity()).setMap(savedInstanceState);
+            }
+        });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                ((MainActivity) getActivity()).setMap(savedInstanceState);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
+
     private void checkCredenziali() {
         String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
@@ -97,12 +108,10 @@ public class LoginFragment extends Fragment {
                 new VolleyCallback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean result) {
-                        if (result){
+                        if (result) {
                             System.out.println("HAFUNZIONATO");
                             changeUserStatus(true);
-                        }
-
-                        else
+                        } else
                             System.out.println("NON HAFUNZIONATO");
                     }
 

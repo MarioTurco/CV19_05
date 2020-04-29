@@ -47,14 +47,8 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupBackButton(savedInstanceState);
         backButtonSignup = view.findViewById(R.id.backButtonSignup);
-        backButtonSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
-            }
-        });
         dataDiNascita = view.findViewById(R.id.dateEditText);
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +67,24 @@ public class SignupFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
 
+    }
+
+    private void setupBackButton(final Bundle savedInstanceState) {
+
+        backButtonSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                ((MainActivity)getActivity()).setMap(savedInstanceState);
+            }
+        });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                ((MainActivity) getActivity()).setMap(savedInstanceState);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     public static class DatePickerFragment extends DialogFragment

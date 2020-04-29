@@ -75,6 +75,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
                 transaction.commit();
             }
         };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
 
     }
 
