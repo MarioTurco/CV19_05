@@ -117,11 +117,12 @@ public class LoginFragment extends Fragment {
                             Log.d(TAG, "onSuccess: Login effettuato");
                             changeUserStatus(true);
                             backButtonLogin.performClick();
-                        } else
+                        } else {
                             Log.d(TAG, "onSuccess: Login fallito");
                             usernameLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
                             passwordLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
-                        Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
