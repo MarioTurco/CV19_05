@@ -68,7 +68,6 @@ public class FiltriFragment extends Fragment {
     private StrutturaDAO strutturaDAO;
 
     public FiltriFragment() {
-        this.mapFragment = MainActivity.mapFragment;
 
     }
 
@@ -305,7 +304,7 @@ public class FiltriFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity)getActivity()).setMap();
                 //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 //setLoginActionInDrawer();
             }
@@ -313,7 +312,7 @@ public class FiltriFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity)getActivity()).setMap();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
