@@ -44,11 +44,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupFiltriButton();
         setMap(savedInstanceState);
         updateDrawer();
-
-
     }
-
-
+    
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {
@@ -185,8 +182,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         public void onStyleLoaded(@NonNull Style style) {
 
                             // Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
-
                         }
                     });
                 }
