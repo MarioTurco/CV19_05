@@ -132,14 +132,12 @@
 
             <Button
                 android:id="@+id/cercaButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="115dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="84dp"
-
-                android:background="@android:color/transparent"
-                android:backgroundTint="@android:color/transparent"
+                android:background="@drawable/cerca_button_background"
                 android:text="Cerca"
-                android:textStyle="bold"
+                android:textColor="#5383fc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
