@@ -8,48 +8,12 @@
     tools:openDrawer="end"
     android:id="@+id/drawer">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
+    <include
+        layout="@layout/toolbar_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            app:titleMarginEnd="50dp">
-
-            <ImageButton
-                android:id="@+id/filtriButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/ic_filter" />
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="0dp"
-            app:cardElevation="@dimen/cardview_default_elevation">
+        android:layout_height="match_parent" />
 
 
-            <FrameLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"

@@ -304,8 +304,8 @@ public class FiltriFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 ((MainActivity)getActivity()).setMap(savedInstanceState);
+                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 //setLoginActionInDrawer();
             }
         });
