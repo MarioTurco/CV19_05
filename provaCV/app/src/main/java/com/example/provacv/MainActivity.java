@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, LoginFragment.newInstance(), "loginFragment");
+        transaction.addToBackStack(null);
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }

@@ -165,7 +165,7 @@ public class DettagliStrutturaFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 if (isFabOpen) {
                     fabButton.startAnimation(rotateBackward);
                     fabVisualizzaMappa.startAnimation(fabClose);
