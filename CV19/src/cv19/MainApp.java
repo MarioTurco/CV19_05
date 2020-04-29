@@ -28,7 +28,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/Login.fxml"));
             loginPane = loader.load();
-            
+            primaryStage.setResizable(false);
             Scene scene = new Scene(loginPane);
             primaryStage.setScene(scene);
             primaryStage.getIcons().add(new Image("/icons/logo4.png"));
