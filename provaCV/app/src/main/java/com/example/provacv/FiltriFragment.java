@@ -202,6 +202,7 @@ public class FiltriFragment extends Fragment {
         cercaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).toolbar.setVisibility(View.GONE);
                 cercaStrutture();
 
             }
@@ -300,12 +301,11 @@ public class FiltriFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).setMap(savedInstanceState);
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 //setLoginActionInDrawer();
             }
         });

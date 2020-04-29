@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment {
         backButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
+                //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
                 ((MainActivity) getActivity()).setMap(savedInstanceState);
             }
         });

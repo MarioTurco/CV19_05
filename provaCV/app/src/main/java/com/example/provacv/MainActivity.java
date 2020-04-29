@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    public static SupportMapFragment mapFragment;
+    public static CustomSupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,12 +154,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .zoom(9)
                     .build());
             // Create map fragment
-            mapFragment = SupportMapFragment.newInstance(options);
+            mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
             // Add map fragment to parent container
             transaction.add(R.id.container, mapFragment, "com.mapbox.map");
             transaction.commit();
         } else {
-            mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentByTag("com.mapbox.map");
+            mapFragment = (CustomSupportMapFragment) getSupportFragmentManager().findFragmentByTag("com.mapbox.map");
         }
 
         if (mapFragment != null) {
