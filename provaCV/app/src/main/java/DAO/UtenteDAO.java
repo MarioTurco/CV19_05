@@ -30,6 +30,7 @@ public class UtenteDAO {
         String correctPassword=null,salt=null;
         correctPassword = jsonObject.getString("password");
         salt = jsonObject.getString("salt");
+        System.out.println(givenPassword);
         return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
     }
 
@@ -44,7 +45,12 @@ public class UtenteDAO {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            boolean loginSuccess = checkPassword(response.getJSONObject(0), givenPassword);
+                            boolean loginSuccess;
+                            if(response.length() == 0)
+                                loginSuccess = false;
+                            else
+                                loginSuccess = checkPassword(response.getJSONObject(0), givenPassword);
+
                             callback.onSuccess(loginSuccess);
                         } catch (JSONException e) {}
                     }
