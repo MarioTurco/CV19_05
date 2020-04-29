@@ -3,6 +3,7 @@ package com.example.provacv;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,12 +28,13 @@ import com.mapbox.mapboxsdk.maps.Style;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton filtriButton;
+    private final String TAG = "MainActivity";
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
-
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         setupFiltriButton();
         setMap(savedInstanceState);
-        setPreferences();
-    }
+        //setPreferences();
 
+    }
+    
     private void setPreferences() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
@@ -71,21 +74,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.login:
                 loadLoginFragment();
-                Toast.makeText(MainActivity.this, "Login selezionato", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.signup:
                 loadSignupFragment();
-                Toast.makeText(MainActivity.this, "Registrati selezionato", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.homepage:
                 Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(MainActivity.this, "Logout effettuato", Toast.LENGTH_SHORT).show();
+                logout();
+                updateDrawer();
         }
         return false;
+    }
+
+    private void logout() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().putBoolean("isLogged", false).apply();
     }
 
     private void setupDrawer() {
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
+        menu = findViewById(R.id.drawerMenuGroup);
         navigationView = findViewById(R.id.navigationView);
         navigationView.getBackground().setAlpha(122);
         setSupportActionBar(toolbar);
@@ -95,36 +107,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        changeDrawerOnLogin();
+
+        updateDrawer();
     }
 
-    private void changeDrawerOnLogin() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                if (key.equals("isLogged")) {
-                    Menu m = findViewById(R.id.drawerMenuGroup);
-                    //TODO implementare la seguente cosa: se isLogged è true deve mostrare il tasto "Logout", altrimenti deve mostrare il tasto "Login" e "Registrazione"
-                    if (userIsLogged()) {
-                        m.findItem(R.id.login).setVisible(false);
-                        m.findItem(R.id.signup).setVisible(false);
-                        m.findItem(R.id.logout).setVisible(true);
-                    } else {
-                        m.findItem(R.id.login).setVisible(false);
-                        m.findItem(R.id.logout).setVisible(true);
-                        m.findItem(R.id.signup).setVisible(true);
-                    }
+    private void updateDrawer() {
+        menu = navigationView.getMenu();
+        Log.d(TAG, "changeDrawerOnLogin: " + menu.equals(null));
+        if (userIsLogged()) {
+            Log.d(TAG, "onSharedPreferenceChanged: Mostra logout");
+            menu.findItem(R.id.logout).setVisible(true);
 
-                }
-            }
-        };
+            menu.findItem(R.id.login).setVisible(false);
+            menu.findItem(R.id.signup).setVisible(false);
 
+        } else {
+            Log.d(TAG, "onSharedPreferenceChanged: Mostra login");
+            menu.findItem(R.id.login).setVisible(true);
+            menu.findItem(R.id.signup).setVisible(true);
+
+            menu.findItem(R.id.logout).setVisible(false);
+        }
     }
+
 
     private boolean userIsLogged() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getBoolean("isLogged", false);
+        if (sharedPreferences.contains("isLogged"))
+            return sharedPreferences.getBoolean("isLogged", false);
+        return false;
     }
 
 
