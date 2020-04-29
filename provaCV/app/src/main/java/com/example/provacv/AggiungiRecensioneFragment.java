@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,6 +27,7 @@ public class AggiungiRecensioneFragment extends Fragment {
     private RatingBar ratingBar;
     private Button aggiungiRecensioneButton;
     private RecensioneDAO recensioneDAO;
+    private ImageButton backButton;
 
     public AggiungiRecensioneFragment(int idStruttura){
         this.idStruttura = idStruttura;
@@ -41,6 +44,7 @@ public class AggiungiRecensioneFragment extends Fragment {
         testoRecensione = view.findViewById(R.id.testoRecensione);
         ratingBar = view.findViewById(R.id.ratingBar);
         aggiungiRecensioneButton = view.findViewById(R.id.aggiungiRecensioneButton);
+        backButton = view.findViewById(R.id.backButton);
     }
 
     @Nullable
@@ -54,7 +58,15 @@ public class AggiungiRecensioneFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                transaction.replace(R.id.container, new DettagliStrutturaFragment(), "dettagliStrutturaFragment");
+                transaction.commit();
+            }
+        });
         aggiungiRecensioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,11 +16,11 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.291"
-        app:layout_constraintStart_toEndOf="@+id/backButtonNessunaStruttura2"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/backButtonNessunaStruttura2"
+        android:id="@+id/backButton"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="24dp"
