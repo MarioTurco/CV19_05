@@ -11,6 +11,15 @@ public class Struttura {
     private double valutazioneMedia;
     private String fasciaDiPrezzo;
     private String categoria;
+    private String urlFoto;
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
 
     public String getIndirizzo() {
         return indirizzo;
