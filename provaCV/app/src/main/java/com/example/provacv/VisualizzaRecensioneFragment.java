@@ -71,7 +71,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
             public void handleOnBackPressed() {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                transaction.replace(R.id.container, new DettagliStrutturaFragment(), "filtriFragment");
+                transaction.replace(R.id.container, new DettagliStrutturaFragment(), "dettagliStrutturaFragment");
                 transaction.commit();
             }
         };

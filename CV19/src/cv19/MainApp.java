@@ -33,9 +33,7 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.getIcons().add(new Image("/icons/logo4.png"));
             primaryStage.setTitle("CV19 Admin Panel");
-            primaryStage.show();
-
-            
+            primaryStage.show();          
         } catch (Exception e) {
             
         }

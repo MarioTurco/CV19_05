@@ -12,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,15 +19,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
@@ -154,7 +149,6 @@ public class DettagliStrutturaFragment extends Fragment {
         mostraDettagliStruttura();
         setUpBackButton();
         setupFAB();
-
     }
 
     private void setupFAB() {
@@ -162,7 +156,7 @@ public class DettagliStrutturaFragment extends Fragment {
         final Animation fabClose = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
         final Animation rotateBackward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
         final Animation rotateForward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_forward);
-
+        final MainActivity activity = (MainActivity) this.getActivity();
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +179,16 @@ public class DettagliStrutturaFragment extends Fragment {
                     fabVisualizzaMappa.setClickable(true);
                     isFabOpen = true;
                 }
+            }
+        });
+
+        fabAggiungiRecensione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                transaction.replace(R.id.container, AggiungiRecensioneFragment.newInstance(struttura.getIdStruttura()), "ConnessioneAssenteFragment");
+                transaction.commit();
             }
         });
 
