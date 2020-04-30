@@ -24,7 +24,8 @@ public class RecensioneDAO {
 
     public void getRecensioniByIdStruttura(int idStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?RECENSIONE LEFT OUTER JOIN UTENTE ON AUTORE=NICKNAME&struttura=" + idStruttura + "&stato_recensione=Approvata";
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=RECENSIONE_LEFT_OUTER_JOIN_UTENTE_ON_AUTORE=NICKNAME&struttura=" + idStruttura + "&stato_recensione=Approvata";
+        Log.d(TAG, "getRecensioniByIdStruttura: " + queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -49,7 +50,6 @@ public class RecensioneDAO {
         System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
-
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
@@ -58,7 +58,6 @@ public class RecensioneDAO {
                                 addSuccess = false;
                             else
                                 addSuccess = true;
-
                             callback.onSuccess(addSuccess);
                         } catch (Exception e) {}
                     }

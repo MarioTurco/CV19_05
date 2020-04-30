@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import model.Struttura;
 
 
 public class DettagliStrutturaFragment extends Fragment {
+    private final String TAG = "DettagliStrutturaFragment";
     private ImageButton backButton;
 
     private CircleImageView immagineStruttura;
@@ -91,6 +93,7 @@ public class DettagliStrutturaFragment extends Fragment {
                             }
                             initRecyclerView();
                             numeroRecensioni.setText("(" + listaRecensioni.size() + ")");
+                            Log.d(TAG, "onSuccess: " + listaRecensioni.size());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

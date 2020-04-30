@@ -42,7 +42,7 @@ public class AggiungiRecensioneFragment extends Fragment {
 
     public AggiungiRecensioneFragment(int idStruttura){
         this.idStruttura = idStruttura;
-        this.recensioneDAO = new RecensioneDAO(this.getActivity());
+        this.recensioneDAO = new RecensioneDAO(getContext());
     }
 
     public static AggiungiRecensioneFragment newInstance(int idStruttura) {

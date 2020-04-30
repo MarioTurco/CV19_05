@@ -89,6 +89,11 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:progressTint="@android:color/black"
+        android:rating="0.0"
+        android:stepSize="1.0"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
