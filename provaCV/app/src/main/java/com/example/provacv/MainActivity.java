@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setMap(savedInstanceState);
         updateDrawer();
     }
-    
+
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {

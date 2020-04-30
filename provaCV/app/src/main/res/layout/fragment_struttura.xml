@@ -10,7 +10,6 @@
         android:id="@+id/numeroRecensioni"
         android:layout_width="21dp"
         android:layout_height="18dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="num"
         app:layout_constraintStart_toEndOf="@+id/valutazioneRecensione"
@@ -20,7 +19,7 @@
         android:id="@+id/valutazioneRecensione"
         android:layout_width="21dp"
         android:layout_height="18dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="val"
         app:layout_constraintStart_toEndOf="@+id/ratingBarStruttura"
@@ -103,15 +102,6 @@
         app:layout_constraintStart_toEndOf="@+id/backButtonStruttura"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
     <TextView
         android:id="@+id/nomeStruttura"
         android:layout_width="266dp"
@@ -122,8 +112,6 @@
         android:text="Nome Struttura"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -152,16 +140,15 @@
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:progressTint="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
 
     <TextView
         android:id="@+id/descrizioneStruttura"
-        android:layout_width="285dp"
-        android:layout_height="100dp"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:hyphenationFrequency="normal"
@@ -171,8 +158,6 @@
         android:singleLine="false"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
         android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -285,7 +270,7 @@
         android:visibility="invisible"
         app:backgroundTint="#C19586"
         app:layout_constraintBottom_toTopOf="@+id/fabVisualizzaSuMappa"
-        app:layout_constraintEnd_toEndOf="@+id/recensioniRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_pen" />
 
     <androidx.cardview.widget.CardView
@@ -320,4 +305,16 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/clear_wine_glass_on_table_67468"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 </androidx.constraintlayout.widget.ConstraintLayout>
