@@ -1,6 +1,8 @@
 package com.example.provacv;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +75,7 @@ public class AggiungiRecensioneFragment extends Fragment {
                 Recensione recensioneDaAggiungere = new Recensione();
                 recensioneDaAggiungere.setStruttura(idStruttura);
                 recensioneDaAggiungere.setStatoRecensione("In Attesa");
-                recensioneDaAggiungere.setAutore("TODO"); //TODO prendere l'autore dalle shared preferences
+                recensioneDaAggiungere.setAutore(getNickname());
                 recensioneDaAggiungere.setValutazione((int)ratingBar.getRating());
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
@@ -82,5 +84,10 @@ public class AggiungiRecensioneFragment extends Fragment {
                 recensioneDaAggiungere.setTitolo( titoloRecensione.getText().toString());
             }
         });
+    }
+
+    private String getNickname() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPreferences.getString("nickname", "");
     }
 }
