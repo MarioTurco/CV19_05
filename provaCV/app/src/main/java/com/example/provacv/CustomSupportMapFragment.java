@@ -17,6 +17,7 @@ public class CustomSupportMapFragment extends SupportMapFragment {
     private Toolbar toolbar;
 
     public CustomSupportMapFragment(Toolbar toolbar){
+        super();
         this.toolbar = toolbar;
     }
 
