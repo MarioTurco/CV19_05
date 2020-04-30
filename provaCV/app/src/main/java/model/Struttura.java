@@ -11,21 +11,16 @@ public class Struttura {
     private double valutazioneMedia;
     private String fasciaDiPrezzo;
     private String categoria;
+    private String urlFoto;
 
-
-    /*public Struttura(String indirizzo, double longitudine, double latitudine, String nome, String descrizione, String città, int idStruttura, float valutazioneMedia, String fasciaDiPrezzo, String categoria) {
-        this.indirizzo = indirizzo;
-        this.longitudine = longitudine;
-        this.latitudine = latitudine;
-        this.nome = nome;
-        this.descrizione = descrizione;
-        this.città = città;
-        this.idStruttura = idStruttura;
-        this.valutazioneMedia = valutazioneMedia;
-        this.fasciaDiPrezzo = fasciaDiPrezzo;
-        this.categoria = categoria;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
-    */
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+    
     public String getIndirizzo() {
         return indirizzo;
     }
