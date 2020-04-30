@@ -42,7 +42,6 @@ public class AggiungiRecensioneFragment extends Fragment {
 
     public AggiungiRecensioneFragment(int idStruttura){
         this.idStruttura = idStruttura;
-        this.recensioneDAO = new RecensioneDAO(getContext());
     }
 
     public static AggiungiRecensioneFragment newInstance(int idStruttura) {
@@ -63,6 +62,7 @@ public class AggiungiRecensioneFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_aggiungi_recensione, container, false);
         inizializeUiElements(view);
+        this.recensioneDAO = new RecensioneDAO(this.getActivity());
         return view;
     }
 
@@ -86,7 +86,7 @@ public class AggiungiRecensioneFragment extends Fragment {
                 recensioneDaAggiungere.setStatoRecensione("In Attesa");
                 recensioneDaAggiungere.setAutore(getNickname());
                 recensioneDaAggiungere.setValutazione((int)ratingBar.getRating());
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy_HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
                 recensioneDaAggiungere.setDataRecensione(dtf.format(now));
                 recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
