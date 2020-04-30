@@ -263,6 +263,7 @@ public class FiltriFragment extends Fragment {
                                 strutturaObject.setValutazioneMedia(strutturaJSON.getDouble("valutazione_media"));
                                 strutturaObject.setFasciaDiPrezzo(strutturaJSON.getString("fascia_di_prezzo"));
                                 strutturaObject.setCategoria(strutturaJSON.getString("categoria"));
+                                strutturaObject.setUrlFoto(strutturaJSON.getString("url_foto"));
                                 listaStrutture.add(strutturaObject);
                             }
                             if(listaStrutture.isEmpty())

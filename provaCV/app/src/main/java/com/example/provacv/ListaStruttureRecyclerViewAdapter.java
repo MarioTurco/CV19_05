@@ -2,6 +2,7 @@ package com.example.provacv;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import model.Struttura;
 
 public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<ListaStruttureRecyclerViewAdapter.ViewHolder> {
@@ -59,6 +62,13 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.descrizione.setText(struttura.getDescrizione());
         holder.ratingBar.setRating((float)struttura.getValutazioneMedia());
 
+        //foto
+
+        Picasso.get().load(Uri.parse(struttura.getUrlFoto()))
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round)
+                .into(holder.immagine);
+
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +86,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView immagine;
+        CircleImageView immagine;
         TextView nome, città, descrizione, categoria;
         RatingBar ratingBar;
         MaterialCardView ViewLayout;

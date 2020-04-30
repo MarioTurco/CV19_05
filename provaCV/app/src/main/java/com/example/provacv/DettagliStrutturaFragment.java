@@ -1,6 +1,7 @@
 package com.example.provacv;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -20,12 +21,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
+import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
 import model.Struttura;
 
@@ -33,7 +37,7 @@ import model.Struttura;
 public class DettagliStrutturaFragment extends Fragment {
     private ImageButton backButton;
 
-    private ImageView immagineStruttura;
+    private CircleImageView immagineStruttura;
 
     private RatingBar ratingBarStruttura;
 
@@ -125,6 +129,8 @@ public class DettagliStrutturaFragment extends Fragment {
         fabAggiungiRecensione = view.findViewById(R.id.fabAggiungiRecensione);
         fabVisualizzaMappa = view.findViewById(R.id.fabVisualizzaSuMappa);
         backButton = view.findViewById(R.id.backButtonStruttura);
+        immagineStruttura = view.findViewById(R.id.immagine);
+
     }
 
     @Override
@@ -231,5 +237,10 @@ public class DettagliStrutturaFragment extends Fragment {
         prezzoStruttura.setText(struttura.getFasciaDiPrezzo());
         categoriaStruttura.setText(struttura.getCategoria());
         valutazioneRecensione.setText(String.valueOf(struttura.getValutazioneMedia()));
+
+        Picasso.get().load(Uri.parse(struttura.getUrlFoto()))
+                .placeholder(R.mipmap.ic_launcher_round)
+                .error(R.mipmap.ic_launcher_round)
+                .into(immagineStruttura);
     }
 }

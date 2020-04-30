@@ -147,8 +147,8 @@
 
     <TextView
         android:id="@+id/descrizioneStruttura"
-        android:layout_width="264dp"
-        android:layout_height="wrap_content"
+        android:layout_width="248dp"
+        android:layout_height="32dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:hyphenationFrequency="normal"
@@ -307,7 +307,7 @@
     </androidx.cardview.widget.CardView>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/immagine"
         android:layout_width="108dp"
         android:layout_height="108dp"
         android:layout_marginTop="12dp"
