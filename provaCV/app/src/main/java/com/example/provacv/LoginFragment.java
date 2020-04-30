@@ -116,7 +116,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void checkCredenziali() {
-        String username = String.valueOf(usernameLoginText.getText());
+        final String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
         utenteDAO.tryLogin(username, password,
                 new VolleyCallback<Boolean>() {
@@ -125,6 +125,7 @@ public class LoginFragment extends Fragment {
                         if (result) {
                             Log.d(TAG, "onSuccess: Login effettuato");
                             changeUserStatus(true);
+                            updateNickname(username);
                             backButtonLogin.performClick();
                         } else {
                             Log.d(TAG, "onSuccess: Login fallito");
@@ -144,6 +145,12 @@ public class LoginFragment extends Fragment {
                 });
 
 
+    }
+
+    private void updateNickname(String nickname) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.edit().putString("nickname", nickname).apply();
+        Log.d("LOGINFRAG", "changeUsername: cambiato " + nickname);
     }
 
     private void
