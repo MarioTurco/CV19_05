@@ -67,7 +67,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="15dp"
-            android:src="@drawable/clear_wine_glass_on_table_67468"
+            android:src="@drawable/prova"
             app:civ_border_color="#FFFFFF"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
