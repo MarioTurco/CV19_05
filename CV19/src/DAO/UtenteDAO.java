@@ -52,7 +52,7 @@ public class UtenteDAO {
                 utente.setNome(resultSet.getString("nome"));
                 utente.setEmail(resultSet.getString("email"));
                 utente.setNickname(resultSet.getString("nickname"));
-                utente.setDataDiNascita(resultSet.getString("dataDiNascita"));
+                utente.setDataDiNascita(resultSet.getString("data_di_nascita"));
                 utente.setRecensioniApprovate(resultSet.getInt("recensioniApprovate"));
                 utente.setRecensioniRifiutate(resultSet.getInt("recensioniRifiutate"));
                 allUtenti.add(utente);

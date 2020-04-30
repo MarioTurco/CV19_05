@@ -12,20 +12,6 @@ public class Struttura {
     private String fasciaDiPrezzo;
     private String categoria;
 
-
-    /*public Struttura(String indirizzo, double longitudine, double latitudine, String nome, String descrizione, String città, int idStruttura, float valutazioneMedia, String fasciaDiPrezzo, String categoria) {
-        this.indirizzo = indirizzo;
-        this.longitudine = longitudine;
-        this.latitudine = latitudine;
-        this.nome = nome;
-        this.descrizione = descrizione;
-        this.città = città;
-        this.idStruttura = idStruttura;
-        this.valutazioneMedia = valutazioneMedia;
-        this.fasciaDiPrezzo = fasciaDiPrezzo;
-        this.categoria = categoria;
-    }
-    */
     public String getIndirizzo() {
         return indirizzo;
     }
