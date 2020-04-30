@@ -20,7 +20,7 @@ public class Struttura {
     public String getUrlFoto() {
         return urlFoto;
     }
-    
+
     public String getIndirizzo() {
         return indirizzo;
     }
