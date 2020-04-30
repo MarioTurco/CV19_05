@@ -1,8 +1,11 @@
 package com.example.provacv;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,9 +24,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import DAO.RecensioneDAO;
+import DAO.VolleyCallback;
 import model.Recensione;
 
+import static com.android.volley.VolleyLog.TAG;
+
 public class AggiungiRecensioneFragment extends Fragment {
+    final String TAG = "AggiungiRecensioneFragment";
+
     private int idStruttura;
     private TextView titoloRecensione;
     private TextView testoRecensione;
@@ -82,6 +91,29 @@ public class AggiungiRecensioneFragment extends Fragment {
                 recensioneDaAggiungere.setDataRecensione(dtf.format(now));
                 recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
                 recensioneDaAggiungere.setTitolo( titoloRecensione.getText().toString());
+                recensioneDAO.aggiungiRecensione(recensioneDaAggiungere, new VolleyCallback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        if (result) {
+                            Log.d(TAG, "onSuccess: Recensione Aggiunta");
+                            Toast.makeText(getContext(), "Recensione Aggiunta", Toast.LENGTH_SHORT).show();
+                            backButton.performClick();
+
+                        } else {
+                            Log.d(TAG, "onSuccess: recensione fallito");
+                            Toast.makeText(getContext(), "Riprovare fallito", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFail() {
+                        Toast.makeText(getContext(), "Riprovare fallito", Toast.LENGTH_SHORT).show();
+                     /*   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                        transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
+                        transaction.commit();*/
+                    }
+                });
             }
         });
     }

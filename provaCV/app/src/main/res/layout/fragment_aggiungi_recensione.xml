@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,96 +10,90 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="49dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="85dp"
+        android:layout_toEndOf="@+id/backButton"
         android:text="Aggiungi Recensione"
         android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.291"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp" />
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="31dp"
         android:layout_height="28dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/ic_back" />
 
     <EditText
         android:id="@+id/titoloRecensione"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="53dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Titolo (max 50 caratteri)"
         android:inputType="textPersonName"
         android:lines="1"
-        android:maxLength="50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        android:maxLength="50" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/testoRecensione"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="Valutazione:"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/aggiungiRecensioneButton"
+        android:layout_width="128dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/cerca_button_background"
+        android:backgroundTint="#FFFFFF"
+        android:text="Aggiungi" />
+
+    <EditText
+        android:id="@+id/testoRecensione"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titoloRecensione"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="9dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Testo (max 300 caratteri)"
+        android:inputType="textMultiLine"
+        android:maxLength="300" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:isIndicator="false"
-        android:numStars="5"
-        android:progressTint="@android:color/black"
-        android:rating="0.0"
-        android:stepSize="1.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
-        android:text="Valutazione:"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
-
-    <Button
-        android:id="@+id/aggiungiRecensioneButton"
-        android:layout_width="128dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="156dp"
-        android:background="@drawable/cerca_button_background"
-        android:backgroundTint="#FFFFFF"
-        android:text="Aggiungi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
-
-    <EditText
-        android:id="@+id/testoRecensione"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Testo (max 300 caratteri)"
-        android:inputType="textMultiLine"
-        android:maxLength="300"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titoloRecensione" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@+id/testoRecensione"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/textView24" />
+</RelativeLayout>
