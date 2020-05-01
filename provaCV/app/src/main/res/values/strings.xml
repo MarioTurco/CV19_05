@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Cerca Viaggi</string>
+    <string name="app_name">
+        Cerca Viaggi
+    </string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
     <string name="fragment_in_card_below">Map fragment container in card below</string>

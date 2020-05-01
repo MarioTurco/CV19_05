@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".LoginFragment">
+    tools:context=".LoginFragment"
+    >
 
     <TextView
         android:id="@+id/textView4"
@@ -19,7 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/backButtonLogin"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/century_gothic"/>
 
     <ImageButton
         android:id="@+id/backButtonLogin"
@@ -30,7 +32,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Button
         android:id="@+id/loginButton"
@@ -44,7 +47,8 @@
         app:layout_constraintBottom_toTopOf="@+id/registratiTextLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLoginText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginText"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/registratiTextLink"
@@ -58,7 +62,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/century_gothic"/>
 
     <EditText
         android:id="@+id/usernameLoginText"
@@ -75,7 +80,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -87,7 +93,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButtonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/backButtonLogin"
+        android:fontFamily="@font/century_gothic"/>
 
     <EditText
         android:id="@+id/passwordLoginText"
@@ -104,7 +111,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameLoginText" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameLoginText"
+        android:fontFamily="@font/century_gothic"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -85,7 +85,10 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setTesto(recensioneJSON.getString("testo"));
                                 recensione.setDataRecensione(recensioneJSON.getString("datarecensione"));
                                 recensione.setTitolo(recensioneJSON.getString("titolo"));
-                                recensione.setAutore(recensioneJSON.getString("autore"));
+                                if(recensioneJSON.getString("mostra_nickname").equals("True"))
+                                    recensione.setAutore(recensioneJSON.getString("autore"));
+                                else
+                                    recensione.setAutore(recensioneJSON.getString("nome"));
                                 recensione.setStruttura(struttura.getIdStruttura());
                                 recensione.setIdRecensione(recensioneJSON.getInt("id_recensione"));
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));

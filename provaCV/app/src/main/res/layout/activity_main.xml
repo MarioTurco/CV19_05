@@ -24,6 +24,7 @@
         app:headerLayout="@layout/header"
         app:insetForeground="@null"
         app:menu="@menu/menu_item"
+        android:theme="@style/ToolbarTheme"
 
         />
 

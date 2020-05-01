@@ -13,7 +13,8 @@
         android:layout_marginTop="8dp"
         android:text="num"
         app:layout_constraintStart_toEndOf="@+id/valutazioneRecensione"
-        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/valutazioneRecensione"
@@ -23,7 +24,8 @@
         android:layout_marginTop="8dp"
         android:text="val"
         app:layout_constraintStart_toEndOf="@+id/ratingBarStruttura"
-        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura"
+        android:fontFamily="@font/century_gothic"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/AggiungiRecensioneCard"
@@ -53,7 +55,8 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:fontFamily="@font/century_gothic"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -66,7 +69,8 @@
         android:lines="1"
         android:text="Ristorante"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
-        app:layout_constraintStart_toEndOf="@+id/textView21" />
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/prezzoStruttura"
@@ -76,7 +80,8 @@
         android:lines="1"
         android:text="Medio"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
-        app:layout_constraintStart_toEndOf="@+id/textView19" />
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        android:fontFamily="@font/century_gothic"/>
 
     <ImageButton
         android:id="@+id/backButtonStruttura"
@@ -100,7 +105,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toEndOf="@+id/backButtonStruttura"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/nomeStruttura"
@@ -113,7 +119,8 @@
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:fontFamily="@font/century_gothic"/>
 
     <View
         android:id="@+id/divider"
@@ -133,7 +140,8 @@
         android:layout_marginTop="8dp"
         android:text="Valutazione: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeStruttura"
+        android:fontFamily="@font/century_gothic"/>
 
     <RatingBar
         android:id="@+id/ratingBarStruttura"
@@ -159,7 +167,8 @@
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView12"
@@ -169,7 +178,8 @@
         android:layout_marginTop="8dp"
         android:text="Città: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descrizioneStruttura" />
+        app:layout_constraintTop_toBottomOf="@+id/descrizioneStruttura"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/cittàStruttura"
@@ -179,7 +189,8 @@
         android:lines="1"
         android:text="Napoli, Italia"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
-        app:layout_constraintStart_toEndOf="@+id/textView12" />
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView17"
@@ -189,7 +200,8 @@
         android:layout_marginTop="4dp"
         android:text="Indirizzo:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/indirizzoStruttura"
@@ -199,7 +211,8 @@
         android:lines="1"
         android:text="Via Nazionale, 23"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView17"
-        app:layout_constraintStart_toEndOf="@+id/textView17" />
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView19"
@@ -209,7 +222,8 @@
         android:layout_marginTop="4dp"
         android:text="Prezzo:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView21"
@@ -219,7 +233,8 @@
         android:layout_marginTop="4dp"
         android:text="Categoria:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prezzoStruttura" />
+        app:layout_constraintTop_toBottomOf="@+id/prezzoStruttura"
+        android:fontFamily="@font/century_gothic"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recensioniRecyclerView"
@@ -301,7 +316,8 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:fontFamily="@font/century_gothic"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -30,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toEndOf="@+id/backButtonLogin2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/titoloRecensione"
@@ -46,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView26"
@@ -56,7 +58,8 @@
         android:layout_marginTop="8dp"
         android:text="Valutazione:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titoloRecensione" />
+        app:layout_constraintTop_toBottomOf="@+id/titoloRecensione"
+        android:fontFamily="@font/century_gothic"/>
 
     <RatingBar
         android:id="@+id/ratingBarRecensione"
@@ -81,7 +84,8 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView28"
@@ -91,7 +95,8 @@
         android:layout_marginTop="20dp"
         android:text="Da:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
+        app:layout_constraintTop_toBottomOf="@+id/testoRecensione"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/autoreRecensione"
@@ -102,7 +107,8 @@
         android:maxLines="1"
         android:text="autore"
         app:layout_constraintStart_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
+        app:layout_constraintTop_toBottomOf="@+id/testoRecensione"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/textView30"
@@ -112,7 +118,8 @@
         android:layout_marginTop="20dp"
         android:text="Data:"
         app:layout_constraintStart_toEndOf="@+id/autoreRecensione"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
+        app:layout_constraintTop_toBottomOf="@+id/testoRecensione"
+        android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/dataRecensione"
@@ -122,5 +129,6 @@
         android:layout_marginTop="20dp"
         android:text="20/05/2020"
         app:layout_constraintStart_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
+        app:layout_constraintTop_toBottomOf="@+id/testoRecensione"
+        android:fontFamily="@font/century_gothic"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

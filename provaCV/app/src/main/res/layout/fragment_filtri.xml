@@ -26,26 +26,43 @@
 
             <TextView
                 android:id="@+id/textView31"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_width="94dp"
+                android:layout_height="27dp"
                 android:layout_marginTop="36dp"
+                android:fontFamily="@font/century_gothic"
                 android:text="Rating"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintHorizontal_bias="0.134"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerPrezzo" />
 
             <TextView
                 android:id="@+id/textView29"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_width="102dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="36dp"
+                android:fontFamily="@font/century_gothic"
                 android:text="Prezzo"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.112"
+                app:layout_constraintHorizontal_bias="0.137"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+
+            <Spinner
+                android:id="@+id/spinnerPrezzo"
+                android:layout_width="158dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="36dp"
+                android:autofillHints="Prezzo"
+                android:dropDownWidth="wrap_content"
+                android:fontFamily="@font/century_gothic"
+                android:spinnerMode="dialog"
+                android:tooltipText="Prezzo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.63"
+                app:layout_constraintStart_toEndOf="@+id/textView29"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
             <EditText
@@ -62,7 +79,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.519"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/century_gothic"/>
 
             <EditText
                 android:id="@+id/cittaText"
@@ -78,7 +96,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.519"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeText"
+                android:fontFamily="@font/century_gothic"/>
 
             <EditText
                 android:id="@+id/distanzaText"
@@ -95,15 +114,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.519"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeText"
+                android:fontFamily="@font/century_gothic"/>
 
             <Spinner
                 android:id="@+id/spinnerCategoria"
-                android:layout_width="220dp"
-                android:layout_height="26dp"
+                android:layout_width="155dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="36dp"
                 android:autofillHints="Categoria"
                 android:dropDownWidth="wrap_content"
+                android:fontFamily="@font/century_gothic"
                 android:spinnerMode="dialog"
                 android:tooltipText="Categoria"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,31 +133,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/cittaText" />
 
             <Spinner
-                android:id="@+id/spinnerPrezzo"
-                android:layout_width="220dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="36dp"
-                android:autofillHints="Prezzo"
-                android:dropDownWidth="wrap_content"
-                android:spinnerMode="dialog"
-                android:tooltipText="Prezzo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.316"
-                app:layout_constraintStart_toEndOf="@+id/textView29"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
-
-            <Spinner
                 android:id="@+id/spinnerValutazione"
-                android:layout_width="220dp"
-                android:layout_height="26dp"
+                android:layout_width="160dp"
+                android:layout_height="27dp"
                 android:layout_marginTop="36dp"
                 android:dropDownWidth="wrap_content"
                 android:entries="@array/Valutazione"
+                android:fontFamily="@font/century_gothic"
                 android:foregroundTint="#FFFFFF"
                 android:spinnerMode="dialog"
                 android:tooltipText="Prezzo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.316"
+                app:layout_constraintHorizontal_bias="0.653"
                 app:layout_constraintStart_toEndOf="@+id/textView31"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerPrezzo" />
 
@@ -150,7 +158,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.13"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione"
+                android:fontFamily="@font/century_gothic"/>
 
             <Switch
                 android:id="@+id/prossimitàSwitch"
@@ -174,17 +183,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                android:fontFamily="@font/century_gothic"/>
 
             <TextView
                 android:id="@+id/textView27"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_width="147dp"
+                android:layout_height="31dp"
                 android:layout_marginTop="36dp"
+                android:fontFamily="@font/century_gothic"
                 android:text="Categoria"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintHorizontal_bias="0.163"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cittaText" />
 
@@ -210,5 +221,6 @@
         android:layout_marginTop="19dp"
         android:layout_toEndOf="@+id/backButtonSignup"
         android:text="Ricerca per filtri"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:fontFamily="@font/century_gothic"/>
 </RelativeLayout>

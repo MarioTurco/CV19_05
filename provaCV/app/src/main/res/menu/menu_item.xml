@@ -3,17 +3,17 @@
     <group android:checkableBehavior="single" android:id="@+id/drawerMenuGroup">
         <item
             android:id="@+id/login"
-            android:title="Login"/>
+            android:title="Login" />
         <item
             android:id="@+id/signup"
             android:title="Registrati" />
         <item
             android:id="@+id/homepage"
             android:title="Homepage"
-            android:visible="false"/>
+            android:visible="false" />
         <item
             android:id="@+id/logout"
             android:title="Logout"
-            android:visible="false"/>
+            android:visible="false" />
     </group>
 </menu>
