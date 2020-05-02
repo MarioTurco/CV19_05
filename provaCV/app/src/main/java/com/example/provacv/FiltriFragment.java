@@ -52,10 +52,10 @@ import static com.android.volley.VolleyLog.TAG;
 
 public class FiltriFragment extends Fragment {
     private static final String TAG = "FiltriFragment";
-    private static final int MY_PERMISSIOS_REQUEST_LOCATION = 1;
+
+
     private ImageButton backButton;
     private ViewGroup container;
-    private SupportMapFragment mapFragment;
     private Button cercaButton;
     private EditText nomeText;
     private EditText cittaText;
@@ -64,7 +64,9 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerPrezzo;
     private Spinner spinnerValutazione;
     private Switch prossimitàSwitch;
+
     private MainActivity activity;
+    
     private StrutturaDAO strutturaDAO;
 
     public FiltriFragment() {
@@ -161,13 +163,13 @@ public class FiltriFragment extends Fragment {
     }
 
     private void askForGPSPermissions() {
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
-            case MY_PERMISSIOS_REQUEST_LOCATION:{
+            case 2:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
                     abilitaProssimità();

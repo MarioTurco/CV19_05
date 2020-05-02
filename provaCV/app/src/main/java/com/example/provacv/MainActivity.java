@@ -1,6 +1,7 @@
 package com.example.provacv;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -168,9 +169,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     protected void setMap() {
-        GPSUtilities gpsUtils = new GPSUtilities(this);
+
         double latitudine, longitudine;
-        if (! ( gpsUtils.hasGPSPermissions()))
+        if (! ( hasGPSPermissions()))
             askForGPSPermissions();
         else{
             //cambia le impostazioni della map box
@@ -220,14 +221,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void askForGPSPermissions() {
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+    private boolean hasFineLocationAccess() {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private boolean hasCoarseLocationAccess() {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private boolean hasGPSPermissions() {
+        return hasFineLocationAccess() && hasCoarseLocationAccess();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case MY_PERMISSIOS_REQUEST_LOCATION: {
+            case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
                     //TODO imposta telecamera mappa alle cordinate attuali
@@ -239,7 +250,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-
+    private void askForGPSPermissions() {
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    }
     private void hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
