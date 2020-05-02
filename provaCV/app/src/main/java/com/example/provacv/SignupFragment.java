@@ -38,7 +38,7 @@ import model.Utente;
  */
 public class SignupFragment extends Fragment {
     private ImageButton backButtonSignup;
-    private EditText dataDiNascita;
+    private static EditText dataDiNascita;
     private Button registrazioneButton;
     private UtenteDAO utenteDAO;
     private EditText emailEditText;
@@ -84,9 +84,8 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupBackButton(savedInstanceState);
         inizializeUIElements(view);
-
+        setupBackButton(savedInstanceState);
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +124,7 @@ public class SignupFragment extends Fragment {
                     }
                     @Override
                     public void onFail() {
+                        Toast.makeText(getContext(),"Registrazione Fallita volley", Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"Registrazione fallita errore volley");
                     }
                 });
@@ -160,7 +160,7 @@ public class SignupFragment extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
-    public class DatePickerFragment extends DialogFragment
+    public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
         @Override

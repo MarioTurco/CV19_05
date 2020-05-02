@@ -71,7 +71,7 @@ public class UtenteDAO {
 
     public void registraUtente(Utente utente, final VolleyCallback<Boolean> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "";
+        String queryRequestString = "www.avvv.it";
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {
                     @Override
