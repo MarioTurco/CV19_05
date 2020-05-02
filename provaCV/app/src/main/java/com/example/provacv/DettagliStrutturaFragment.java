@@ -204,6 +204,16 @@ public class DettagliStrutturaFragment extends Fragment {
             }
         });
 
+        fabVisualizzaMappa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                transaction.replace(R.id.container, VisualizzaStrutturaSuMappa.newInstance(struttura), "Dettagli struttura to visualizza su mappa");
+                transaction.commit();
+            }
+        });
+
     }
 
     private boolean isUserLogged() {
