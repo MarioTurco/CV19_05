@@ -92,19 +92,28 @@ public class SignupFragment extends Fragment {
         else return true;
     }
 
+    private boolean checkLunghezzaPassword(){
+        if(PasswordEditText.getText().toString().length() < 5)
+            return false;
+        else return true;
+    }
+
     private Utente creaUtenteDaInserire(){
         Utente utenteDaAggiungere = new Utente();
         if(checkCampiNonVuoti()) {
-            utenteDaAggiungere.setEmail(emailEditText.getText().toString());
-            utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
-            utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
-            utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
-            String salt = PasswordUtils.getSalt(30);
-            String passwordCriptata = null;
-            passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
-            utenteDaAggiungere.setPassword(passwordCriptata);
-            utenteDaAggiungere.setSalt(salt);
-            utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
+            if(checkLunghezzaPassword()) {
+                utenteDaAggiungere.setEmail(emailEditText.getText().toString());
+                utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
+                utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
+                utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
+                String salt = PasswordUtils.getSalt(30);
+                String passwordCriptata = null;
+                passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
+                utenteDaAggiungere.setPassword(passwordCriptata);
+                utenteDaAggiungere.setSalt(salt);
+                utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
+            }
+            else throw new IllegalArgumentException("La password deve essere di almeno 5 caratteri!");
         }
         else throw new IllegalArgumentException("Compila tutti i campi");
         return utenteDaAggiungere;
@@ -124,8 +133,6 @@ public class SignupFragment extends Fragment {
             }
         });
 
-
-
         registrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,29 +142,31 @@ public class SignupFragment extends Fragment {
 
                         private String errorMessage(String result){
                             if(result.contains("Email"))
-                                return "Email non valida!";
+                                return ": Email non valida!";
+                            if(result.contains("utente_pkey"))
+                                return ": Nickname già in uso!";
+                            if(result.contains("unique_email"))
+                                return ": Email già in uso!";
                             return "";
                         }
-
                         @Override
                         public void onSuccess(String result) {
                             if (result.contains("successfully")){
-                                Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_LONG).show();
                             }
                             else
-                                Toast.makeText(getContext(),"Registrazione Fallita: " + errorMessage(result), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Registrazione Fallita" + errorMessage(result), Toast.LENGTH_LONG).show();
                         }
                         @Override
                         public void onFail() {
-                            Toast.makeText(getContext(),"Errore di connessione", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),"Errore di connessione", Toast.LENGTH_LONG).show();
                             Log.d(TAG,"Registrazione fallita errore volley");
                         }
                     });
                 }
                 catch(IllegalArgumentException e){
-                    Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
@@ -206,7 +215,7 @@ public class SignupFragment extends Fragment {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            dataDiNascita.setText(day + "/" + month + "/" + year);
+            dataDiNascita.setText(day + "/" + month+1 + "/" + year);
 
         }
     }
