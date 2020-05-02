@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
@@ -203,8 +204,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
+
                 @Override
                 public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+                    //noinspection deprecation - NON VA NON VA
+                    mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+
+                        @Override
+                        public boolean onMarkerClick(@NonNull Marker marker) {
+                            Toast.makeText(MainActivity.this, marker.getTitle(), Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                    });
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
