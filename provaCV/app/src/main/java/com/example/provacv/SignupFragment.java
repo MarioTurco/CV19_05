@@ -50,7 +50,7 @@ public class SignupFragment extends Fragment {
     private String TAG="Signup Fragment";
 
     public SignupFragment(){
-        utenteDAO = new UtenteDAO(this.getActivity());
+
     }
 
     public static SignupFragment newInstance() {
@@ -86,6 +86,7 @@ public class SignupFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         inizializeUIElements(view);
         setupBackButton(savedInstanceState);
+        utenteDAO = new UtenteDAO(this.getActivity());
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,33 +102,34 @@ public class SignupFragment extends Fragment {
                 utenteDaAggiungere.setEmail(emailEditText.getText().toString());
                 utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
                 utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
-                utenteDaAggiungere.setNome(nomeEditText.getText().toString());
+                utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
                 String dateToFormat = dataDiNascita.getText().toString();
                 String salt = PasswordUtils.getSalt(30);
-                String passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(),salt);
-                utenteDaAggiungere.setPassword(passwordCriptata);
-                utenteDaAggiungere.setSalt(salt);
-                Date dataDiNascita = null;
+                String passwordCriptata = null;
                 try {
-                    dataDiNascita = new SimpleDateFormat("yyyy-MM-dd").parse(dateToFormat);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                utenteDaAggiungere.setDataDiNascita(dataDiNascita);
-                utenteDAO.registraUtente(utenteDaAggiungere, new VolleyCallback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean result) {
-                        if (result){
-                            Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_SHORT).show();
+                    passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
+                    utenteDaAggiungere.setPassword(passwordCriptata);
+                    utenteDaAggiungere.setSalt(salt);
+                    utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
+                    utenteDAO.registraUtente(utenteDaAggiungere, new VolleyCallback<Boolean>() {
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            if (result){
+                                Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_SHORT).show();
+                            }
+                            else Toast.makeText(getContext(),"Registrazione Fallita", Toast.LENGTH_SHORT).show();
                         }
-                        else Toast.makeText(getContext(),"Registrazione Fallita", Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onFail() {
-                        Toast.makeText(getContext(),"Registrazione Fallita volley", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG,"Registrazione fallita errore volley");
-                    }
-                });
+                        @Override
+                        public void onFail() {
+                            Toast.makeText(getContext(),"Registrazione Fallita volley", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG,"Registrazione fallita errore volley");
+                        }
+                    });
+                }
+                catch(AssertionError e){
+                    Toast.makeText(getContext(),"Inserisci una password", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
