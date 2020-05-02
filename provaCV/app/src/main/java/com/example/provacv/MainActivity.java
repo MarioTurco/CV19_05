@@ -188,25 +188,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
             // Build mapboxMap
             final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                options.camera(new CameraPosition.Builder()
-                                        .target(new LatLng(location.getLatitude(), location.getLongitude()))
-                                        .zoom(15)
-                                        .build());
-                            }else{
-                                Log.d(TAG, "onSuccess: Posizione default");
-                                options.camera(new CameraPosition.Builder()
-                                        .target(new LatLng(40.79444305, 14.46353868))
-                                        .zoom(15)
-                                        .build());
-                            }
-                        }
-                    });
+            setPosition(options);
+
             // Create map fragment
             mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
             // Add map fragment to parent container
@@ -215,15 +198,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             mapFragment = (CustomSupportMapFragment) getSupportFragmentManager().findFragmentByTag("com.mapbox.map");
         }
-
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
-                public void onMapReady(@NonNull MapboxMap mapboxMap) {
+                public void onMapReady(@NonNull final MapboxMap mapboxMap) {
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
-
                             // Map is set up and the style has loaded. Now you can add data or make other map adjustments
                         }
                     });
@@ -232,18 +213,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-    /*
-    private Location getLastKnownLocation(){
-        final Location lastKnownLocation;
+
+    private void setPosition(final MapboxMapOptions options) {
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
-
-                            Log.d(TAG, "onSuccess: Posizione trovata");
-                            Log.d(TAG, "Latitudine: " + location.getLatitude() + "; Longitudine:" + location.getLongitude());
+                            options.camera(new CameraPosition.Builder()
+                                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                                    .zoom(15)
+                                    .build());
                         }else{
                             Log.d(TAG, "onSuccess: Posizione default");
                             options.camera(new CameraPosition.Builder()
@@ -253,8 +234,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     }
                 });
-        return null;
-    }*/
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
