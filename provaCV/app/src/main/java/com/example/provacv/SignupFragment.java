@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import DAO.UtenteDAO;
+import model.Utente;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +31,19 @@ import androidx.fragment.app.Fragment;
 public class SignupFragment extends Fragment {
     private ImageButton backButtonSignup;
     private static EditText dataDiNascita;
+    private Button registrazioneButton;
+    private UtenteDAO utenteDAO;
+    private EditText emailEditText;
+    private EditText PasswordEditText;
+    private EditText nomeEditText;
+    private EditText cognomeEditText;
+    private EditText nicknameEditText;
+    private CheckBox mostraNicknameCheckbox;
+
+    public SignupFragment(){
+        utenteDAO = new UtenteDAO(this.getActivity());
+    }
+
     public static SignupFragment newInstance() {
         SignupFragment fragment = new SignupFragment();
         return fragment;
@@ -50,11 +68,20 @@ public class SignupFragment extends Fragment {
         backButtonSignup = view.findViewById(R.id.backButtonSignup);
         setupBackButton(savedInstanceState);
         dataDiNascita = view.findViewById(R.id.dateEditText);
+        registrazioneButton = view.findViewById(R.id.registrazioneButton);
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePickerFragment();
                 newFragment.show(getFragmentManager(), "datePicker");
+            }
+        });
+
+        registrazioneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utente utenteDaAggiungere = new Utente();
+               // utenteDaAggiungere.set
             }
         });
 
