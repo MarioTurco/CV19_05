@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import model.Utente;
+
 public class UtenteDAO {
 
     private Context context;
@@ -63,5 +65,10 @@ public class UtenteDAO {
                     }
                 });
         queue.add(jsonArrayRequest);
+    }
+
+    public void registraUtente(Utente utente, final VolleyCallback<Boolean> callback){
+
+
     }
 }
