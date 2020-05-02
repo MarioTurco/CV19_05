@@ -44,7 +44,7 @@ public class CustomSupportMapFragment extends SupportMapFragment {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    ((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
+                    toolbar.setVisibility(View.VISIBLE);
                 }
 
                 @Override

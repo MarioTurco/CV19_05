@@ -1,8 +1,8 @@
 package com.example.provacv;
 
+import android.Manifest;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Typeface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -10,13 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,8 +30,11 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageButton filtriButton;
     private final String TAG = "MainActivity";
+    private static final int MY_PERMISSIOS_REQUEST_LOCATION = 2;
+
+    private ImageButton filtriButton;
+
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
     private NavigationView navigationView;
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
     private static Bundle instanceState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupFiltriButton();
         setMap();
         updateDrawer();
+
         instanceState = savedInstanceState;
-
-
     }
 
     private void setupFiltriButton() {
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         updateDrawer();
     }
 
-    public void backToMainActivity(){
+    public void backToMainActivity() {
         setMap();
         updateDrawer();
     }
@@ -165,6 +168,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     protected void setMap() {
+        GPSUtilities gpsUtils = new GPSUtilities(this);
+        double latitudine, longitudine;
+        if (! ( gpsUtils.hasGPSPermissions()))
+            askForGPSPermissions();
+        else{
+            //cambia le impostazioni della map box
+        }
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
         if (instanceState == null) {
             // Create fragment
@@ -210,6 +220,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void askForGPSPermissions() {
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIOS_REQUEST_LOCATION);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIOS_REQUEST_LOCATION: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
+                    //TODO imposta telecamera mappa alle cordinate attuali
+
+                } else {
+                    Log.d(TAG, "onRequestPermissionsResult: disbilitato");
+                    //TODO imposta telecamera mappa a delle cordinate prefissate (ad esempio l'italia)
+                }
+            }
+        }
+    }
+
     private void hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -236,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
+
 
 
 }
