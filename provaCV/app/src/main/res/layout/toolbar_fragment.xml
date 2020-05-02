@@ -26,17 +26,6 @@
 
         </FrameLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:clickable="true"
-            app:layout_anchor="@+id/container"
-            app:layout_anchorGravity="end|bottom"
-            app:srcCompat="@drawable/ic_gps_fixed_black_24dp" />
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.appbar.AppBarLayout

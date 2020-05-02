@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
     private static Bundle instanceState;
-    private FloatingActionButton gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
         setMap();
-        setGPSButton();
+
     }
 
-    private void setGPSButton() {
-        mapFragment.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(@NonNull MapboxMap mapboxMap) {
 
-            }
-        });
-    }
 
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
@@ -131,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        gps = findViewById(R.id.floatingActionButton);
         updateDrawer();
     }
 
