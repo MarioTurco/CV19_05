@@ -124,22 +124,32 @@ public class SignupFragment extends Fragment {
             }
         });
 
+
+
         registrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     Utente utenteDaAggiungere = creaUtenteDaInserire();
-                    utenteDAO.registraUtente(utenteDaAggiungere, new VolleyCallback<Boolean>() {
+                    utenteDAO.registraUtente(utenteDaAggiungere, new VolleyCallback<String>() {
+
+                        private String errorMessage(String result){
+                            if(result.contains("Email"))
+                                return "Email non valida!";
+                            return "";
+                        }
+
                         @Override
-                        public void onSuccess(Boolean result) {
-                            if (result){
+                        public void onSuccess(String result) {
+                            if (result.contains("successfully")){
                                 Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_SHORT).show();
                             }
-                            else Toast.makeText(getContext(),"Registrazione Fallita", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(),"Registrazione Fallita: " + errorMessage(result), Toast.LENGTH_SHORT).show();
                         }
                         @Override
                         public void onFail() {
-                            Toast.makeText(getContext(),"Registrazione Fallita volley", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),"Errore di connessione", Toast.LENGTH_SHORT).show();
                             Log.d(TAG,"Registrazione fallita errore volley");
                         }
                     });
