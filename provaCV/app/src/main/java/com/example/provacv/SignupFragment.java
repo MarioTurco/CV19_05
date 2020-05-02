@@ -81,6 +81,35 @@ public class SignupFragment extends Fragment {
         mostraNicknameCheckbox = view.findViewById(R.id.mostraNicknameCheckbox);
     }
 
+    private boolean checkCampiNonVuoti(){
+        if(emailEditText.getText().toString().equals("") ||
+                nicknameEditText.getText().toString().equals("") ||
+                nomeEditText.getText().toString().equals("") ||
+                cognomeEditText.getText().toString().equals("") ||
+                PasswordEditText.getText().toString().equals("") ||
+                dataDiNascita.getText().toString().equals(""))
+            return false;
+        else return true;
+    }
+
+    private Utente creaUtenteDaInserire(){
+        Utente utenteDaAggiungere = new Utente();
+        if(checkCampiNonVuoti()) {
+            utenteDaAggiungere.setEmail(emailEditText.getText().toString());
+            utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
+            utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
+            utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
+            String salt = PasswordUtils.getSalt(30);
+            String passwordCriptata = null;
+            passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
+            utenteDaAggiungere.setPassword(passwordCriptata);
+            utenteDaAggiungere.setSalt(salt);
+            utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
+        }
+        else throw new IllegalArgumentException("Compila tutti i campi");
+        return utenteDaAggiungere;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -98,19 +127,8 @@ public class SignupFragment extends Fragment {
         registrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utente utenteDaAggiungere = new Utente();
-                utenteDaAggiungere.setEmail(emailEditText.getText().toString());
-                utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
-                utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
-                utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
-                String dateToFormat = dataDiNascita.getText().toString();
-                String salt = PasswordUtils.getSalt(30);
-                String passwordCriptata = null;
                 try {
-                    passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
-                    utenteDaAggiungere.setPassword(passwordCriptata);
-                    utenteDaAggiungere.setSalt(salt);
-                    utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
+                    Utente utenteDaAggiungere = creaUtenteDaInserire();
                     utenteDAO.registraUtente(utenteDaAggiungere, new VolleyCallback<Boolean>() {
                         @Override
                         public void onSuccess(Boolean result) {
@@ -126,8 +144,8 @@ public class SignupFragment extends Fragment {
                         }
                     });
                 }
-                catch(AssertionError e){
-                    Toast.makeText(getContext(),"Inserisci una password", Toast.LENGTH_SHORT).show();
+                catch(IllegalArgumentException e){
+                    Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
