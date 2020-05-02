@@ -83,7 +83,7 @@ public class UtenteDAO {
         return queryRequestString;
     }
 
-    public void registraUtente(Utente utente, final VolleyCallback<Boolean> callback){
+    public void registraUtente(Utente utente, final VolleyCallback<String> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = buildInsertString(utente);
         System.out.println(queryRequestString);
@@ -92,7 +92,7 @@ public class UtenteDAO {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            boolean addSuccess = response.length() != 0;
+                            String addSuccess = response.getString("status");
                             callback.onSuccess(addSuccess);
                         } catch (Exception e) {}
                     }
