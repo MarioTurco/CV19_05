@@ -6,7 +6,7 @@ public class Utente {
     private String nome;
     private String nickname;
     private String email;
-    private Date dataDiNascita;
+    private String dataDiNascita;
     private String password;
     private String salt;
     private boolean mostraNickname;
@@ -35,11 +35,11 @@ public class Utente {
         this.email = email;
     }
 
-    public Date getDataDiNascita() {
+    public String getDataDiNascita() {
         return dataDiNascita;
     }
 
-    public void setDataDiNascita(Date dataDiNascita) {
+    public void setDataDiNascita(String dataDiNascita) {
         this.dataDiNascita = dataDiNascita;
     }
 

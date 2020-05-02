@@ -69,9 +69,24 @@ public class UtenteDAO {
         queue.add(jsonArrayRequest);
     }
 
+    public String buildInsertString(Utente utente){
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
+        queryRequestString += "nome=" + utente.getNome();
+        queryRequestString += "&nickname=" + utente.getNickname();
+        queryRequestString += "&email=" + utente.getEmail();
+        queryRequestString += "&data_di_nascita=" + utente.getDataDiNascita();
+        queryRequestString += "&recensioniapprovate=0&recensionirifiutate=0";
+        queryRequestString += "&password=" + utente.getPassword();
+        queryRequestString += "&salt=" + utente.getSalt();
+        queryRequestString += "&mostra_nickname=" + utente.isMostraNickname();
+
+        return queryRequestString;
+    }
+
     public void registraUtente(Utente utente, final VolleyCallback<Boolean> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = "";
+        String queryRequestString = buildInsertString(utente);
+        System.out.println(queryRequestString);
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {
                     @Override
