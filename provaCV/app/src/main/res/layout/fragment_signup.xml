@@ -153,7 +153,7 @@
         android:fontFamily="@font/century_gothic"/>
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/mostraNicknameCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
