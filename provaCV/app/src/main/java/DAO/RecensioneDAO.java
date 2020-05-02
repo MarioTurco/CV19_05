@@ -10,9 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import model.Recensione;
@@ -45,6 +43,7 @@ public class RecensioneDAO {
                 });
         queue.add(jsonArrayRequest);
     }
+
     public void aggiungiRecensione(Recensione nuovaRecensione, final VolleyCallback<Boolean> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/insertrecensione?testo=" + nuovaRecensione.getTesto() + "&datarecensione=" + nuovaRecensione.getDataRecensione()

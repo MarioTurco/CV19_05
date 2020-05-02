@@ -1,12 +1,14 @@
 package DAO;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.provacv.PasswordUtils;
 
@@ -19,7 +21,7 @@ import model.Utente;
 public class UtenteDAO {
 
     private Context context;
-
+    private final String TAG = "UtenteDAO";
     public UtenteDAO(Context context){
         this.context=context;
     }
@@ -68,7 +70,27 @@ public class UtenteDAO {
     }
 
     public void registraUtente(Utente utente, final VolleyCallback<Boolean> callback){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String queryRequestString = "";
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
+                (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            boolean addSuccess = response.length() != 0;
+                            callback.onSuccess(addSuccess);
+                        } catch (Exception e) {}
+                    }
+                }, new Response.ErrorListener() {
 
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onFail();
+                        Log.d(TAG, "onErrorResponse: Errore" );
+                        error.printStackTrace();
+                    }
+                });
+        queue.add(jsonArrayRequest);
 
     }
 }

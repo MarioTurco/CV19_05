@@ -98,7 +98,7 @@
         android:fontFamily="@font/century_gothic"/>
 
     <EditText
-        android:id="@+id/congomeEditText"
+        android:id="@+id/cognomeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -189,7 +189,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/congomeEditText"
+        app:layout_constraintTop_toBottomOf="@+id/cognomeEditText"
         android:fontFamily="@font/century_gothic"/>
 
     <TextView
