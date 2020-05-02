@@ -1,9 +1,9 @@
 package com.example.provacv;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -21,6 +21,9 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -32,7 +35,7 @@ import com.mapbox.mapboxsdk.maps.Style;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = "MainActivity";
-    private static final int MY_PERMISSIOS_REQUEST_LOCATION = 2;
+    private FusedLocationProviderClient fusedLocationClient;
 
     private ImageButton filtriButton;
 
@@ -51,10 +54,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         updateDrawer();
         setupFiltriButton();
-        setMap();
+
         updateDrawer();
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
+        setMap();
     }
 
     private void setupFiltriButton() {
@@ -169,11 +174,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     protected void setMap() {
-
-        double latitudine, longitudine;
-        if (! ( hasGPSPermissions()))
+        Location lastKnownLocation;
+        if (!(hasGPSPermissions()))
             askForGPSPermissions();
-        else{
+        else {
+            Log.d(TAG, "setMap: Abbiamo i permessi");
             //cambia le impostazioni della map box
         }
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
@@ -182,11 +187,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
             // Build mapboxMap
-            MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
-            options.camera(new CameraPosition.Builder()
-                    .target(new LatLng(-52.6885, -70.1395))
-                    .zoom(9)
-                    .build());
+            final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                options.camera(new CameraPosition.Builder()
+                                        .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                                        .zoom(15)
+                                        .build());
+                            }else{
+                                Log.d(TAG, "onSuccess: Posizione default");
+                                options.camera(new CameraPosition.Builder()
+                                        .target(new LatLng(40.79444305, 14.46353868))
+                                        .zoom(15)
+                                        .build());
+                            }
+                        }
+                    });
             // Create map fragment
             mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
             // Add map fragment to parent container
@@ -212,7 +232,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+    /*
+    private Location getLastKnownLocation(){
+        final Location lastKnownLocation;
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
 
+                            Log.d(TAG, "onSuccess: Posizione trovata");
+                            Log.d(TAG, "Latitudine: " + location.getLatitude() + "; Longitudine:" + location.getLongitude());
+                        }else{
+                            Log.d(TAG, "onSuccess: Posizione default");
+                            options.camera(new CameraPosition.Builder()
+                                    .target(new LatLng(40.79444305, 14.46353868))
+                                    .zoom(10)
+                                    .build());
+                        }
+                    }
+                });
+        return null;
+    }*/
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -241,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
-                    //TODO imposta telecamera mappa alle cordinate attuali
+                    fusedLocationClient.getLastLocation();
 
                 } else {
                     Log.d(TAG, "onRequestPermissionsResult: disbilitato");
@@ -250,9 +292,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
     private void askForGPSPermissions() {
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
+
     private void hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -279,7 +323,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
-
 
 
 }
