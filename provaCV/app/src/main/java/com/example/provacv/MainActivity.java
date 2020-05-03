@@ -3,6 +3,7 @@ package com.example.provacv;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.PointF;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -27,6 +28,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.JsonElement;
+import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -35,6 +38,9 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = "MainActivity";
@@ -214,18 +220,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
-
                 @Override
                 public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-                    //noinspection deprecation - NON VA NON VA
-                    mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                    mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
 
-                        @Override
-                        public boolean onMarkerClick(@NonNull Marker marker) {
-                            Toast.makeText(MainActivity.this, marker.getTitle(), Toast.LENGTH_LONG).show();
+                        private boolean pointClick(PointF point){
+                            List<Feature> features = mapboxMap.queryRenderedFeatures(point, "cv19-map");
+
+                            // Get the first feature within the list if one exist
+                            if (features.size() > 0) {
+                                Feature feature = features.get(0);
+
+                                // Ensure the feature has properties defined
+                                if (feature.properties() != null) {
+                                    for (Map.Entry<String, JsonElement> entry : feature.properties().entrySet()) {
+                                        // Log all the properties
+                                        Log.d(TAG, String.format("%s = %s", entry.getKey(), entry.getValue()));
+                                    }
+                                }
+                            }
                             return true;
                         }
+
+                        @Override
+                        public boolean onMapClick(@NonNull LatLng point) {
+                            return pointClick(mapboxMap.getProjection().toScreenLocation(point));
+                        }
                     });
+                    mapboxMap.getUiSettings().setCompassMargins(0, 120, 35, 0);
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
