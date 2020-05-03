@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +16,10 @@
    <children>
       <VBox prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;">
          <children>
-            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="3.0" translateX="607.0" translateY="96.0" />
+            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="3.0" translateX="607.0" translateY="96.0">
+               <effect>
+                  <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="-1.0" />
+               </effect></Rating>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView>

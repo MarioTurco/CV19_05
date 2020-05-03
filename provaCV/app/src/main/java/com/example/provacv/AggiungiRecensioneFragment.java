@@ -90,7 +90,7 @@ public class AggiungiRecensioneFragment extends Fragment {
                 LocalDateTime now = LocalDateTime.now();
                 recensioneDaAggiungere.setDataRecensione(dtf.format(now));
                 recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
-                recensioneDaAggiungere.setTitolo( titoloRecensione.getText().toString());
+                recensioneDaAggiungere.setTitolo(titoloRecensione.getText().toString());
                 recensioneDAO.aggiungiRecensione(recensioneDaAggiungere, new VolleyCallback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean result) {
