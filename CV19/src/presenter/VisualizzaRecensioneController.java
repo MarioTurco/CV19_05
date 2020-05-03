@@ -69,7 +69,7 @@ public class VisualizzaRecensioneController {
         dataLabel.setText(recensioneDaMostrare.getData());
         testoLabel.setText(recensioneDaMostrare.getTesto()); 
         titoloRecensione.setText(recensioneDaMostrare.getTitolo());
-        ratingStars.setRating(recensioneDaMostrare.getValutazione());
+        //ratingStars.setRating(recensioneDaMostrare.getValutazione());
     }
     
     @FXML

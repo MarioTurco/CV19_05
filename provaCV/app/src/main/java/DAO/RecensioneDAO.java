@@ -44,7 +44,7 @@ public class RecensioneDAO {
         queue.add(jsonArrayRequest);
     }
 
-    public void aggiungiRecensione(Recensione nuovaRecensione, final VolleyCallback<Boolean> callback){
+    public void aggiungiRecensione(Recensione nuovaRecensione, final VolleyCallback<String> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/insertrecensione?testo=" + nuovaRecensione.getTesto() + "&datarecensione=" + nuovaRecensione.getDataRecensione()
                 +"&titolo=" + nuovaRecensione.getTitolo() +"&valutazione=" + nuovaRecensione.getValutazione() + "&struttura=" + nuovaRecensione.getStruttura() +"&autore=" + nuovaRecensione.getAutore();
@@ -53,11 +53,7 @@ public class RecensioneDAO {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            boolean addSuccess;
-                            if(response.length() == 0)
-                                addSuccess = false;
-                            else
-                                addSuccess = true;
+                            String addSuccess = response.getString("status");
                             callback.onSuccess(addSuccess);
                         } catch (Exception e) {}
                     }
