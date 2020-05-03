@@ -13,7 +13,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/century_gothic"
         android:text="num"
-        app:layout_constraintEnd_toStartOf="@+id/immagine"
         app:layout_constraintStart_toEndOf="@+id/valutazioneRecensione"
         app:layout_constraintTop_toBottomOf="@+id/nomeStruttura" />
 
@@ -240,7 +239,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recensioniRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
