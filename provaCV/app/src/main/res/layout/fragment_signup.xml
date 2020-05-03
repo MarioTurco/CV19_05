@@ -20,22 +20,22 @@
 
     <Button
         android:id="@+id/registrazioneButton"
-        android:layout_width="109dp"
+        android:layout_width="117dp"
         android:layout_height="34dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="48dp"
         android:background="@drawable/button_background"
-        android:backgroundTint="@android:color/secondary_text_dark"
+        android:backgroundTint="#C28A8A8E"
+        android:fontFamily="@font/century_gothic"
         android:text="Fine"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.071"
-        android:fontFamily="@font/century_gothic"/>
+        app:layout_constraintVertical_bias="0.071" />
 
     <EditText
         android:id="@+id/emailEditText"
