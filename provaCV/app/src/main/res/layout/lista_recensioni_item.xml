@@ -4,14 +4,17 @@
     android:id="@+id/listItem_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
     android:layout_marginTop="2.5dp"
+    android:layout_marginRight="2dp"
     android:layout_marginBottom="4dp"
     android:backgroundTint="#FFFFFF"
-    android:elevation="5dp"
+    android:elevation="6dp"
+    android:fadingEdgeLength="10dp"
     android:paddingTop="5dp"
     android:paddingBottom="2dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="6dp"
     app:cardMaxElevation="5dp">
 
 
@@ -31,11 +34,11 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="11dp"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="1"
             android:text='"Titolo recensione"'
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:fontFamily="@font/century_gothic"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView11"
@@ -45,8 +48,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="Valutazione:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Valutazione:" />
 
         <RatingBar
             android:id="@+id/ratingBarRecensione"
@@ -56,8 +59,8 @@
             android:layout_below="@+id/titoloRecensione"
             android:layout_marginStart="10dp"
             android:layout_marginTop="12dp"
-            android:progressTint="@android:color/black"
-            android:layout_toEndOf="@+id/textView11" />
+            android:layout_toEndOf="@+id/textView11"
+            android:progressTint="@android:color/black" />
 
         <TextView
             android:id="@+id/testoRecensione"
@@ -68,32 +71,32 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="9dp"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="3"
             android:text="Testo recensione (3 righe)"
-            android:textColor="#000000"
-            android:fontFamily="@font/century_gothic"/>
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titoloRecensione"
-            android:layout_marginStart="62dp"
+            android:layout_marginStart="26dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/ratingBarRecensione"
-            android:text="Data:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Data:" />
 
         <TextView
             android:id="@+id/dataRecensione"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titoloRecensione"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="9dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/textView15"
-            android:text="20/05/2020"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="20/05/2020" />
 
         <TextView
             android:id="@+id/textView20"
@@ -103,8 +106,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
-            android:text="Da:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Da:" />
 
         <TextView
             android:id="@+id/autoreRecensione"
@@ -115,9 +118,9 @@
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView20"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="1"
-            android:text="nomeAutore"
-            android:fontFamily="@font/century_gothic"/>
+            android:text="nomeAutore" />
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
