@@ -208,10 +208,12 @@
         android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="77dp"
         android:layout_marginTop="19dp"
         android:layout_toEndOf="@+id/backButtonSignup"
+        android:fontFamily="@font/century_gothic"
         android:text="Ricerca per filtri"
-        android:textSize="20sp"
-        android:fontFamily="@font/century_gothic"/>
+        android:textColor="#000000"
+        android:textSize="20sp" />
 </RelativeLayout>
