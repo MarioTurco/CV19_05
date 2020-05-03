@@ -79,7 +79,6 @@ public class UtenteDAO {
         queryRequestString += "&password=" + utente.getPassword();
         queryRequestString += "&salt=" + utente.getSalt();
         queryRequestString += "&mostra_nickname=" + utente.isMostraNickname();
-
         return queryRequestString;
     }
 
