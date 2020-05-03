@@ -38,7 +38,7 @@ import model.Utente;
  */
 public class SignupFragment extends Fragment {
     private ImageButton backButtonSignup;
-    private static EditText dataDiNascita;
+    private EditText dataDiNascita;
     private Button registrazioneButton;
     private UtenteDAO utenteDAO;
     private EditText emailEditText;
@@ -128,7 +128,7 @@ public class SignupFragment extends Fragment {
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment();
+                DialogFragment newFragment = new DatePickerFragment(dataDiNascita);
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
@@ -201,9 +201,15 @@ public class SignupFragment extends Fragment {
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
+        EditText dataText;
+
+        public DatePickerFragment(EditText dataText) {
+            this.dataText = dataText;
+        }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+
             // Use the current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
@@ -215,8 +221,17 @@ public class SignupFragment extends Fragment {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            dataDiNascita.setText(day + "/" + month+1 + "/" + year);
+            String dayString = formatDayAndMonth(day);
+            String monthString = formatDayAndMonth(month+1);
+            dataText.setText(dayString + "/" + monthString + "/" + year);
 
+        }
+
+        private String formatDayAndMonth(int dayOrMonth) {
+            if(dayOrMonth < 10)
+                return "0"+ dayOrMonth;
+            else
+                return  ""+dayOrMonth;
         }
     }
 
