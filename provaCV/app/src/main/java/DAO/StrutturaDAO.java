@@ -1,16 +1,20 @@
 package DAO;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.provacv.Filtri;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class StrutturaDAO {
     private String TAG ="StrutturaDAO";
@@ -20,7 +24,24 @@ public class StrutturaDAO {
         this.context = context;
     }
 
-
+    public void getStrutturaById(int idStruttura, final VolleyCallback<JSONObject> callback){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String queryString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura&id_struttura="+idStruttura;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, queryString, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                callback.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFail();
+                Log.d(TAG, "ERRORE VOLLEY");
+                error.printStackTrace();
+            }
+        });
+        queue.add(request);
+    }
 
     public void strutturaQuery(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);

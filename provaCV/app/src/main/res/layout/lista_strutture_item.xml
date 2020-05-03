@@ -4,14 +4,17 @@
     android:id="@+id/listItem_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
     android:layout_marginTop="2.5dp"
+    android:layout_marginRight="2dp"
     android:layout_marginBottom="4dp"
     android:backgroundTint="#FFFFFF"
-    android:elevation="5dp"
+    android:elevation="6dp"
+    android:fadingEdgeLength="10dp"
     android:paddingTop="5dp"
     android:paddingBottom="2dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="6dp"
     app:cardMaxElevation="5dp">
 
 
@@ -41,9 +44,9 @@
             android:layout_marginBottom="2dp"
             android:layout_toEndOf="@+id/textView14"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="1"
-            android:text="Ristorante"
-            android:fontFamily="@font/century_gothic"/>
+            android:text="Ristorante" />
 
         <TextView
             android:id="@+id/recensione_TitoloRecensione"
@@ -56,11 +59,11 @@
             android:layout_marginEnd="40dp"
             android:layout_toStartOf="@+id/listItem_immagineStruttura"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="1"
             android:text="Nome Struttura"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:fontFamily="@font/century_gothic"/>
+            android:textSize="24sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/listItem_immagineStruttura"
@@ -88,10 +91,10 @@
             android:layout_marginBottom="7dp"
             android:layout_toStartOf="@+id/listItem_immagineStruttura"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="3"
             android:text="Descrizione"
-            android:textColor="#000000"
-            android:fontFamily="@font/century_gothic"/>
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/textView7"
@@ -101,8 +104,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="23dp"
             android:layout_marginTop="3dp"
-            android:text="Città:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Città:" />
 
         <TextView
             android:id="@+id/textView14"
@@ -113,8 +116,8 @@
             android:layout_marginStart="26dp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="2dp"
-            android:text="Categoria:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Categoria:" />
 
         <TextView
             android:id="@+id/textView16"
@@ -124,8 +127,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-1dp"
             android:layout_marginEnd="33dp"
-            android:text="Valutazione:"
-            android:fontFamily="@font/century_gothic"/>
+            android:fontFamily="@font/century_gothic"
+            android:text="Valutazione:" />
 
         <TextView
             android:id="@+id/listItem_cittàStruttura"
@@ -138,9 +141,9 @@
             android:layout_toStartOf="@+id/listItem_immagineStruttura"
             android:layout_toEndOf="@+id/textView7"
             android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
             android:lines="1"
-            android:text="Napoli, Italia"
-            android:fontFamily="@font/century_gothic"/>
+            android:text="Napoli, Italia" />
 
         <View
             android:id="@+id/divider2"
