@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment {
                 Log.d(TAG, "onClick: cliccato");
                 progressBar.setVisibility(View.VISIBLE);
                 checkCredenziali();
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
         return view;
