@@ -66,57 +66,86 @@ public class AggiungiRecensioneFragment extends Fragment {
         return view;
     }
 
+    private boolean checkCampiNonVuoti(){
+        if(titoloRecensione.getText().toString().equals("") ||
+                testoRecensione.getText().toString().equals("") ||
+                ratingBar.getRating() == 0)
+            return false;
+        else return true;
+    }
+
+    private Recensione costruisciRecensioneDaInserire(){
+        Recensione recensioneDaAggiungere = new Recensione();
+        if(checkCampiNonVuoti()) {
+            recensioneDaAggiungere.setStruttura(idStruttura);
+            recensioneDaAggiungere.setStatoRecensione("In Attesa");
+            recensioneDaAggiungere.setAutore(getNickname());
+            recensioneDaAggiungere.setValutazione((int) ratingBar.getRating());
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDateTime now = LocalDateTime.now();
+            recensioneDaAggiungere.setDataRecensione(dtf.format(now));
+            recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
+            recensioneDaAggiungere.setTitolo(titoloRecensione.getText().toString());
+        }
+        else throw new IllegalArgumentException("Compila tutti i campi!");
+        return recensioneDaAggiungere;
+    }
+
+    private void tornaIndietroStruttura(){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+        transaction.replace(R.id.container, new DettagliStrutturaFragment(), "dettagliStrutturaFragment");
+        transaction.commit();
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                transaction.replace(R.id.container, new DettagliStrutturaFragment(), "dettagliStrutturaFragment");
-                transaction.commit();
+                tornaIndietroStruttura();
             }
         });
         aggiungiRecensioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Recensione recensioneDaAggiungere = new Recensione();
-                recensioneDaAggiungere.setStruttura(idStruttura);
-                recensioneDaAggiungere.setStatoRecensione("In Attesa");
-                recensioneDaAggiungere.setAutore(getNickname());
-                recensioneDaAggiungere.setValutazione((int)ratingBar.getRating());
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("DD/MM/YYYY");
-                LocalDateTime now = LocalDateTime.now();
-                recensioneDaAggiungere.setDataRecensione(dtf.format(now));
-                recensioneDaAggiungere.setTesto(testoRecensione.getText().toString());
-                recensioneDaAggiungere.setTitolo(titoloRecensione.getText().toString());
-                recensioneDAO.aggiungiRecensione(recensioneDaAggiungere, new VolleyCallback<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean result) {
-                        if (result) {
-                            Log.d(TAG, "onSuccess: Recensione Aggiunta");
-                            Toast.makeText(getContext(), "Recensione Aggiunta", Toast.LENGTH_SHORT).show();
-                            backButton.performClick();
+                try {
+                    Recensione recensioneDaAggiungere = costruisciRecensioneDaInserire();
+                    recensioneDAO.aggiungiRecensione(recensioneDaAggiungere, new VolleyCallback<String>() {
 
-                        } else {
-                            Log.d(TAG, "onSuccess: recensione fallito");
-                            Toast.makeText(getContext(), "Riprovare fallito", Toast.LENGTH_SHORT).show();
+                        private String getMessaggioErrore(String result){
+                            if(result.contains("check_uniq_recensione"))
+                                return "Una recensione è già stata aggiunta a questa struttura!";
+                            else return "La richiesta non è andata a buon fine";
                         }
-                    }
-
-                    @Override
-                    public void onFail() {
-                        Toast.makeText(getContext(), "Riprovare fallito", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onSuccess(String result) {
+                            if (result.contains("successfully")) {
+                                Log.d(TAG, "onSuccess: Recensione Aggiunta");
+                                Toast.makeText(getContext(), "Recensione Aggiunta", Toast.LENGTH_SHORT).show();
+                                backButton.performClick();
+                            } else {
+                                Log.d(TAG, "onSuccess: recensione fallito");
+                                Toast.makeText(getContext(), getMessaggioErrore(result), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        @Override
+                        public void onFail() {
+                            Toast.makeText(getContext(), "Il server non è al momento raggiungibile", Toast.LENGTH_LONG).show();
                      /*   FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                         transaction.add(R.id.container, ConnessioneAssenteFragment.newInstance(), "Connessione Assente");
                         transaction.commit();*/
-                    }
-                });
+                        }
+                    });
+                } catch (IllegalArgumentException ex) {
+                    Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
 
     private String getNickname() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
