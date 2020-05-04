@@ -51,7 +51,6 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView categoriaStruttura;
     private TextView valutazioneRecensione;
     private TextView numeroRecensioni;
-
     private FloatingActionButton fabButton, fabVisualizzaMappa, fabAggiungiRecensione;
 
     //qui vanno le cose da passare all'adapter
@@ -226,19 +225,29 @@ public class DettagliStrutturaFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "ListStruttureFragment");
-                transaction.commit();
+                if(ListaStruttureFragment.listaStrutture == null){
+                    ((MainActivity)getActivity()).setMap();
+                }
+                else {
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                    transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "ListStruttureFragment");
+                    transaction.commit();
+                }
             }
         });
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-                transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "ListStruttureFragment");
-                transaction.commit();
+                if(ListaStruttureFragment.listaStrutture == null){
+                    ((MainActivity)getActivity()).setMap();
+                }
+                else {
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                    transaction.replace(R.id.container, ListaStruttureFragment.newInstance(), "ListStruttureFragment");
+                    transaction.commit();
+                }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

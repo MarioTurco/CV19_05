@@ -20,7 +20,7 @@ import model.Struttura;
 public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
     //qui vanno le cose da passare all'adapter
-    private static ArrayList<Struttura> listaStrutture;
+    protected static ArrayList<Struttura> listaStrutture;
 
     public  ListaStruttureFragment(){
 
@@ -57,13 +57,13 @@ public class ListaStruttureFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
+                listaStrutture = null;
                 ((MainActivity)getActivity()).setMap();
             }
         });
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                ((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 ((MainActivity)getActivity()).setMap();
             }
         };
