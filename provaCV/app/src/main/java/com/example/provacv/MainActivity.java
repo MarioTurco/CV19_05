@@ -39,8 +39,15 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 import java.util.Map;
+
+import DAO.StrutturaDAO;
+import DAO.VolleyCallback;
+import model.Struttura;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = "MainActivity";
@@ -55,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
     private static Bundle instanceState;
+    private StrutturaDAO strutturaDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +72,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupDrawer();
         updateDrawer();
         setupFiltriButton();
-
         updateDrawer();
         setUpBackPressed();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
+        strutturaDao = new StrutturaDAO(this); //TODO da sostituire eventualmente con un singleton
         setMap();
 
     }
@@ -233,10 +242,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                                 // Ensure the feature has properties defined
                                 if (feature.properties() != null) {
+                                    int idStruttura = 0;
                                     for (Map.Entry<String, JsonElement> entry : feature.properties().entrySet()) {
-                                        // Log all the properties
+                                        if(entry.getKey().equals("id")) {
+                                            idStruttura = Integer.parseInt(entry.getValue().toString());
+                                            System.out.println(idStruttura);
+                                        }
                                         Log.d(TAG, String.format("%s = %s", entry.getKey(), entry.getValue()));
                                     }
+                                    mostraStrutturaDopoTap(idStruttura);
                                 }
                             }
                             return true;
@@ -258,6 +272,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
         }
 
+    }
+
+    private void mostraStrutturaFragment(Struttura struttura){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+        transaction.replace(R.id.container, DettagliStrutturaFragment.newInstance(struttura), "strutturaFragment");
+        transaction.commit();
+        toolbar.setVisibility(View.GONE);
+    }
+
+    private void mostraStrutturaDopoTap(int idStruttura){
+        strutturaDao.getStrutturaById(idStruttura, new VolleyCallback<JSONObject>() {
+            @Override
+            public void onSuccess(JSONObject strutturaJSON){
+                Struttura strutturaTappata = new Struttura();
+                try {
+                    strutturaTappata.setNome(strutturaJSON.getString("nome"));
+                    strutturaTappata.setIndirizzo(strutturaJSON.getString("indirizzo"));
+                    strutturaTappata.setLatitudine(strutturaJSON.getDouble("latitudine"));
+                    strutturaTappata.setLongitudine(strutturaJSON.getDouble("longitudine"));
+                    strutturaTappata.setDescrizione(strutturaJSON.getString("descrizione"));
+                    strutturaTappata.setCittà(strutturaJSON.getString("citta"));
+                    strutturaTappata.setIdStruttura(strutturaJSON.getInt("id_struttura"));
+                    strutturaTappata.setValutazioneMedia(strutturaJSON.getDouble("valutazione_media"));
+                    strutturaTappata.setFasciaDiPrezzo(strutturaJSON.getString("fascia_di_prezzo"));
+                    strutturaTappata.setCategoria(strutturaJSON.getString("categoria"));
+                    strutturaTappata.setUrlFoto(strutturaJSON.getString("url_foto"));
+
+                    mostraStrutturaFragment(strutturaTappata);
+                }
+                catch(JSONException e){
+
+                }
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
     }
 
     private void setPosition(final MapboxMapOptions options) {

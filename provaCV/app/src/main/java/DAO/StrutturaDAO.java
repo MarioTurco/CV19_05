@@ -14,6 +14,7 @@ import com.example.provacv.Filtri;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class StrutturaDAO {
@@ -27,10 +28,15 @@ public class StrutturaDAO {
     public void getStrutturaById(int idStruttura, final VolleyCallback<JSONObject> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura&id_struttura="+idStruttura;
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, queryString, null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, queryString, null, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(JSONObject response) {
-                callback.onSuccess(response);
+            public void onResponse(JSONArray response) {
+                try {
+                    callback.onSuccess(response.getJSONObject(0));
+                }
+                catch(JSONException e){
+                    //TODO JSONException
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -54,6 +60,7 @@ public class StrutturaDAO {
                     @Override
                     public void onResponse(JSONArray response) {
                             callback.onSuccess(response);
+
                     }
                 }, new Response.ErrorListener() {
 
