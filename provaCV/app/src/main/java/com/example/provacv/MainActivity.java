@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
-    private static Bundle instanceState;
+    protected static Bundle instanceState;
     private StrutturaDAO strutturaDao;
 
 
