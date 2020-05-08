@@ -3,6 +3,7 @@ package com.example.provacv;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.PointF;
 import android.location.Location;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -29,11 +31,19 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonElement;
+import com.mapbox.android.core.permissions.PermissionsListener;
+import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.LocationComponentOptions;
+import com.mapbox.mapboxsdk.location.modes.CameraMode;
+import com.mapbox.mapboxsdk.location.modes.RenderMode;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -49,7 +59,7 @@ import DAO.StrutturaDAO;
 import DAO.VolleyCallback;
 import model.Struttura;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private final String TAG = "MainActivity";
     private FusedLocationProviderClient fusedLocationClient;
 
@@ -57,12 +67,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
+    FloatingActionButton yourPositionButton;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
     protected static Bundle instanceState;
     private StrutturaDAO strutturaDao;
+    private MapboxMap mapboxMap;
 
 
     @Override
@@ -71,9 +83,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         setupDrawer();
         updateDrawer();
-        setupFiltriButton();
+        setupButtons();
         updateDrawer();
-        setUpBackPressed();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
         strutturaDao = new StrutturaDAO(this); //TODO da sostituire eventualmente con un singleton
@@ -91,6 +102,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
+    private void setupButtons(){
+        setupFiltriButton();
+        setUpBackPressed();
+        setupYourPositionButton();
+    }
+
+
+
+
+    private void moveCamera(double latitude, double longitude){
+        CameraPosition position = new CameraPosition.Builder()
+                .target(new LatLng(latitude, longitude)) // Sets the new camera position
+                .zoom(17) // Sets the zoom
+                .bearing(180) // Rotate the camera
+                .tilt(30) // Set the camera tilt
+                .build(); // Creates a CameraPosition from the builder
+
+        mapboxMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(position), 7000);
+    }
+
+    private void setupYourPositionButton(){
+        yourPositionButton = findViewById(R.id.floatingActionButtonMap);
+        yourPositionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(MainActivity.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                if (location != null) {
+                                    moveCamera(location.getLatitude(), location.getLongitude());
+
+                                    /*        .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                                            .zoom(15)
+                                            .build());
+                                            */
+                                }else{
+                                    Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
+                                }
+                                // Got last known location. In some rare situations this can be null.
+                                /*if (location != null) {
+                                    moveCamera(location.getLatitude(), location.getLongitude());
+                                }else{
+                                    Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
+                                }*/
+                            }
+                        });
+
+
+            }
+        });
+    }
 
     private void setupFiltriButton() {
         filtriButton = findViewById(R.id.filtriButton);
@@ -202,8 +267,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
     protected void setMap() {
         Location lastKnownLocation;
+        final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
+        setPosition(options);
         if (!(hasGPSPermissions()))
             askForGPSPermissions();
         else {
@@ -211,13 +279,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //cambia le impostazioni della map box
         }
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
+
         if (instanceState == null) {
             // Create fragment
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
             // Build mapboxMap
-            final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
-            setPosition(options);
+
 
             // Create map fragment
             mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
@@ -225,12 +293,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.container, mapFragment, "com.mapbox.map");
             transaction.commit();
         } else {
+
             mapFragment = (CustomSupportMapFragment) getSupportFragmentManager().findFragmentByTag("com.mapbox.map");
         }
+
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+                    MainActivity.this.mapboxMap = mapboxMap;
                     mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
 
                         private boolean pointClick(PointF point){
@@ -265,13 +336,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
-                            // Map is set up and the style has loaded. Now you can add data or make other map adjustments
+                            enableLocationComponent(style);
                         }
                     });
                 }
             });
         }
 
+    }
+
+    @SuppressWarnings( {"MissingPermission"})
+    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
+        // Check if permissions are enabled and if not request
+        if (hasGPSPermissions()) {
+            System.out.println("Ho i permessi");
+            // Get an instance of the component
+            LocationComponent locationComponent = mapboxMap.getLocationComponent();
+
+
+            // Activate with options
+            locationComponent.activateLocationComponent(
+                    LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+
+            // Enable to make component visible
+            locationComponent.setLocationComponentEnabled(true);
+
+            // Set the component's camera mode
+            locationComponent.setCameraMode(CameraMode.TRACKING);
+
+            // Set the component's render mode
+            locationComponent.setRenderMode(RenderMode.COMPASS);
+        } else {
+            System.out.println("Non ho i permessi");
+            askForGPSPermissions();
+        }
     }
 
     private void mostraStrutturaFragment(Struttura struttura){
@@ -406,4 +504,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapFragment.onDestroy();
+    }
 }

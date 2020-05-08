@@ -24,6 +24,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_gravity="bottom|right"
+                android:id="@+id/floatingActionButtonMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="40dp"
+                android:clickable="true"
+                app:backgroundTint="@color/mapbox_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/position" />
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -55,7 +67,6 @@
                 android:background="@drawable/ic_filter" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
 </RelativeLayout>
 
 
