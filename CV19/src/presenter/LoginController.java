@@ -141,7 +141,6 @@ public class LoginController {
     }
 
     @FXML
-
     public void clickLogin(MouseEvent event) {
         if (event.getClickCount() == 1) {
             Scene scena = ((Node) event.getSource()).getScene();

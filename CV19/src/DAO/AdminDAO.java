@@ -23,7 +23,7 @@ public class AdminDAO {
     private final String user = "cercaviaggi";
     private final String password = "cercaviaggi";
 
-    public Connection getConnection() {
+    private Connection getConnection() {
         Connection dbConnection = null;
         try {
             dbConnection = DriverManager.getConnection(url, user, password);
