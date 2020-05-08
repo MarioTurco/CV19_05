@@ -1,8 +1,12 @@
 package com.example.provacv;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +24,7 @@ public class CustomSupportMapFragment extends SupportMapFragment {
         super();
         this.toolbar = toolbar;
     }
+
 
     @NonNull
     public static CustomSupportMapFragment newInstance(@Nullable MapboxMapOptions mapboxMapOptions, Toolbar toolbar) {
@@ -45,6 +50,7 @@ public class CustomSupportMapFragment extends SupportMapFragment {
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     toolbar.setVisibility(View.VISIBLE);
+                    MainActivity.yourPositionButton.setVisibility(View.VISIBLE);
                 }
 
                 @Override

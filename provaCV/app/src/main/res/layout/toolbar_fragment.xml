@@ -18,6 +18,7 @@
         android:layout_marginBottom="0dp">
 
 
+
         <FrameLayout
             android:background="@android:color/white"
             android:id="@+id/container"
@@ -25,17 +26,18 @@
             android:layout_height="match_parent" >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_gravity="bottom|right"
                 android:id="@+id/floatingActionButtonMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginEnd="29dp"
                 android:layout_marginBottom="40dp"
                 android:clickable="true"
                 app:backgroundTint="@color/mapbox_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/position" />
+                app:srcCompat="@drawable/position"
+                android:visibility="gone"/>
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

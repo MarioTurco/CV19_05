@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
-    FloatingActionButton yourPositionButton;
+    protected static FloatingActionButton yourPositionButton;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         filtriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setYourPositionButtonInvisible();
                 loadFiltriFragment();
             }
         });
@@ -181,9 +182,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawers();
         switch (menuItem.getItemId()) {
             case R.id.login:
+                setYourPositionButtonInvisible();
                 loadLoginFragment();
                 break;
             case R.id.signup:
+                setYourPositionButtonInvisible();
                 loadSignupFragment();
                 break;
             case R.id.homepage:
@@ -268,6 +271,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    private void setYourPositionButtonVisible(){
+        yourPositionButton.setVisibility(View.VISIBLE);
+    }
+
+    private void setYourPositionButtonInvisible(){
+        yourPositionButton.setVisibility(View.GONE);
+    }
 
     protected void setMap() {
         Location lastKnownLocation;
