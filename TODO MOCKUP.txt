@@ -6,10 +6,3 @@ modifiche
 TUTTI I RICERCA FILTRI
 Categoria, prezzo e valutazione sono diventati spinner
 
-
-LISTA STRUTTURE
-valutazione scritto SOPRA le stelline
-
-PAGINA STRUTTURA
-la valutazione nelle recensioni va spostata sotto al titolo e non affianco
-la data va spostata affianco la valutazione
