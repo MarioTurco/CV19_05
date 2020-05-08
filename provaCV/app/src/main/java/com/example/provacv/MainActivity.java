@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void handleOnBackPressed() {
                 finish();
+                System.exit(0);
             }
         };
         this.getOnBackPressedDispatcher().addCallback(this, callback);
