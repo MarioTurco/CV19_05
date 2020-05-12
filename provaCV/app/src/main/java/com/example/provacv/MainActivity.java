@@ -1,13 +1,17 @@
 package com.example.provacv;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,9 +30,19 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonElement;
@@ -75,7 +90,81 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected static Bundle instanceState;
     private StrutturaDAO strutturaDao;
     private MapboxMap mapboxMap;
+    private static final int REQUEST_CHECK_SETTINGS = 214;
+    private Style localStyle;
 
+
+    void initApiClient() {
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(@Nullable Bundle bundle) {
+                        showLocationSettingsDialog();
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+
+                    }
+                })
+                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult result) {
+                        Log.i(TAG, "onConnectionFailed() connectionResult = [" + result + "]");
+                    }
+                })
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    void showLocationSettingsDialog() {
+
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(this)
+                .checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+            @Override
+            public void onComplete(Task<LocationSettingsResponse> task) {
+                try {
+                    LocationSettingsResponse response = task.getResult(ApiException.class);
+                    // All location settings are satisfied. The client can initialize location
+                    // requests here.
+                } catch (ApiException e) {
+                    switch (e.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            // Location settings are not satisfied. But could be fixed by showing the
+                            // user a dialog.
+                            try {
+                                // Cast to a resolvable exception.
+                                ResolvableApiException resolvable = (ResolvableApiException) e;
+                                // Show the dialog by calling startResolutionForResult(),
+                                // and check the result in onActivityResult().
+                                resolvable.startResolutionForResult(
+                                        MainActivity.this,
+                                        REQUEST_CHECK_SETTINGS);
+                            } catch (IntentSender.SendIntentException exception) {
+                                // Ignore the error.
+                            } catch (ClassCastException exception) {
+                                // Ignore, should be an impossible error.
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            // Location settings are not satisfied. However, we have no way to fix the
+                            // settings so we won't show the dialog.
+                            break;
+                    }
+                }
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +177,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
         strutturaDao = new StrutturaDAO(this); //TODO da sostituire eventualmente con un singleton
+        checkGPSPermissions();
+        //initApiClient();
         setMap();
-
     }
 
     private void setUpBackPressed() {
@@ -279,17 +369,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         yourPositionButton.setVisibility(View.GONE);
     }
 
-    protected void setMap() {
-        setUpBackPressed();
-        Location lastKnownLocation;
-        final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
-        setPosition(options);
+    private void checkGPSPermissions(){
         if (!(hasGPSPermissions()))
             askForGPSPermissions();
         else {
             Log.d(TAG, "setMap: Abbiamo i permessi");
             //cambia le impostazioni della map box
         }
+    }
+
+    protected void setMap() {
+        setUpBackPressed();
+        Location lastKnownLocation;
+        final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
+        if(hasGPSPermissions())
+            initApiClient();
+
+        setPosition(options);
+
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
         if (instanceState == null) {
@@ -348,7 +445,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
-                            enableLocationComponent(style);
+                            localStyle = style;
+                            enableLocationComponent();
                         }
                     });
                 }
@@ -358,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @SuppressWarnings( {"MissingPermission"})
-    private void enableLocationComponent(@NonNull Style loadedMapStyle) {
+    private void enableLocationComponent() {
         // Check if permissions are enabled and if not request
         if (hasGPSPermissions()) {
             System.out.println("Ho i permessi");
@@ -368,7 +466,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // Activate with options
             locationComponent.activateLocationComponent(
-                    LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+                    LocationComponentActivationOptions.builder(this, localStyle).build());
 
             // Enable to make component visible
             locationComponent.setLocationComponentEnabled(true);
@@ -474,7 +572,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
+                    initApiClient();
                     fusedLocationClient.getLastLocation();
+                    enableLocationComponent();
 
                 } else {
                     Log.d(TAG, "onRequestPermissionsResult: disbilitato");
