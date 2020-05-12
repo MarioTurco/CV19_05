@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setupButtons(){
         setupFiltriButton();
-        setUpBackPressed();
+        //setUpBackPressed();
         setupYourPositionButton();
     }
 
@@ -280,6 +280,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     protected void setMap() {
+        setUpBackPressed();
         Location lastKnownLocation;
         final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
         setPosition(options);
