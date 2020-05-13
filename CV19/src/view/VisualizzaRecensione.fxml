@@ -15,7 +15,6 @@
    <children>
       <VBox prefHeight="666.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;">
          <children>
-            <Rating fx:id="ratingStars" prefHeight="45.0" prefWidth="176.0" rating="3.0" translateX="607.0" translateY="96.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView>
@@ -39,26 +38,22 @@
                   <Insets left="50.0" top="50.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="822.0">
+            <Pane prefHeight="112.0" prefWidth="872.0">
                <children>
-                  <Label id="nomeStrutturaLabel" fx:id="strutturaLabel" text="Nome Struttura" textFill="#707070">
+                  <Label id="nomeStrutturaLabel" fx:id="strutturaLabel" layoutX="46.0" layoutY="2.0" prefHeight="24.0" prefWidth="695.0" text="Nome Struttura" textFill="#707070">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets right="480.0" top="2.0" />
-                     </HBox.margin>
                   </Label>
-                  <Label id="dataLabel" fx:id="dataLabel" text="Data recensione" textFill="#707070">
+                  <Label id="dataLabel" fx:id="dataLabel" layoutX="46.0" layoutY="47.0" prefHeight="30.0" prefWidth="695.0" text="Data recensione" textFill="#707070">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Rating fx:id="ratingStars" layoutX="596.0" layoutY="46.0" prefHeight="33.0" prefWidth="176.0" rating="3.0" />
+                  <Pane layoutX="584.0" layoutY="25.0" prefHeight="63.0" prefWidth="208.0" />
                </children>
-               <VBox.margin>
-                  <Insets left="50.0" />
-               </VBox.margin>
-            </HBox>
+            </Pane>
             <HBox prefHeight="50.0" prefWidth="872.0">
                <children>
                   <Label id="nomeStrutturaLabel" fx:id="titoloRecensione" text="Titolo Recensione" textFill="#2c2c2c" translateX="49.0">
