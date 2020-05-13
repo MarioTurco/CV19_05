@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MapboxMap mapboxMap;
     private static final int REQUEST_CHECK_SETTINGS = 214;
     private Style localStyle;
+    public static double latitudine;
+    public static double longitudine;
 
 
     void initApiClient() {
@@ -529,14 +531,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
+                            latitudine = location.getLatitude();
+                            longitudine = location.getLongitude();
                             options.camera(new CameraPosition.Builder()
-                                    .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                                    .target(new LatLng(latitudine, longitudine))
                                     .zoom(15)
                                     .build());
                         }else{
+                            latitudine = 40.79444305;
+                            longitudine = 14.46353868;
                             Log.d(TAG, "onSuccess: Posizione default");
                             options.camera(new CameraPosition.Builder()
-                                    .target(new LatLng(40.79444305, 14.46353868))
+                                    .target(new LatLng(latitudine, longitudine))
                                     .zoom(10)
                                     .build());
                         }

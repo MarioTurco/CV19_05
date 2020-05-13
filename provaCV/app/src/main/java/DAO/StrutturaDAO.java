@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.provacv.Filtri;
+import com.example.provacv.MainActivity;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -52,7 +53,7 @@ public class StrutturaDAO {
     public void strutturaQuery(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/struttura?";
-        queryRequestString += filtriStruttura.getNonNullStrings(2.000, 2.000);
+        queryRequestString += filtriStruttura.getNonNullStrings(MainActivity.longitudine, MainActivity.latitudine);
         System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {

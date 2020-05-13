@@ -112,6 +112,7 @@ public class AggiungiRecensioneFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     Recensione recensioneDaAggiungere = costruisciRecensioneDaInserire();
+                    //chiamata metodo con Recensione in ingresso con le istruzioni seguenti
                     recensioneDAO.aggiungiRecensione(recensioneDaAggiungere, new VolleyCallback<String>() {
 
                         private String getMessaggioErrore(String result){
