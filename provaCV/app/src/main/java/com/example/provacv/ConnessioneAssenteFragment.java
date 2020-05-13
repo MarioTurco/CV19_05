@@ -21,9 +21,6 @@ public class ConnessioneAssenteFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static ConnessioneAssenteFragment newInstance() {
         ConnessioneAssenteFragment fragment = new ConnessioneAssenteFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
         return fragment;
     }
 

@@ -14,4 +14,29 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
+
 }
+
+/*
+private boolean checkCampiNonVuoti(){
+        if(emailEditText.getText().toString().equals("") ||
+                nicknameEditText.getText().toString().equals("") ||
+                nomeEditText.getText().toString().equals("") ||
+                cognomeEditText.getText().toString().equals("") ||
+                PasswordEditText.getText().toString().equals("") ||
+                dataDiNascita.getText().toString().equals(""))
+            return false;
+        else return true;
+    }
+
+    private boolean checkLunghezzaPassword(){
+        if(PasswordEditText.getText().toString().length() < 5)
+            return false;
+        else return true;
+    }
+
+
+
+ */

@@ -19,9 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import DAO.AdminDAO;
-import cv19.AmministratoreLoggatoException;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
@@ -108,7 +106,6 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         Thread th = new Thread(() -> {
-            try {
                 if (administratorDao.tryLogin(username, password)) {
                     //administratorDao.isNotLoggato(username);
                     this.admin=new Admin(username);
@@ -125,14 +122,6 @@ public class LoginController {
                         showLoginErrorDialog("Credenziali errate.");
                     });
                 }
-
-            } catch (AmministratoreLoggatoException ex) {
-                Platform.runLater(() -> {
-                    loginButton.setDisable(false);
-                    showLoginErrorDialog(ex.getMessage());
-
-                });
-            }
             scena.setCursor(Cursor.DEFAULT);
         });
 

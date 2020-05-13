@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package DAO;
-
-import cv19.AmministratoreLoggatoException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,7 +43,7 @@ public class AdminDAO {
         return PasswordUtils.verifyUserPassword(passwordEntered, password, salt);
     }
 
-    public boolean tryLogin(String username, String password) throws AmministratoreLoggatoException {
+    public boolean tryLogin(String username, String password) {
         Connection dbConnection = getConnection();
         String loginQuery = "SELECT * FROM ADMINISTRATOR WHERE USERNAME = ?";
         ResultSet rs = null;
