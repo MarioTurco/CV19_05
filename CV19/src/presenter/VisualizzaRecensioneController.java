@@ -89,7 +89,7 @@ public class VisualizzaRecensioneController {
     private void mostraDialogAzioneEseguita(String stato){
         Alert dg = new Alert(Alert.AlertType.INFORMATION);
         dg.setHeaderText("Azione Eseguita");
-        dg.setContentText("Recensione "+ " "+ stato);
+        dg.setContentText("Recensione " + stato);
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         dg.setX((bounds.getMaxX() / 2) - 150);
         dg.setY((bounds.getMaxY() / 2) - 100);
