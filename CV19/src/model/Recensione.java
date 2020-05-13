@@ -5,102 +5,78 @@
  */
 package model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 public class Recensione {
-    
-    private SimpleIntegerProperty idRecensione;
-    private SimpleStringProperty testo;
-    private SimpleStringProperty titolo;
-    private SimpleStringProperty data;
-    private SimpleIntegerProperty valutazione;
-    private SimpleStringProperty struttura; //TODO DA CAMBIARE 
-    private SimpleStringProperty nomeAutore; //TODO DA CAMBIARE
-    private SimpleStringProperty nickNameAutore;
 
-    public String getNickNameAutore() {
-        return nickNameAutore.get();
-    }
-
-    public void setNickNameAutore(String nickNameAutore) {
-        this.nickNameAutore.set(nickNameAutore);
-    }
-    
-    public Recensione(){
-        this.testo=new SimpleStringProperty();
-        this.nomeAutore=new SimpleStringProperty();
-        this.struttura=new SimpleStringProperty();
-        this.valutazione=new SimpleIntegerProperty();
-        this.data=new SimpleStringProperty();
-        this.titolo=new SimpleStringProperty();
-        this.idRecensione=new SimpleIntegerProperty();
-        this.nickNameAutore= new SimpleStringProperty();
-    }
+    private int idRecensione;
+    private String testo;
+    private String titolo;
+    private String data;
+    private int valutazione;
+    private Struttura struttura; 
+    private Utente autore; 
 
     public int getIdRecensione() {
-        return idRecensione.get();
+        return idRecensione;
     }
 
     public void setIdRecensione(int idRecensione) {
-        this.idRecensione.set(idRecensione);
+        this.idRecensione = idRecensione;
     }
     
     
     @Override
     public String toString() {
-        return "Recensione{id="+ idRecensione + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + nomeAutore + '}';
+        return "Recensione{id="+ idRecensione + "testo=" + testo + ", titolo=" + titolo + ", data=" + data + ", valutazione=" + valutazione + ", struttura=" + struttura + ", autore=" + autore + '}';
     }
 
 
     public String getTesto() {
-        return testo.get();
+        return testo;
     }
 
     public void setTesto(String testo) {
-        this.testo.set(testo);
+        this.testo = testo;
     }
 
     public String getTitolo() {
-        return titolo.get();
+        return titolo;
     }
 
     public void setTitolo(String titolo) {
-        this.titolo.set(titolo);
+        this.titolo = titolo;
     }
 
     public String getData() {
-        return data.get();
+        return data;
     }
 
     public void setData(String data) {
-        this.data.set(data);
+        this.data = data;
     }
 
     public int getValutazione() {
-        return valutazione.get();
+        return valutazione;
     }
 
     public void setValutazione(int valutazione) {
-        this.valutazione.set(valutazione);
+        this.valutazione = valutazione;
     }
 
-    public String getStruttura() {
-        return struttura.get();
+    public Struttura getStruttura() {
+        return struttura;
     }
 
-    public void setStruttura(String struttura) {
-        this.struttura.set(struttura);
+    public void setStruttura(Struttura struttura) {
+        this.struttura = struttura;
     }
 
-    public String getNomeAutore() {
-        return nomeAutore.get();
+    public Utente getAutore() {
+        return autore;
     }
 
-    public void setNomeAutore(String autore) {
-        this.nomeAutore.set(autore);
+    public void setAutore(Utente autore) {
+        this.autore = autore;
     }
-    
-
-
+   
 }

@@ -86,11 +86,11 @@ public class RecensioniController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nomeTable.setCellValueFactory(
-                new PropertyValueFactory<Recensione, String>("nickNameAutore"));
+                new PropertyValueFactory<>("autore"));
         strutturaTable.setCellValueFactory(
-                new PropertyValueFactory<Recensione, String>("struttura"));
+                new PropertyValueFactory<>("struttura"));
         dataTable.setCellValueFactory(
-                new PropertyValueFactory<Recensione, String>("data"));
+                new PropertyValueFactory<>("data"));
 
         this.recensioni=recensioneDAO.getAllRecensioni();
         riempiTableViewConRecensioni();

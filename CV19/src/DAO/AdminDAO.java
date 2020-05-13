@@ -57,7 +57,6 @@ public class AdminDAO {
             rs = loginPreparedStatement.executeQuery();
 
             if (!emptyResultSet(rs)) {
-                isLoggato(rs.getInt("LOGGATO"));
                 result = checkAdminPassword(rs, password);
             } else {
                 result = false;
@@ -73,59 +72,5 @@ public class AdminDAO {
             //todo: gestione errori sql
         }
         return result;
-    }
-
-    private void isLoggato(int loggato) throws AmministratoreLoggatoException {
-        if(loggato == 1)
-            throw new AmministratoreLoggatoException();
-    }
-
-    /*
-    public boolean isNotLoggato(String username) throws AmministratoreLoggatoException {
-        Connection dbConnection = getConnection();
-        String loginQuery = "SELECT LOGGATO FROM ADMINISTRATOR WHERE USERNAME = ? AND LOGGATO=?";
-        ResultSet rs = null;
-        boolean result = false;
-
-        try {
-            PreparedStatement loginPreparedStatement = dbConnection.prepareStatement(loginQuery);
-            loginPreparedStatement.setString(1, username);
-            loginPreparedStatement.setInt(2, 0);
-            rs = loginPreparedStatement.executeQuery();
-
-            if (!emptyResultSet(rs)) {
-                result = true;
-            } else {
-                throw new AmministratoreLoggatoException();
-            }
-
-            dbConnection.close();
-            loginPreparedStatement.close();
-            rs.close();
-
-        } catch (NullPointerException np) {
-            //todo: dialog connessione non avvenente
-        } catch (SQLException e) {
-            //todo: gestione errori sql
-        }
-        return result;
-    }
-     */
-    public void setLoggato(String username, int stato) {
-        Connection dbConnection = getConnection();
-        String query = "UPDATE ADMINISTRATOR SET LOGGATO=? WHERE USERNAME =?";
-
-        try {
-            PreparedStatement loginPreparedStatement = dbConnection.prepareStatement(query);
-            loginPreparedStatement.setInt(1, stato);
-            loginPreparedStatement.setString(2, username);
-            loginPreparedStatement.executeUpdate();
-            dbConnection.close();
-            loginPreparedStatement.close();
-        } catch (NullPointerException np) {
-            //todo: dialog connessione non avvenente
-        } catch (SQLException e) {
-            //todo: gestione errori sql
-        }
     }
 }

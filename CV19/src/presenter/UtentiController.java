@@ -80,10 +80,9 @@ public class UtentiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {     
-        nomeCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nome"));
-        nicknameCol.setCellValueFactory(new PropertyValueFactory<Utente,String>("nickname"));
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        nicknameCol.setCellValueFactory(new PropertyValueFactory<>("nickname"));
         riempiTabellaUtenti();
-        //VisitatoriTableView.setItems(data);
     }
     
 }

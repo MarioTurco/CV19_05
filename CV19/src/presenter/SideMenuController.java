@@ -60,7 +60,6 @@ public class SideMenuController {
 
     public void setWindowStage() {
         window = (Stage) borderpane.getScene().getWindow();
-        window.setOnCloseRequest(e -> adminDAO.setLoggato(this.adminLoggato.getUsername(), 0));
     }
 
     @FXML
@@ -93,7 +92,6 @@ public class SideMenuController {
         recensioniButton.setStyle("-fx-text-fill: black");
         visitatoriButton.setStyle("-fx-text-fill: black");
         logoutButton.setStyle("-fx-text-fill: #3282B8");
-        adminDAO.setLoggato(this.adminLoggato.getUsername(), 0);
         showLogoutDialog(e);
 
     }

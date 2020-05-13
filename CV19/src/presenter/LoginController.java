@@ -112,7 +112,6 @@ public class LoginController {
                 if (administratorDao.tryLogin(username, password)) {
                     //administratorDao.isNotLoggato(username);
                     this.admin=new Admin(username);
-                    administratorDao.setLoggato(username, 1);
                     Platform.runLater(() -> {
                         try {
                             loadSideMenuPanelAfterLogin(event);

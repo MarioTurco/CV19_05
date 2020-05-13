@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Recensione;
+import model.Struttura;
+import model.Utente;
 
 /**
  *
@@ -36,7 +38,7 @@ public final class RecensioneDAO {
 
     public ObservableList<Recensione> getAllRecensioni() {
         ObservableList<Recensione> allRecensioni = FXCollections.observableArrayList();
-        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE,U.NOME,R.TESTO,R.TITOLO,R.VALUTAZIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO_RECENSIONE='In attesa'";
+        String query = "SELECT R.AUTORE,S.NOME,R.DATARECENSIONE,R.ID_RECENSIONE,U.NOME,R.TESTO,R.TITOLO,R.VALUTAZIONE,S.INDIRIZZO,S.CITTA FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE STATO_RECENSIONE='In attesa'";
         Connection conn = getConnection();
         PreparedStatement statement = null;
         ResultSet rs = null;
@@ -45,11 +47,14 @@ public final class RecensioneDAO {
             rs = statement.executeQuery();
             while (rs.next()) {
                 Recensione recensioneDaAggiungere = new Recensione();
-                recensioneDaAggiungere.setNickNameAutore(rs.getString(1));
-                recensioneDaAggiungere.setStruttura(rs.getString(2));
+                Utente utenteRecensione = new Utente();
+                Struttura strutturaRecensione = new Struttura(rs.getString(2),rs.getString(9),rs.getString(10));
+                utenteRecensione.setNickname(rs.getString(1));
+                utenteRecensione.setNome(rs.getString(5));
+                recensioneDaAggiungere.setStruttura(strutturaRecensione);
                 recensioneDaAggiungere.setData(rs.getString(3));
                 recensioneDaAggiungere.setIdRecensione(rs.getInt(4));
-                recensioneDaAggiungere.setNomeAutore(rs.getString(5));
+                recensioneDaAggiungere.setAutore(utenteRecensione);
                 recensioneDaAggiungere.setTesto(rs.getString(6));
                 recensioneDaAggiungere.setTitolo(rs.getString(7));
                 recensioneDaAggiungere.setValutazione(rs.getInt(8));
@@ -66,44 +71,6 @@ public final class RecensioneDAO {
 
         }
         return allRecensioni;
-    }
-
-    //Todo deletare
-    public Recensione getRecensioneById(int id) {
-        Recensione recensioneDaRitornare = null;
-        String query = "SELECT R.AUTORE,U.NOME,S.NOME,R.DATARECENSIONE,R.TESTO,R.TITOLO,R.VALUTAZIONE FROM RECENSIONE R JOIN STRUTTURA S ON R.STRUTTURA = S.ID_Struttura JOIN UTENTE U ON U.NICKNAME=R.AUTORE WHERE R.ID_RECENSIONE=?";
-        Connection conn = getConnection();
-        PreparedStatement statement = null;
-        ResultSet rs = null;
-        try {
-            statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            rs = statement.executeQuery();
-            if (rs.next()) {
-                recensioneDaRitornare = new Recensione();
-                recensioneDaRitornare.setNomeAutore(rs.getString(1) + " - " + rs.getString(2));
-                recensioneDaRitornare.setStruttura(rs.getString(3));
-                recensioneDaRitornare.setData(rs.getString(4));
-                recensioneDaRitornare.setTesto(rs.getString(5));
-                recensioneDaRitornare.setTitolo(rs.getString(6));
-                recensioneDaRitornare.setIdRecensione(id);
-                recensioneDaRitornare.setValutazione(rs.getInt(7));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (rs != null) {
-                rs.close();
-            }
-            conn.close();
-        } catch (SQLException | NullPointerException e) {
-
-        }
-        return recensioneDaRitornare;
     }
 
     private String getStatoByBoolean(boolean accettata) {

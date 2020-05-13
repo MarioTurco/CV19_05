@@ -64,8 +64,8 @@ public class VisualizzaRecensioneController {
     }
     
     public void riempiCampiDettagliRecensione(){
-        nickNameLabel.setText(recensioneDaMostrare.getNomeAutore()+" - "+recensioneDaMostrare.getNickNameAutore());
-        strutturaLabel.setText(recensioneDaMostrare.getStruttura());
+        nickNameLabel.setText(recensioneDaMostrare.getAutore().getNome()+" - "+recensioneDaMostrare.getAutore().getNickname());
+        strutturaLabel.setText(recensioneDaMostrare.getStruttura().getNome() + " - " + recensioneDaMostrare.getStruttura().getIndirizzo() + " - " + recensioneDaMostrare.getStruttura().getCittà());
         dataLabel.setText(recensioneDaMostrare.getData());
         testoLabel.setText(recensioneDaMostrare.getTesto()); 
         titoloRecensione.setText(recensioneDaMostrare.getTitolo());
