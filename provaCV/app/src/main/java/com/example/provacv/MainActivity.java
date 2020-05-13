@@ -489,6 +489,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, DettagliStrutturaFragment.newInstance(struttura), "strutturaFragment");
         transaction.commit();
+        yourPositionButton.setVisibility(View.GONE);
         toolbar.setVisibility(View.GONE);
     }
 
