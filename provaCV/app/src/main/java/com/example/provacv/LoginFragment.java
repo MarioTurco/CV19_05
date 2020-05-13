@@ -134,7 +134,6 @@ public class LoginFragment extends Fragment {
                             Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFail() {
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
@@ -143,8 +142,6 @@ public class LoginFragment extends Fragment {
                         transaction.commit();
                     }
                 });
-
-
     }
 
     private void updateNickname(String nickname) {
