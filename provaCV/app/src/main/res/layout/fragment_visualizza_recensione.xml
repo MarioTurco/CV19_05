@@ -29,37 +29,45 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.381"
-        app:layout_constraintStart_toEndOf="@+id/backButtonLogin2"
+        app:layout_constraintStart_toEndOf="@+id/backButtonLogin"
         app:layout_constraintTop_toTopOf="parent"
         android:fontFamily="@font/century_gothic"/>
 
     <TextView
         android:id="@+id/titoloRecensione"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="15dp"
+        android:contentDescription="titolo recensione"
         android:ellipsize="end"
-        android:lines="1"
-        android:maxLines="2"
+        android:fontFamily="@font/century_gothic"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="8sp"
+        android:lines="2"
+        android:maxLines="5"
+        android:minLines="1"
         android:text='"Titolo recensione"'
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        android:fontFamily="@font/century_gothic"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/century_gothic"
         android:text="Valutazione:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titoloRecensione"
-        android:fontFamily="@font/century_gothic"/>
+        app:layout_constraintTop_toBottomOf="@+id/titoloRecensione" />
 
     <RatingBar
         android:id="@+id/ratingBarRecensione"
@@ -67,36 +75,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="28dp"
         android:progressTint="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/textView26"
         app:layout_constraintTop_toBottomOf="@+id/titoloRecensione" />
 
     <TextView
         android:id="@+id/testoRecensione"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:lines="2"
-        android:maxLines="15"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/century_gothic"
+        android:lines="8"
+        android:maxLines="8"
         android:text="@string/descrizione_struttura"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
-        android:fontFamily="@font/century_gothic"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/century_gothic"
         android:text="Da:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testoRecensione"
-        android:fontFamily="@font/century_gothic"/>
+        app:layout_constraintTop_toBottomOf="@+id/testoRecensione" />
 
     <TextView
         android:id="@+id/autoreRecensione"
@@ -128,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/century_gothic"
         android:text="20/05/2020"
         app:layout_constraintEnd_toEndOf="parent"

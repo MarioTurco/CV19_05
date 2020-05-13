@@ -20,7 +20,7 @@
 
     <RelativeLayout
         android:id="@+id/layoutSingoloCommento"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="7dp">
 
@@ -32,6 +32,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginTop="11dp"
             android:ellipsize="end"
             android:fontFamily="@font/century_gothic"
@@ -64,12 +65,14 @@
 
         <TextView
             android:id="@+id/testoRecensione"
-            android:layout_width="359dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView11"
             android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="9dp"
+            android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:fontFamily="@font/century_gothic"
             android:lines="3"
@@ -81,9 +84,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titoloRecensione"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/ratingBarRecensione"
+            android:layout_marginEnd="3dp"
+            android:layout_toStartOf="@+id/dataRecensione"
             android:fontFamily="@font/century_gothic"
             android:text="Data:" />
 
@@ -92,9 +95,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titoloRecensione"
-            android:layout_marginStart="4dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/textView15"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/century_gothic"
             android:text="20/05/2020" />
 
