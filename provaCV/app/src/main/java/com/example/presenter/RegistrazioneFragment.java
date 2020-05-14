@@ -29,13 +29,13 @@ import utils.PasswordUtils;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SignupFragment#newInstance} factory method to
+ * Use the {@link RegistrazioneFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignupFragment extends Fragment {
-    private ImageButton backButtonSignup;
+public class RegistrazioneFragment extends Fragment {
+    private ImageButton tastoIndietroRegistrazione;
     private EditText dataDiNascita;
-    private Button registrazioneButton;
+    private Button confermaRegistrazioneButton;
     private UtenteDAO utenteDAO;
     private EditText emailEditText;
     private EditText PasswordEditText;
@@ -45,12 +45,12 @@ public class SignupFragment extends Fragment {
     private CheckBox mostraNicknameCheckbox;
     private String TAG="Signup Fragment";
 
-    public SignupFragment(){
+    public RegistrazioneFragment(){
 
     }
 
-    public static SignupFragment newInstance() {
-        return new SignupFragment();
+    public static RegistrazioneFragment newInstance() {
+        return new RegistrazioneFragment();
     }
 
     @Override
@@ -65,10 +65,10 @@ public class SignupFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
-    private void inizializeUIElements(View view){
+    private void referenziaElementiUI(View view){
         dataDiNascita = view.findViewById(R.id.dateEditText);
-        registrazioneButton = view.findViewById(R.id.registrazioneButton);
-        backButtonSignup = view.findViewById(R.id.backButtonSignup);
+        confermaRegistrazioneButton = view.findViewById(R.id.registrazioneButton);
+        tastoIndietroRegistrazione = view.findViewById(R.id.backButtonSignup);
         emailEditText = view.findViewById(R.id.emailEditText);
         PasswordEditText = view.findViewById(R.id.PasswordEditText);
         nomeEditText = view.findViewById(R.id.nomeEditText);
@@ -77,7 +77,7 @@ public class SignupFragment extends Fragment {
         mostraNicknameCheckbox = view.findViewById(R.id.mostraNicknameCheckbox);
     }
 
-    private boolean checkCampiNonVuoti(){
+    private boolean controllaCampiNonVuoti(){
         if(emailEditText.getText().toString().equals("") ||
                 nicknameEditText.getText().toString().equals("") ||
                 nomeEditText.getText().toString().equals("") ||
@@ -88,7 +88,7 @@ public class SignupFragment extends Fragment {
         else return true;
     }
 
-    private boolean checkLunghezzaPassword(){
+    private boolean controllaLunghezzaPassword(){
         if(PasswordEditText.getText().toString().length() < 5)
             return false;
         else return true;
@@ -96,8 +96,8 @@ public class SignupFragment extends Fragment {
 
     private Utente creaUtenteDaInserire(){
         Utente utenteDaAggiungere = new Utente();
-        if(checkCampiNonVuoti()) {
-            if(checkLunghezzaPassword()) {
+        if(controllaCampiNonVuoti()) {
+            if(controllaLunghezzaPassword()) {
                 utenteDaAggiungere.setEmail(emailEditText.getText().toString());
                 utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
                 utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
@@ -118,8 +118,8 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        inizializeUIElements(view);
-        setupBackButton(savedInstanceState);
+        referenziaElementiUI(view);
+        impostaTastoIndietroRegistrazione(savedInstanceState);
         utenteDAO = new UtenteDAO(this.getActivity());
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +129,7 @@ public class SignupFragment extends Fragment {
             }
         });
 
-        registrazioneButton.setOnClickListener(new View.OnClickListener() {
+        confermaRegistrazioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -177,9 +177,9 @@ public class SignupFragment extends Fragment {
 
     }
 
-    private void setupBackButton(final Bundle savedInstanceState) {
+    private void impostaTastoIndietroRegistrazione(final Bundle savedInstanceState) {
 
-        backButtonSignup.setOnClickListener(new View.OnClickListener() {
+        tastoIndietroRegistrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);

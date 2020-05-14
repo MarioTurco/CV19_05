@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void loadSignupFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-        transaction.replace(R.id.container, SignupFragment.newInstance(), "signupFragment");
+        transaction.replace(R.id.container, RegistrazioneFragment.newInstance(), "signupFragment");
         transaction.commit();
         toolbar.setVisibility(View.GONE);
     }
