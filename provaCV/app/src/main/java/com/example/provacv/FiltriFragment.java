@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -344,7 +343,7 @@ public class FiltriFragment extends Fragment {
                                             prossimitàSwitch.isChecked()
                                             );
 
-        strutturaDAO.strutturaQuery(filtriStruttura,
+        strutturaDAO.getStrutturePerFiltri(filtriStruttura,
                 new VolleyCallback<JSONArray>() {
 
                     @Override

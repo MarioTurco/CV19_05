@@ -47,7 +47,7 @@ public class StrutturaDAO {
         queue.add(request);
     }
 
-    public void strutturaQuery(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
+    public void getStrutturePerFiltri(Filtri filtriStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/struttura?";
         queryRequestString += filtriStruttura.getNonNullStrings(MainActivity.longitudine, MainActivity.latitudine);
