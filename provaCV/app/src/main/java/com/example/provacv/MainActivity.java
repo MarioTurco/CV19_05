@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             .build());
                                             */
                                 }else{
-                                    Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Attiva il GPS per mostrare la tua posizione sulla mappa", Toast.LENGTH_SHORT).show();
                                 }
                                 // Got last known location. In some rare situations this can be null.
                                 /*if (location != null) {
