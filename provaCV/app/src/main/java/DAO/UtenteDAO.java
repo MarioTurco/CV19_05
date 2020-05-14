@@ -21,18 +21,18 @@ import model.Utente;
 public class UtenteDAO {
 
     private Context context;
+
     public UtenteDAO(Context context){
         this.context=context;
     }
-
     private String appendRequestForLogin(String username){
         return "&nickname="+username;
     }
 
-    private boolean checkPassword(JSONObject jsonObject, String givenPassword) throws JSONException{
+    private boolean checkPassword(JSONObject utenteJson, String givenPassword) throws JSONException{
         String correctPassword=null,salt=null;
-        correctPassword = jsonObject.getString("password");
-        salt = jsonObject.getString("salt");
+        correctPassword = utenteJson.getString("password");
+        salt = utenteJson.getString("salt");
         System.out.println(givenPassword);
         return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
     }
