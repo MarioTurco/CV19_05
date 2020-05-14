@@ -65,17 +65,14 @@ import DAO.StrutturaDAO;
 import DAO.VolleyCallback;
 import model.Struttura;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = "MainActivity";
     private FusedLocationProviderClient fusedLocationClient;
-
-    private ImageButton filtriButton;
 
     private DrawerLayout drawerLayout;
     Toolbar toolbar;
     protected static FloatingActionButton yourPositionButton;
     private NavigationView navigationView;
-    private ActionBarDrawerToggle toggle;
     public static CustomSupportMapFragment mapFragment;
     private Menu menu;
     protected static Bundle instanceState;
@@ -163,14 +160,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupDrawer();
-        updateDrawer();
+        configuraDrawer();
+        aggiornaDrawer();
         setupButtons();
-        updateDrawer();
+        aggiornaDrawer();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
         strutturaDao = new StrutturaDAO(this); //TODO da sostituire eventualmente con un singleton
-        checkGPSPermissions();
+        controllaPermessiGPS();
         //initApiClient();
         setMap();
     }
@@ -186,16 +183,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
-    private void setupButtons(){
+    private void setupButtons() {
         setupFiltriButton();
         //setUpBackPressed();
         setupYourPositionButton();
     }
 
 
-
-
-    private void moveCamera(double latitude, double longitude){
+    private void moveCamera(double latitude, double longitude) {
         CameraPosition position = new CameraPosition.Builder()
                 .target(new LatLng(latitude, longitude)) // Sets the new camera position
                 .zoom(17) // Sets the zoom
@@ -207,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .newCameraPosition(position), 7000);
     }
 
-    private void setupYourPositionButton(){
+    private void setupYourPositionButton() {
         yourPositionButton = findViewById(R.id.floatingActionButtonMap);
         yourPositionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             .zoom(15)
                                             .build());
                                             */
-                                }else{
+                                } else {
                                     Toast.makeText(MainActivity.this, "Attiva il GPS per mostrare la tua posizione sulla mappa", Toast.LENGTH_SHORT).show();
                                 }
                                 // Got last known location. In some rare situations this can be null.
@@ -242,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setupFiltriButton() {
-        filtriButton = findViewById(R.id.filtriButton);
+        ImageButton filtriButton = findViewById(R.id.filtriButton);
         filtriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,11 +261,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.login:
                 setYourPositionButtonInvisible();
-                loadLoginFragment();
+                caricaLoginFragment();
                 break;
             case R.id.signup:
                 setYourPositionButtonInvisible();
-                loadSignupFragment();
+                caricaRegistrazioneFragment();
                 break;
             case R.id.homepage:
                 Toast.makeText(MainActivity.this, "Homepage selezionato", Toast.LENGTH_SHORT).show();
@@ -278,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.logout:
                 Toast.makeText(MainActivity.this, "Logout effettuato", Toast.LENGTH_SHORT).show();
                 logout();
-                updateDrawer();
+                aggiornaDrawer();
         }
         return false;
     }
@@ -288,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         sharedPreferences.edit().putBoolean("isLogged", false).apply();
     }
 
-    private void setupDrawer() {
+    private void configuraDrawer() {
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
         menu = findViewById(R.id.drawerMenuGroup);
@@ -297,21 +292,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawerOpen, R.string.drawerClose);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawerOpen, R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        updateDrawer();
+        aggiornaDrawer();
     }
 
-    public void backToMainActivity() {
+    public void tornaAllaMainActivity() {
         setMap();
-        updateDrawer();
+        aggiornaDrawer();
     }
 
-    private void updateDrawer() {
+    private void aggiornaDrawer() {
         menu = navigationView.getMenu();
-        if (userIsLogged()) {
+        if (utenteLoggato()) {
             Log.d(TAG, "onSharedPreferenceChanged: Mostra logout");
             menu.findItem(R.id.logout).setVisible(true);
 
@@ -328,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private boolean userIsLogged() {
+    private boolean utenteLoggato() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (sharedPreferences.contains("isLogged"))
             return sharedPreferences.getBoolean("isLogged", false);
@@ -336,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void loadSignupFragment() {
+    private void caricaRegistrazioneFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, RegistrazioneFragment.newInstance(), "signupFragment");
@@ -344,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setVisibility(View.GONE);
     }
 
-    private void loadLoginFragment() {
+    private void caricaLoginFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, LoginFragment.newInstance(), "loginFragment");
@@ -354,24 +349,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void setYourPositionButtonVisible(){
+    private void setYourPositionButtonVisible() {
         yourPositionButton.setVisibility(View.VISIBLE);
     }
 
-    private void setYourPositionButtonInvisible(){
+    private void setYourPositionButtonInvisible() {
         yourPositionButton.setVisibility(View.GONE);
     }
 
-    private void checkGPSPermissions(){
-        if (!(hasGPSPermissions()))
-            askForGPSPermissions();
+    private void controllaPermessiGPS() {
+        if (!(haPermessiGPS()))
+            chiediPermessiGPS();
         else {
             Log.d(TAG, "setMap: Abbiamo i permessi");
             //cambia le impostazioni della map box
         }
     }
 
-    private void creaMapFragment(MapboxMapOptions options){
+    private void creaMapFragment(MapboxMapOptions options) {
         // Create fragment
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
@@ -382,9 +377,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 
-    private int getIdStrutturaFromFeature(Feature feature){
+    private int getIdStrutturaFromFeature(Feature feature) {
         for (Map.Entry<String, JsonElement> entry : feature.properties().entrySet()) {
-            if(entry.getKey().equals("id")) {
+            if (entry.getKey().equals("id")) {
                 return Integer.parseInt(entry.getValue().toString());
             }
         }
@@ -397,10 +392,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Location lastKnownLocation;
         final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
 
-        if(hasGPSPermissions())
+        if (haPermessiGPS())
             chiediPosizione();
 
-        setPosition(options);
+        setPositione(options);
 
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
@@ -416,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     MainActivity.this.mapboxMap = mapboxMap;
                     mapboxMap.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
 
-                        private boolean pointClick(PointF point){
+                        private boolean pointClick(PointF point) {
                             List<Feature> features = mapboxMap.queryRenderedFeatures(point, "cv19-map");
                             // Get the first feature within the list if one exist
                             if (features.size() > 0) {
@@ -439,7 +434,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
                             localStyle = style;
-                            enableLocationComponent();
+                            abilitaLocationComponent();
                         }
                     });
                 }
@@ -448,33 +443,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @SuppressWarnings( {"MissingPermission"})
-    private void enableLocationComponent() {
+    @SuppressWarnings({"MissingPermission"})
+    private void abilitaLocationComponent() {
         // Check if permissions are enabled and if not request
-        if (hasGPSPermissions()) {
-            System.out.println("Ho i permessi");
-            // Get an instance of the component
+        if (haPermessiGPS()) {
             LocationComponent locationComponent = mapboxMap.getLocationComponent();
-
-
-            // Activate with options
             locationComponent.activateLocationComponent(
                     LocationComponentActivationOptions.builder(this, localStyle).build());
-
-            // Enable to make component visible
             locationComponent.setLocationComponentEnabled(true);
-
-            // Set the component's camera mode
             locationComponent.setCameraMode(CameraMode.TRACKING);
-
-            // Set the component's render mode
             locationComponent.setRenderMode(RenderMode.COMPASS);
         } else {
-            askForGPSPermissions();
+            chiediPermessiGPS();
         }
     }
 
-    private void mostraStrutturaFragment(Struttura struttura){
+    private void mostraStrutturaFragment(Struttura struttura) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
         transaction.replace(R.id.container, DettagliStrutturaFragment.newInstance(struttura), "strutturaFragment");
@@ -483,7 +467,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setVisibility(View.GONE);
     }
 
-    private void setCampiStrutturaDaJSON(Struttura strutturaTappata, JSONObject strutturaJSON) throws JSONException{
+    private void setCampiStrutturaDaJSON(Struttura strutturaTappata, JSONObject strutturaJSON) throws JSONException {
         strutturaTappata.setNome(strutturaJSON.getString("nome"));
         strutturaTappata.setIndirizzo(strutturaJSON.getString("indirizzo"));
         strutturaTappata.setLatitudine(strutturaJSON.getDouble("latitudine"));
@@ -497,19 +481,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         strutturaTappata.setUrlFoto(strutturaJSON.getString("url_foto"));
     }
 
-    private void mostraStrutturaDopoTap(int idStruttura){
+    private void mostraStrutturaDopoTap(int idStruttura) {
         strutturaDao.getStrutturaPerId(idStruttura, new VolleyCallback<JSONObject>() {
             @Override
-            public void onSuccess(JSONObject strutturaJSON){
+            public void onSuccess(JSONObject strutturaJSON) {
                 Struttura strutturaTappata = new Struttura();
                 try {
                     setCampiStrutturaDaJSON(strutturaTappata, strutturaJSON);
                     mostraStrutturaFragment(strutturaTappata);
-                }
-                catch(JSONException e){
+                } catch (JSONException e) {
 
                 }
             }
+
             @Override
             public void onFail() {
 
@@ -517,7 +501,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    private void setPosition(final MapboxMapOptions options) {
+    private void setPositione(final MapboxMapOptions options) {
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
@@ -530,7 +514,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     .target(new LatLng(latitudine, longitudine))
                                     .zoom(15)
                                     .build());
-                        }else{
+                        } else {
                             latitudine = 40.79444305;
                             longitudine = 14.46353868;
                             Log.d(TAG, "onSuccess: Posizione default");
@@ -547,45 +531,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
-            hideSystemUI();
+            nascondiUIDiSistema();
         }
     }
 
-    private boolean hasFineLocationAccess() {
+    private boolean haAccessoAFineLocation() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED;
     }
 
-    private boolean hasCoarseLocationAccess() {
+    private boolean haAccessoACoarseLocation() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED;
     }
 
-    private boolean hasGPSPermissions() {
-        return hasFineLocationAccess() && hasCoarseLocationAccess();
+    private boolean haPermessiGPS() {
+        return haAccessoAFineLocation() && haAccessoACoarseLocation();
     }
 
 
-    private void chiediPosizione(){
+    private void chiediPosizione() {
         initApiClient();
     }
 
-    private void mostraPosizioneSuMappa(){
+    private void mostraPosizioneSuMappa() {
         chiediPosizione();
         fusedLocationClient.getLastLocation();
-        enableLocationComponent();
+        abilitaLocationComponent();
     }
 
-    private boolean controllaPermessiPosizione(int[] grantResults){
+    private boolean controllaPermessiPosizione(int[] grantResults) {
         return grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void abilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
+    private void abilitaRicercaProssimitaFiltri(FiltriFragment fragmentFiltri) {
         initApiClient();
         fragmentFiltri.abilitaProssimita();
     }
 
-    private void disabilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
+    private void disabilitaRicercaProssimitaFiltri(FiltriFragment fragmentFiltri) {
         fragmentFiltri.disabilitaProssimita();
     }
 
@@ -602,9 +586,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             {
                 FiltriFragment fragmentFiltri = (FiltriFragment) getSupportFragmentManager().findFragmentById(R.id.container);
                 if (controllaPermessiPosizione(grantResults))
-                    abilitaRicercaProssimitàFiltri(fragmentFiltri);
+                    abilitaRicercaProssimitaFiltri(fragmentFiltri);
                 else {
-                    disabilitaRicercaProssimitàFiltri(fragmentFiltri);
+                    disabilitaRicercaProssimitaFiltri(fragmentFiltri);
                     break;
                 }
             }
@@ -612,13 +596,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
-    protected void askForGPSPermissions() {
+    protected void chiediPermessiGPS() {
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
 
-    private void hideSystemUI() {
+    private void nascondiUIDiSistema() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
         // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
@@ -637,7 +619,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // Shows the system bars by removing all the flags
     // except for the ones that make the content appear under the system bars.
-    private void showSystemUI() {
+    private void mostraUIDiSistema() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE

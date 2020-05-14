@@ -100,14 +100,14 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
 
-                mainActivity.backToMainActivity();
+                mainActivity.tornaAllaMainActivity();
             }
         });
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
 
             @Override
             public void handleOnBackPressed() {
-                mainActivity.backToMainActivity();
+                mainActivity.tornaAllaMainActivity();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
