@@ -19,15 +19,13 @@ import model.Struttura;
 
 public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
-    //qui vanno le cose da passare all'adapter
-    protected static ArrayList<Struttura> listaStrutture;
+    static ArrayList<Struttura> listaStrutture;
 
     public  ListaStruttureFragment(){
-
     }
 
     public ListaStruttureFragment(ArrayList<Struttura> strutture){
-        this.listaStrutture = strutture;
+        listaStrutture = strutture;
     }
 
     public static Fragment newInstance() {
@@ -41,18 +39,16 @@ public class ListaStruttureFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lista_strutture, container, false);
-
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         initRecyclerView(view);
 
         backButton = view.findViewById(R.id.backButtonLista);
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +63,6 @@ public class ListaStruttureFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-
     }
 
     private void initRecyclerView(View view){
