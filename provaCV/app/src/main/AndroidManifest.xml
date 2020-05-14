@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.provacv">
+    package="com.example.presenter">
     <!-- Volley -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- GPS -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,9 +13,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaStruttureFragment" />
+        <activity android:name="com.example.presenter.ListaStruttureFragment" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.presenter.MainActivity"
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

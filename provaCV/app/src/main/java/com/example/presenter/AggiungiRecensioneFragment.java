@@ -1,8 +1,6 @@
-package com.example.provacv;
+package com.example.presenter;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -26,8 +24,6 @@ import java.time.format.DateTimeFormatter;
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
-
-import static com.android.volley.VolleyLog.TAG;
 
 public class AggiungiRecensioneFragment extends Fragment {
     final String TAG = "AggiungiRecensioneFragment";

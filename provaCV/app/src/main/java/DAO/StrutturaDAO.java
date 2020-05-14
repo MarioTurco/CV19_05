@@ -10,7 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import model.Filtri;
-import com.example.provacv.MainActivity;
+import com.example.presenter.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.example.provacv;
+package utils;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
