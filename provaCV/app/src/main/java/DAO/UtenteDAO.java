@@ -25,11 +25,11 @@ public class UtenteDAO {
     public UtenteDAO(Context context){
         this.context=context;
     }
-    private String appendRequestForLogin(String username){
+    private String aggiungiUsernameAllaQuery(String username){
         return "&nickname="+username;
     }
 
-    private boolean checkPassword(JSONObject utenteJson, String givenPassword) throws JSONException{
+    private boolean controllaPassword(JSONObject utenteJson, String givenPassword) throws JSONException{
         String correctPassword=null,salt=null;
         correctPassword = utenteJson.getString("password");
         salt = utenteJson.getString("salt");
@@ -37,10 +37,10 @@ public class UtenteDAO {
         return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
     }
 
-    public void tryLogin(String username, final String givenPassword, final VolleyCallback<Boolean> callback){
+    public void effettuaLogin(String username, final String givenPassword, final VolleyCallback<Boolean> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
-        queryRequestString +=appendRequestForLogin(username);
+        queryRequestString += aggiungiUsernameAllaQuery(username);
         System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
@@ -52,7 +52,7 @@ public class UtenteDAO {
                             if(response.length() == 0)
                                 loginSuccess = false;
                             else
-                                loginSuccess = checkPassword(response.getJSONObject(0), givenPassword);
+                                loginSuccess = controllaPassword(response.getJSONObject(0), givenPassword);
 
                             callback.onSuccess(loginSuccess);
                         } catch (JSONException e) {}
@@ -68,7 +68,7 @@ public class UtenteDAO {
         queue.add(jsonArrayRequest);
     }
 
-    private String buildInsertString(Utente utente){
+    private String costruisciQueryInserimento(Utente utente){
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
         queryRequestString += "&nickname=" + utente.getNickname();
@@ -83,7 +83,7 @@ public class UtenteDAO {
 
     public void registraUtente(Utente utente, final VolleyCallback<String> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
-        String queryRequestString = buildInsertString(utente);
+        String queryRequestString = costruisciQueryInserimento(utente);
         System.out.println(queryRequestString);
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {

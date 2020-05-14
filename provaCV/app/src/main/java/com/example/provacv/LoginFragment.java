@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -118,7 +117,7 @@ public class LoginFragment extends Fragment {
     private void checkCredenziali() {
         final String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
-        utenteDAO.tryLogin(username, password,
+        utenteDAO.effettuaLogin(username, password,
                 new VolleyCallback<Boolean>() {
                     @Override
                     public void onSuccess(Boolean result) {
