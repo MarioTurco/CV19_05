@@ -20,7 +20,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
     private TextView autore, data, titolo, testo;
     private RatingBar ratingBar;
     private Recensione recensione;
-    private ImageButton backButton;
+    private ImageButton tastoIndietro;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
         data = itemView.findViewById(R.id.dataRecensione);
         titolo = itemView.findViewById(R.id.titoloRecensione);
         testo = itemView.findViewById(R.id.testoRecensione);
-        backButton = itemView.findViewById(R.id.backButtonRecensione);
+        tastoIndietro = itemView.findViewById(R.id.backButtonRecensione);
     }
 
     @Nullable
@@ -56,7 +56,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
     }
 
     private void aggiungiListenerTastoIndietro() {
-        backButton.setOnClickListener(new View.OnClickListener() {
+        tastoIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
