@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
@@ -74,7 +73,7 @@ public class DettagliStrutturaFragment extends Fragment {
     }
 
     private void caricaRecensioniStruttura() {
-        recensioneDAO.getRecensioniByIdStruttura(struttura.getIdStruttura(),
+        recensioneDAO.getRecensioniPerIdStruttura(struttura.getIdStruttura(),
                 new VolleyCallback<JSONArray>() {
                     @Override
                     public void onSuccess(JSONArray result) {

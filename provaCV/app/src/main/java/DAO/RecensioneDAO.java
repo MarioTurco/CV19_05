@@ -17,15 +17,14 @@ import model.Recensione;
 
 public class RecensioneDAO {
     private Context context;
-    private final String TAG = "RecensioneDAO";
     public RecensioneDAO(Context context) {
         this.context = context;
     }
 
-    public void getRecensioniByIdStruttura(int idStruttura, final VolleyCallback<JSONArray> callback){
+    public void getRecensioniPerIdStruttura(int idStruttura, final VolleyCallback<JSONArray> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=RECENSIONE LEFT OUTER JOIN UTENTE ON AUTORE=NICKNAME&struttura=" + idStruttura + "&stato_recensione=Approvata";
-        Log.d(TAG, "getRecensioniByIdStruttura: " + queryRequestString);
+        Log.d("RecensioneDAO", "getRecensioniByIdStruttura: " + queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -62,7 +61,7 @@ public class RecensioneDAO {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
-                        Log.d(TAG, "onErrorResponse: Errore" );
+                        Log.d("RecensioneDAO", "onErrorResponse: Errore" );
                         error.printStackTrace();
                     }
                 });
