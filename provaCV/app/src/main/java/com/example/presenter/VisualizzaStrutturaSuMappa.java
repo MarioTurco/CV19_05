@@ -58,7 +58,7 @@ public class VisualizzaStrutturaSuMappa extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setMap();
+        setMappaVisualizzaStruttura();
         backbutton = view.findViewById(R.id.backButtonVisualizzaSuMappa);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +81,7 @@ public class VisualizzaStrutturaSuMappa extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
-    protected void setMap() {
+    private void setMappaVisualizzaStruttura() {
         Mapbox.getInstance(getContext(), "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
             // Create fragment
             final FragmentTransaction transaction = getFragmentManager().beginTransaction()
