@@ -25,16 +25,15 @@ import DAO.VolleyCallback;
 
 
 public class LoginFragment extends Fragment {
-    ImageButton backButtonLogin;
-    Button loginButton;
-    UtenteDAO utenteDAO;
-    EditText usernameLoginText;
-    EditText passwordLoginText;
-    TextView registratiTextLink;
-    ProgressBar progressBar;
-    View view;
-    MainActivity mainActivity;
-    private String TAG = "LoginFragment";
+    private ImageButton bottoneIndietro;
+    private Button bottoneLogin;
+    private UtenteDAO utenteDAO;
+    private EditText usernameLoginText;
+    private EditText passwordLoginText;
+    private TextView registratiTextLink;
+    private ProgressBar progressBar;
+    private View view;
+    private MainActivity mainActivity;
 
     public LoginFragment(){
 
@@ -55,8 +54,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void initViewElements(View view) {
-        backButtonLogin = view.findViewById(R.id.backButtonLogin);
-        loginButton = view.findViewById(R.id.loginButton);
+        bottoneIndietro = view.findViewById(R.id.backButtonLogin);
+        bottoneLogin = view.findViewById(R.id.loginButton);
         usernameLoginText = view.findViewById(R.id.usernameLoginText);
         passwordLoginText = view.findViewById(R.id.passwordLoginText);
         registratiTextLink = view.findViewById(R.id.registratiTextLink);
@@ -83,10 +82,10 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        bottoneLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: cliccato");
+                Log.d("LoginFragment", "onClick: cliccato");
                 progressBar.setVisibility(View.VISIBLE);
                 checkCredenziali();
                 progressBar.setVisibility(View.INVISIBLE);
@@ -96,7 +95,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void setupBackButton(final Bundle savedInstanceState) {
-        backButtonLogin.setOnClickListener(new View.OnClickListener() {
+        bottoneIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
@@ -122,12 +121,12 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(Boolean result) {
                         if (result) {
-                            Log.d(TAG, "onSuccess: Login effettuato");
+                            Log.d("LoginFragment", "onSuccess: Login effettuato");
                             changeUserStatus(true);
                             updateNickname(username);
-                            backButtonLogin.performClick();
+                            bottoneIndietro.performClick();
                         } else {
-                            Log.d(TAG, "onSuccess: Login fallito");
+                            Log.d("LoginFragment", "onSuccess: Login fallito");
                             usernameLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
                             passwordLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
                             Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
