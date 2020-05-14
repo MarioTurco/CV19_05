@@ -46,6 +46,7 @@ import java.util.ArrayList;
 
 import DAO.StrutturaDAO;
 import DAO.VolleyCallback;
+import model.Filtri;
 import model.Struttura;
 
 

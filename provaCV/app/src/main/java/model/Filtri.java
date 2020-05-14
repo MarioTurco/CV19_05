@@ -1,4 +1,4 @@
-package com.example.provacv;
+package model;
 
 public class Filtri {
 
@@ -83,9 +83,8 @@ public class Filtri {
         return prossimita;
     }
 
-    public String getNonNullStrings(double x, double y) {
+    public String getFiltriNonVuoti(double longitudine, double latitudine) {
         String returnString = "";
-
         if (!nome.equals(""))
             returnString += "&nome=%25" + nome + "%25";
         if (!citta.equals(""))
@@ -101,10 +100,8 @@ public class Filtri {
                 returnString += "&radius=" + distanzaMassima;
             else
                 returnString += "&radius=0";
-
-            returnString += "&x=" + x;
-            returnString += "&y=" + y;
-
+            returnString += "&x=" + longitudine;
+            returnString += "&y=" + latitudine;
         }
         return returnString;
     }
