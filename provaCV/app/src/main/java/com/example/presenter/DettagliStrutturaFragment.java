@@ -37,7 +37,7 @@ import model.Struttura;
 
 public class DettagliStrutturaFragment extends Fragment {
     private final String TAG = "DettagliStrutturaFragment";
-    private ImageButton backButton;
+    private ImageButton tastoIndietro;
 
     private CircleImageView immagineStruttura;
 
@@ -45,7 +45,7 @@ public class DettagliStrutturaFragment extends Fragment {
 
     private TextView nomeStruttura;
     private TextView descrizioneStruttura;
-    private TextView cittàStruttura;
+    private TextView cittaStruttura;
     private TextView indirizzoStruttura;
     private TextView prezzoStruttura;
     private TextView categoriaStruttura;
@@ -59,7 +59,7 @@ public class DettagliStrutturaFragment extends Fragment {
     private RecensioneDAO recensioneDAO;
     private RecyclerView recyclerView;
 
-    private boolean isFabOpen = false;
+    private boolean FABAperta = false;
 
     //costruttore chiamato da un VisualizzaRecensioneFragment
     public DettagliStrutturaFragment() {
@@ -118,14 +118,14 @@ public class DettagliStrutturaFragment extends Fragment {
         return new DettagliStrutturaFragment(struttura);
     }
 
-    private void initGUIElements(View view) {
+    private void referenziaElementiUI(View view) {
         recyclerView = view.findViewById(R.id.recensioniRecyclerView);
         nomeStruttura = view.findViewById(R.id.nomeStruttura);
         ratingBarStruttura = view.findViewById(R.id.ratingBarStruttura);
         descrizioneStruttura = view.findViewById(R.id.descrizioneStruttura);
-        cittàStruttura = view.findViewById(R.id.cittàStruttura);
+        cittaStruttura = view.findViewById(R.id.cittàStruttura);
         indirizzoStruttura = view.findViewById(R.id.indirizzoStruttura);
-        backButton = view.findViewById(R.id.backButtonSignup);
+        tastoIndietro = view.findViewById(R.id.backButtonSignup);
         prezzoStruttura = view.findViewById(R.id.prezzoStruttura);
         categoriaStruttura = view.findViewById(R.id.categoriaStruttura);
         valutazioneRecensione = view.findViewById(R.id.valutazioneRecensione);
@@ -133,7 +133,7 @@ public class DettagliStrutturaFragment extends Fragment {
         fabButton = view.findViewById(R.id.floatingActionButtonStruttra);
         fabAggiungiRecensione = view.findViewById(R.id.fabAggiungiRecensione);
         fabVisualizzaMappa = view.findViewById(R.id.fabVisualizzaSuMappa);
-        backButton = view.findViewById(R.id.backButtonStruttura);
+        tastoIndietro = view.findViewById(R.id.backButtonStruttura);
         immagineStruttura = view.findViewById(R.id.immagine);
 
     }
@@ -148,21 +148,20 @@ public class DettagliStrutturaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_struttura, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_struttura, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initGUIElements(view);
+        referenziaElementiUI(view);
         caricaRecensioniStruttura();
         mostraDettagliStruttura();
-        setUpBackButton();
-        setupFAB();
+        aggiungiListenerTastoIndietro();
+        configuraFloatingActionButton();
     }
 
-    private void setupFAB() {
+    private void configuraFloatingActionButton() {
         final Animation fabOpen = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
         final Animation fabClose = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
         final Animation rotateBackward = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_backward);
@@ -171,15 +170,15 @@ public class DettagliStrutturaFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean UserLogged = isUserLogged();
-                if (isFabOpen) {
+                boolean UserLogged = utenteLoggato();
+                if (FABAperta) {
                     fabButton.startAnimation(rotateBackward);
                     fabVisualizzaMappa.startAnimation(fabClose);
                     if (UserLogged)
                         fabAggiungiRecensione.startAnimation(fabClose);
                     fabAggiungiRecensione.setClickable(false);
                     fabVisualizzaMappa.setClickable(false);
-                    isFabOpen = false;
+                    FABAperta = false;
                 } else {
                     fabButton.startAnimation(rotateForward);
                     fabVisualizzaMappa.startAnimation(fabOpen);
@@ -188,7 +187,7 @@ public class DettagliStrutturaFragment extends Fragment {
                         fabAggiungiRecensione.setClickable(true);
                     }
                     fabVisualizzaMappa.setClickable(true);
-                    isFabOpen = true;
+                    FABAperta = true;
                 }
             }
         });
@@ -226,14 +225,14 @@ public class DettagliStrutturaFragment extends Fragment {
 
     }
 
-    private boolean isUserLogged() {
+    private boolean utenteLoggato() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         return sharedPreferences.getBoolean("isLogged", false);
     }
 
 
-    private void setUpBackButton() {
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void aggiungiListenerTastoIndietro() {
+        tastoIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(ListaStruttureFragment.listaStrutture == null){
@@ -268,7 +267,7 @@ public class DettagliStrutturaFragment extends Fragment {
         nomeStruttura.setText(struttura.getNome());
         ratingBarStruttura.setRating((float) struttura.getValutazioneMedia());
         descrizioneStruttura.setText(struttura.getDescrizione());
-        cittàStruttura.setText(struttura.getCittà());
+        cittaStruttura.setText(struttura.getCittà());
         indirizzoStruttura.setText(struttura.getIndirizzo());
         prezzoStruttura.setText(struttura.getFasciaDiPrezzo());
         categoriaStruttura.setText(struttura.getCategoria());
