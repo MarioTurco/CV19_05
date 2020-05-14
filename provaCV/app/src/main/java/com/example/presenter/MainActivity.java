@@ -582,11 +582,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void abilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
         initApiClient();
-        fragmentFiltri.abilitaProssimità();
+        fragmentFiltri.abilitaProssimita();
     }
 
     private void disabilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
-        fragmentFiltri.disabilitaProssimità();
+        fragmentFiltri.disabilitaProssimita();
     }
 
     @Override

@@ -63,7 +63,7 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerCategoria;
     private Spinner spinnerPrezzo;
     private Spinner spinnerValutazione;
-    private Switch prossimitàSwitch;
+    private Switch prossimitaSwitch;
 
     private MainActivity activity;
 
@@ -76,8 +76,7 @@ public class FiltriFragment extends Fragment {
 
 
     public static FiltriFragment newInstance() {
-        FiltriFragment fragment = new FiltriFragment();
-        return fragment;
+        return new FiltriFragment();
     }
 
     @Override
@@ -166,20 +165,18 @@ public class FiltriFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
         System.out.println("richiesta: " + requestCode);
-        switch (requestCode) {
-            case 214:
-                switch (resultCode) {
-                    case Activity.RESULT_OK:
-                        // All required changes were successfully made
-                        break;
-                    case Activity.RESULT_CANCELED:
-                        // The user was asked to change settings, but chose not to
-                        disabilitaProssimità();
-                        break;
-                    default:
-                        break;
-                }
-                break;
+        if (requestCode == 214) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    // All required changes were successfully made
+                    break;
+                case Activity.RESULT_CANCELED:
+                    // The user was asked to change settings, but chose not to
+                    disabilitaProssimita();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -222,12 +219,12 @@ public class FiltriFragment extends Fragment {
         nomeText = (EditText) view.findViewById(R.id.nomeText);
         cittaText = (EditText) view.findViewById(R.id.cittaText);
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
-        prossimitàSwitch = view.findViewById(R.id.prossimitàSwitch);
+        prossimitaSwitch = view.findViewById(R.id.prossimitàSwitch);
         backButton = view.findViewById(R.id.backButtonSignup);
 
         initSpinners(view, adapter);
 
-        setupProssimitàSwitch();
+        configuraProssimitaSwitch();
     }
 
     private boolean hasFineLocationAccess(){
@@ -241,21 +238,21 @@ public class FiltriFragment extends Fragment {
     private boolean hasGPSPermissions(){
         return hasFineLocationAccess() && hasCoarseLocationAccess();
     }
-    private void setupProssimitàSwitch() {
-        prossimitàSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void configuraProssimitaSwitch() {
+        prossimitaSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     if (hasGPSPermissions()) {
                         initApiClient();
-                        abilitaProssimità();
+                        abilitaProssimita();
                     }
                     else{
                         askForGPSPermissions();
                     }
                 }
                 else{
-                    disabilitaProssimità();
+                    disabilitaProssimita();
                 }
             }
         });
@@ -289,17 +286,17 @@ public class FiltriFragment extends Fragment {
     }
     */
 
-    protected void disabilitaProssimità() {
+    void disabilitaProssimita() {
         distanzaText.setVisibility(View.INVISIBLE);
         cittaText.setVisibility(View.VISIBLE);
-        prossimitàSwitch.setChecked(false);
+        prossimitaSwitch.setChecked(false);
     }
 
 
-    protected void abilitaProssimità() {
+    void abilitaProssimita() {
         distanzaText.setVisibility(View.VISIBLE);
         cittaText.setVisibility(View.INVISIBLE);
-        prossimitàSwitch.setChecked(true);
+        prossimitaSwitch.setChecked(true);
     }
 
     @Override
@@ -326,7 +323,7 @@ public class FiltriFragment extends Fragment {
         String citta;
 
 
-        if(prossimitàSwitch.isChecked()) {
+        if(prossimitaSwitch.isChecked()) {
             citta = "";
             distanzaMassima = distanzaText.getText().toString();
         }
@@ -341,7 +338,7 @@ public class FiltriFragment extends Fragment {
                                             spinnerPrezzo.getSelectedItem().toString(),
                                             spinnerValutazione.getSelectedItem().toString(),
                                             distanzaMassima,
-                                            prossimitàSwitch.isChecked()
+                                            prossimitaSwitch.isChecked()
                                             );
 
         strutturaDAO.getStrutturePerFiltri(filtriStruttura,
