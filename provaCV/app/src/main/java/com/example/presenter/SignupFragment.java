@@ -78,20 +78,16 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean checkCampiNonVuoti(){
-        if(emailEditText.getText().toString().equals("") ||
-                nicknameEditText.getText().toString().equals("") ||
-                nomeEditText.getText().toString().equals("") ||
-                cognomeEditText.getText().toString().equals("") ||
-                PasswordEditText.getText().toString().equals("") ||
-                dataDiNascita.getText().toString().equals(""))
-            return false;
-        else return true;
+        return !emailEditText.getText().toString().equals("") &&
+                !nicknameEditText.getText().toString().equals("") &&
+                !nomeEditText.getText().toString().equals("") &&
+                !cognomeEditText.getText().toString().equals("") &&
+                !PasswordEditText.getText().toString().equals("") &&
+                !dataDiNascita.getText().toString().equals("");
     }
 
     private boolean checkLunghezzaPassword(){
-        if(PasswordEditText.getText().toString().length() < 5)
-            return false;
-        else return true;
+        return PasswordEditText.getText().toString().length() >= 5;
     }
 
     private Utente creaUtenteDaInserire(){
