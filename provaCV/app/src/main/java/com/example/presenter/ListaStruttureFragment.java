@@ -56,7 +56,6 @@ public class ListaStruttureFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //((MainActivity)getActivity()).toolbar.setVisibility(View.VISIBLE);
                 listaStrutture = null;
                 ((MainActivity)getActivity()).setMap();
             }
@@ -73,7 +72,7 @@ public class ListaStruttureFragment extends Fragment {
 
     private void initRecyclerView(View view){
         RecyclerView recyclerView = view.findViewById(R.id.listaStruttureRecyclerView);
-        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(getContext(), listaStrutture, (MainActivity) this.getActivity());
+        ListaStruttureRecyclerViewAdapter recyclerViewAdapter = new ListaStruttureRecyclerViewAdapter(listaStrutture, (MainActivity) this.getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

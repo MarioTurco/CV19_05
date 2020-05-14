@@ -65,7 +65,8 @@ public class RegistrazioneFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
-    private void referenziaElementiUI(View view){
+
+    private void referenziaElementiGUI(View view){
         dataDiNascita = view.findViewById(R.id.dateEditText);
         confermaRegistrazioneButton = view.findViewById(R.id.registrazioneButton);
         tastoIndietroRegistrazione = view.findViewById(R.id.backButtonSignup);
@@ -76,6 +77,7 @@ public class RegistrazioneFragment extends Fragment {
         nicknameEditText = view.findViewById(R.id.nicknameEditText);
         mostraNicknameCheckbox = view.findViewById(R.id.mostraNicknameCheckbox);
     }
+
 
     private boolean controllaCampiNonVuoti(){
         if(emailEditText.getText().toString().equals("") ||
@@ -92,6 +94,19 @@ public class RegistrazioneFragment extends Fragment {
         if(PasswordEditText.getText().toString().length() < 5)
             return false;
         else return true;
+
+    private boolean checkCampiNonVuoti(){
+        return !emailEditText.getText().toString().equals("") &&
+                !nicknameEditText.getText().toString().equals("") &&
+                !nomeEditText.getText().toString().equals("") &&
+                !cognomeEditText.getText().toString().equals("") &&
+                !PasswordEditText.getText().toString().equals("") &&
+                !dataDiNascita.getText().toString().equals("");
+    }
+
+    private boolean checkLunghezzaPassword(){
+        return PasswordEditText.getText().toString().length() >= 5;
+
     }
 
     private Utente creaUtenteDaInserire(){
@@ -120,6 +135,9 @@ public class RegistrazioneFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         referenziaElementiUI(view);
         impostaTastoIndietroRegistrazione(savedInstanceState);
+
+        referenziaElementiGUI(view);
+        setupBackButton(savedInstanceState);
         utenteDAO = new UtenteDAO(this.getActivity());
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override

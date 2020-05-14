@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 
 
 public class NessunaStrrutturaTrovataFragment extends Fragment {
-    ImageButton backButton;
+    ImageButton tastoIndietro;
 
 
     public static NessunaStrrutturaTrovataFragment newInstance() {
@@ -38,9 +38,9 @@ public class NessunaStrrutturaTrovataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backButton = view.findViewById(R.id.backButtonNessunaStruttura);
+        tastoIndietro = view.findViewById(R.id.backButtonNessunaStruttura);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        tastoIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
