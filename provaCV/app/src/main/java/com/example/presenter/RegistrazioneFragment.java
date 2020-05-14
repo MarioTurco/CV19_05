@@ -80,21 +80,17 @@ public class RegistrazioneFragment extends Fragment {
 
 
     private boolean controllaCampiNonVuoti(){
-        if(emailEditText.getText().toString().equals("") ||
-                nicknameEditText.getText().toString().equals("") ||
-                nomeEditText.getText().toString().equals("") ||
-                cognomeEditText.getText().toString().equals("") ||
-                PasswordEditText.getText().toString().equals("") ||
-                dataDiNascita.getText().toString().equals(""))
-            return false;
-        else return true;
+        return !emailEditText.getText().toString().equals("") &&
+                !nicknameEditText.getText().toString().equals("") &&
+                !nomeEditText.getText().toString().equals("") &&
+                !cognomeEditText.getText().toString().equals("") &&
+                !PasswordEditText.getText().toString().equals("") &&
+                !dataDiNascita.getText().toString().equals("");
     }
 
-    private boolean controllaLunghezzaPassword(){
-        if(PasswordEditText.getText().toString().length() < 5)
-            return false;
-        else return true;
-
+    private boolean controllaLunghezzaPassword() {
+        return PasswordEditText.getText().toString().length() >= 5;
+    }
     private boolean checkCampiNonVuoti(){
         return !emailEditText.getText().toString().equals("") &&
                 !nicknameEditText.getText().toString().equals("") &&
@@ -133,11 +129,8 @@ public class RegistrazioneFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        referenziaElementiUI(view);
-        impostaTastoIndietroRegistrazione(savedInstanceState);
-
         referenziaElementiGUI(view);
-        setupBackButton(savedInstanceState);
+        impostaTastoIndietroRegistrazione(savedInstanceState);
         utenteDAO = new UtenteDAO(this.getActivity());
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +210,7 @@ public class RegistrazioneFragment extends Fragment {
             implements DatePickerDialog.OnDateSetListener {
         EditText dataText;
 
-        public DatePickerFragment(EditText dataText) {
+        DatePickerFragment(EditText dataText) {
             this.dataText = dataText;
         }
 
