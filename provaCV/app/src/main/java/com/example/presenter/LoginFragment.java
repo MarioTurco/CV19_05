@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment {
             System.out.println("è null");
     }
 
-    private void initViewElements(View view) {
+    private void referenziaElementiGUI(View view) {
         bottoneIndietro = view.findViewById(R.id.backButtonLogin);
         bottoneLogin = view.findViewById(R.id.loginButton);
         usernameLoginText = view.findViewById(R.id.usernameLoginText);
@@ -67,7 +67,7 @@ public class LoginFragment extends Fragment {
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
-        initViewElements(view);
+        referenziaElementiGUI(view);
 
         setupBackButton(savedInstanceState);
 

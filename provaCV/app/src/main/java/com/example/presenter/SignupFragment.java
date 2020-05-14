@@ -65,7 +65,7 @@ public class SignupFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
-    private void inizializeUIElements(View view){
+    private void referenziaElementiGUI(View view){
         dataDiNascita = view.findViewById(R.id.dateEditText);
         registrazioneButton = view.findViewById(R.id.registrazioneButton);
         backButtonSignup = view.findViewById(R.id.backButtonSignup);
@@ -118,7 +118,7 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        inizializeUIElements(view);
+        referenziaElementiGUI(view);
         setupBackButton(savedInstanceState);
         utenteDAO = new UtenteDAO(this.getActivity());
         dataDiNascita.setOnClickListener(new View.OnClickListener() {
