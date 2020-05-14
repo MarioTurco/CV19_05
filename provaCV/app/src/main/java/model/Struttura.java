@@ -2,16 +2,16 @@ package model;
 
 public class Struttura {
     private String indirizzo;
-    private double longitudine;
-    private double latitudine;
     private String nome;
     private String descrizione;
     private String città;
-    private int idStruttura;
-    private double valutazioneMedia;
     private String fasciaDiPrezzo;
     private String categoria;
     private String urlFoto;
+    private int idStruttura;
+    private double valutazioneMedia;
+    private double longitudine;
+    private double latitudine;
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;

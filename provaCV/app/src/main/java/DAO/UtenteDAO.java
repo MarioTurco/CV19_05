@@ -21,19 +21,18 @@ import model.Utente;
 public class UtenteDAO {
 
     private Context context;
-    private final String TAG = "UtenteDAO";
+
     public UtenteDAO(Context context){
         this.context=context;
     }
-
     private String appendRequestForLogin(String username){
         return "&nickname="+username;
     }
 
-    private boolean checkPassword(JSONObject jsonObject, String givenPassword) throws JSONException{
+    private boolean checkPassword(JSONObject utenteJson, String givenPassword) throws JSONException{
         String correctPassword=null,salt=null;
-        correctPassword = jsonObject.getString("password");
-        salt = jsonObject.getString("salt");
+        correctPassword = utenteJson.getString("password");
+        salt = utenteJson.getString("salt");
         System.out.println(givenPassword);
         return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
     }
@@ -69,7 +68,7 @@ public class UtenteDAO {
         queue.add(jsonArrayRequest);
     }
 
-    public String buildInsertString(Utente utente){
+    private String buildInsertString(Utente utente){
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
         queryRequestString += "&nickname=" + utente.getNickname();
@@ -100,7 +99,7 @@ public class UtenteDAO {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
-                        Log.d(TAG, "onErrorResponse: Errore" );
+                        Log.d("UtenteDAO", "onErrorResponse: Errore" );
                         error.printStackTrace();
                     }
                 });
