@@ -1,6 +1,9 @@
 package com.example.provacv;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -21,6 +25,19 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStates;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +74,7 @@ public class FiltriFragment extends Fragment {
     }
 
 
+
     public static FiltriFragment newInstance() {
         FiltriFragment fragment = new FiltriFragment();
         return fragment;
@@ -66,6 +84,103 @@ public class FiltriFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.strutturaDAO = new StrutturaDAO(this.getActivity());
+    }
+
+    private void initApiClient() {
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(@Nullable Bundle bundle) {
+                        showLocationSettingsDialog();
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+
+                    }
+                })
+                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult result) {
+                        Log.i(TAG, "onConnectionFailed() connectionResult = [" + result + "]");
+                    }
+                })
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    private void showLocationSettingsDialog() {
+
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getActivity())
+                .checkLocationSettings(builder.build());
+
+        result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
+            @Override
+            public void onComplete(Task<LocationSettingsResponse> task) {
+                try {
+                    LocationSettingsResponse response = task.getResult(ApiException.class);
+                    // All location settings are satisfied. The client can initialize location
+                    // requests here.
+                } catch (ApiException e) {
+                    switch (e.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            // Location settings are not satisfied. But could be fixed by showing the
+                            // user a dialog.
+                            try {
+                                // Cast to a resolvable exception.
+                                ResolvableApiException resolvable = (ResolvableApiException) e;
+                                // Show the dialog by calling startResolutionForResult(),
+                                // and check the result in onActivityResult().
+                                /*resolvable.startResolutionForResult(
+                                        getActivity(),
+                                        MainActivity.REQUEST_CHECK_SETTINGS);
+
+                                 */
+                                startIntentSenderForResult(resolvable.getResolution().getIntentSender(), MainActivity.REQUEST_CHECK_SETTINGS, null, 0, 0, 0, null);
+                            } catch (IntentSender.SendIntentException exception) {
+                                // Ignore the error.
+                            } catch (ClassCastException exception) {
+                                // Ignore, should be an impossible error.
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            // Location settings are not satisfied. However, we have no way to fix the
+                            // settings so we won't show the dialog.
+                            break;
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
+        System.out.println("richiesta: " + requestCode);
+        switch (requestCode) {
+            case 214:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        // All required changes were successfully made
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        // The user was asked to change settings, but chose not to
+                        disabilitaProssimità();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
     }
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
@@ -132,6 +247,7 @@ public class FiltriFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     if (hasGPSPermissions()) {
+                        initApiClient();
                         abilitaProssimità();
                     }
                     else{
@@ -146,15 +262,22 @@ public class FiltriFragment extends Fragment {
     }
 
     private void askForGPSPermissions() {
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+        getActivity().requestPermissions(new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION},
+                2);
+        //requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
     }
 
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        System.out.println("Ci sono");
         switch (requestCode){
             case 2:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
+                    initApiClient();
                     abilitaProssimità();
                 }
                 else{
@@ -164,15 +287,16 @@ public class FiltriFragment extends Fragment {
             }
         }
     }
+    */
 
-    private void disabilitaProssimità() {
+    protected void disabilitaProssimità() {
         distanzaText.setVisibility(View.INVISIBLE);
         cittaText.setVisibility(View.VISIBLE);
         prossimitàSwitch.setChecked(false);
     }
 
 
-    private void abilitaProssimità() {
+    protected void abilitaProssimità() {
         distanzaText.setVisibility(View.VISIBLE);
         cittaText.setVisibility(View.INVISIBLE);
         prossimitàSwitch.setChecked(true);

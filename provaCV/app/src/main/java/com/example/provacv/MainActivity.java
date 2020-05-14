@@ -1,6 +1,7 @@
 package com.example.provacv;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -39,6 +40,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected static Bundle instanceState;
     private StrutturaDAO strutturaDao;
     private MapboxMap mapboxMap;
-    private static final int REQUEST_CHECK_SETTINGS = 214;
+    protected static final int REQUEST_CHECK_SETTINGS = 214;
     private Style localStyle;
     public static double latitudine;
     public static double longitudine;
@@ -573,10 +575,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return hasFineLocationAccess() && hasCoarseLocationAccess();
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        System.out.println("OK " + requestCode);
         switch (requestCode) {
-            case 1: {
+            case 1: //Richiesta inviata da questa activity
+            {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     Log.d(TAG, "onRequestPermissionsResult: Abilitato");
                     initApiClient();
@@ -587,11 +592,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Log.d(TAG, "onRequestPermissionsResult: disbilitato");
                     //TODO imposta telecamera mappa a delle cordinate prefissate (ad esempio l'italia)
                 }
+                break;
             }
+            case 2:     //richiesta inviata dal fragment FiltriFragment
+                FiltriFragment fragmentFiltri = (FiltriFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
+                    initApiClient();
+                    fragmentFiltri.abilitaProssimità();
+
+                } else {
+                    fragmentFiltri.disabilitaProssimità();
+                }
+                break;
         }
     }
 
-    private void askForGPSPermissions() {
+
+
+
+    protected void askForGPSPermissions() {
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
 
