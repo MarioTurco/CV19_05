@@ -58,7 +58,7 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
         return view;
     }
 
-    public void setDimensions(){
+    private void setDimensioni(){
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
@@ -114,7 +114,7 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        setDimensions();
+        setDimensioni();
         setMap();
     }
 }

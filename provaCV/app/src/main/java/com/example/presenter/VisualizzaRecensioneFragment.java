@@ -28,7 +28,6 @@ public class VisualizzaRecensioneFragment extends Fragment {
     }
 
     public VisualizzaRecensioneFragment(Recensione recensione) {
-
         this.recensione = recensione;
     }
 
@@ -37,7 +36,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
         return fragment;
     }
 
-    private void initGUIElements(View itemView) {
+    private void referenziaElementiGUI(View itemView) {
         autore = itemView.findViewById(R.id.autoreRecensione);
         ratingBar = itemView.findViewById(R.id.ratingBarRecensione);
         data = itemView.findViewById(R.id.dataRecensione);
@@ -50,13 +49,13 @@ public class VisualizzaRecensioneFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_visualizza_recensione, container, false);
-        initGUIElements(view);
-        setupBackButton();
+        referenziaElementiGUI(view);
+        aggiungiListenerTastoIndietro();
 
         return view;
     }
 
-    private void setupBackButton() {
+    private void aggiungiListenerTastoIndietro() {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
