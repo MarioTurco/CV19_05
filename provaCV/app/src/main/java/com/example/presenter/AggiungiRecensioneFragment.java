@@ -41,11 +41,10 @@ public class AggiungiRecensioneFragment extends Fragment {
     }
 
     public static AggiungiRecensioneFragment newInstance(int idStruttura) {
-        AggiungiRecensioneFragment fragment = new AggiungiRecensioneFragment(idStruttura);
-        return fragment;
+        return new AggiungiRecensioneFragment(idStruttura);
     }
 
-    private void inizializeUiElements(View view){
+    private void referenziaElementiUI(View view){
         titoloRecensione = view.findViewById(R.id.titoloRecensione);
         testoRecensione = view.findViewById(R.id.testoRecensione);
         ratingBar = view.findViewById(R.id.ratingBar);
@@ -57,22 +56,20 @@ public class AggiungiRecensioneFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_aggiungi_recensione, container, false);
-        inizializeUiElements(view);
+        referenziaElementiUI(view);
         this.recensioneDAO = new RecensioneDAO(this.getActivity());
         return view;
     }
 
-    private boolean checkCampiNonVuoti(){
-        if(titoloRecensione.getText().toString().equals("") ||
-                testoRecensione.getText().toString().equals("") ||
-                ratingBar.getRating() == 0)
-            return false;
-        else return true;
+    private boolean controllaCampiNonVuoti(){
+        return !titoloRecensione.getText().toString().equals("") &&
+                !testoRecensione.getText().toString().equals("") &&
+                ratingBar.getRating() != 0;
     }
 
     private Recensione costruisciRecensioneDaInserire(){
         Recensione recensioneDaAggiungere = new Recensione();
-        if(checkCampiNonVuoti()) {
+        if(controllaCampiNonVuoti()) {
             recensioneDaAggiungere.setStruttura(idStruttura);
             recensioneDaAggiungere.setStatoRecensione("In Attesa");
             recensioneDaAggiungere.setAutore(getNickname());
