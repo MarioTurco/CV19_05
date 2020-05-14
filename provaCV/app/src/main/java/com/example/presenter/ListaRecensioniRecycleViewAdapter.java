@@ -1,6 +1,5 @@
 package com.example.presenter;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +17,11 @@ import java.util.ArrayList;
 import model.Recensione;
 
 public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<ListaRecensioniRecycleViewAdapter.ViewHolder> {
-    private static final String TAG = "ListaRecensioniRecyclerV";
     private MainActivity mainActivity;
-    private Context mContext;
-    //qui vanno le robe prese dall'activity che a sua volta dovrebbe prenderle dal dao/locale
+
     private ArrayList<Recensione> listaRecensioni;
 
-    public ListaRecensioniRecycleViewAdapter(Context mContext, ArrayList<Recensione> listaRecensioni,MainActivity activity) {
-        this.mContext = mContext;
+    public ListaRecensioniRecycleViewAdapter(ArrayList<Recensione> listaRecensioni, MainActivity activity) {
         this.listaRecensioni = listaRecensioni;
         this.mainActivity = activity;
     }
@@ -40,12 +36,9 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
 
     @Override
     public void onBindViewHolder(@NonNull ListaRecensioniRecycleViewAdapter.ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: ");
+        Log.d("ListaRecensioniRecyclerView", "onBindViewHolder: ");
         final Recensione recensione = listaRecensioni.get(position);
 
-        //TODO scarica immagne dal db
-        //qui dobbiamo caricare l'immagine
-        //...
 
         //qui settiamo i vari campi di testo
         holder.autore.setText(recensione.getAutore());
@@ -55,7 +48,6 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         holder.titolo.setText(recensione.getTitolo());
 
 
-        //listener che ci fa aprire la pagina della struttura TODO: implementare listener che apre la pagina della struttura
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,12 +64,12 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         return listaRecensioni.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView  autore,data,titolo,testo;
         RatingBar ratingBar;
         MaterialCardView ViewLayout;
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             attachItemsByID(itemView);
         }
