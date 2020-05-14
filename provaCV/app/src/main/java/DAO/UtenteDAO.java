@@ -68,7 +68,7 @@ public class UtenteDAO {
         queue.add(jsonArrayRequest);
     }
 
-    public String buildInsertString(Utente utente){
+    private String buildInsertString(Utente utente){
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
         queryRequestString += "&nickname=" + utente.getNickname();
