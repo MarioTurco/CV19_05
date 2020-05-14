@@ -14,14 +14,12 @@ import android.widget.ImageButton;
 
 
 public class ConnessioneAssenteFragment extends Fragment {
-    ImageButton backbutton;
+    private ImageButton tastoIndietro;
 
 
 
-    // TODO: Rename and change types and number of parameters
     public static ConnessioneAssenteFragment newInstance() {
-        ConnessioneAssenteFragment fragment = new ConnessioneAssenteFragment();
-        return fragment;
+        return new ConnessioneAssenteFragment();
     }
 
     @Override
@@ -32,16 +30,15 @@ public class ConnessioneAssenteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_connessione_assente, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_connessione_assente, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        backbutton = view.findViewById(R.id.backButtonNessunaStruttura);
+        tastoIndietro = view.findViewById(R.id.backButtonNessunaStruttura);
 
-        backbutton.setOnClickListener(new View.OnClickListener() {
+        tastoIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
