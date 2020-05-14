@@ -382,33 +382,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void creaMapFragment(MapboxMapOptions options){
+        // Create fragment
+        final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+        // Create map fragment
+        mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
+        // Add map fragment to parent container
+        transaction.add(R.id.container, mapFragment, "com.mapbox.map");
+        transaction.commit();
+    }
+
+    private int getIdStrutturaFromFeature(Feature feature){
+        for (Map.Entry<String, JsonElement> entry : feature.properties().entrySet()) {
+            if(entry.getKey().equals("id")) {
+                return Integer.parseInt(entry.getValue().toString());
+            }
+        }
+
+        return -1;
+    }
+
     protected void setMap() {
         setUpBackPressed();
         Location lastKnownLocation;
         final MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this, null);
+
         if(hasGPSPermissions())
-            initApiClient();
+            chiediPosizione();
 
         setPosition(options);
 
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
-        if (instanceState == null) {
-            // Create fragment
-            final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-            // Build mapboxMap
-
-
-            // Create map fragment
-            mapFragment = CustomSupportMapFragment.newInstance(options, toolbar);
-            // Add map fragment to parent container
-            transaction.add(R.id.container, mapFragment, "com.mapbox.map");
-            transaction.commit();
-        } else {
-
+        if (instanceState == null)
+            creaMapFragment(options);
+        else
             mapFragment = (CustomSupportMapFragment) getSupportFragmentManager().findFragmentByTag("com.mapbox.map");
-        }
 
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -419,22 +429,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         private boolean pointClick(PointF point){
                             List<Feature> features = mapboxMap.queryRenderedFeatures(point, "cv19-map");
-
                             // Get the first feature within the list if one exist
                             if (features.size() > 0) {
                                 Feature feature = features.get(0);
-
                                 // Ensure the feature has properties defined
                                 if (feature.properties() != null) {
-                                    int idStruttura = 0;
-                                    for (Map.Entry<String, JsonElement> entry : feature.properties().entrySet()) {
-                                        if(entry.getKey().equals("id")) {
-                                            idStruttura = Integer.parseInt(entry.getValue().toString());
-                                            System.out.println(idStruttura);
-                                        }
-                                        Log.d(TAG, String.format("%s = %s", entry.getKey(), entry.getValue()));
-                                    }
-                                    mostraStrutturaDopoTap(idStruttura);
+                                    mostraStrutturaDopoTap(getIdStrutturaFromFeature(feature));
                                 }
                             }
                             return true;
@@ -481,7 +481,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Set the component's render mode
             locationComponent.setRenderMode(RenderMode.COMPASS);
         } else {
-            System.out.println("Non ho i permessi");
             askForGPSPermissions();
         }
     }
@@ -495,31 +494,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setVisibility(View.GONE);
     }
 
+    private void setCampiStrutturaDaJSON(Struttura strutturaTappata, JSONObject strutturaJSON) throws JSONException{
+        strutturaTappata.setNome(strutturaJSON.getString("nome"));
+        strutturaTappata.setIndirizzo(strutturaJSON.getString("indirizzo"));
+        strutturaTappata.setLatitudine(strutturaJSON.getDouble("latitudine"));
+        strutturaTappata.setLongitudine(strutturaJSON.getDouble("longitudine"));
+        strutturaTappata.setDescrizione(strutturaJSON.getString("descrizione"));
+        strutturaTappata.setCittà(strutturaJSON.getString("citta"));
+        strutturaTappata.setIdStruttura(strutturaJSON.getInt("id_struttura"));
+        strutturaTappata.setValutazioneMedia(strutturaJSON.getDouble("valutazione_media"));
+        strutturaTappata.setFasciaDiPrezzo(strutturaJSON.getString("fascia_di_prezzo"));
+        strutturaTappata.setCategoria(strutturaJSON.getString("categoria"));
+        strutturaTappata.setUrlFoto(strutturaJSON.getString("url_foto"));
+    }
+
     private void mostraStrutturaDopoTap(int idStruttura){
         strutturaDao.getStrutturaById(idStruttura, new VolleyCallback<JSONObject>() {
             @Override
             public void onSuccess(JSONObject strutturaJSON){
                 Struttura strutturaTappata = new Struttura();
                 try {
-                    strutturaTappata.setNome(strutturaJSON.getString("nome"));
-                    strutturaTappata.setIndirizzo(strutturaJSON.getString("indirizzo"));
-                    strutturaTappata.setLatitudine(strutturaJSON.getDouble("latitudine"));
-                    strutturaTappata.setLongitudine(strutturaJSON.getDouble("longitudine"));
-                    strutturaTappata.setDescrizione(strutturaJSON.getString("descrizione"));
-                    strutturaTappata.setCittà(strutturaJSON.getString("citta"));
-                    strutturaTappata.setIdStruttura(strutturaJSON.getInt("id_struttura"));
-                    strutturaTappata.setValutazioneMedia(strutturaJSON.getDouble("valutazione_media"));
-                    strutturaTappata.setFasciaDiPrezzo(strutturaJSON.getString("fascia_di_prezzo"));
-                    strutturaTappata.setCategoria(strutturaJSON.getString("categoria"));
-                    strutturaTappata.setUrlFoto(strutturaJSON.getString("url_foto"));
-
+                    setCampiStrutturaDaJSON(strutturaTappata, strutturaJSON);
                     mostraStrutturaFragment(strutturaTappata);
                 }
                 catch(JSONException e){
 
                 }
             }
-
             @Override
             public void onFail() {
 
@@ -576,35 +577,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    private void chiediPosizione(){
+        initApiClient();
+    }
+
+    private void mostraPosizioneSuMappa(){
+        chiediPosizione();
+        fusedLocationClient.getLastLocation();
+        enableLocationComponent();
+    }
+
+    private boolean controllaPermessiPosizione(int[] grantResults){
+        return grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void abilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
+        initApiClient();
+        fragmentFiltri.abilitaProssimità();
+    }
+
+    private void disabilitaRicercaProssimitàFiltri(FiltriFragment fragmentFiltri){
+        fragmentFiltri.disabilitaProssimità();
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        System.out.println("OK " + requestCode);
         switch (requestCode) {
-            case 1: //Richiesta inviata da questa activity
+            case 1:     //Richiesta inviata da questa activity
             {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
-                    initApiClient();
-                    fusedLocationClient.getLastLocation();
-                    enableLocationComponent();
-
-                } else {
-                    Log.d(TAG, "onRequestPermissionsResult: disbilitato");
-                    //TODO imposta telecamera mappa a delle cordinate prefissate (ad esempio l'italia)
-                }
+                if (controllaPermessiPosizione(grantResults))
+                    mostraPosizioneSuMappa();
                 break;
             }
             case 2:     //richiesta inviata dal fragment FiltriFragment
+            {
                 FiltriFragment fragmentFiltri = (FiltriFragment) getSupportFragmentManager().findFragmentById(R.id.container);
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
-                    initApiClient();
-                    fragmentFiltri.abilitaProssimità();
-
-                } else {
-                    fragmentFiltri.disabilitaProssimità();
+                if (controllaPermessiPosizione(grantResults))
+                    abilitaRicercaProssimitàFiltri(fragmentFiltri);
+                else {
+                    disabilitaRicercaProssimitàFiltri(fragmentFiltri);
+                    break;
                 }
-                break;
+            }
         }
     }
 
