@@ -5,7 +5,7 @@ public class Recensione {
     private String dataRecensione;
     private String titolo;
     private int valutazione;
-    private Integer idRecensione;
+    private int idRecensione;
     private int struttura;
     private String statoRecensione;
     private String autore;

@@ -21,7 +21,6 @@ import model.Utente;
 public class UtenteDAO {
 
     private Context context;
-    private final String TAG = "UtenteDAO";
     public UtenteDAO(Context context){
         this.context=context;
     }
@@ -100,7 +99,7 @@ public class UtenteDAO {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
-                        Log.d(TAG, "onErrorResponse: Errore" );
+                        Log.d("UtenteDAO", "onErrorResponse: Errore" );
                         error.printStackTrace();
                     }
                 });
