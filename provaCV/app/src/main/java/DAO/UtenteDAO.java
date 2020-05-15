@@ -10,34 +10,35 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import utils.PasswordUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import model.Utente;
+import utils.PasswordUtils;
 
 public class UtenteDAO {
 
     private Context context;
 
-    public UtenteDAO(Context context){
-        this.context=context;
-    }
-    private String aggiungiUsernameAllaQuery(String username){
-        return "&nickname="+username;
+    public UtenteDAO(Context context) {
+        this.context = context;
     }
 
-    private boolean controllaPassword(JSONObject utenteJson, String givenPassword) throws JSONException{
-        String correctPassword=null,salt=null;
+    private String aggiungiUsernameAllaQuery(String username) {
+        return "&nickname=" + username;
+    }
+
+    private boolean controllaPassword(JSONObject utenteJson, String givenPassword) throws JSONException {
+        String correctPassword = null, salt = null;
         correctPassword = utenteJson.getString("password");
         salt = utenteJson.getString("salt");
         System.out.println(givenPassword);
-        return PasswordUtils.verifyUserPassword(givenPassword,correctPassword,salt);
+        return PasswordUtils.verifyUserPassword(givenPassword, correctPassword, salt);
     }
 
-    public void effettuaLogin(String username, final String givenPassword, final VolleyCallback<Boolean> callback){
+    public void effettuaLogin(String username, final String givenPassword, final VolleyCallback<Boolean> callback) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
         queryRequestString += aggiungiUsernameAllaQuery(username);
@@ -49,26 +50,26 @@ public class UtenteDAO {
                     public void onResponse(JSONArray response) {
                         try {
                             boolean loginSuccess;
-                            if(response.length() == 0)
+                            if (response.length() == 0)
                                 loginSuccess = false;
                             else
                                 loginSuccess = controllaPassword(response.getJSONObject(0), givenPassword);
 
                             callback.onSuccess(loginSuccess);
-                        } catch (JSONException e) {}
+                        } catch (JSONException e) {
+                        }
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Errore");
-
+                        Log.d("UtenteDAO", "onErrorResponse: Errore");
                     }
                 });
         queue.add(jsonArrayRequest);
     }
 
-    private String costruisciQueryInserimento(Utente utente){
+    private String costruisciQueryInserimento(Utente utente) {
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
         queryRequestString += "&nickname=" + utente.getNickname();
@@ -81,7 +82,7 @@ public class UtenteDAO {
         return queryRequestString;
     }
 
-    public void registraUtente(Utente utente, final VolleyCallback<String> callback){
+    public void registraUtente(Utente utente, final VolleyCallback<String> callback) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = costruisciQueryInserimento(utente);
         System.out.println(queryRequestString);
@@ -92,14 +93,15 @@ public class UtenteDAO {
                         try {
                             String addSuccess = response.getString("status");
                             callback.onSuccess(addSuccess);
-                        } catch (Exception e) {}
+                        } catch (Exception e) {
+                        }
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
-                        Log.d("UtenteDAO", "onErrorResponse: Errore" );
+                        Log.d("UtenteDAO", "onErrorResponse: Errore");
                         error.printStackTrace();
                     }
                 });
