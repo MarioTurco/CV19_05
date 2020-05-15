@@ -1,0 +1,115 @@
+\subsection{Testing Black Box}
+Effettueremo una serie di test, tramite strategia Strong Equivalence Class Testing sul seguente metodo:
+\lstset{language=Java,
+    keywordstyle=\color{purple},
+    basicstyle=\scriptsize\ttfamily,
+    commentstyle=\ttfamily\itshape\color{gray},
+    stringstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ffff,
+    frame=single,
+    rulecolor=\color{black},
+    numbers = left,
+    extendedchars=true%,                      %questo rigo ed il successivo servono per usare le lettere à è ù nel codice
+    %literate={à}{{\'a}}1 {è}{{\'a}}1 {ù}{{\'u}}1 
+}
+\begin{lstlisting}
+public boolean tryLogin(String username, String password)
+\end{lstlisting}
+Definiamo le classi di equivalenza dei valori assumibili dai parametri in input:
+%Intestazione tabella%
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Classi di equivalenza di 'username'}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Classe di Equivalenza & Descrizione\\
+        \hline
+        EC1 & username è null  \\
+        \hline
+        EC2 & username è una stringa vuota\\
+        \hline
+        EC3 &  username è sbagliato\\
+        \hline
+        EC4 & username è corretto\\
+        \hline
+    \end{tabularx}
+    %Continua alla pagina seguente
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Classi di equivalenza di 'password'}
+    \begin{tabularx}{\textwidth}{|c|X|}
+        \hline
+        Classe di Equivalenza & Descrizione\\
+        \hline
+        EC5 & password è null  \\
+        \hline
+        EC6 & password è una stringa vuota\\
+        \hline
+        EC7 &  password è sbagliata\\
+        \hline
+        EC8 & password è corretta\\
+        \hline
+    \end{tabularx}
+    %Continua alla pagina seguente
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+Effettuiamo il prodotto cartesiano tra le classi di equivalenza del primo parametro 
+e quelle del secondo parametro per ottenere tutti i possibili testcase:
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Lista dei TestCase}
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        Test Case & Classe di Equivalenza & Descrizione\\
+        \hline
+        TC1 & EC1 & EC5  \\
+        \hline
+        TC2 & EC1 & EC6  \\
+        \hline
+        TC3 & EC1 & EC7  \\
+        \hline
+        TC4 & EC1 & EC8  \\
+        \hline
+        TC5 & EC2 & EC5  \\
+        \hline
+        TC6 & EC2 & EC6  \\
+        \hline
+        TC7 & EC2 & EC7  \\
+        \hline
+        TC8 & EC2 & EC8  \\
+        \hline
+        TC9 & EC3 & EC5  \\
+        \hline
+        TC10 & EC3 & EC6  \\
+        \hline
+        TC11 & EC3 & EC7  \\
+        \hline
+        TC12 & EC3 & EC8  \\
+        \hline
+        TC13 & EC4 & EC5  \\
+        \hline
+        TC14 & EC4 & EC6  \\
+        \hline
+        TC15 & EC4 & EC7  \\
+        \hline
+        TC16 & EC4 & EC8  \\
+        \hline
+    \end{tabularx}
+    %Continua alla pagina seguente
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.5}
+\end{table}
+
+Si riporta di seguito il codice sorgente dei test:
+\lstinputlisting{TestCases/AdminDAO_TestSuite.java}
+
+       
