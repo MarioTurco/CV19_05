@@ -313,6 +313,7 @@ public class DettagliStrutturaFragment extends Fragment {
             if (resultCode == Activity.RESULT_OK) {
                 System.out.println(data.getExtras().getString("Autore"));
                 System.out.println(data.getExtras().getBoolean("Recenti"));
+                System.out.println(data.getExtras().getInt("Rating"));
             }
         }
     }

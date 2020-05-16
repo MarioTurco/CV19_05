@@ -45,7 +45,7 @@ public class FiltriRecensioniDialog extends DialogFragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("Autore", autoreText.getText().toString());
-                //bundle.putInt("Rating", Integer.parseInt(spinnerValutazioneRecensioni.getSelectedItem().toString()));
+                bundle.putInt("Rating", (int)ratingRecensioni.getRating());
                 bundle.putBoolean("Recenti", recentiSwitch.isChecked());
 
                 //System.out.println(bundle);
