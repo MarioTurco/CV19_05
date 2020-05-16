@@ -57,7 +57,6 @@ public class ListaStruttureFragment extends Fragment {
                 //TODO
             }
         });
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
