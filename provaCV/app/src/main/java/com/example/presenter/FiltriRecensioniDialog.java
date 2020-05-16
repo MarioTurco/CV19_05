@@ -21,9 +21,11 @@ public class FiltriRecensioniDialog extends DialogFragment {
     }
 
     private void setDimensioni(){
-        int height = 1100;
-        int width = 1000;
-        getDialog().getWindow().setLayout(width, height);
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+        getDialog().getWindow().setLayout(width-200, height-700);
     }
 
     @Override
