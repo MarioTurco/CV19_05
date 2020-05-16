@@ -9,9 +9,8 @@
     <EditText
         android:id="@+id/nomeText"
         style="@style/Widget.AppCompat.EditText"
-        android:layout_width="321dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:backgroundTint="@android:color/transparent"
         android:drawableRight="@drawable/ic_letter"
@@ -19,13 +18,15 @@
         android:fontFamily="@font/century_gothic"
         android:hint="Autore"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/divider3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerValutazione"
-        android:layout_width="160dp"
-        android:layout_height="27dp"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:dropDownWidth="wrap_content"
         android:entries="@array/Valutazione"
         android:fontFamily="@font/century_gothic"
@@ -33,26 +34,25 @@
         android:spinnerMode="dialog"
         android:tooltipText="Prezzo"
         app:layout_constraintEnd_toEndOf="@+id/nomeText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toTopOf="@+id/textView31" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="206dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/century_gothic"
         android:text="Mostra più recenti"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/divider3"
+        app:layout_constraintEnd_toStartOf="@+id/prossimitàSwitch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView31"
         app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione" />
 
     <Switch
         android:id="@+id/prossimitàSwitch"
-        android:layout_width="45dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="@+id/spinnerValutazione" />
 
@@ -60,36 +60,29 @@
         android:id="@+id/cercaButton"
         android:layout_width="115dp"
         android:layout_height="29dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/cerca_button_background"
         android:fontFamily="@font/century_gothic"
         android:text="Cerca"
         android:textAllCaps="true"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/century_gothic"
         android:text="Rating"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/divider3"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerValutazione"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nomeText"
         app:layout_constraintTop_toBottomOf="@+id/nomeText" />
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="1dp"
-        android:layout_height="585dp"
-        android:layout_marginStart="24dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
