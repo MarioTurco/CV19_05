@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -21,7 +22,7 @@ public class FiltriRecensioniDialog extends DialogFragment {
 
     private Button applicaFiltriButton;
     private EditText autoreText;
-    private Spinner spinnerValutazioneRecensioni;
+    private RatingBar ratingRecensioni;
     private Switch recentiSwitch;
     private View view;
 
@@ -68,7 +69,7 @@ public class FiltriRecensioniDialog extends DialogFragment {
     private void referenziaElementiGUI(){
         applicaFiltriButton = view.findViewById(R.id.applicaFiltriButton);
         autoreText = view.findViewById(R.id.autoreText);
-        spinnerValutazioneRecensioni = view.findViewById(R.id.spinnerValutazioneRecensioni);
+        ratingRecensioni = view.findViewById(R.id.ratingRecensioni);
         recentiSwitch = view.findViewById(R.id.recentiSwitch);
     }
 
