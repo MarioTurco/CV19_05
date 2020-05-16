@@ -173,7 +173,14 @@ public class DettagliStrutturaFragment extends Fragment {
         filtriRecensioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+                DialogFragment dialogFragment = new FiltriRecensioniDialog();
+                dialogFragment.show(ft, "dialog");
             }
         });
     }
