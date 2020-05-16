@@ -1,5 +1,9 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Recensione {
     private String testo;
     private String dataRecensione;
@@ -72,5 +76,16 @@ public class Recensione {
 
     public void setAutore(Utente autore) {
         this.autore = autore;
+    }
+
+    public Date getDataInFormatoData() {
+        Date dataRitorno = null;
+        try {
+            dataRitorno = new SimpleDateFormat("yyyy-MM-dd").parse(dataRecensione);
+        } catch (ParseException e) {
+            System.out.println(dataRecensione);
+            System.out.println("Errore parse data");
+        }
+        return dataRitorno;
     }
 }

@@ -30,12 +30,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
 import model.Struttura;
 import model.Utente;
+import utils.DataComparator;
+import utils.RatingComparator;
 
 
 public class DettagliStrutturaFragment extends Fragment {
@@ -311,11 +316,45 @@ public class DettagliStrutturaFragment extends Fragment {
         if (requestCode == 100) {
 
             if (resultCode == Activity.RESULT_OK) {
-                System.out.println(data.getExtras().getString("Autore"));
-                System.out.println(data.getExtras().getBoolean("Recenti"));
-                System.out.println(data.getExtras().getInt("Rating"));
+                ArrayList<Recensione> listaFiltrata = filtraListaRecensioni(data.getExtras());
+                initRecyclerViewConFiltri(listaFiltrata);
             }
         }
+    }
+
+    private boolean controllaNomeONicknameFiltro(Recensione recensione, String autoreFiltro){
+        boolean controlloNomeONickname = true;
+        if(!autoreFiltro.equals("")) {
+            if (recensione.getAutore().isMostraNickname())
+                controlloNomeONickname = recensione.getAutore().getNickname().contains(autoreFiltro);
+            else
+                controlloNomeONickname = recensione.getAutore().getNome().contains(autoreFiltro);
+        }
+        return controlloNomeONickname;
+    }
+
+    private boolean controllaRatingFiltro(Recensione recensione, int ratingFiltro){
+        return (recensione.getValutazione() <= ratingFiltro) || (ratingFiltro == 0);
+    }
+
+    private void ordinaListaFiltrata(ArrayList<Recensione> listaFiltrata, boolean ordinaPerData){
+        if(ordinaPerData)
+            Collections.sort(listaFiltrata, new DataComparator());
+        else
+            Collections.sort(listaFiltrata, new RatingComparator());
+        Collections.reverse(listaFiltrata);
+    }
+
+    private ArrayList<Recensione> filtraListaRecensioni(Bundle filtri){
+        ArrayList<Recensione> listaFiltrata = new ArrayList<>();
+        for(Recensione recensione : listaRecensioni){
+            if(controllaNomeONicknameFiltro(recensione, filtri.getString("Autore"))
+                    && controllaRatingFiltro(recensione, filtri.getInt("Rating")))
+                listaFiltrata.add(recensione);
+        }
+        System.out.println(listaFiltrata);
+        ordinaListaFiltrata(listaFiltrata, filtri.getBoolean("Recenti"));
+        return listaFiltrata;
     }
 
     private void initRecyclerViewConFiltri(ArrayList<Recensione> recensioniFiltrate) {
