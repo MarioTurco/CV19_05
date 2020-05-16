@@ -6,7 +6,7 @@ public class Recensione {
     private String titolo;
     private int valutazione;
     private int idRecensione;
-    private int struttura;
+    private Struttura struttura;
     private String statoRecensione;
     private Utente autore;
 
@@ -50,11 +50,11 @@ public class Recensione {
         this.idRecensione = idRecensione;
     }
 
-    public int getStruttura() {
+    public Struttura getStruttura() {
         return struttura;
     }
 
-    public void setStruttura(int struttura) {
+    public void setStruttura(Struttura struttura) {
         this.struttura = struttura;
     }
 

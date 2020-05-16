@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
+import model.Struttura;
 import model.Utente;
 
 public class AggiungiRecensioneFragment extends Fragment {
@@ -70,8 +71,10 @@ public class AggiungiRecensioneFragment extends Fragment {
 
     private Recensione costruisciRecensioneDaInserire(){
         Recensione recensioneDaAggiungere = new Recensione();
+        Struttura struttura = new Struttura();
+        struttura.setIdStruttura(idStruttura);
         if(controllaCampiNonVuoti()) {
-            recensioneDaAggiungere.setStruttura(idStruttura);
+            recensioneDaAggiungere.setStruttura(struttura);
             recensioneDaAggiungere.setStatoRecensione("In Attesa");
             Utente autore = new Utente();
             autore.setNickname(getNickname());

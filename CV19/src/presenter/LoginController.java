@@ -106,8 +106,7 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         Thread th = new Thread(() -> {
-                if (administratorDao.tryLogin(username, password)) {
-                    //administratorDao.isNotLoggato(username);
+                if (administratorDao.tryLogin(username, password)){
                     this.admin=new Admin(username);
                     Platform.runLater(() -> {
                         try {

@@ -82,9 +82,7 @@ public class DettagliStrutturaFragment extends Fragment {
         autoreRecensione.setMostraNickname(result.getBoolean("mostra_nickname"));
         autoreRecensione.setPassword(result.getString("password"));
         autoreRecensione.setSalt(result.getString("salt"));
-
         return autoreRecensione;
-
     }
 
     private void caricaRecensioniStruttura() {
@@ -101,7 +99,7 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setTitolo(recensioneJSON.getString("titolo"));
                                 Utente autore = creaUtenteDaQuery(recensioneJSON);
                                 recensione.setAutore(autore);
-                                recensione.setStruttura(struttura.getIdStruttura());
+                                recensione.setStruttura(struttura);
                                 recensione.setIdRecensione(recensioneJSON.getInt("id_recensione"));
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));
                                 listaRecensioni.add(recensione);
