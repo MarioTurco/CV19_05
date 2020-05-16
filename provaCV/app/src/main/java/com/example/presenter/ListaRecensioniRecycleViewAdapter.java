@@ -41,7 +41,10 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
 
 
         //qui settiamo i vari campi di testo
-        holder.autore.setText(recensione.getAutore());
+        if(recensione.getAutore().isMostraNickname())
+            holder.autore.setText(recensione.getAutore().getNickname());
+        else
+            holder.autore.setText(recensione.getAutore().getNome());
         holder.data.setText(recensione.getDataRecensione());
         holder.ratingBar.setRating(recensione.getValutazione());
         holder.testo.setText(recensione.getTesto());

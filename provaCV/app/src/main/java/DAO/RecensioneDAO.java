@@ -46,7 +46,7 @@ public class RecensioneDAO {
     public void aggiungiRecensione(Recensione nuovaRecensione, final VolleyCallback<String> callback){
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/insertrecensione?testo=" + nuovaRecensione.getTesto() + "&datarecensione=" + nuovaRecensione.getDataRecensione()
-                +"&titolo=" + nuovaRecensione.getTitolo() +"&valutazione=" + nuovaRecensione.getValutazione() + "&struttura=" + nuovaRecensione.getStruttura() +"&autore=" + nuovaRecensione.getAutore();
+                +"&titolo=" + nuovaRecensione.getTitolo() +"&valutazione=" + nuovaRecensione.getValutazione() + "&struttura=" + nuovaRecensione.getStruttura() +"&autore=" + nuovaRecensione.getAutore().getNickname();
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {
                     @Override

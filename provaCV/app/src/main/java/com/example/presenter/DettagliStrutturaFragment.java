@@ -33,6 +33,7 @@ import DAO.VolleyCallback;
 import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
 import model.Struttura;
+import model.Utente;
 
 
 public class DettagliStrutturaFragment extends Fragment {
@@ -72,6 +73,20 @@ public class DettagliStrutturaFragment extends Fragment {
 
     }
 
+    private Utente creaUtenteDaQuery(JSONObject result) throws JSONException{
+        Utente autoreRecensione = new Utente();
+        autoreRecensione.setNickname(result.getString("nickname"));
+        autoreRecensione.setNome(result.getString("nome"));
+        autoreRecensione.setEmail(result.getString("email"));
+        autoreRecensione.setDataDiNascita(result.getString("data_di_nascita"));
+        autoreRecensione.setMostraNickname(result.getBoolean("mostra_nickname"));
+        autoreRecensione.setPassword(result.getString("password"));
+        autoreRecensione.setSalt(result.getString("salt"));
+
+        return autoreRecensione;
+
+    }
+
     private void caricaRecensioniStruttura() {
         recensioneDAO.getRecensioniPerIdStruttura(struttura.getIdStruttura(),
                 new VolleyCallback<JSONArray>() {
@@ -84,10 +99,8 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setTesto(recensioneJSON.getString("testo"));
                                 recensione.setDataRecensione(recensioneJSON.getString("datarecensione"));
                                 recensione.setTitolo(recensioneJSON.getString("titolo"));
-                                if(recensioneJSON.getString("mostra_nickname").equals("True"))
-                                    recensione.setAutore(recensioneJSON.getString("autore"));
-                                else
-                                    recensione.setAutore(recensioneJSON.getString("nome"));
+                                Utente autore = creaUtenteDaQuery(recensioneJSON);
+                                recensione.setAutore(autore);
                                 recensione.setStruttura(struttura.getIdStruttura());
                                 recensione.setIdRecensione(recensioneJSON.getInt("id_recensione"));
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));

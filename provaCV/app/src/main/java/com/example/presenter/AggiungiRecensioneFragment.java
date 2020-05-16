@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import DAO.RecensioneDAO;
 import DAO.VolleyCallback;
 import model.Recensione;
+import model.Utente;
 
 public class AggiungiRecensioneFragment extends Fragment {
     final String TAG = "AggiungiRecensioneFragment";
@@ -72,7 +73,9 @@ public class AggiungiRecensioneFragment extends Fragment {
         if(controllaCampiNonVuoti()) {
             recensioneDaAggiungere.setStruttura(idStruttura);
             recensioneDaAggiungere.setStatoRecensione("In Attesa");
-            recensioneDaAggiungere.setAutore(getNickname());
+            Utente autore = new Utente();
+            autore.setNickname(getNickname());
+            recensioneDaAggiungere.setAutore(autore);
             recensioneDaAggiungere.setValutazione((int) ratingBar.getRating());
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDateTime now = LocalDateTime.now();

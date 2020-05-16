@@ -8,7 +8,7 @@ public class Recensione {
     private int idRecensione;
     private int struttura;
     private String statoRecensione;
-    private String autore;
+    private Utente autore;
 
     public String getTesto() {
         return testo;
@@ -66,11 +66,11 @@ public class Recensione {
         this.statoRecensione = statoRecensione;
     }
 
-    public String getAutore() {
+    public Utente getAutore() {
         return autore;
     }
 
-    public void setAutore(String autore) {
+    public void setAutore(Utente autore) {
         this.autore = autore;
     }
 }
