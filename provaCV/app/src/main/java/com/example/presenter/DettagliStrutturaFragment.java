@@ -104,7 +104,7 @@ public class DettagliStrutturaFragment extends Fragment {
                                 recensione.setValutazione(recensioneJSON.getInt("valutazione"));
                                 listaRecensioni.add(recensione);
                             }
-                            initRecyclerView();
+                            initRecyclerViewSenzaFiltri();
                             numeroRecensioni.setText("(" + listaRecensioni.size() + ")");
                             Log.d(TAG, "onSuccess: " + listaRecensioni.size());
                         } catch (JSONException e) {
@@ -117,7 +117,7 @@ public class DettagliStrutturaFragment extends Fragment {
 
                     }
 
-                    private void initRecyclerView() {
+                    private void initRecyclerViewSenzaFiltri() {
                         ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -316,5 +316,11 @@ public class DettagliStrutturaFragment extends Fragment {
                 System.out.println(data.getExtras().getInt("Rating"));
             }
         }
+    }
+
+    private void initRecyclerViewConFiltri(ArrayList<Recensione> recensioniFiltrate) {
+        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(recensioniFiltrate, (MainActivity) getActivity());
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }
