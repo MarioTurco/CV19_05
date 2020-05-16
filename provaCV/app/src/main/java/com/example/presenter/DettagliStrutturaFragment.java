@@ -1,5 +1,7 @@
 package com.example.presenter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -170,6 +172,7 @@ public class DettagliStrutturaFragment extends Fragment {
         mostraDettagliStruttura();
         aggiungiListenerTastoIndietro();
         configuraFloatingActionButton();
+        final Fragment thisFragment = this;
         filtriRecensioneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +183,7 @@ public class DettagliStrutturaFragment extends Fragment {
                 }
                 ft.addToBackStack(null);
                 DialogFragment dialogFragment = new FiltriRecensioniDialog();
+                dialogFragment.setTargetFragment(thisFragment, 100);
                 dialogFragment.show(ft, "dialog");
             }
         });
@@ -301,5 +305,18 @@ public class DettagliStrutturaFragment extends Fragment {
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)
                 .into(immagineStruttura);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 100) {
+
+            if (resultCode == Activity.RESULT_OK) {
+                System.out.println(data.getExtras().getString("Autore"));
+                System.out.println(data.getExtras().getBoolean("Recenti"));
+            }
+        }
     }
 }

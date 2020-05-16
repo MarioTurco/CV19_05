@@ -7,7 +7,7 @@
 
 
     <EditText
-        android:id="@+id/nomeText"
+        android:id="@+id/autoreText"
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerValutazione"
+        android:id="@+id/spinnerValutazioneRecensioni"
         android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -33,8 +33,8 @@
         android:foregroundTint="#FFFFFF"
         android:spinnerMode="dialog"
         android:tooltipText="Prezzo"
-        app:layout_constraintEnd_toEndOf="@+id/nomeText"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+        app:layout_constraintEnd_toEndOf="@+id/autoreText"
+        app:layout_constraintTop_toBottomOf="@+id/autoreText" />
 
     <TextView
         android:id="@+id/textView8"
@@ -44,26 +44,26 @@
         android:fontFamily="@font/century_gothic"
         android:text="Mostra più recenti"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/prossimitàSwitch"
+        app:layout_constraintEnd_toStartOf="@+id/recentiSwitch"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerValutazioneRecensioni" />
 
     <Switch
-        android:id="@+id/prossimitàSwitch"
+        android:id="@+id/recentiSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerValutazione" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerValutazioneRecensioni" />
 
     <Button
-        android:id="@+id/cercaButton"
+        android:id="@+id/applicaFiltriButton"
         android:layout_width="115dp"
         android:layout_height="29dp"
         android:layout_marginTop="72dp"
         android:background="@drawable/cerca_button_background"
         android:fontFamily="@font/century_gothic"
-        android:text="Cerca"
+        android:text="Applica"
         android:textAllCaps="true"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,9 +80,9 @@
         android:fontFamily="@font/century_gothic"
         android:text="Rating"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerValutazione"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerValutazioneRecensioni"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nomeText"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+        app:layout_constraintStart_toStartOf="@+id/autoreText"
+        app:layout_constraintTop_toBottomOf="@+id/autoreText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
