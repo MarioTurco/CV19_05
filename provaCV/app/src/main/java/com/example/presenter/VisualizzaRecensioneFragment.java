@@ -79,7 +79,10 @@ public class VisualizzaRecensioneFragment extends Fragment {
     }
 
     private void riempiCampiRecensione() {
-        autore.setText(recensione.getAutore().getNickname());
+        if(recensione.getAutore().isMostraNickname())
+            autore.setText(recensione.getAutore().getNickname());
+        else
+            autore.setText(recensione.getAutore().getNome());
         data.setText(recensione.getDataRecensione());
         ratingBar.setRating(recensione.getValutazione());
         testo.setText(recensione.getTesto());
