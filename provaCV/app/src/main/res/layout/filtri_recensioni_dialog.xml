@@ -20,10 +20,10 @@
         android:scaleX="0.8"
         android:scaleY="0.8"
         android:stepSize="1.0"
-        app:layout_constraintEnd_toEndOf="@+id/nomeText"
+        app:layout_constraintEnd_toEndOf="@+id/autoreText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/autoreText" />
 
     <EditText
         android:id="@+id/autoreText"
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/nomeText" />
+        app:layout_constraintEnd_toEndOf="@+id/autoreText" />
 
     <Button
         android:id="@+id/applicaFiltriButton"
@@ -85,7 +85,7 @@
         android:fontFamily="@font/century_gothic"
         android:text="Rating"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/nomeText"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+        app:layout_constraintStart_toStartOf="@+id/autoreText"
+        app:layout_constraintTop_toBottomOf="@+id/autoreText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
