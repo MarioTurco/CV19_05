@@ -41,9 +41,7 @@ public class DettagliStrutturaFragment extends Fragment {
     private ImageButton tastoIndietro;
     private ImageButton filtriRecensioneButton;
     private CircleImageView immagineStruttura;
-
     private RatingBar ratingBarStruttura;
-
     private TextView nomeStruttura;
     private TextView descrizioneStruttura;
     private TextView cittaStruttura;
@@ -153,7 +151,6 @@ public class DettagliStrutturaFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         recensioneDAO = new RecensioneDAO(this.getActivity());
-
     }
 
     @Nullable

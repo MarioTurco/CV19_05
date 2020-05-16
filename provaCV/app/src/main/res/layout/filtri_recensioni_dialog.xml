@@ -6,6 +6,25 @@
     android:layout_height="match_parent">
 
 
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="175dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="48dp"
+        android:isIndicator="false"
+        android:maxHeight="28dp"
+        android:numStars="5"
+        android:progressTint="@android:color/black"
+        android:rating="0.0"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:stepSize="1.0"
+        app:layout_constraintEnd_toEndOf="@+id/nomeText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
+
     <EditText
         android:id="@+id/nomeText"
         style="@style/Widget.AppCompat.EditText"
@@ -22,20 +41,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerValutazione"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:dropDownWidth="wrap_content"
-        android:entries="@array/Valutazione"
-        android:fontFamily="@font/century_gothic"
-        android:foregroundTint="#FFFFFF"
-        android:spinnerMode="dialog"
-        android:tooltipText="Prezzo"
-        app:layout_constraintEnd_toEndOf="@+id/nomeText"
-        app:layout_constraintTop_toBottomOf="@+id/nomeText" />
-
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
@@ -47,14 +52,14 @@
         app:layout_constraintEnd_toStartOf="@+id/prossimitàSwitch"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerValutazione" />
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     <Switch
         android:id="@+id/prossimitàSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerValutazione" />
+        app:layout_constraintEnd_toEndOf="@+id/nomeText" />
 
     <Button
         android:id="@+id/cercaButton"
@@ -76,12 +81,10 @@
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/century_gothic"
         android:text="Rating"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerValutazione"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nomeText"
         app:layout_constraintTop_toBottomOf="@+id/nomeText" />
 
