@@ -19,7 +19,6 @@ import model.Struttura;
 
 public class ListaStruttureFragment extends Fragment {
     private ImageButton backButton;
-    private ImageButton filtriRecensioneButton;
     static ArrayList<Struttura> listaStrutture;
 
     public  ListaStruttureFragment(){
@@ -49,14 +48,7 @@ public class ListaStruttureFragment extends Fragment {
         initRecyclerView(view);
 
         backButton = view.findViewById(R.id.backButtonLista);
-        filtriRecensioneButton = view.findViewById(R.id.filtriRecensioneButton);
 
-        filtriRecensioneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-            }
-        });
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

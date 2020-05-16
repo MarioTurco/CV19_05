@@ -39,7 +39,7 @@ import model.Utente;
 public class DettagliStrutturaFragment extends Fragment {
     private final String TAG = "DettagliStrutturaFragment";
     private ImageButton tastoIndietro;
-
+    private ImageButton filtriRecensioneButton;
     private CircleImageView immagineStruttura;
 
     private RatingBar ratingBarStruttura;
@@ -146,7 +146,7 @@ public class DettagliStrutturaFragment extends Fragment {
         fabVisualizzaMappa = view.findViewById(R.id.fabVisualizzaSuMappa);
         tastoIndietro = view.findViewById(R.id.backButtonStruttura);
         immagineStruttura = view.findViewById(R.id.immagine);
-
+        filtriRecensioneButton = view.findViewById(R.id.filtriRecensioneButton);
     }
 
     @Override
@@ -170,6 +170,12 @@ public class DettagliStrutturaFragment extends Fragment {
         mostraDettagliStruttura();
         aggiungiListenerTastoIndietro();
         configuraFloatingActionButton();
+        filtriRecensioneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
     }
 
     private void configuraFloatingActionButton() {
