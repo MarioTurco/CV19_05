@@ -334,7 +334,7 @@ public class DettagliStrutturaFragment extends Fragment {
     }
 
     private boolean controllaRatingFiltro(Recensione recensione, int ratingFiltro){
-        return (recensione.getValutazione() <= ratingFiltro) || (ratingFiltro == 0);
+        return (recensione.getValutazione() == ratingFiltro) || (ratingFiltro == 0);
     }
 
     private void ordinaListaFiltrata(ArrayList<Recensione> listaFiltrata, boolean ordinaPerData){
