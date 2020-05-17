@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -47,6 +48,7 @@ public class FiltriRecensioniDialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState){
         referenziaElementiGUI();
+
         applicaFiltriButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

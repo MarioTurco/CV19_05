@@ -360,8 +360,21 @@
         android:layout_width="40dp"
         android:layout_height="34dp"
         android:background="@color/cardview_light_background"
+        android:tint="#504F4F"
         app:layout_constraintBottom_toTopOf="@+id/recensioniRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:srcCompat="@drawable/ic_filter" />
+
+    <ImageButton
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:background="@color/cardview_light_background"
+        android:tint="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/recensioniRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/filtriRecensioneButton"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
 </androidx.constraintlayout.widget.ConstraintLayout>

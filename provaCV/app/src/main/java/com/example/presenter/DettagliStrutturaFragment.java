@@ -58,6 +58,7 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView valutazioneRecensione;
     private TextView numeroRecensioni;
     private FloatingActionButton fabButton, fabVisualizzaMappa, fabAggiungiRecensione;
+    private ImageButton resetButton;
 
     //qui vanno le cose da passare all'adapter
     private ArrayList<Recensione> listaRecensioni;
@@ -152,6 +153,7 @@ public class DettagliStrutturaFragment extends Fragment {
         tastoIndietro = view.findViewById(R.id.backButtonStruttura);
         immagineStruttura = view.findViewById(R.id.immagine);
         filtriRecensioneButton = view.findViewById(R.id.filtriRecensioneButton);
+        resetButton = view.findViewById(R.id.resetButton);
     }
 
     @Override
@@ -187,6 +189,13 @@ public class DettagliStrutturaFragment extends Fragment {
                 DialogFragment dialogFragment = new FiltriRecensioniDialog();
                 dialogFragment.setTargetFragment(thisFragment, 100);
                 dialogFragment.show(ft, "dialog");
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initRecyclerViewConFiltri(listaRecensioni);
             }
         });
     }
