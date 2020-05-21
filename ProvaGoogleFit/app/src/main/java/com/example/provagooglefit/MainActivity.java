@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         connectToGoogleService();
 
-        listSources();
+        //listSources();
 
         collectHeartRateData();
 

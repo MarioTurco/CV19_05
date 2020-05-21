@@ -395,8 +395,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (haPermessiGPS())
             chiediPosizione();
 
-        setPositione(options);
-
+        setPosizione(options);
+        System.out.println("Long e lat: " + longitudine + " " + latitudine);
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
         if (instanceState == null)
@@ -501,7 +501,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    private void setPositione(final MapboxMapOptions options) {
+    protected void setPosizionePerProssimita(){
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            latitudine = location.getLatitude();
+                            longitudine = location.getLongitude();
+
+                        } else {
+                            latitudine = 40.79444305;
+                            longitudine = 14.46353868;
+                            Log.d(TAG, "onSuccess: Posizione default filtri fragment");
+                        }
+                    }
+                });
+
+        System.out.println("Long e lat: " + longitudine + " " + latitudine);
+    }
+
+    private void setPosizione(final MapboxMapOptions options) {
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override

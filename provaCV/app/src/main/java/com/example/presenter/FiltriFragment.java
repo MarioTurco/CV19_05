@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -36,6 +38,7 @@ import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
@@ -65,9 +68,12 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerValutazione;
     private Switch prossimitaSwitch;
 
-    private MainActivity activity;
+    private MainActivity activity;  //TODO: Sostituire tutte le occorrenze di getActivity() o MainActivity... con activity
 
     private StrutturaDAO strutturaDAO;
+    private double latitudine;
+    private double longitudine;
+    private FusedLocationProviderClient fusedLocationClient;
 
     public FiltriFragment() {
 
@@ -83,7 +89,30 @@ public class FiltriFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.strutturaDAO = new StrutturaDAO(this.getActivity());
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
     }
+
+
+    private void setPosizione() {
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this.getActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            latitudine = location.getLatitude();
+                            longitudine = location.getLongitude();
+                            System.out.println("Posizione ottenuta: " + latitudine + " " + longitudine);
+
+                        } else {
+                            latitudine = MainActivity.latitudine;
+                            longitudine = MainActivity.longitudine;
+                            Log.d(TAG, "location == null");
+                        }
+                    }
+                });
+    }
+
 
     private void initApiClient() {
         GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
@@ -128,6 +157,7 @@ public class FiltriFragment extends Fragment {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
                     // All location settings are satisfied. The client can initialize location
                     // requests here.
+                    setPosizione();
                 } catch (ApiException e) {
                     switch (e.getStatusCode()) {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
@@ -160,6 +190,7 @@ public class FiltriFragment extends Fragment {
         });
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -168,7 +199,8 @@ public class FiltriFragment extends Fragment {
         if (requestCode == 214) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
-                    // All required changes were successfully made
+                    //((MainActivity)getActivity()).setPosizionePerProssimita();
+                    setPosizione();
                     break;
                 case Activity.RESULT_CANCELED:
                     // The user was asked to change settings, but chose not to
@@ -179,6 +211,8 @@ public class FiltriFragment extends Fragment {
             }
         }
     }
+
+
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
         adapter = ArrayAdapter.createFromResource(this.getActivity(),
@@ -245,10 +279,12 @@ public class FiltriFragment extends Fragment {
                 if(isChecked){
                     if (hasGPSPermissions()) {
                         initApiClient();
+                        //setPosizione();
                         abilitaProssimita();
                     }
                     else{
                         askForGPSPermissions();
+                        //setPosizione();
                     }
                 }
                 else{
@@ -309,6 +345,7 @@ public class FiltriFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).toolbar.setVisibility(View.GONE);
+                System.out.println("Long e lat: " + MainActivity.longitudine + " " + MainActivity.latitudine);
                 cercaStrutture();
 
             }
