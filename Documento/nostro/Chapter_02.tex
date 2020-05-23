@@ -28,14 +28,14 @@ Il sistema infatti è composto da diversi client che tramite internet interagisc
     \end{figure}
 \end{center}
 \subsection{Model-View-Presenter}
-Per quanto riguarda l'architettura interna dei client si è deciso di utilizzare il modello Model-View-Presenter
-favorendo la separazione dei componenti software del sistema ed in particolare separandone le responsabilità.
+Per quanto riguarda l'architettura interna dei client si è deciso di utilizzare il modello Model-View-Presenter (variante Passive View)
+favorendo la separazione dei componenti software del sistema e separandone le responsabilità.
 In questo modo si riesce ad ottenere alta coesione e basso accoppiamento, ottenendo una buona manutenibilà.\\
 A favore di ciò il progetto è diviso in tre sottocartelle principali: Model, View e Presenter.\\
 \\
-Il modello mvp è un'evoluzione del modello Model View Controller ed è usato principalmente per creare user interfaces 
-ed in particolare:
-la componente \textbf{View} è una componente passiva deputata soltanto alla visualizzazione dei dati.\\
+Il modello MVP è un'evoluzione del modello Model View Controller ed è usato principalmente per creare user interfaces 
+ed in particolare nella variante Passive View:
+la componente \textbf{View} è completamente passiva e statica deputata soltanto alla visualizzazione dei dati.\\
 la componente \textbf{Model} ha la responsabilità di fornire i metodi per accedere
 ai dati utili all'applicazione, ha conoscenza del dominio applicativo ed è indipendente
 dagli altri sottosistemi.\\
@@ -53,6 +53,7 @@ fornirli alla view e gestire gli input dell'utente
 \section{CRC  Cards}
 \subsection{Applicativo Desktop}
     \input{CRC/Desktop/AdminDAO-CRC.tex}
+    \input{CRC/Desktop/LoginController-CRC.tex}
 \subsection{Applicativo Mobile}
     \input{CRC/Mobile/RecensioneDAO-CRC.tex}
 %------------------------------------

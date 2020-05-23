@@ -1,19 +1,5 @@
 \subsection{Testing Black Box}
 Effettueremo una serie di test, tramite strategia Strong Equivalence Class Testing sul seguente metodo:
-\lstset{language=Java,
-    keywordstyle=\color{magenta},
-    basicstyle=\scriptsize\ttfamily,
-    commentstyle=\ttfamily\itshape\color{gray},
-    stringstyle=\ttfamily,
-    showstringspaces=false,
-    breaklines=true,
-    frameround=ffff,
-    frame=single,
-    rulecolor=\color{black},
-    numbers = left,
-    extendedchars=true%,                      %questo rigo ed il successivo servono per usare le lettere à è ù nel codice
-    %literate={à}{{\'a}}1 {è}{{\'a}}1 {ù}{{\'u}}1 
-}
 \begin{lstlisting}
 public boolean tryLogin(String username, String password)
 \end{lstlisting}
@@ -62,7 +48,8 @@ Definiamo le classi di equivalenza dei valori assumibili dai parametri in input:
     \renewcommand{\arraystretch}{1.5}
 \end{table}
 Effettuiamo il prodotto cartesiano tra le classi di equivalenza del primo parametro 
-e quelle del secondo parametro per ottenere tutti i possibili testcase:
+e quelle del secondo parametro per ottenere tutti i possibili testcase.
+
 \begin{table}[H]
     \centering
     \footnotesize
@@ -108,8 +95,22 @@ e quelle del secondo parametro per ottenere tutti i possibili testcase:
     \setlength{\tabcolsep}{8pt}
     \renewcommand{\arraystretch}{1.5}
 \end{table}
+\begin{table}[H]
+    \centering
+    \footnotesize
+    \caption{Precondizioni}
+    \begin{tabularx}{\textwidth}{|c|c|X|}
+        \hline
+        Precondizione & Input & Output Atteso\\
+        \hline
+        'admin' ha diritto d'accesso & "admin", "admin" & true\\
+        \hline
+        'sbagliato' non ha diritto d'accesso & "sbagliato" , "sbagliato" & false\\
+        \hline
+    \end{tabularx}
+\end{table}
 
-Si riporta di seguito il codice sorgente dei test:
-\lstinputlisting{TestCases/AdminDAO_TestSuite.java}
+\lstinputlisting[caption=Casi di test]{TestCases/AdminDAO_TestSuite.java}
+
 
        

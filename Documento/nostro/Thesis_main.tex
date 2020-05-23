@@ -55,9 +55,28 @@
   \renewcommand{\contentsname}%
     {Indice}%
 }
+\definecolor{javared}{rgb}{1.0,0.33,0.64} % for strings
+\definecolor{javagreen}{rgb}{0.0,0.5,0.0} % comments
+\definecolor{javapurple}{rgb}{0.01,0.28, 1.0} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+ 
+\lstset{language=Java,
+basicstyle=\scriptsize\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared}\ttfamily,
+commentstyle=\color{javagreen}\ttfamily\itshape,
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+breaklines=true,
+frame=single,
+numberstyle=\tiny\color{black},
+tabsize=3,
+showspaces=false,
+showstringspaces=false}
 %%COLORI%%
 \definecolor{LightGray}{gray}{0.95}
 \definecolor{Gray}{gray}{0.75}
+
 %%%%% ------------------------------------------------------------
 \DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=single}
 
