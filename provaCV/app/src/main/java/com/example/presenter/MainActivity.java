@@ -1,12 +1,16 @@
 package com.example.presenter;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -30,10 +34,13 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +48,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonElement;
+import com.mapbox.android.core.location.LocationEngine;
+import com.mapbox.android.core.location.LocationEngineCallback;
+import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.android.core.location.LocationEngineRequest;
+import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -58,6 +70,7 @@ import com.mapbox.mapboxsdk.maps.Style;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
 
@@ -82,7 +95,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Style localStyle;
     public static double latitudine;
     public static double longitudine;
+    private boolean requestingLocationUpdates;
+    LocationRequest locationRequest;
+    private LocationEngine locationEngine;
+    private long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
+    private long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
+    private MainActivityLocationCallback callback = new MainActivityLocationCallback(this);
 
+
+    //Inner class per aggiornamenti della posizione
+    private static class MainActivityLocationCallback
+            implements LocationEngineCallback<LocationEngineResult> {
+
+        private final WeakReference<MainActivity> activityWeakReference;
+
+        MainActivityLocationCallback(MainActivity activity) {
+            this.activityWeakReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void onSuccess(LocationEngineResult result) {
+            MainActivity activity = activityWeakReference.get();
+
+            if (activity != null) {
+                Location location = result.getLastLocation();
+
+                if (location == null) {
+                    return;
+                }
+
+                // Create a Toast which displays the new location's coordinates
+                System.out.println(result.getLastLocation().getLatitude() + " " + result.getLastLocation().getLongitude());
+
+                // Pass the new location to the Maps SDK's LocationComponent
+                if (activity.mapboxMap != null && result.getLastLocation() != null) {
+                    activity.mapboxMap.getLocationComponent().forceLocationUpdate(result.getLastLocation());
+                }
+            }
+        }
+
+        @Override
+        public void onFailure(@NonNull Exception exception) {
+            Log.d("LocationChangeActivity", exception.getLocalizedMessage());
+            MainActivity activity = activityWeakReference.get();
+            if (activity != null) {
+                Toast.makeText(activity, exception.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void initLocationEngine() {
+        locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+
+        LocationEngineRequest request = new LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
+                .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
+                .setMaxWaitTime(DEFAULT_MAX_WAIT_TIME).build();
+
+        locationEngine.requestLocationUpdates(request, callback, getMainLooper());
+        //locationEngine.getLastLocation(callback);
+    }
 
     void initApiClient() {
         GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -110,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     void showLocationSettingsDialog() {
 
-        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
@@ -127,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     LocationSettingsResponse response = task.getResult(ApiException.class);
                     // All location settings are satisfied. The client can initialize location
                     // requests here.
+                    requestingLocationUpdates = true;
                 } catch (ApiException e) {
                     switch (e.getStatusCode()) {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
@@ -154,6 +228,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
+        System.out.println("richiesta: " + requestCode);
+        if (requestCode == 214) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    break;
+                case Activity.RESULT_CANCELED:
+                    // The user was asked to change settings, but chose not to
+                    requestingLocationUpdates = false;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     @Override
@@ -219,6 +312,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             .zoom(15)
                                             .build());
                                             */
+                                    Toast.makeText(MainActivity.this, "Posizione: " + latitudine + " " + longitudine, Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(MainActivity.this, "Attiva il GPS per mostrare la tua posizione sulla mappa", Toast.LENGTH_SHORT).show();
                                 }
@@ -453,6 +547,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             locationComponent.setLocationComponentEnabled(true);
             locationComponent.setCameraMode(CameraMode.TRACKING);
             locationComponent.setRenderMode(RenderMode.COMPASS);
+            initLocationEngine();
         } else {
             chiediPermessiGPS();
         }
@@ -500,6 +595,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
 
     protected void setPosizionePerProssimita(){
         fusedLocationClient.getLastLocation()
@@ -653,5 +749,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onDestroy() {
         super.onDestroy();
         mapFragment.onDestroy();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        System.out.println("------------------OnResume--------------");
     }
 }
