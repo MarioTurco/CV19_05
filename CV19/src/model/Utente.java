@@ -57,10 +57,7 @@ public class Utente {
         this.recensioniApprovate = recensioniApprovate;
         this.recensioniRifiutate = recensioniRifiutate;
     }
-    
-    public Utente(){
-        
-    }
+
     public Utente(String nome, String nickname) {
         this.nome = nome;
         this.nickname = nickname;
