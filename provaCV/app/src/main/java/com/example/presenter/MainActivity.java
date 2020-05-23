@@ -313,7 +313,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             .zoom(15)
                                             .build());
                                             */
-                                    Toast.makeText(MainActivity.this, "Posizione: " + latitudine + " " + longitudine, Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(MainActivity.this, "Attiva il GPS per mostrare la tua posizione sulla mappa", Toast.LENGTH_SHORT).show();
                                 }
