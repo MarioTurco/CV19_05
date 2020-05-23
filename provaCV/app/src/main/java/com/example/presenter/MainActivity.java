@@ -119,13 +119,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             if (activity != null) {
                 Location location = result.getLastLocation();
-
+                latitudine = location.getLatitude();
+                longitudine = location.getLongitude();
                 if (location == null) {
                     return;
                 }
 
                 // Create a Toast which displays the new location's coordinates
-                System.out.println(result.getLastLocation().getLatitude() + " " + result.getLastLocation().getLongitude());
+                //System.out.println(result.getLastLocation().getLatitude() + " " + result.getLastLocation().getLongitude());
 
                 // Pass the new location to the Maps SDK's LocationComponent
                 if (activity.mapboxMap != null && result.getLastLocation() != null) {
