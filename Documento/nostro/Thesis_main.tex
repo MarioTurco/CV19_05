@@ -27,26 +27,15 @@
 \usepackage{setspace}				
 \usepackage{multicol}				% multi-column layout
 \usepackage{url}					% uniform resource locator
-\usepackage{blindtext}
-\usepackage{verbatim}
 \usepackage{xcolor,colortbl}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tabularx}
-\usepackage{amsmath}        
-\usepackage{amsfonts}       
-\usepackage{amsthm} 
-\usepackage{amssymb}      
-\usepackage{pdfpages} 
-\usepackage{bm}     
-\usepackage{float}        
-\usepackage{graphicx}       
-\usepackage{psfrag}         
-\usepackage{longtable}
-\usepackage{fancyvrb}
-\usepackage{bbding}         
-\usepackage{dcolumn}        
-\usepackage{booktabs}       
-\usepackage{paralist}  
+\usepackage{tabularx}       
+\usepackage{amsfonts}             
+\usepackage{pdfpages}     
+\usepackage{float}                  
+\usepackage{fancyvrb}       
+\usepackage{pdfpages}      
+\usepackage{booktabs}         
 \usepackage{listings}     
 \usepackage{indentfirst}   
 \usepackage[nottoc]{tocbibind}
@@ -77,17 +66,7 @@ showstringspaces=false}
 \definecolor{LightGray}{gray}{0.95}
 \definecolor{Gray}{gray}{0.75}
 
-%%%%% ------------------------------------------------------------
-\DefineVerbatimEnvironment{PCinout}{Verbatim}{fontsize=\small, frame=single}
-
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-
-\DeclareMathOperator{\pr}{\textsf{P}}
-\DeclareMathOperator{\E}{\textsf{E}\,}
-\DeclareMathOperator{\var}{\textrm{var}}
-\DeclareMathOperator{\sd}{\textrm{sd}}
-
+%%%%% -----------------------------------------------------------
 
 \newcommand{\T}[1]{#1^\top}        
 
@@ -118,7 +97,7 @@ showstringspaces=false}
 \part{Documento dei Requisiti Software}
 \include{Chapter_01}
 \include{ModelloDiDominio}
-\include{impiegoRisorse.tex}
+\include{impiegoRisorse}
 
 \part{Documento di Design del sistema}
 \include{Chapter_02}
