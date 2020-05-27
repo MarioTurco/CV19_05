@@ -1,6 +1,5 @@
 package presenter;
 
-import DAO.AdminDAO;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.util.Optional;
@@ -49,12 +48,9 @@ public class SideMenuPresenter {
     private ImageView logoutImageView;
 
     private Stage window;
-
-    private final AdminDAO adminDAO;
     private Admin adminLoggato;
 
     public SideMenuPresenter(Admin admin) {
-        adminDAO = new AdminDAO();
         this.adminLoggato = admin;
     }
 
