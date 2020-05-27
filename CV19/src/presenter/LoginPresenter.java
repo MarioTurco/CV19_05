@@ -34,7 +34,7 @@ import model.Admin;
  *
  * @author gpepp
  */
-public class LoginController {
+public class LoginPresenter {
 
     @FXML
     private TextField usernameTextField;
@@ -49,7 +49,7 @@ public class LoginController {
 
     private Admin admin;
     
-    public LoginController() {
+    public LoginPresenter() {
         initAdminDAO();
     }
 
@@ -69,7 +69,7 @@ public class LoginController {
 
     private void loadSideMenuPanelAfterLogin(MouseEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/SideMenu.fxml")); 
-        SideMenuController sideMenuController=new SideMenuController(this.admin);
+        SideMenuPresenter sideMenuController=new SideMenuPresenter(this.admin);
         loader.setController(sideMenuController);       
         Parent parent=loader.load();
        
@@ -145,7 +145,7 @@ public class LoginController {
         try {
             root = FXMLLoader.load(getClass().getResource("/view/Recensioni.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }

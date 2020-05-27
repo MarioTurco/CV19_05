@@ -48,7 +48,11 @@ public class Utente {
     public int getRecensioniRifiutate() {
         return recensioniRifiutate;
     }
-
+    
+    public Utente(){
+        
+    }
+    
     public Utente(String nome, String nickname, String email, String dataDiNascita, int recensioniApprovate, int recensioniRifiutate) {
         this.nome = nome;
         this.nickname = nickname;

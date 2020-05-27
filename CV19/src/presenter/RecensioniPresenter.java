@@ -29,7 +29,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author checc
  */
-public class RecensioniController implements Initializable {
+public class RecensioniPresenter implements Initializable {
 
     @FXML
     private TableView RecensioniTableView;
@@ -49,7 +49,7 @@ public class RecensioniController implements Initializable {
        
     private ObservableList<Recensione> recensioni;
 
-    public RecensioniController() {
+    public RecensioniPresenter() {
         this.recensioneDAO = new RecensioneDAO();
     }
 
@@ -69,12 +69,12 @@ public class RecensioniController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/VisualizzaRecensione.fxml"));
             root = loader.load();
-            VisualizzaRecensioneController recensioneController=loader.getController();
+            VisualizzaRecensionePresenter recensioneController=loader.getController();
             recensioneController.setRecensioneDaMostrare(recensione);
             recensioneController.riempiCampiDettagliRecensione();
                     
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

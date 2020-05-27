@@ -31,7 +31,7 @@ import org.controlsfx.control.Rating;
  *
  * @author checc
  */
-public class VisualizzaRecensioneController {
+public class VisualizzaRecensionePresenter {
     
     @FXML
     private Label nickNameLabel;
@@ -55,7 +55,7 @@ public class VisualizzaRecensioneController {
     private Recensione recensioneDaMostrare;
     private final RecensioneDAO recensioneDAO;
 
-    public VisualizzaRecensioneController(){
+    public VisualizzaRecensionePresenter(){
         this.recensioneDAO = new RecensioneDAO();
     }
     
@@ -112,7 +112,7 @@ public class VisualizzaRecensioneController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Recensioni.fxml"));
             root = loader.load();                  
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

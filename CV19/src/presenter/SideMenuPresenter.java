@@ -25,7 +25,7 @@ import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 import model.Admin;
 
-public class SideMenuController {
+public class SideMenuPresenter {
 
     @FXML
     private JFXButton recensioniButton;
@@ -53,7 +53,7 @@ public class SideMenuController {
     private final AdminDAO adminDAO;
     private Admin adminLoggato;
 
-    public SideMenuController(Admin admin) {
+    public SideMenuPresenter(Admin admin) {
         adminDAO = new AdminDAO();
         this.adminLoggato = admin;
     }
@@ -110,7 +110,7 @@ public class SideMenuController {
             root = loader.load();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }

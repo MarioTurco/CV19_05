@@ -28,7 +28,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author checc
  */
-public class UtentiController implements Initializable {
+public class UtentiPresenter implements Initializable {
     
     @FXML
     private TableView VisitatoriTableView;
@@ -43,7 +43,7 @@ public class UtentiController implements Initializable {
     
     private BorderPane borderPanePadre;
     
-    public UtentiController(){
+    public UtentiPresenter(){
         this.utenteDAO = new UtenteDAO();
     }
     
@@ -64,12 +64,12 @@ public class UtentiController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/visualizzaUtente.fxml"));
             root = loader.load();
-            VisualizzaUtenteController utenteController=loader.getController();
+            VisualizzaUtentePresenter utenteController=loader.getController();
             utenteController.setUtenteDaMostrare(utente);
             utenteController.riempiCampiDettagliUtente();
                     
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

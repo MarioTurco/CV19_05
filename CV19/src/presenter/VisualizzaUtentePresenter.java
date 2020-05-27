@@ -30,7 +30,7 @@ import model.Utente;
  *
  * @author checc
  */
-public class VisualizzaUtenteController {
+public class VisualizzaUtentePresenter {
 
     @FXML
     private Label nomeLabel;
@@ -56,7 +56,7 @@ public class VisualizzaUtenteController {
 
     private BorderPane borderPanePadre;
 
-    public VisualizzaUtenteController() {
+    public VisualizzaUtentePresenter() {
         this.utenteDAO = new UtenteDAO();
     }
 
@@ -88,7 +88,7 @@ public class VisualizzaUtenteController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Utenti.fxml"));
             root = loader.load();
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }
@@ -105,12 +105,12 @@ public class VisualizzaUtenteController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ModificaDatiUtente.fxml"));
             root = loader.load();
-            ModificaUtenteController modificaUtenteController = loader.getController();
+            ModificaUtentePresenter modificaUtenteController = loader.getController();
             modificaUtenteController.setUtenteDaModificare(utente);
             modificaUtenteController.riempiCampoUtente();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }
