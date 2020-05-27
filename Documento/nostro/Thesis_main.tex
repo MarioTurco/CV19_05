@@ -32,12 +32,20 @@
 \usepackage{tabularx}       
 \usepackage{amsfonts}             
 \usepackage{pdfpages}     
-\usepackage{float}                  
+\usepackage{float}  
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}               
 \usepackage{fancyvrb}       
 \usepackage{pdfpages}      
 \usepackage{booktabs}         
-\usepackage{listings}     
-\usepackage{indentfirst}   
+\usepackage{listings}
+\usepackage{glossaries}
+\usepackage{indentfirst}  
 \usepackage[nottoc]{tocbibind}
 \newcommand{\FIGDIR}{./Figures}    		% directory containing figures
 \addto\captionsitalian{% Replace "english" with the language you use
@@ -80,7 +88,18 @@ showstringspaces=false}
 \newcommand{\pulrad}[1]{\raisebox{1.5ex}[0pt]{#1}}
 \newcommand{\mc}[1]{\multicolumn{1}{c}{#1}}
 
-
+\makeglossaries
+\newglossaryentry{Sale}
+{
+    name=Sale,
+    description={In crittografia, un sale è una sequenza casuale di bit utilizzata assieme ad una password come input a una funzione unidirezionale, di solito una funzione hash, il cui output è conservato al posto della sola password, e può essere usato per autenticare gli utenti. }
+}
+%\newglossaryentry{latex}
+%{
+%    name=latex,
+%    description={Is a mark up language specially suited 
+%    for scientific documents}
+%}
 %
 %
 %%%	MAIN DOCUMENT
@@ -107,6 +126,7 @@ showstringspaces=false}
 
 
 
+
 \include{Conclusions}
 
 
@@ -121,7 +141,8 @@ showstringspaces=false}
 %
 %%%	REFERENCES
 %
-
+\clearpage
+\printglossaries
 
 \end{document}
 
