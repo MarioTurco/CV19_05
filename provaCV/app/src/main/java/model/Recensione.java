@@ -2,6 +2,7 @@ package model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 
 public class Recensione {
@@ -13,6 +14,25 @@ public class Recensione {
     private Struttura struttura;
     private String statoRecensione;
     private Utente autore;
+
+    public static final Comparator<Recensione> comparatorByData = new Comparator<Recensione>(){
+        @Override
+        public int compare(Recensione r1, Recensione r2) {
+            return r1.getDataInFormatoData().compareTo(r2.getDataInFormatoData());
+        }
+    };
+
+    public static final Comparator<Recensione> comparatorByRating = new Comparator<Recensione>() {
+        @Override
+        public int compare(Recensione r1, Recensione r2) {
+            if(r1.getValutazione() > r2.getValutazione())
+                return 1;
+            else if(r1.getValutazione() < r2.getValutazione())
+                return -1;
+            else
+                return 0;
+        }
+    };
 
     public String getTesto() {
         return testo;

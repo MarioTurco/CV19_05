@@ -71,6 +71,7 @@ public class FiltriFragment extends Fragment {
     private MainActivity activity;  //TODO: Sostituire tutte le occorrenze di getActivity() o MainActivity... con activity
 
     private StrutturaDAO strutturaDAO;
+
     private double latitudine;
     private double longitudine;
     private FusedLocationProviderClient fusedLocationClient;
