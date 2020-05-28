@@ -92,7 +92,7 @@ public class Filtri {
         if (!categoria.equals("Nessuno"))
             returnString += "&categoria=" + categoria;
         if (!prezzo.equals("Nessuno"))
-            returnString += "&prezzo=" + prezzo;
+            returnString += "&fascia_di_prezzo=" + prezzo;
         if (!valutazione.equals("Nessuno"))
             returnString += "&valutazione_media=" + nome;
         if (prossimita) {

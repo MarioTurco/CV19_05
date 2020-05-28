@@ -30,7 +30,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import DAO.RecensioneDAO;
@@ -39,8 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
 import model.Struttura;
 import model.Utente;
-import utils.DataComparator;
-import utils.RatingComparator;
+import utils.RecensioneComparator;
 
 
 public class DettagliStrutturaFragment extends Fragment {
@@ -124,7 +122,7 @@ public class DettagliStrutturaFragment extends Fragment {
                     }
 
                     private void initRecyclerViewSenzaFiltri() {
-                        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(listaRecensioni, (MainActivity) getActivity());
+                        ListaRecensioniRecyclerViewAdapter recyclerViewAdapter = new ListaRecensioniRecyclerViewAdapter(listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     }
@@ -348,9 +346,9 @@ public class DettagliStrutturaFragment extends Fragment {
 
     private void ordinaListaFiltrata(ArrayList<Recensione> listaFiltrata, boolean ordinaPerData){
         if(ordinaPerData)
-            Collections.sort(listaFiltrata, new DataComparator());
+            Collections.sort(listaFiltrata, RecensioneComparator.comparatorByData);
         else
-            Collections.sort(listaFiltrata, new RatingComparator());
+            Collections.sort(listaFiltrata, RecensioneComparator.comparatorByRating);
         Collections.reverse(listaFiltrata);
     }
 
@@ -367,7 +365,7 @@ public class DettagliStrutturaFragment extends Fragment {
     }
 
     private void initRecyclerViewConFiltri(ArrayList<Recensione> recensioniFiltrate) {
-        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(recensioniFiltrate, (MainActivity) getActivity());
+        ListaRecensioniRecyclerViewAdapter recyclerViewAdapter = new ListaRecensioniRecyclerViewAdapter(recensioniFiltrate, (MainActivity) getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
