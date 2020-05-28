@@ -17,26 +17,26 @@ import java.util.ArrayList;
 
 import model.Recensione;
 
-public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<ListaRecensioniRecycleViewAdapter.ViewHolder> {
+public class ListaRecensioniRecyclerViewAdapter extends RecyclerView.Adapter<ListaRecensioniRecyclerViewAdapter.ViewHolder> {
     private AppCompatActivity appActivity;
 
     private ArrayList<Recensione> listaRecensioni;
 
-    public ListaRecensioniRecycleViewAdapter(ArrayList<Recensione> listaRecensioni, AppCompatActivity activity) {
+    public ListaRecensioniRecyclerViewAdapter(ArrayList<Recensione> listaRecensioni, AppCompatActivity activity) {
         this.listaRecensioni = listaRecensioni;
         this.appActivity = activity;
     }
 
     @NonNull
     @Override
-    public ListaRecensioniRecycleViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListaRecensioniRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_recensioni_item, parent, false);
-        ListaRecensioniRecycleViewAdapter.ViewHolder holder = new ListaRecensioniRecycleViewAdapter.ViewHolder(view);
+        ListaRecensioniRecyclerViewAdapter.ViewHolder holder = new ListaRecensioniRecyclerViewAdapter.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListaRecensioniRecycleViewAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ListaRecensioniRecyclerViewAdapter.ViewHolder holder, final int position) {
         Log.d("ListaRecensioniRecyclerView", "onBindViewHolder: ");
         final Recensione recensione = listaRecensioni.get(position);
 

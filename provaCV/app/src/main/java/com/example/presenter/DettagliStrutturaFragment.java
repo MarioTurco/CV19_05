@@ -30,7 +30,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import DAO.RecensioneDAO;
@@ -124,7 +123,7 @@ public class DettagliStrutturaFragment extends Fragment {
                     }
 
                     private void initRecyclerViewSenzaFiltri() {
-                        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(listaRecensioni, (MainActivity) getActivity());
+                        ListaRecensioniRecyclerViewAdapter recyclerViewAdapter = new ListaRecensioniRecyclerViewAdapter(listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     }
@@ -367,7 +366,7 @@ public class DettagliStrutturaFragment extends Fragment {
     }
 
     private void initRecyclerViewConFiltri(ArrayList<Recensione> recensioniFiltrate) {
-        ListaRecensioniRecycleViewAdapter recyclerViewAdapter = new ListaRecensioniRecycleViewAdapter(recensioniFiltrate, (MainActivity) getActivity());
+        ListaRecensioniRecyclerViewAdapter recyclerViewAdapter = new ListaRecensioniRecyclerViewAdapter(recensioniFiltrate, (MainActivity) getActivity());
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

@@ -37,7 +37,7 @@ public class RegistrazioneFragment extends Fragment {
     private EditText dataDiNascita;
     private Button confermaRegistrazioneButton;
     private EditText emailEditText;
-    private EditText PasswordEditText;
+    private EditText passwordEditText;
     private EditText nomeEditText;
     private EditText cognomeEditText;
     private EditText nicknameEditText;
@@ -73,7 +73,7 @@ public class RegistrazioneFragment extends Fragment {
         confermaRegistrazioneButton = view.findViewById(R.id.registrazioneButton);
         tastoIndietroRegistrazione = view.findViewById(R.id.backButtonSignup);
         emailEditText = view.findViewById(R.id.emailEditText);
-        PasswordEditText = view.findViewById(R.id.PasswordEditText);
+        passwordEditText = view.findViewById(R.id.PasswordEditText);
         nomeEditText = view.findViewById(R.id.nomeEditText);
         cognomeEditText = view.findViewById(R.id.cognomeEditText);
         nicknameEditText = view.findViewById(R.id.nicknameEditText);
@@ -86,26 +86,14 @@ public class RegistrazioneFragment extends Fragment {
                 !nicknameEditText.getText().toString().equals("") &&
                 !nomeEditText.getText().toString().equals("") &&
                 !cognomeEditText.getText().toString().equals("") &&
-                !PasswordEditText.getText().toString().equals("") &&
+                !passwordEditText.getText().toString().equals("") &&
                 !dataDiNascita.getText().toString().equals("");
     }
 
     private boolean controllaLunghezzaPassword() {
-        return PasswordEditText.getText().toString().length() >= 5;
-    }
-    private boolean checkCampiNonVuoti(){
-        return !emailEditText.getText().toString().equals("") &&
-                !nicknameEditText.getText().toString().equals("") &&
-                !nomeEditText.getText().toString().equals("") &&
-                !cognomeEditText.getText().toString().equals("") &&
-                !PasswordEditText.getText().toString().equals("") &&
-                !dataDiNascita.getText().toString().equals("");
+        return passwordEditText.getText().toString().length() >= 5;
     }
 
-    private boolean checkLunghezzaPassword(){
-        return PasswordEditText.getText().toString().length() >= 5;
-
-    }
 
     private Utente creaUtenteDaInserire(){
         Utente utenteDaAggiungere = new Utente();
@@ -117,7 +105,7 @@ public class RegistrazioneFragment extends Fragment {
                 utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
                 String salt = PasswordUtils.getSalt(30);
                 String passwordCriptata = null;
-                passwordCriptata = PasswordUtils.generateSecurePassword(PasswordEditText.getText().toString(), salt);
+                passwordCriptata = PasswordUtils.generateSecurePassword(passwordEditText.getText().toString(), salt);
                 utenteDaAggiungere.setPassword(passwordCriptata);
                 utenteDaAggiungere.setSalt(salt);
                 utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());
