@@ -1,5 +1,6 @@
 package com.example.presenter;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,12 +23,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import model.Struttura;
 
 public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<ListaStruttureRecyclerViewAdapter.ViewHolder> {
-    private MainActivity mainActivity;
+    private AppCompatActivity appActivity;
     private ArrayList<Struttura> listaStruttura;
 
-    public ListaStruttureRecyclerViewAdapter(ArrayList<Struttura> listaStrutture, MainActivity activity) {
+    public ListaStruttureRecyclerViewAdapter(ArrayList<Struttura> listaStrutture, AppCompatActivity activity) {
         this.listaStruttura = listaStrutture;
-        this.mainActivity = activity;
+        this.appActivity = activity;
     }
 
     @NonNull
@@ -56,7 +58,7 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out, R.anim.zoom_in, R.anim.zoom_out);
+                FragmentTransaction transaction = appActivity.getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out, R.anim.zoom_in, R.anim.zoom_out);
                        // .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                 transaction.replace(R.id.container, DettagliStrutturaFragment.newInstance(struttura), "DettagliStrutturaFragment");
                 transaction.commit();
