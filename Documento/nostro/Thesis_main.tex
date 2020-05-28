@@ -34,12 +34,7 @@
 \usepackage{pdfpages}     
 \usepackage{float}  
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}               
+             
 \usepackage{fancyvrb}       
 \usepackage{pdfpages}      
 \usepackage{booktabs}         
@@ -94,6 +89,10 @@ showstringspaces=false}
     name=Sale,
     description={In crittografia, un sale è una sequenza casuale di bit utilizzata assieme ad una password come input a una funzione unidirezionale, di solito una funzione hash, il cui output è conservato al posto della sola password, e può essere usato per autenticare gli utenti. }
 }
+\newglossaryentry{CRUD}{ 
+    name=CRUD, 
+    description={ Le operazioni CRUD (Create, Read, Update, Delete) sono le principali operazioni di gestione dei dati su una base di dati}
+}
 %\newglossaryentry{latex}
 %{
 %    name=latex,
@@ -109,9 +108,13 @@ showstringspaces=false}
 \begin{document}
 
 \include{Header}
-
-
 \pagenumbering{arabic}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}  
 \include{Introduction}%Revisioni
 \part{Documento dei Requisiti Software}
 \include{Chapter_01}
@@ -126,22 +129,8 @@ showstringspaces=false}
 
 
 
-
-\include{Conclusions}
-
-
-%
-%%%	APPENDIX
-%
-
-%\chapter*{Appendix}
-%\addcontentsline{toc}{chapter}{Appendix}
-
-
-%
-%%%	REFERENCES
-%
 \clearpage
+\include{Conclusions}
 \printglossaries
 
 \end{document}
