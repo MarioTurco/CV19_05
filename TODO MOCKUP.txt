@@ -1,8 +1,0 @@
-NOME MOCKUP
-modifiche
-
-
-
-TUTTI I RICERCA FILTRI
-Categoria, prezzo e valutazione sono diventati spinner
-
