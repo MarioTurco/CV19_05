@@ -34,7 +34,12 @@
 \usepackage{pdfpages}     
 \usepackage{float}  
 \usepackage{hyperref}
-             
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}  
 \usepackage{fancyvrb}       
 \usepackage{pdfpages}      
 \usepackage{booktabs}         
@@ -109,12 +114,7 @@ showstringspaces=false}
 
 \include{Header}
 \pagenumbering{arabic}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}  
+
 \include{Introduction}%Revisioni
 \part{Documento dei Requisiti Software}
 \include{Chapter_01}
