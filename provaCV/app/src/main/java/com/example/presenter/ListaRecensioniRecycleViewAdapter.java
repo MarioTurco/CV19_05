@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,13 +18,13 @@ import java.util.ArrayList;
 import model.Recensione;
 
 public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<ListaRecensioniRecycleViewAdapter.ViewHolder> {
-    private MainActivity mainActivity;
+    private AppCompatActivity appActivity;
 
     private ArrayList<Recensione> listaRecensioni;
 
-    public ListaRecensioniRecycleViewAdapter(ArrayList<Recensione> listaRecensioni, MainActivity activity) {
+    public ListaRecensioniRecycleViewAdapter(ArrayList<Recensione> listaRecensioni, AppCompatActivity activity) {
         this.listaRecensioni = listaRecensioni;
-        this.mainActivity = activity;
+        this.appActivity = activity;
     }
 
     @NonNull
@@ -54,7 +55,7 @@ public class ListaRecensioniRecycleViewAdapter extends RecyclerView.Adapter<List
         holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = mainActivity.getSupportFragmentManager()
+                FragmentTransaction transaction = appActivity.getSupportFragmentManager()
                         .beginTransaction().setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                 transaction.replace(R.id.container, VisualizzaRecensioneFragment.newInstance(recensione), "VisualizzaRecensioneFragment");
                 transaction.commit();
