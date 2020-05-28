@@ -437,7 +437,7 @@ public class FiltriFragment extends Fragment {
     private void nessunaStrutturaTrovata() {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
-        transaction.replace(R.id.container, NessunaStrrutturaTrovataFragment.newInstance(), "NessunaStrutturaTrovataFragment");
+        transaction.replace(R.id.container, NessunaStrutturaTrovataFragment.newInstance(), "NessunaStrutturaTrovataFragment");
         transaction.commit();
     }
 

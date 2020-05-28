@@ -36,13 +36,15 @@ public class RegistrazioneFragment extends Fragment {
     private ImageButton tastoIndietroRegistrazione;
     private EditText dataDiNascita;
     private Button confermaRegistrazioneButton;
-    private UtenteDAO utenteDAO;
     private EditText emailEditText;
     private EditText PasswordEditText;
     private EditText nomeEditText;
     private EditText cognomeEditText;
     private EditText nicknameEditText;
     private CheckBox mostraNicknameCheckbox;
+
+    private UtenteDAO utenteDAO;
+
     private String TAG="Signup Fragment";
 
     public RegistrazioneFragment(){

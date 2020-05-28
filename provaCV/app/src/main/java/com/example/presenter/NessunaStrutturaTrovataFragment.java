@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 
-public class NessunaStrrutturaTrovataFragment extends Fragment {
+public class NessunaStrutturaTrovataFragment extends Fragment {
     ImageButton tastoIndietro;
 
 
-    public static NessunaStrrutturaTrovataFragment newInstance() {
-        NessunaStrrutturaTrovataFragment fragment = new NessunaStrrutturaTrovataFragment();
+    public static NessunaStrutturaTrovataFragment newInstance() {
+        NessunaStrutturaTrovataFragment fragment = new NessunaStrutturaTrovataFragment();
         return fragment;
     }
 
