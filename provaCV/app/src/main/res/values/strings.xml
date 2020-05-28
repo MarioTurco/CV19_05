@@ -10,10 +10,9 @@
 
     <string-array name="categoria_array">
         <item>Nessuno</item>
-        <item>Pub</item>
         <item>Ristorante</item>
-        <item>Bar</item>
-        <item>Hotel</item>
+        <item>Albergo</item>
+        <item>Attrazione</item>
     </string-array>
 
     <string-array name="prezzo_array">
