@@ -71,4 +71,29 @@ public class StrutturaDAO {
                 });
         queue.add(jsonArrayRequest);
     }
+
+    public void getRatingById(int idStruttura, final VolleyCallback<Float> callback){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String queryString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=struttura&id_struttura="+idStruttura;
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, queryString, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            callback.onSuccess(Float.valueOf(response.getJSONObject(0).getString("valutazione_media")));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onFail();
+
+                    }
+                });
+        queue.add(jsonArrayRequest);
+    }
 }
