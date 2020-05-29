@@ -124,7 +124,7 @@ public class AggiungiRecensioneFragment extends Fragment {
                         public void onSuccess(String result) {
                             if (result.contains("successfully")) {
                                 Log.d(TAG, "onSuccess: Recensione Aggiunta");
-                                Toast.makeText(getContext(), "Recensione Aggiunta", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Recensione Aggiunta, sarà mostrata non appena verrà accettata!", Toast.LENGTH_LONG).show();
                                 backButton.performClick();
                             } else {
                                 System.out.println(result);
