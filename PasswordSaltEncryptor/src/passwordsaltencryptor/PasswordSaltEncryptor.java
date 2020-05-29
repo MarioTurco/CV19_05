@@ -18,16 +18,20 @@ public class PasswordSaltEncryptor {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("Inserisci la password: ");
+        System.out.println("Password inserita: ");
         String password = sc.nextLine();
+        System.out.println("Salt: ");
+        String salt = sc.nextLine();
         
-        String salt = PasswordUtils.getSalt(30);
+        
+
         
         String securePassword = PasswordUtils.generateSecurePassword(password, salt);
         
         System.out.println("Password inserita: " + password);
         System.out.println("Valore salt: " + salt);
         System.out.println("Password sicura: " + securePassword);
+        
         
         
     }

@@ -15,8 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 import model.Utente;
 import utils.PasswordUtils;
+
+import java.net.URLEncoder;
 
 public class UtenteDAO {
 
@@ -34,7 +39,7 @@ public class UtenteDAO {
         String correctPassword = null, salt = null;
         correctPassword = utenteJson.getString("password");
         salt = utenteJson.getString("salt");
-        System.out.println(givenPassword);
+        System.out.println(givenPassword + " " + correctPassword + " " + salt);
         return PasswordUtils.verifyUserPassword(givenPassword, correctPassword, salt);
     }
 
@@ -50,8 +55,10 @@ public class UtenteDAO {
                     public void onResponse(JSONArray response) {
                         try {
                             boolean loginSuccess;
-                            if (response.length() == 0)
+                            if (response.length() == 0) {
+                                System.out.println("Fallito");
                                 loginSuccess = false;
+                            }
                             else
                                 loginSuccess = controllaPassword(response.getJSONObject(0), givenPassword);
 
@@ -69,6 +76,14 @@ public class UtenteDAO {
         queue.add(jsonArrayRequest);
     }
 
+    private String encodeValue(String value) {
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
+    }
+
     private String costruisciQueryInserimento(Utente utente) {
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
@@ -76,7 +91,7 @@ public class UtenteDAO {
         queryRequestString += "&email=" + utente.getEmail();
         queryRequestString += "&data_di_nascita=" + utente.getDataDiNascita();
         queryRequestString += "&recensioniapprovate=0&recensionirifiutate=0";
-        queryRequestString += "&password=" + utente.getPassword();
+        queryRequestString += "&password=" + encodeValue(utente.getPassword());
         queryRequestString += "&salt=" + utente.getSalt();
         queryRequestString += "&mostra_nickname=" + utente.isMostraNickname();
         return queryRequestString;
