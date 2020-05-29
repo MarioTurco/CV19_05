@@ -38,7 +38,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
 import model.Struttura;
 import model.Utente;
-import utils.RecensioneComparator;
 
 
 public class DettagliStrutturaFragment extends Fragment {
@@ -346,9 +345,9 @@ public class DettagliStrutturaFragment extends Fragment {
 
     private void ordinaListaFiltrata(ArrayList<Recensione> listaFiltrata, boolean ordinaPerData){
         if(ordinaPerData)
-            Collections.sort(listaFiltrata, RecensioneComparator.comparatorByData);
+            Collections.sort(listaFiltrata, Recensione.comparatorByData);
         else
-            Collections.sort(listaFiltrata, RecensioneComparator.comparatorByRating);
+            Collections.sort(listaFiltrata, Recensione.comparatorByRating);
         Collections.reverse(listaFiltrata);
     }
 
