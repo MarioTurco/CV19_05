@@ -84,6 +84,26 @@ public class UtenteDAO {
         }
     }
 
+    public void isAccountEsistente(String username, final VolleyCallback<Boolean> callback){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
+        queryRequestString += aggiungiUsernameAllaQuery(username);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                            callback.onSuccess(response.length() != 0);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("UtenteDAO", "onErrorResponse: Errore");
+                    }
+                });
+        queue.add(jsonArrayRequest);
+    }
+
     private String costruisciQueryInserimento(Utente utente) {
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/insert/utente?";
         queryRequestString += "nome=" + utente.getNome();
