@@ -75,6 +75,7 @@ import java.util.List;
 import java.util.Map;
 
 import DAO.StrutturaDAO;
+import DAO.UtenteDAO;
 import DAO.VolleyCallback;
 import model.Struttura;
 
@@ -255,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configuraDrawer();
-        aggiornaDrawer();
+        controllaUtenteEsistente();
         setupButtons();
         aggiornaDrawer();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -375,6 +376,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void logout() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.edit().putBoolean("isLogged", false).apply();
+    }
+
+    private void controllaUtenteEsistente(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getBoolean("isLogged", false))
+            new UtenteDAO(this).isAccountEsistente(sharedPreferences.getString("nickname", ""), new VolleyCallback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean result) {
+                    if(!result){
+                        logout();
+                        aggiornaDrawer();
+                    }
+                    else
+                        aggiornaDrawer();
+
+
+                }
+
+                @Override
+                public void onFail() {
+
+                }
+            });
+
     }
 
     private void configuraDrawer() {
@@ -754,6 +779,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume(){
         super.onResume();
-        System.out.println("------------------OnResume--------------");
+        controllaUtenteEsistente();
+
     }
 }

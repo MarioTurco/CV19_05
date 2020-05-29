@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import DAO.RecensioneDAO;
+import DAO.StrutturaDAO;
 import DAO.VolleyCallback;
 import de.hdodenhof.circleimageview.CircleImageView;
 import model.Recensione;
@@ -61,6 +62,7 @@ public class DettagliStrutturaFragment extends Fragment {
     private ArrayList<Recensione> listaRecensioni;
     private static Struttura struttura;
     private RecensioneDAO recensioneDAO;
+    private StrutturaDAO strutturaDAO;
     private RecyclerView recyclerView;
 
     private boolean FABAperta = false;
@@ -157,6 +159,7 @@ public class DettagliStrutturaFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         recensioneDAO = new RecensioneDAO(this.getActivity());
+        strutturaDAO = new StrutturaDAO(this.getActivity());
     }
 
     @Nullable
@@ -165,11 +168,26 @@ public class DettagliStrutturaFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_struttura, container, false);
     }
 
+    private void aggiornaValutazioneMedia(){
+        strutturaDAO.getRatingById(struttura.getIdStruttura(), new VolleyCallback<Float>() {
+            @Override
+            public void onSuccess(Float result) {
+                struttura.setValutazioneMedia(result);
+            }
+
+            @Override
+            public void onFail() {
+                //TODO notificare errore query per valutazione media
+            }
+        });
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         referenziaElementiUI(view);
         caricaRecensioniStruttura();
+        aggiornaValutazioneMedia();
         mostraDettagliStruttura();
         aggiungiListenerTastoIndietro();
         configuraFloatingActionButton();
