@@ -94,7 +94,7 @@ public class Filtri {
         if (!prezzo.equals("Nessuno"))
             returnString += "&fascia_di_prezzo=" + prezzo;
         if (!valutazione.equals("Nessuno"))
-            returnString += "&valutazione_media=" + nome;
+            returnString += "&valutazione_media=" + valutazione;
         if (prossimita) {
             if (!distanzaMassima.equals(""))
                 returnString += "&radius=" + distanzaMassima;

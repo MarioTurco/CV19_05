@@ -378,6 +378,7 @@ public class FiltriFragment extends Fragment {
                                             distanzaMassima,
                                             prossimitaSwitch.isChecked()
                                             );
+        System.out.println(spinnerValutazione.getSelectedItem().toString());
 
         strutturaDAO.getStrutturePerFiltri(filtriStruttura,
                 new VolleyCallback<JSONArray>() {
