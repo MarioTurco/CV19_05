@@ -1,6 +1,5 @@
 package com.example.presenter;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import model.Filtri;

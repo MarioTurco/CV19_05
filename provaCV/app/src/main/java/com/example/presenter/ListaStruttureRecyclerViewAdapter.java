@@ -1,6 +1,5 @@
 package com.example.presenter;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
