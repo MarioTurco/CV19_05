@@ -32,8 +32,7 @@ public class VisualizzaRecensioneFragment extends Fragment {
     }
 
     public static VisualizzaRecensioneFragment newInstance(Recensione recensione) {
-        VisualizzaRecensioneFragment fragment = new VisualizzaRecensioneFragment(recensione);
-        return fragment;
+        return new VisualizzaRecensioneFragment(recensione);
     }
 
     private void referenziaElementiGUI(View itemView) {

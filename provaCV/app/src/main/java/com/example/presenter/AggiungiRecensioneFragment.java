@@ -29,7 +29,7 @@ import model.Struttura;
 import model.Utente;
 
 public class AggiungiRecensioneFragment extends Fragment {
-    final String TAG = "AggiungiRecensioneFragment";
+    private final String TAG = "AggiungiRecensioneFragment";
 
     private int idStruttura;
     private TextView titoloRecensione;

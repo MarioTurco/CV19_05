@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import model.Struttura;
 
 public class ListaStruttureFragment extends Fragment {
-    private ImageButton backButton;
     static ArrayList<Struttura> listaStrutture;
 
     public  ListaStruttureFragment(){
@@ -38,8 +37,7 @@ public class ListaStruttureFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lista_strutture, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_lista_strutture, container, false);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class ListaStruttureFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView(view);
 
-        backButton = view.findViewById(R.id.backButtonLista);
+        ImageButton backButton = view.findViewById(R.id.backButtonLista);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +57,7 @@ public class ListaStruttureFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
+                listaStrutture = null;
                 ((MainActivity)getActivity()).setMap();
             }
         };

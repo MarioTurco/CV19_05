@@ -27,23 +27,7 @@ import model.Struttura;
 public class VisualizzaSuMappaDialog extends DialogFragment {
 
     private Struttura strutturaSelezionata;
-    /*
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.map_dialog, null));
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                });
-        // Create the AlertDialog object and return it
-        return builder.create();
-    }
-    */
 
     public VisualizzaSuMappaDialog(Struttura struttura){
         strutturaSelezionata = struttura;

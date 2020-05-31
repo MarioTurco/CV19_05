@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,12 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 public class NessunaStrutturaTrovataFragment extends Fragment {
-    ImageButton tastoIndietro;
+    private ImageButton tastoIndietro;
 
 
     public static NessunaStrutturaTrovataFragment newInstance() {
-        NessunaStrutturaTrovataFragment fragment = new NessunaStrutturaTrovataFragment();
-        return fragment;
+        return new NessunaStrutturaTrovataFragment();
     }
 
     @Override
@@ -30,8 +30,7 @@ public class NessunaStrutturaTrovataFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_nessuna_struttura, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_nessuna_struttura, container, false);
     }
 
     @Override
@@ -48,5 +47,15 @@ public class NessunaStrutturaTrovataFragment extends Fragment {
                 transaction.commit();
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
+                transaction.commit();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 }

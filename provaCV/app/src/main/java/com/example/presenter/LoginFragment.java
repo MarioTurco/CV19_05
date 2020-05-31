@@ -31,8 +31,6 @@ public class LoginFragment extends Fragment {
     private EditText usernameLoginText;
     private EditText passwordLoginText;
     private TextView registratiTextLink;
-    private ProgressBar progressBar;
-    private View view;
     private MainActivity mainActivity;
 
     public LoginFragment(){
@@ -40,8 +38,7 @@ public class LoginFragment extends Fragment {
     }
 
     public static LoginFragment newInstance() {
-        LoginFragment fragment = new LoginFragment();
-        return fragment;
+        return new LoginFragment();
     }
 
     @Override
@@ -59,14 +56,13 @@ public class LoginFragment extends Fragment {
         usernameLoginText = view.findViewById(R.id.usernameLoginText);
         passwordLoginText = view.findViewById(R.id.passwordLoginText);
         registratiTextLink = view.findViewById(R.id.registratiTextLink);
-        progressBar = view.findViewById(R.id.progressBar);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
         referenziaElementiGUI(view);
 
         setupBackButton(savedInstanceState);
@@ -86,9 +82,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("LoginFragment", "onClick: cliccato");
-                progressBar.setVisibility(View.VISIBLE);
                 checkCredenziali();
-                progressBar.setVisibility(View.INVISIBLE);
             }
         });
         return view;

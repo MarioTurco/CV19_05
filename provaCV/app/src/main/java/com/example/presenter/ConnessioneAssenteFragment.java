@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,8 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 public class ConnessioneAssenteFragment extends Fragment {
-    private ImageButton tastoIndietro;
-
 
 
     public static ConnessioneAssenteFragment newInstance() {
@@ -35,7 +34,7 @@ public class ConnessioneAssenteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tastoIndietro = view.findViewById(R.id.backButtonNessunaStruttura);
+        ImageButton tastoIndietro = view.findViewById(R.id.backButtonNessunaStruttura);
 
         tastoIndietro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,5 +45,15 @@ public class ConnessioneAssenteFragment extends Fragment {
                 transaction.commit();
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                transaction.replace(R.id.container, FiltriFragment.newInstance(), "filtriFragment");
+                transaction.commit();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 }

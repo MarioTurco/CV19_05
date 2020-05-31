@@ -58,7 +58,6 @@ public class FiltriFragment extends Fragment {
 
 
     private ImageButton backButton;
-    private ViewGroup container;
     private Button cercaButton;
     private EditText nomeText;
     private EditText cittaText;
@@ -351,7 +350,6 @@ public class FiltriFragment extends Fragment {
 
             }
         });
-        this.container = container;
         return view;
     }
 

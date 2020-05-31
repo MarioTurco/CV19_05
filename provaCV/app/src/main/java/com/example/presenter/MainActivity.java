@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static double longitudine;
     private boolean requestingLocationUpdates;
     LocationRequest locationRequest;
-    private LocationEngine locationEngine;
     private long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private MainActivityLocationCallback callback = new MainActivityLocationCallback(this);
@@ -146,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @SuppressLint("MissingPermission")
     private void initLocationEngine() {
-        locationEngine = LocationEngineProvider.getBestLocationEngine(this);
+        LocationEngine locationEngine = LocationEngineProvider.getBestLocationEngine(this);
 
         LocationEngineRequest request = new LocationEngineRequest.Builder(DEFAULT_INTERVAL_IN_MILLISECONDS)
                 .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)

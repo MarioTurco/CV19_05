@@ -32,8 +32,7 @@ public class ListaRecensioniRecyclerViewAdapter extends RecyclerView.Adapter<Lis
     @Override
     public ListaRecensioniRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_recensioni_item, parent, false);
-        ListaRecensioniRecyclerViewAdapter.ViewHolder holder = new ListaRecensioniRecyclerViewAdapter.ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
