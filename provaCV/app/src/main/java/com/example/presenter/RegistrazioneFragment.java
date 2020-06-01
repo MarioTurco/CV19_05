@@ -153,6 +153,7 @@ public class RegistrazioneFragment extends Fragment {
                         public void onSuccess(String result) {
                             if (result.contains("successfully")){
                                 Toast.makeText(getContext(),"Registrato con successo", Toast.LENGTH_LONG).show();
+                                ((MainActivity)getActivity()).setMap();
                             }
                             else
                                 Toast.makeText(getContext(),"Registrazione Fallita" + errorMessage(result), Toast.LENGTH_LONG).show();
