@@ -52,7 +52,7 @@ public class ListaRecensioniRecyclerViewAdapter extends RecyclerView.Adapter<Lis
         holder.titolo.setText(recensione.getTitolo());
 
 
-        holder.ViewLayout.setOnClickListener(new View.OnClickListener() {
+        holder.viewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = appActivity.getSupportFragmentManager()
@@ -72,7 +72,7 @@ public class ListaRecensioniRecyclerViewAdapter extends RecyclerView.Adapter<Lis
 
         TextView  autore,data,titolo,testo;
         RatingBar ratingBar;
-        MaterialCardView ViewLayout;
+        MaterialCardView viewLayout;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             attachItemsByID(itemView);
@@ -84,7 +84,7 @@ public class ListaRecensioniRecyclerViewAdapter extends RecyclerView.Adapter<Lis
             data = itemView.findViewById(R.id.dataRecensione);
             titolo = itemView.findViewById(R.id.titoloRecensione);
             testo = itemView.findViewById(R.id.testoRecensione);
-            ViewLayout = itemView.findViewById(R.id.listItem_layout);
+            viewLayout = itemView.findViewById(R.id.listItem_layout);
         }
     }
 }
