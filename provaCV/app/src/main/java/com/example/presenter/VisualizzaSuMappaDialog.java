@@ -71,7 +71,7 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
             MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this.getActivity(), null);
             options.camera(new CameraPosition.Builder()
                     .target(new LatLng(strutturaSelezionata.getLongitudine(), strutturaSelezionata.getLatitudine()))
-                    .zoom(13)
+                    .zoom(15)
                     .build());
 
 // Create map fragment
