@@ -21,6 +21,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import DAO.UtenteDAO;
 import DAO.VolleyCallback;
 import model.Utente;
@@ -211,16 +216,25 @@ public class RegistrazioneFragment extends Fragment {
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             String dayString = formatDayAndMonth(day);
             String monthString = formatDayAndMonth(month+1);
-            dataText.setText(dayString + "/" + monthString + "/" + year);
-
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+            Date inserted = null,current = new Date();
+            int tenYearsAgo = year + 10;
+            try {
+                inserted = formatter.parse(dayString + "/" + monthString + "/" + tenYearsAgo);
+            } catch (ParseException e) {}
+            if(current.compareTo(inserted)>=0){
+                dataText.setText(dayString + "/" + monthString + "/" + year);
+            }
+            else {
+                dataText.setText("");
+                Toast.makeText(getContext(), "Inserisci una data corretta", Toast.LENGTH_SHORT).show();
+            }
         }
 
         private String formatDayAndMonth(int dayOrMonth) {
