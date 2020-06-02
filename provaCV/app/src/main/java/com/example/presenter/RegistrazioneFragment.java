@@ -98,7 +98,7 @@ public class RegistrazioneFragment extends Fragment {
         if(controllaCampiNonVuoti()) {
             if(controllaLunghezzaPassword()) {
                 utenteDaAggiungere.setEmail(emailEditText.getText().toString());
-                utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isSelected());
+                utenteDaAggiungere.setMostraNickname(mostraNicknameCheckbox.isChecked());
                 utenteDaAggiungere.setNickname(nicknameEditText.getText().toString());
                 utenteDaAggiungere.setNome(nomeEditText.getText().toString() + " " + cognomeEditText.getText().toString());
                 String salt = PasswordUtils.getSalt(30);
