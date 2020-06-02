@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.provacv"
+        applicationId "com.example.cercaviaggiapp"
         minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
