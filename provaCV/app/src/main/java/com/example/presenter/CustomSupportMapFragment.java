@@ -37,24 +37,20 @@ public class CustomSupportMapFragment extends SupportMapFragment {
 
             anim.setAnimationListener(new Animation.AnimationListener() {
 
-
                 @Override
                 public void onAnimationStart(Animation animation) {
 
                 }
-
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     toolbar.setVisibility(View.VISIBLE);
                     MainActivity.yourPositionButton.setVisibility(View.VISIBLE);
                 }
-
                 @Override
                 public void onAnimationRepeat(Animation animation) {
 
                 }
             });
-
 
         }
         return anim;

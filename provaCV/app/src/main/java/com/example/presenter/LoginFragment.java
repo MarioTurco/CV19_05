@@ -46,8 +46,6 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.utenteDAO = new UtenteDAO(this.getActivity());
         mainActivity = (MainActivity)getActivity();
-        if(mainActivity == null)
-            System.out.println("è null");
     }
 
     private void referenziaElementiGUI(View view) {
@@ -61,7 +59,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         referenziaElementiGUI(view);
 

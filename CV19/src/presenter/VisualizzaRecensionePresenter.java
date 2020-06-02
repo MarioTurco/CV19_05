@@ -112,7 +112,7 @@ public class VisualizzaRecensionePresenter {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Recensioni.fxml"));
             root = loader.load();                  
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VisualizzaRecensionePresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

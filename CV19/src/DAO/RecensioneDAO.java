@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Recensione;
@@ -31,7 +33,7 @@ public final class RecensioneDAO {
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(RecensioneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return conn;
     }
@@ -61,14 +63,14 @@ public final class RecensioneDAO {
                 allRecensioni.add(recensioneDaAggiungere);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(RecensioneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         try {
             statement.close();
             rs.close();
             conn.close();
         } catch (SQLException | NullPointerException e) {
-
+            Logger.getLogger(RecensioneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return allRecensioni;
     }
@@ -92,13 +94,13 @@ public final class RecensioneDAO {
             statement.setInt(2, idRecensione);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(RecensioneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         try {
             statement.close();
             conn.close();
         } catch (SQLException | NullPointerException e) {
-
+            Logger.getLogger(RecensioneDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }

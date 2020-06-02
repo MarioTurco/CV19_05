@@ -34,7 +34,7 @@ public class StrutturaDAO {
                     callback.onSuccess(response.getJSONObject(0));
                 }
                 catch(JSONException e){
-                    //TODO JSONException
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -42,7 +42,6 @@ public class StrutturaDAO {
             public void onErrorResponse(VolleyError error) {
                 callback.onFail();
                 Log.d("StrutturaDAO", "ERRORE VOLLEY");
-                error.printStackTrace();
             }
         });
         queue.add(request);
@@ -53,7 +52,6 @@ public class StrutturaDAO {
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/struttura?";
         queryRequestString += filtriStruttura.getFiltriNonVuoti(MainActivity.longitudine, MainActivity.latitudine);
-        System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -84,7 +82,7 @@ public class StrutturaDAO {
                         try {
                             callback.onSuccess(Float.valueOf(response.getJSONObject(0).getString("valutazione_media")));
                         } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
                     }
                 }, new Response.ErrorListener() {

@@ -1,6 +1,9 @@
 package cv19;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,8 +37,8 @@ public class MainApp extends Application {
             primaryStage.getIcons().add(new Image("/icons/logo4.png"));
             primaryStage.setTitle("CV19 Admin Panel");
             primaryStage.show();          
-        } catch (Exception e) {
-            
+        } catch (IOException e) {
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

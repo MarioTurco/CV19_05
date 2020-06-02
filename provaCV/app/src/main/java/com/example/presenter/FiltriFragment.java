@@ -67,7 +67,7 @@ public class FiltriFragment extends Fragment {
     private Spinner spinnerValutazione;
     private Switch prossimitaSwitch;
 
-    private MainActivity activity;  //TODO: Sostituire tutte le occorrenze di getActivity() o MainActivity... con activity
+    private MainActivity activity;
 
     private StrutturaDAO strutturaDAO;
 
@@ -78,7 +78,6 @@ public class FiltriFragment extends Fragment {
     public FiltriFragment() {
 
     }
-
 
 
     public static FiltriFragment newInstance() {
@@ -102,7 +101,6 @@ public class FiltriFragment extends Fragment {
                         if (location != null) {
                             latitudine = location.getLatitude();
                             longitudine = location.getLongitude();
-                            System.out.println("Posizione ottenuta: " + latitudine + " " + longitudine);
 
                         } else {
                             latitudine = MainActivity.latitudine;
@@ -142,11 +140,9 @@ public class FiltriFragment extends Fragment {
 
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
         builder.addLocationRequest(locationRequest);
         builder.setAlwaysShow(true);
-
         Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getActivity())
                 .checkLocationSettings(builder.build());
 
@@ -155,34 +151,23 @@ public class FiltriFragment extends Fragment {
             public void onComplete(Task<LocationSettingsResponse> task) {
                 try {
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    // All location settings are satisfied. The client can initialize location
-                    // requests here.
                     setPosizione();
                 } catch (ApiException e) {
                     switch (e.getStatusCode()) {
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                            // Location settings are not satisfied. But could be fixed by showing the
-                            // user a dialog.
-                            try {
-                                // Cast to a resolvable exception.
-                                ResolvableApiException resolvable = (ResolvableApiException) e;
-                                // Show the dialog by calling startResolutionForResult(),
-                                // and check the result in onActivityResult().
-                                /*resolvable.startResolutionForResult(
-                                        getActivity(),
-                                        MainActivity.REQUEST_CHECK_SETTINGS);
 
-                                 */
+                            try {
+
+                                ResolvableApiException resolvable = (ResolvableApiException) e;
                                 startIntentSenderForResult(resolvable.getResolution().getIntentSender(), MainActivity.REQUEST_CHECK_SETTINGS, null, 0, 0, 0, null);
                             } catch (IntentSender.SendIntentException exception) {
-                                // Ignore the error.
+
                             } catch (ClassCastException exception) {
-                                // Ignore, should be an impossible error.
+
                             }
                             break;
                         case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                            // Location settings are not satisfied. However, we have no way to fix the
-                            // settings so we won't show the dialog.
+
                             break;
                     }
                 }
@@ -195,7 +180,6 @@ public class FiltriFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
-        System.out.println("richiesta: " + requestCode);
         if (requestCode == 214) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
@@ -203,7 +187,6 @@ public class FiltriFragment extends Fragment {
                     setPosizione();
                     break;
                 case Activity.RESULT_CANCELED:
-                    // The user was asked to change settings, but chose not to
                     disabilitaProssimita();
                     break;
                 default:
@@ -211,7 +194,6 @@ public class FiltriFragment extends Fragment {
             }
         }
     }
-
 
 
     private void initSpinnerCategoria(View view, ArrayAdapter<CharSequence> adapter){
@@ -245,19 +227,15 @@ public class FiltriFragment extends Fragment {
     }
 
 
-
     private void initGUIElements(View view){
         ArrayAdapter<CharSequence> adapter = null;
-
         cercaButton = (Button) view.findViewById(R.id.cercaButton);
         nomeText = (EditText) view.findViewById(R.id.nomeText);
         cittaText = (EditText) view.findViewById(R.id.cittaText);
         distanzaText = (EditText) view.findViewById(R.id.distanzaText);
         prossimitaSwitch = view.findViewById(R.id.prossimitàSwitch);
         backButton = view.findViewById(R.id.backButtonSignup);
-
         initSpinners(view, adapter);
-
         configuraProssimitaSwitch();
     }
 
@@ -301,27 +279,6 @@ public class FiltriFragment extends Fragment {
         //requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
     }
 
-    /*
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        System.out.println("Ci sono");
-        switch (requestCode){
-            case 2:{
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
-                    Log.d(TAG, "onRequestPermissionsResult: Abilitato");
-                    initApiClient();
-                    abilitaProssimità();
-                }
-                else{
-                    Log.d(TAG, "onRequestPermissionsResult: disbilitato");
-                    disabilitaProssimità();
-                }
-            }
-        }
-    }
-    */
-
     void disabilitaProssimita() {
         distanzaText.setVisibility(View.INVISIBLE);
         cittaText.setVisibility(View.VISIBLE);
@@ -345,9 +302,7 @@ public class FiltriFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).toolbar.setVisibility(View.GONE);
-                System.out.println("Long e lat: " + MainActivity.longitudine + " " + MainActivity.latitudine);
                 cercaStrutture();
-
             }
         });
         return view;
@@ -376,7 +331,6 @@ public class FiltriFragment extends Fragment {
                                             distanzaMassima,
                                             prossimitaSwitch.isChecked()
                                             );
-        System.out.println(spinnerValutazione.getSelectedItem().toString());
 
         strutturaDAO.getStrutturePerFiltri(filtriStruttura,
                 new VolleyCallback<JSONArray>() {
@@ -418,19 +372,14 @@ public class FiltriFragment extends Fragment {
                         }
                     }
 
-
-
                     private void mostraListaStrutture(ArrayList<Struttura> strutture){
                         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction()
                                 .setCustomAnimations(R.anim.enter_right_to_left, R.anim.exit_right_to_left, R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                         transaction.replace(R.id.container, ListaStruttureFragment.newInstance(strutture), "ListStruttureFragment");
                         transaction.commit();
                     }
-
                 }
         );
-
-
 
     }
 

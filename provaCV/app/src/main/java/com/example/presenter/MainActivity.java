@@ -232,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         final LocationSettingsStates states = LocationSettingsStates.fromIntent(data);
-        System.out.println("richiesta: " + requestCode);
         if (requestCode == 214) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
@@ -257,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         aggiornaDrawer();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         instanceState = savedInstanceState;
-        strutturaDao = new StrutturaDAO(this); //TODO da sostituire eventualmente con un singleton
+        strutturaDao = new StrutturaDAO(this);
         controllaPermessiGPS();
         //initApiClient();
         setMap();
@@ -386,10 +385,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                     else
                         aggiornaDrawer();
-
-
                 }
-
                 @Override
                 public void onFail() {
 
@@ -511,7 +507,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             chiediPosizione();
 
         setPosizione(options);
-        System.out.println("Long e lat: " + longitudine + " " + latitudine);
         Mapbox.getInstance(this, "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
         if (instanceState == null)
@@ -606,10 +601,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setCampiStrutturaDaJSON(strutturaTappata, strutturaJSON);
                     mostraStrutturaFragment(strutturaTappata);
                 } catch (JSONException e) {
-
                 }
             }
-
             @Override
             public void onFail() {
 
@@ -635,8 +628,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     }
                 });
-
-        System.out.println("Long e lat: " + longitudine + " " + latitudine);
     }
 
     private void setPosizione(final MapboxMapOptions options) {
@@ -739,18 +730,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void nascondiUIDiSistema() {
-        // Enables regular immersive mode.
-        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        // Set the content to appear under the system bars so that the
-                        // content doesn't resize when the system bars hide and show.
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
@@ -776,6 +762,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume(){
         super.onResume();
         controllaUtenteEsistente();
-
     }
 }

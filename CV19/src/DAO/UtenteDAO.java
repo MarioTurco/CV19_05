@@ -32,7 +32,7 @@ public class UtenteDAO {
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            Logger.getLogger(UtenteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return conn;
@@ -59,15 +59,12 @@ public class UtenteDAO {
             }
             close(statement, resultSet, conn);
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            Logger.getLogger(UtenteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return allUtenti;
     }
 
     public void modifyUtente(String vecchioNickname, String nuovoNickname, String nuovaPassword) throws SQLException {
-        System.out.println(nuovaPassword);
-        System.out.println(nuovoNickname);
-        System.out.println(vecchioNickname);
         if (!nuovaPassword.equals("")) {
             modifyPassword(vecchioNickname, nuovaPassword);
         }
@@ -109,7 +106,7 @@ public class UtenteDAO {
             statement.setString(1, nickname);
             statement.executeUpdate();
         } catch (SQLException sql) {
-
+            Logger.getLogger(UtenteDAO.class.getName()).log(Level.SEVERE, null, sql);
         }
     }
 
@@ -133,7 +130,7 @@ public class UtenteDAO {
             }
             close(statement, resultSet, conn);
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            Logger.getLogger(UtenteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return utente;
     }

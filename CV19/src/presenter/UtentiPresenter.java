@@ -69,7 +69,7 @@ public class UtentiPresenter implements Initializable {
             utenteController.riempiCampiDettagliUtente();
                     
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UtentiPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

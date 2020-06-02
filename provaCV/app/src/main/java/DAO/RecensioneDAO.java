@@ -37,7 +37,7 @@ public class RecensioneDAO {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Errore");
+                        Log.d("RecensioneDAO", "onErrorResponse: Errore" );
 
                     }
                 });
@@ -63,7 +63,6 @@ public class RecensioneDAO {
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
                         Log.d("RecensioneDAO", "onErrorResponse: Errore" );
-                        error.printStackTrace();
                     }
                 });
         queue.add(jsonArrayRequest);

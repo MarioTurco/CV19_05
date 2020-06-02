@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import cv19.PasswordUtils;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +28,7 @@ public class AdminDAO {
         try {
             dbConnection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
         return dbConnection;
@@ -64,10 +66,8 @@ public class AdminDAO {
             loginPreparedStatement.close();
             rs.close();
 
-        } catch (NullPointerException np) {
-            //todo: dialog connessione non avvenente
-        } catch (SQLException e) {
-            //todo: gestione errori sql
+        } catch (NullPointerException | SQLException ex) {
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }

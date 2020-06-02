@@ -150,9 +150,7 @@ public class SideMenuPresenter {
 
         if (button == ButtonType.OK) {
             loadLoginView(event);
-        } else {
-            System.out.println("canceled");
-        }
+        } 
     }
 
     private void loadLoginView(InputEvent event) {
@@ -160,11 +158,11 @@ public class SideMenuPresenter {
             Parent homePageParent = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             Scene scene = new Scene(homePageParent);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            appStage.hide(); //optional
+            appStage.hide(); 
             appStage.setScene(scene);
             appStage.show();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

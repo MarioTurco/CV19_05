@@ -88,7 +88,7 @@ public class VisualizzaUtentePresenter {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Utenti.fxml"));
             root = loader.load();
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VisualizzaUtentePresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }
@@ -110,7 +110,7 @@ public class VisualizzaUtentePresenter {
             modificaUtenteController.riempiCampoUtente();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VisualizzaUtentePresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

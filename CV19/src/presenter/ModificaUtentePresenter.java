@@ -137,7 +137,7 @@ public class ModificaUtentePresenter {
             utenteController.riempiCampiDettagliUtente();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class
+            Logger.getLogger(ModificaUtentePresenter.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
@@ -150,7 +150,7 @@ public class ModificaUtentePresenter {
             root = loader.load();
 
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class
+            Logger.getLogger(ModificaUtentePresenter.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);

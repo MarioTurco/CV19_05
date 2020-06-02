@@ -145,7 +145,7 @@ public class LoginPresenter {
         try {
             root = FXMLLoader.load(getClass().getResource("/view/Recensioni.fxml"));
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpane.setCenter(root);
     }

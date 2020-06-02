@@ -74,7 +74,7 @@ public class RecensioniPresenter implements Initializable {
             recensioneController.riempiCampiDettagliRecensione();
                     
         } catch (IOException ex) {
-            Logger.getLogger(SideMenuPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RecensioniPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPanePadre.setCenter(root);
     }

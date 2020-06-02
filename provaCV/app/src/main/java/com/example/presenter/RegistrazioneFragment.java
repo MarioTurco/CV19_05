@@ -42,9 +42,7 @@ public class RegistrazioneFragment extends Fragment {
     private EditText cognomeEditText;
     private EditText nicknameEditText;
     private CheckBox mostraNicknameCheckbox;
-
     private UtenteDAO utenteDAO;
-
     private String TAG="Signup Fragment";
 
     public RegistrazioneFragment(){
@@ -63,7 +61,7 @@ public class RegistrazioneFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
@@ -106,9 +104,6 @@ public class RegistrazioneFragment extends Fragment {
                 String salt = PasswordUtils.getSalt(30);
                 String passwordCriptata = null;
                 passwordCriptata = PasswordUtils.generateSecurePassword(passwordEditText.getText().toString(), salt);
-                System.out.println("Password inserita: " + passwordEditText.getText().toString());
-                System.out.println("Salt: " + salt);
-                System.out.println("Password criptata: " + passwordCriptata);
                 utenteDaAggiungere.setPassword(passwordCriptata);
                 utenteDaAggiungere.setSalt(salt);
                 utenteDaAggiungere.setDataDiNascita(dataDiNascita.getText().toString());

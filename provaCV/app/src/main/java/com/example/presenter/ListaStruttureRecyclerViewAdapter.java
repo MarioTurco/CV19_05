@@ -47,8 +47,6 @@ public class ListaStruttureRecyclerViewAdapter extends RecyclerView.Adapter<List
         holder.descrizione.setText(struttura.getDescrizione());
         holder.ratingBar.setRating((float)struttura.getValutazioneMedia());
 
-        //foto
-
         Picasso.get().load(Uri.parse(struttura.getUrlFoto()))
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)

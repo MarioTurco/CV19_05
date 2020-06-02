@@ -53,12 +53,8 @@ public class FiltriRecensioniDialog extends DialogFragment {
                 bundle.putString("Autore", autoreText.getText().toString());
                 bundle.putInt("Rating", (int)ratingRecensioni.getRating());
                 bundle.putBoolean("Recenti", recentiSwitch.isChecked());
-
-                //System.out.println(bundle);
                 Intent intent = new Intent().putExtras(bundle);
-
                 getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
-
                 dismiss();
             }
         });

@@ -31,7 +31,6 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
 
     public VisualizzaSuMappaDialog(Struttura struttura){
         strutturaSelezionata = struttura;
-        System.out.println(strutturaSelezionata.getLongitudine() + " " + strutturaSelezionata.getLatitudine());
     }
 
     @Override
@@ -60,24 +59,20 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
     private void setMap(){
         Mapbox.getInstance(this.getActivity(), "pk.eyJ1IjoibWFyaW90dXJjbzQiLCJhIjoiY2s5NXZicG8zMG81aDNsbzFudmJtbXFvZCJ9.SAKPHTJnSi4BpAcRkBRclA");
 
-// Create supportMapFragment
+
         SupportMapFragment mapFragment;
         if (MainActivity.instanceState == null) {
 
-// Create fragment
+
             final FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            System.out.println("Ok");
-// Build mapboxMap
+
             MapboxMapOptions options = MapboxMapOptions.createFromAttributes(this.getActivity(), null);
             options.camera(new CameraPosition.Builder()
                     .target(new LatLng(strutturaSelezionata.getLongitudine(), strutturaSelezionata.getLatitudine()))
                     .zoom(15)
                     .build());
 
-// Create map fragment
             mapFragment = SupportMapFragment.newInstance(options);
-
-// Add map fragment to parent container
             transaction.add(R.id.dialog_container, mapFragment, "mappaDialog");
             transaction.commit();
         } else {
@@ -91,9 +86,6 @@ public class VisualizzaSuMappaDialog extends DialogFragment {
                     mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/marioturco4/ck95w1ltx0sdn1iqt1enmib6y"), new Style.OnStyleLoaded() {
                         @Override
                         public void onStyleLoaded(@NonNull Style style) {
-
-// Map is set up and the style has loaded. Now you can add data or make other map adjustments
-
 
                         }
                     });

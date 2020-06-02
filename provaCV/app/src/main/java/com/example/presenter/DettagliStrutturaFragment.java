@@ -60,8 +60,6 @@ public class DettagliStrutturaFragment extends Fragment {
     private TextView numeroRecensioni;
     private FloatingActionButton fabButton, fabVisualizzaMappa, fabAggiungiRecensione;
     private ImageButton resetButton;
-
-    //qui vanno le cose da passare all'adapter
     private ArrayList<Recensione> listaRecensioni;
     private static Struttura struttura;
     private RecensioneDAO recensioneDAO;
@@ -70,7 +68,6 @@ public class DettagliStrutturaFragment extends Fragment {
 
     private boolean FABAperta = false;
 
-    //costruttore chiamato da un VisualizzaRecensioneFragment
     public DettagliStrutturaFragment() {
         listaRecensioni = new ArrayList<Recensione>();
     }
@@ -78,7 +75,6 @@ public class DettagliStrutturaFragment extends Fragment {
     public DettagliStrutturaFragment(Struttura struttura) {
         this.struttura = struttura;
         listaRecensioni = new ArrayList<Recensione>();
-
     }
 
     private Utente creaUtenteDaQuery(JSONObject result) throws JSONException{
@@ -116,7 +112,7 @@ public class DettagliStrutturaFragment extends Fragment {
                             numeroRecensioni.setText("(" + listaRecensioni.size() + ")");
                             Log.d(TAG, "onSuccess: " + listaRecensioni.size());
                         } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
                     }
 
@@ -124,7 +120,6 @@ public class DettagliStrutturaFragment extends Fragment {
                     public void onFail() {
 
                     }
-
                     private void initRecyclerViewSenzaFiltri() {
                         ListaRecensioniRecyclerViewAdapter recyclerViewAdapter = new ListaRecensioniRecyclerViewAdapter(listaRecensioni, (MainActivity) getActivity());
                         recyclerView.setAdapter(recyclerViewAdapter);
@@ -180,7 +175,7 @@ public class DettagliStrutturaFragment extends Fragment {
 
             @Override
             public void onFail() {
-                //TODO notificare errore query per valutazione media
+
             }
         });
     }
@@ -329,7 +324,6 @@ public class DettagliStrutturaFragment extends Fragment {
         prezzoStruttura.setText(struttura.getFasciaDiPrezzo());
         categoriaStruttura.setText(struttura.getCategoria());
         valutazioneRecensione.setText(String.valueOf(struttura.getValutazioneMedia()));
-
         Picasso.get().load(Uri.parse(struttura.getUrlFoto()))
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)
@@ -339,9 +333,7 @@ public class DettagliStrutturaFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 100) {
-
             if (resultCode == Activity.RESULT_OK) {
                 ArrayList<Recensione> listaFiltrata = filtraListaRecensioni(data.getExtras());
                 initRecyclerViewConFiltri(listaFiltrata);
@@ -379,7 +371,6 @@ public class DettagliStrutturaFragment extends Fragment {
                     && controllaRatingFiltro(recensione, filtri.getInt("Rating")))
                 listaFiltrata.add(recensione);
         }
-        System.out.println(listaFiltrata);
         ordinaListaFiltrata(listaFiltrata, filtri.getBoolean("Recenti"));
         return listaFiltrata;
     }

@@ -38,7 +38,6 @@ public class UtenteDAO {
         String correctPassword = null, salt = null;
         correctPassword = utenteJson.getString("password");
         salt = utenteJson.getString("salt");
-        System.out.println(givenPassword + " " + correctPassword + " " + salt);
         return PasswordUtils.verifyUserPassword(givenPassword, correctPassword, salt);
     }
 
@@ -46,7 +45,6 @@ public class UtenteDAO {
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = "https://m6o9t2bfx0.execute-api.eu-central-1.amazonaws.com/select/table?table=utente";
         queryRequestString += aggiungiUsernameAllaQuery(username);
-        System.out.println(queryRequestString);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONArray>() {
 
@@ -55,7 +53,6 @@ public class UtenteDAO {
                         try {
                             boolean loginSuccess;
                             if (response.length() == 0) {
-                                System.out.println("Fallito");
                                 loginSuccess = false;
                             }
                             else
@@ -119,7 +116,6 @@ public class UtenteDAO {
     public void registraUtente(Utente utente, final VolleyCallback<String> callback) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String queryRequestString = costruisciQueryInserimento(utente);
-        System.out.println(queryRequestString);
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest
                 (Request.Method.GET, queryRequestString, null, new Response.Listener<JSONObject>() {
                     @Override
@@ -136,10 +132,8 @@ public class UtenteDAO {
                     public void onErrorResponse(VolleyError error) {
                         callback.onFail();
                         Log.d("UtenteDAO", "onErrorResponse: Errore");
-                        error.printStackTrace();
                     }
                 });
         queue.add(jsonArrayRequest);
-
     }
 }
