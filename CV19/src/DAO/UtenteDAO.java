@@ -100,10 +100,12 @@ public class UtenteDAO {
     public void deleteUtenteByNickname(String nickname) {
         String query = "DELETE FROM utente WHERE nickname = ?";
         PreparedStatement statement = null;
+        
         try {
             Connection con = getConnection();
             statement = con.prepareStatement(query);
             statement.setString(1, nickname);
+            System.out.println("Query: " + query);
             statement.executeUpdate();
         } catch (SQLException sql) {
             Logger.getLogger(UtenteDAO.class.getName()).log(Level.SEVERE, null, sql);
