@@ -107,6 +107,10 @@ public class LoginFragment extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
+    private void mostraToastLoginFallito(){
+        Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
+    }
+
     private void checkCredenziali() {
         final String username = String.valueOf(usernameLoginText.getText());
         String password = String.valueOf(passwordLoginText.getText());
@@ -123,7 +127,7 @@ public class LoginFragment extends Fragment {
                             Log.d("LoginFragment", "onSuccess: Login fallito");
                             usernameLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
                             passwordLoginText.getBackground().mutate().setColorFilter(Color.parseColor("#DD2020"), PorterDuff.Mode.SRC_ATOP);
-                            Toast.makeText(getContext(), "Login fallito", Toast.LENGTH_SHORT).show();
+                            mostraToastLoginFallito();
                         }
                     }
                     @Override

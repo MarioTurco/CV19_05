@@ -1,6 +1,10 @@
 package com.example.presenter;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -8,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
+import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
 import com.mapbox.mapboxsdk.utils.MapFragmentUtils;
@@ -21,6 +26,10 @@ public class CustomSupportMapFragment extends SupportMapFragment {
         this.toolbar = toolbar;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
     @NonNull
     public static CustomSupportMapFragment newInstance(@Nullable MapboxMapOptions mapboxMapOptions, Toolbar toolbar) {
@@ -28,6 +37,7 @@ public class CustomSupportMapFragment extends SupportMapFragment {
         mapFragment.setArguments(MapFragmentUtils.createFragmentArgs(mapboxMapOptions));
         return mapFragment;
     }
+
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
