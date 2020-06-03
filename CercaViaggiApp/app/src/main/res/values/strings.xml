@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">
+        Cerca Viaggi
+    </string>
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+    <string name="fragment_in_card_below">Map fragment container in card below</string>
+    <string name="descrizione_struttura">Descrizione.
+        Lorem ipsum dolor sit amet, soluta regione urbanitas vis</string>
+
+    <string-array name="categoria_array">
+        <item>Nessuno</item>
+        <item>Ristorante</item>
+        <item>Albergo</item>
+        <item>Attrazione</item>
+    </string-array>
+
+    <string-array name="prezzo_array">
+        <item>Nessuno</item>
+        <item>Economico</item>
+        <item>Medio</item>
+        <item>Alto</item>
+    </string-array>
+
+    <string-array name="valutazione_array">
+        <item>Nessuno</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

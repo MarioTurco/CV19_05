@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presenter.UtentiPresenter">
+   <children>
+      <TableView fx:id="VisitatoriTableView" layoutX="-1.0" layoutY="155.0" onMouseClicked="#utenteClick" prefHeight="452.0" prefWidth="858.0" style="-fx-background-color: #F9FCFB;" stylesheets="@/css/tableView.css">
+        <columns>
+          <TableColumn fx:id="nomeCol" editable="false" prefWidth="417.0" resizable="false" style="-fx-font-weight:bold" text="Nome" />
+          <TableColumn fx:id="nicknameCol" editable="false" prefWidth="437.0" resizable="false" text="NickName" />
+        </columns>
+      </TableView>
+      <Label layoutX="-238.0" layoutY="-29.0" text="Utenti" textFill="#000000d0" translateX="335.0" translateY="82.0">
+         <font>
+            <Font name="Century Gothic Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="56.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/Icon%20material-person-black.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

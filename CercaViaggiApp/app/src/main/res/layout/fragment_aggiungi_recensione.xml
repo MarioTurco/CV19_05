@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/mapbox_blue">
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/backButton"
+        android:fontFamily="@font/century_gothic"
+        android:text="Aggiungi Recensione"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="31dp"
+        android:layout_height="28dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_back" />
+
+    <EditText
+        android:id="@+id/titoloRecensione"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="Titolo (max 50 caratteri)"
+        android:inputType="textPersonName"
+        android:lines="1"
+        android:maxLength="50"
+        android:fontFamily="@font/century_gothic"/>
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/testoRecensione"
+        android:layout_alignStart="@+id/testoRecensione"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/century_gothic"
+        android:text="Valutazione:"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/aggiungiRecensioneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/cerca_button_background"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/century_gothic"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="Aggiungi" />
+
+    <EditText
+        android:id="@+id/testoRecensione"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titoloRecensione"
+        android:layout_alignStart="@+id/titoloRecensione"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="9dp"
+        android:ems="10"
+        android:fontFamily="@font/century_gothic"
+        android:gravity="start|top"
+        android:hint="Testo (max 300 caratteri)"
+        android:inputType="textMultiLine"
+        android:maxLength="300" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/testoRecensione"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/textView24"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:progressTint="@android:color/black"
+        android:rating="0.0"
+        android:stepSize="1.0" />
+</RelativeLayout>

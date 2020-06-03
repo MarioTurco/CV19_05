@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/listItem_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="4dp"
+    android:backgroundTint="#FFFFFF"
+    android:elevation="6dp"
+    android:fadingEdgeLength="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="2dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="5dp">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
+
+        <RatingBar
+            android:id="@+id/listItem_ratingStruttura"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="34dp"
+            android:progressTint="@android:color/black" />
+
+        <TextView
+            android:id="@+id/listItem_categoriaStruttura"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toEndOf="@+id/textView14"
+            android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
+            android:lines="1"
+            android:text="Ristorante" />
+
+        <TextView
+            android:id="@+id/recensione_TitoloRecensione"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
+            android:lines="1"
+            android:text="Nome Struttura"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/listItem_immagineStruttura"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/prova"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/listItem_descrizioneStruttura"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listItem_cittàStruttura"
+            android:layout_alignBottom="@+id/divider2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="7dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
+            android:lines="3"
+            android:text="Descrizione"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recensione_TitoloRecensione"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/century_gothic"
+            android:text="Città:" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="@font/century_gothic"
+            android:text="Categoria:" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listItem_immagineStruttura"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="33dp"
+            android:fontFamily="@font/century_gothic"
+            android:text="Valutazione:" />
+
+        <TextView
+            android:id="@+id/listItem_cittàStruttura"
+            android:layout_width="187dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recensione_TitoloRecensione"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/listItem_immagineStruttura"
+            android:layout_toEndOf="@+id/textView7"
+            android:ellipsize="end"
+            android:fontFamily="@font/century_gothic"
+            android:lines="1"
+            android:text="Napoli, Italia" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/listItem_immagineStruttura"
+            android:layout_marginTop="14dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#00FFFFFF" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
