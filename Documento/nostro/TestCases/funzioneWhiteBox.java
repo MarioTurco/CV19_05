@@ -9,7 +9,7 @@ public String getFiltriNonVuoti(double longitudine, double latitudine) {
     if (!prezzo.equals("Nessuno"))
         returnString += "&prezzo=" + prezzo;
     if (!valutazione.equals("Nessuno"))
-        returnString += "&valutazione_media=" + nome;
+        returnString += "&valutazione_media=" + valutazione;
     if (prossimita) {
         if (!distanzaMassima.equals(""))
             returnString += "&radius=" + distanzaMassima;

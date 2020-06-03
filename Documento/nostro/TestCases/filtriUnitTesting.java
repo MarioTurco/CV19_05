@@ -9,13 +9,13 @@ public class FiltriUnitTest {
     @Test
     public void getFiltriNonVuoti_BranchCoverage_2_a_15_18_19_21(){
         filtri = new Filtri("a", "a", "a", "a", "1","1", true);
-        String returnString = "&nome=%25a%25&citta=%25a%25&categoria=a&prezzo=a&valutazione_media=a&radius=1&x=0.0&y=0.0";
+        String returnString = "&nome=%25a%25&citta=%25a%25&categoria=a&prezzo=a&valutazione_media=1&radius=1&x=0.0&y=0.0";
         assertEquals(returnString, filtri.getFiltriNonVuoti(0.0,0.0));
     }
     @Test
     public void getFiltriNonVuoti_BranchCoverage_2_a_14_17_18_19_21(){
         filtri = new Filtri("a", "a", "a", "a", "1","", true);
-        String returnString = "&nome=%25a%25&citta=%25a%25&categoria=a&prezzo=a&valutazione_media=a&radius=0&x=0.0&y=0.0";
+        String returnString = "&nome=%25a%25&citta=%25a%25&categoria=a&prezzo=a&valutazione_media=1&radius=0&x=0.0&y=0.0";
         assertEquals(returnString, filtri.getFiltriNonVuoti(0.0,0.0));
     }
 }
