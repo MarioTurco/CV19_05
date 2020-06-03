@@ -226,10 +226,8 @@ public class RegistrazioneFragment extends Fragment {
             cal.add(Calendar.YEAR,-6);
             DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
             Date inserted = null,currentMeno6 = cal.getTime(), current=new Date();
-            System.out.println("Data corrente: " + current);
             try {
                 inserted = formatter.parse(dayString + "/" + monthString + "/" + year);
-                System.out.println("Data inserita: " + inserted);
             } catch (ParseException e) {}
             if(current.before(inserted) ){
                 dataText.setText("");
