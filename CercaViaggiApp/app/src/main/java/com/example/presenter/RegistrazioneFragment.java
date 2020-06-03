@@ -222,18 +222,23 @@ public class RegistrazioneFragment extends Fragment {
         public void onDateSet(DatePicker view, int year, int month, int day) {
             String dayString = formatDayAndMonth(day);
             String monthString = formatDayAndMonth(month+1);
+            Calendar cal=Calendar.getInstance();
+            cal.add(Calendar.YEAR,-6);
             DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-            Date inserted = null,current = new Date();
-            int tenYearsAgo = year + 10;
+            Date inserted = null,currentMeno6 = cal.getTime(), current=new Date();
             try {
-                inserted = formatter.parse(dayString + "/" + monthString + "/" + tenYearsAgo);
+                inserted = formatter.parse(dayString + "/" + monthString + "/" + year);
             } catch (ParseException e) {}
-            if(current.compareTo(inserted)>=0){
-                dataText.setText(dayString + "/" + monthString + "/" + year);
-            }
-            else {
+            if(current.before(inserted) ){
                 dataText.setText("");
                 Toast.makeText(getContext(), "Inserisci una data corretta", Toast.LENGTH_SHORT).show();
+            }
+            else if(currentMeno6.before(inserted)){
+                dataText.setText("");
+                Toast.makeText(getContext(), "Sei troppo giovane per registrarti a questa piattaforma!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                dataText.setText(dayString + "/" + monthString + "/" + year);
             }
         }
 
