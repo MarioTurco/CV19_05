@@ -109,3 +109,20 @@ Di seguitop sono riportate tutte le Class Responsability Collaboration(CRC) del 
 \includepdf[pages={-}]{State Chart/Design/SCD Login.pdf} 
 \includepdf[pages={-}]{State Chart/Design/SCD Ricerca Struttura.pdf} 
 \includepdf[pages={-}]{State Chart/Design/SCD MainActivity.pdf} 
+
+\section{Dettagli di sviluppo}
+\subsection{Desktop}
+L'applicativo desktop è stato realizzato tramite l'IDE Netbeans utilizzando per la grafica il framework \href{https://openjfx.io/}{JavaFX} 
+con \href{http://www.jfoenix.com/}{JFoenix} e \href{https://github.com/controlsfx/controlsfx}{ControlsFX}.
+Gli accessi al database sono stati effettuati tramite driver PostgresJDBC e le credenziali di accesso dell'amministratore sono le seguenti:\\
+Username: admin 
+Password: admin
+
+\subsection{Mobile}
+L'applicativo mobile è stato sviluppato utilizzando l'IDE Android Studio.\\
+L'integrazione con la mappa è stata realizzata utilizzando le SDK e le API di \href{https://www.mapbox.com/}{MapBox}.\\
+\\Le richieste HTTP al web service sono state effettuate tramite la libreria \href{https://developer.android.com/training/volley}{Volley}.
+\\Le immagini delle strutture sono state invece integrate utilizzando la libreria \href{https://square.github.io/picasso/}{Picasso} che si occupa di scaricarle da url remoto e mostrarle a video.
+\\\\
+Il server è situato in cloud utilizzando i servizi di \href{https://aws.amazon.com/it/}{AWS}.\\
+Nel corso di tutto il progetto è stato utilizzato Git per versionare i file e permettere la collaborazione efficace di tutti i membri del progetto.
