@@ -525,17 +525,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             List<Feature> features = mapboxMap.queryRenderedFeatures(point, "cv19-map");
                             // Get the first feature within the list if one exist
                             if (features.size() > 0) {
+                                Log.d(TAG, "pointClick: ci sono fetus");
                                 Feature feature = features.get(0);
                                 // Ensure the feature has properties defined
                                 if (feature.properties() != null) {
                                     mostraStrutturaDopoTap(getIdStrutturaFromFeature(feature));
                                 }
                             }
+                            Log.d(TAG, "pointClick: non ci sono fetus");
                             return true;
                         }
 
                         @Override
                         public boolean onMapClick(@NonNull LatLng point) {
+                            Log.d(TAG, "onMapClick: cliccato");
                             return pointClick(mapboxMap.getProjection().toScreenLocation(point));
                         }
                     });
